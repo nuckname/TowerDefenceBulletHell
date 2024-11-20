@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b1a1fcf887472489d488246c37275e, type: 3}
   m_Name: TurretBasic
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4713303750412457036, guid: b1ec7a8d31da7854a85a58aaf6c59699, type: 3}
+  bulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
   bulletSize: 1
-  bulletSpeed: 0.2
+  bulletSpeed: 4
   fireRate: 1
   rotateTowardsTarget: 1
   rotationSpeed: 5

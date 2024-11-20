@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretShoot : MonoBehaviour
@@ -7,16 +8,56 @@ public class TurretShoot : MonoBehaviour
     public Transform shootPoint;
     private float fireCooldown;
 
-    private Vector2[] directions = { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
+    //Might have to make these public later. 
+    [SerializeField] private bool upShootDirction; 
+    [SerializeField] private bool downShootDirction; 
+    [SerializeField] private bool leftShootDirction; 
+    [SerializeField] private bool rightShootDirction;
 
-    [SerializeField] private GameObject bulletPrefab;
+    public int numberOfProjectiles = 1; 
+    
+    private List<Vector2> directions = new List<Vector2>();
+
+
+    [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
+    [SerializeField] private Transform[] ShootPoints;
 
     [SerializeField] private Rigidbody2D rb;
 
+    private int shootPointIndex;
     private void Awake()
     {
-        GameObject bulletGameObject = Instantiate(turretConfig.bulletPrefab, shootPoint.position, Quaternion.identity);
+        ShootPoints = new Transform[] { ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight };
     }
+
+    private void Start()
+    {
+        AddDirectionsToTurret();
+    }
+
+    private void AddDirectionsToTurret()
+    {
+        if (upShootDirction == true)
+        {
+            directions.Add(Vector2.up);
+        }
+    
+        if (downShootDirction == true)
+        {
+            directions.Add(Vector2.down);
+        }
+
+        if (leftShootDirction == true)
+        {
+            directions.Add(Vector2.left);
+        }
+
+        if (rightShootDirction == true)
+        {
+            directions.Add(Vector2.right);
+        }
+    }
+
 
     void Update()
     {
@@ -35,7 +76,18 @@ public class TurretShoot : MonoBehaviour
             fireCooldown = 1f / turretConfig.fireRate;
         }
     }
+/*
+    private IEnumerator FadeOut(float duration)
+    {
+        float time = 0;
 
+        while (time < duration)
+        {
+            time += Time.deltaTime; 
+            yield return null;
+        }
+    }
+  */  
     private void Shoot()
     {
         if (turretConfig.bulletPrefab == null)
@@ -47,20 +99,35 @@ public class TurretShoot : MonoBehaviour
         // Loop through each direction and shoot a bullet
         foreach (Vector2 direction in directions)
         {
-            // Create the bullet and set its properties
-            GameObject bullet = Instantiate(bulletPrefab, shootPoint.position, Quaternion.identity);
+            
+            GameObject bullet = Instantiate(
+                turretConfig.bulletPrefab, 
+                new Vector3(ShootPoints[shootPointIndex].position.x, ShootPoints[shootPointIndex].position.y, -1), 
+                Quaternion.identity
+            );
+            
+            for (int i = 0; i <= numberOfProjectiles; i++)
+            {
+                // Create the bullet and set its properties
+
+                //StartCoroutine()
+            }
+
+            //-1 so we dont get an error
+            if (shootPointIndex >= directions.Count - 1)
+            {
+                shootPointIndex = 0;
+            }
+            else
+            {
+                shootPointIndex++;
+            }
+            
             rb = bullet.GetComponent<Rigidbody2D>();
 
-            
-            
-            //bullet.transform.localScale *= turretConfig.bulletSize;
-
-            // Apply force to the bullet
-            
             if (rb != null)
             {
                 rb.velocity = direction * turretConfig.bulletSpeed;
-                print(direction);
             }
 
             Destroy(bullet, 2.4f);

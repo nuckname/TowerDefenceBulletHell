@@ -9,8 +9,6 @@ public class RoundOverGameState : GameBaseState
 
     public override void UpdateState(GameStateManager gameStateManager)
     {
-        Debug.Log("a");
-        
 
     }
 
