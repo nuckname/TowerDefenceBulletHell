@@ -14,15 +14,15 @@ public class TurretShoot : MonoBehaviour
     [SerializeField] private bool leftShootDirction; 
     [SerializeField] private bool rightShootDirction;
 
+    [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
+    [SerializeField] private Transform[] ShootPoints;
+    
+    //Use Scriptable GameObject Prefab to increase or decrease firerate. 
+    //public float increaseFireCooldown = 1;
+    
     public int numberOfProjectiles = 1; 
     
     private List<Vector2> directions = new List<Vector2>();
-
-
-    [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
-    [SerializeField] private Transform[] ShootPoints;
-
-    [SerializeField] private Rigidbody2D rb;
 
     private int shootPointIndex;
     private void Awake()
@@ -123,13 +123,6 @@ public class TurretShoot : MonoBehaviour
                 shootPointIndex++;
             }
             
-            rb = bullet.GetComponent<Rigidbody2D>();
-
-            if (rb != null)
-            {
-                rb.velocity = direction * turretConfig.bulletSpeed;
-            }
-
             Destroy(bullet, 2.4f);
         }
     }

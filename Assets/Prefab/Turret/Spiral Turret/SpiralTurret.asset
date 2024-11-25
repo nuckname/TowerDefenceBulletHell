@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75b1a1fcf887472489d488246c37275e, type: 3}
-  m_Name: TurretCool
+  m_Name: SpiralTurret
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
+  bulletPrefab: {fileID: 3426162796660274319, guid: 5ef5535a8311cc54cb23c60b6b471e04, type: 3}
   bulletSize: 1
-  bulletSpeed: 0.2
+  bulletSpeed: 10
+  bulletLifeTime: 5
+  numberOfProjectiles: 1
   fireRate: 1
   rotateTowardsTarget: 1
   rotationSpeed: 5

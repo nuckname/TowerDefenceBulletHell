@@ -7,6 +7,8 @@ public class TurretConfig : ScriptableObject
     public GameObject bulletPrefab;
     public float bulletSize = 1f;
     public float bulletSpeed = 10f;
+    public float bulletLifeTime = 5f;
+    public int numberOfProjectiles = 1;
     
     [Header("Shooting Settings")]
     public float fireRate = 1f;
