@@ -15,7 +15,7 @@ public class PlaceTurret : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            //Instantiate(TurretBasic, gameObject.transform.position, Quaternion.identity);
+            Instantiate(TurretBasic, gameObject.transform.position, Quaternion.identity);
         }
         
         if (Input.GetKeyDown(KeyCode.Q))

@@ -1,50 +1,46 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
     public static int CURRENT_ROUND;
 
-    [SerializeField] private Transform SpawnPoint;
-    int RedEnemiesSpawnAmount = 0;
+    private int redEnemiesSpawnAmount = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-            
-    }
+    [SerializeField] private GameObject redEnemy;
+    [SerializeField] private Transform enemySpawnPoint;
 
-    // Update is called once per frame
     void Update()
     {
-        //debug 
+        // Debugging: Press 'P' to create a round
         if (Input.GetKeyDown(KeyCode.P))
         {
             CreateRound();
         }
     }
 
-    //Called using state machien
     public void CreateRound()
     {
-        //+2
-        //+1
-        //pattern continues.
-        //random cals, they dont actually mean anything. 
-        float enemySpawnRateMutipler = 1.5f;
-        float multipler = enemySpawnRateMutipler * CURRENT_ROUND;
-        
-        //debug
-        for (int i = 0; i < multipler + 4; i++)
-        {
-            //Spawn Red enemies
-            RedEnemiesSpawnAmount++;
-        }
-        //Coroutine so they dont stack on top of each other. 
-        
-        print("Red Enemies: " + RedEnemiesSpawnAmount);
+        //Made up stats 
+        float enemySpawnRateMultiplier = 1.2f;
+        int spawnCount = Mathf.CeilToInt(enemySpawnRateMultiplier * CURRENT_ROUND + 4);
+        Debug.Log($"Current Round: {CURRENT_ROUND}, Enemies to Spawn: {spawnCount}");
+
+        StartCoroutine(SpawnEnemies(spawnCount, 1f)); 
         CURRENT_ROUND++;
-        //How do i make this scale? 
+    }
+
+    private IEnumerator SpawnEnemies(int count, float delay)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            // Spawn a red enemy
+            Instantiate(redEnemy, enemySpawnPoint.position, Quaternion.identity);
+            redEnemiesSpawnAmount++;
+            Debug.Log($"Red Enemies Spawned: {redEnemiesSpawnAmount}");
+
+            // Wait before spawning the next enemy
+            yield return new WaitForSeconds(delay);
+        }
     }
 }
