@@ -1,14 +1,18 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class RoundManager : MonoBehaviour
 {
     public static int CURRENT_ROUND;
 
-    private int redEnemiesSpawnAmount = 0;
+    public int totalEnemiesSpawnAmount = 0;
 
-    [SerializeField] private GameObject redEnemy;
+    [SerializeField] private GameObject Enemy;
     [SerializeField] private Transform enemySpawnPoint;
+
+    [SerializeField] private List<GameObject> AllEnemiesInCurrentRound;
 
     void Update()
     {
@@ -26,7 +30,7 @@ public class RoundManager : MonoBehaviour
         int spawnCount = Mathf.CeilToInt(enemySpawnRateMultiplier * CURRENT_ROUND + 4);
         Debug.Log($"Current Round: {CURRENT_ROUND}, Enemies to Spawn: {spawnCount}");
 
-        StartCoroutine(SpawnEnemies(spawnCount, 1f)); 
+        StartCoroutine(SpawnEnemies(spawnCount, 0.75f)); 
         CURRENT_ROUND++;
     }
 
@@ -34,11 +38,13 @@ public class RoundManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            // Spawn a red enemy
-            Instantiate(redEnemy, enemySpawnPoint.position, Quaternion.identity);
-            redEnemiesSpawnAmount++;
-            Debug.Log($"Red Enemies Spawned: {redEnemiesSpawnAmount}");
+            totalEnemiesSpawnAmount++;
 
+            //Get Health Compoent from Enemy
+            //Set EnemyStartingHealth to something.
+            Instantiate(Enemy, enemySpawnPoint.position, Quaternion.identity);
+
+            //If all enemies die then we start next round. Logic in enemy death. 
             // Wait before spawning the next enemy
             yield return new WaitForSeconds(delay);
         }

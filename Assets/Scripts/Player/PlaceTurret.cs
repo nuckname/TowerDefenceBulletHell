@@ -20,7 +20,7 @@ public class PlaceTurret : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Instantiate(TurretCool, gameObject.transform.position, Quaternion.identity);
+           //Instantiate(TurretCool, gameObject.transform.position, Quaternion.identity);
         }
     }
 

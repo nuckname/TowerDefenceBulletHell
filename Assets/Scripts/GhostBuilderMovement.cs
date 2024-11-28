@@ -38,6 +38,6 @@ public class GhostBuilderMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = movement * moveSpeed;
+        rb.linearVelocity = movement * moveSpeed;
     }
 }

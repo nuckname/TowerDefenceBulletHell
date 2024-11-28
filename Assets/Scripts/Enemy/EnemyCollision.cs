@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class EnemyCollision : MonoBehaviour
 {
-    [SerializeField] private EnemyDie enemyDie;
+    private EnemyHealth _enemyHealth;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        _enemyHealth = GetComponent<EnemyHealth>();
+    }
+
     void Start()
     {
         
@@ -20,20 +25,18 @@ public class EnemyCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet"))
         {
-            print("COLL");
-            //Goes down a level like bloons 
-            //destory enemy
-            Destroy(gameObject);
-            //destory bullet
+             _enemyHealth.EnemyHit();  
+            
             Destroy(other.gameObject);
-            enemyDie.EnemyHasDied();
+            
         }
         
-        if (gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             print("GET OFF ME");
+            //Player hit?
         }
     }
 }

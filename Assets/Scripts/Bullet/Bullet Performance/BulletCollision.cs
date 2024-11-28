@@ -5,7 +5,11 @@ using UnityEngine;
 
 public class BulletCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private GameObject basicTurret;
+    private void Awake()
+    {
+    }
+
     void Start()
     {
         
