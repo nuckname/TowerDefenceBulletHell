@@ -30,6 +30,7 @@ public class BulletCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("Enemy"))
         {
+            print("enemy");
             //Destroy(gameObject);
         }
         

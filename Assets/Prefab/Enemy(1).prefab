@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8801792569001409356}
   - component: {fileID: -8911375633613691611}
   - component: {fileID: -6399053660655839645}
+  - component: {fileID: 5035588526783821658}
   m_Layer: 0
   m_Name: Enemy(1)
   m_TagString: Enemy
@@ -148,7 +149,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -177,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _addGold: {fileID: -6399053660655839645}
+  _enemyDropItems: {fileID: 5035588526783821658}
 --- !u!114 &-8911375633613691611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,3 +208,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5035588526783821658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088919820819901208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7053a13359fcf0a468274895bd5f7abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
+  heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}

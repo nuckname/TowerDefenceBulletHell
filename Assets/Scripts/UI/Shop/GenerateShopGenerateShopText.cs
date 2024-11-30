@@ -14,6 +14,10 @@ public class GenerateShopText : MonoBehaviour
     [SerializeField] private TMP_Text upgrade3Name;
     [SerializeField] private TMP_Text upgrade3Desc;
 
+    public string upgrade1Selected;
+    public string upgrade2Selected;
+    public string upgrade3Selected;
+
     private readonly string[] upgrades = { "BulletLife", "Projectile", "Damage" };
     
 
@@ -48,13 +52,15 @@ public class GenerateShopText : MonoBehaviour
 
     public void GenerateUpgrades()
     {
-        string upgrade1 = PickUpgrade();
-        SetUpgradeText(upgrade1Name, upgrade1Desc, upgrade1);
+        upgrade1Selected = PickUpgrade();
+        SetUpgradeText(upgrade1Name, upgrade1Desc, upgrade1Selected);
         
-        string upgrade2 = PickUpgrade();
-        SetUpgradeText(upgrade2Name, upgrade2Desc, upgrade2);
+        upgrade2Selected = PickUpgrade();
+        SetUpgradeText(upgrade2Name, upgrade2Desc, upgrade2Selected);
 
-        string upgrade3 = PickUpgrade();
-        SetUpgradeText(upgrade3Name, upgrade3Desc, upgrade3);
+        upgrade3Selected = PickUpgrade();
+        SetUpgradeText(upgrade3Name, upgrade3Desc, upgrade3Selected);
+        
+        //Set upgrade called from Upgrade Manager
     }
 }

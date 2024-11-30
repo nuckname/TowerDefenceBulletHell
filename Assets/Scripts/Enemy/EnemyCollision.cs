@@ -23,11 +23,33 @@ public class EnemyCollision : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
+        print("coll");
         if (other.gameObject.CompareTag("Bullet"))
         {
-             _enemyHealth.EnemyHit();  
+            _enemyHealth.EnemyHit();  
+            print("bullet coll");
+            
+            Destroy(other.gameObject);
+            
+        }
+        
+        if (other.gameObject.CompareTag("Player"))
+        {
+            print("GET OFF ME");
+            //Player hit?
+        }
+    }
+
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        print("staycoll");
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            _enemyHealth.EnemyHit();  
+            print("stay bullet coll");
             
             Destroy(other.gameObject);
             

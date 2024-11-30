@@ -7,6 +7,7 @@ public class TurretShoot : MonoBehaviour
     [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
     private Transform[] shootPoints;
     private List<Vector2> directions = new List<Vector2>();
+    //Should be part of a scriptable object
     private float fireCooldown;
     private int shootPointIndex = 0;
 

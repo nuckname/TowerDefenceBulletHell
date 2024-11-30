@@ -16,6 +16,7 @@ public class BeginGameState : GameBaseState
 
     }
 
+    //might need to add 2D to this.
     public override void OnCollisionEnter(GameStateManager gameStateManager, Collision collision)
     {
         

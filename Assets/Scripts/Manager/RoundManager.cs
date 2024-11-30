@@ -14,6 +14,7 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> AllEnemiesInCurrentRound;
 
+    //need to add this to state manager.
     void Update()
     {
         // Debugging: Press 'P' to create a round
