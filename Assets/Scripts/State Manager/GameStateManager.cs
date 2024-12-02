@@ -10,6 +10,8 @@ public class GameStateManager : MonoBehaviour
 
     public RoundOverGameState _roundOverGameState = new RoundOverGameState();
     public BeginGameState _beginGameState = new BeginGameState();
+
+    [SerializeField] private RoundManager _roundManager;
     void Start()
     {
         _currentState = _roundOverGameState;
@@ -33,5 +35,10 @@ public class GameStateManager : MonoBehaviour
         _currentState = state;
         state.EnterState(this);
         
+    }
+
+    public void SpawnEnemies()
+    {
+        _roundManager.CreateRound();
     }
 }

@@ -18,7 +18,7 @@ public class GenerateShopText : MonoBehaviour
     public string upgrade2Selected;
     public string upgrade3Selected;
 
-    private readonly string[] upgrades = { "BulletLife", "Projectile", "Damage" };
+    public readonly string[] upgrades = { "BulletLife", "Projectile", "Damage" };
     
 
     private string PickUpgrade()

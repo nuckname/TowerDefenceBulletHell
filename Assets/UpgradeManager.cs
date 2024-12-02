@@ -13,31 +13,23 @@ public class UpgradeManager : MonoBehaviour
         _generateShopText = GameObject.FindGameObjectWithTag("Shop").GetComponent<GenerateShopText>();
 
     }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void BulletLifeUpgrade()
     {
-    }
+        print("selected upgrade: bullet life time");
 
-    // Update is called once per frame
-    void Update()
-    {   
-        
-    }
-
-    private void BulletLifeUpgrade()
-    {
         basicTurret.bulletLifeTime += 1;
     }
 
-    private void Projectile()
+    public void Projectile()
     {
+        print("selected upgrade: proj speed");
         basicTurret.bulletSpeed += 2;
     }
     
     //Bullet Size
-    private void BulletSize()
+    public void BulletSize()
     {
+        print("selected upgrade: bullet size");
         basicTurret.bulletSize += 0.5f;
     }
     

@@ -6,16 +6,22 @@ public class PlaceTurret : MonoBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject TurretCool;
-    void Start()
-    {
-        
-    }
+    
+    [SerializeField] private AddGold _addGold;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Instantiate(TurretBasic, gameObject.transform.position, Quaternion.identity);
+            if (PlayerGold.CURRENT_PLAYER_GOLD >= 20)
+            {
+                Instantiate(TurretBasic, gameObject.transform.position, Quaternion.identity);
+                _addGold.MinusGoldToDisplay(20);
+            }
+            else
+            {
+                print("cant buy turret");
+            }
         }
         
         if (Input.GetKeyDown(KeyCode.Q))

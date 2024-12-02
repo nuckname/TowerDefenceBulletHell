@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,15 +15,13 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> AllEnemiesInCurrentRound;
 
-    //need to add this to state manager.
-    void Update()
+    [SerializeField] private GameStateManager _gameStateManager;
+
+    private void Start()
     {
-        // Debugging: Press 'P' to create a round
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            CreateRound();
-        }
+        //_gameStateManager.SwitchState();
     }
+
 
     public void CreateRound()
     {

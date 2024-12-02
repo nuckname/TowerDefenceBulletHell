@@ -21,7 +21,7 @@ public class EnemyHealth : MonoBehaviour
             { 2, Color.green },
             { 3, Color.blue },
             { 4, Color.yellow },
-            { 5, Color.black }
+            { 5, Color.gray }
         };
         
         //Sets inital colour

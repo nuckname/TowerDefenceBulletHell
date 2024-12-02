@@ -16,4 +16,10 @@ public class AddGold : MonoBehaviour
         PlayerGold.CURRENT_PLAYER_GOLD += amount;
         goldText.text = PlayerGold.CURRENT_PLAYER_GOLD.ToString();
     }
+    
+    public void MinusGoldToDisplay(int amount)
+    {
+        PlayerGold.CURRENT_PLAYER_GOLD -= amount;
+        goldText.text = PlayerGold.CURRENT_PLAYER_GOLD.ToString();
+    }
 }

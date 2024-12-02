@@ -6,13 +6,19 @@ public class BeginGameState : GameBaseState
 {
     public override void EnterState(GameStateManager gameStateManager)
     {
+        //Start Count down.
         
+        gameStateManager.SpawnEnemies();
+        
+        Debug.Log("Beign Game State");
     }
 
     public override void UpdateState(GameStateManager gameStateManager)
     {
         //Change States from Non-MonoBehaviour
         //gameStateManager.SwitchState(gameStateManager._roundOverGameState);
+        
+
 
     }
 
