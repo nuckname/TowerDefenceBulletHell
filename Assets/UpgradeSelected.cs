@@ -32,7 +32,7 @@ public class UpgradeSelected : MonoBehaviour
             else if (Input.GetKey(KeyCode.Alpha2))
             {
                 print("Select Upgrade 2");
-                GiveUpgrade(_generateShopText.upgrade1Selected);
+                GiveUpgrade(_generateShopText.upgrade2Selected);
                 _shopUI.UpgradeUI.SetActive(false);
 
             } 
@@ -40,7 +40,7 @@ public class UpgradeSelected : MonoBehaviour
             else if (Input.GetKey(KeyCode.Alpha3))
             {
                 print("Select Upgrade 3");
-                GiveUpgrade(_generateShopText.upgrade1Selected);
+                GiveUpgrade(_generateShopText.upgrade3Selected);
                 _shopUI.UpgradeUI.SetActive(false);
 
             } 

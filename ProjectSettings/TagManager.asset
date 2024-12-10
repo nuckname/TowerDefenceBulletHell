@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - GameManager
   - Shop
+  - Display Gold
+  - Gold Ore
+  - Stone Ore
   layers:
   - Default
   - TransparentFX

@@ -1,18 +1,58 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class GoldMiner : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private int MinerGoldPerSeconds = 1;
+    private AddGold _addGold;
+    private bool mining;
+    private bool isMiningCoroutineRunning;
+
+    private void Awake()
     {
-        
+        _addGold = GetComponent<AddGold>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        // Update is no longer needed for this functionality.
+    }
+
+    private IEnumerator MiningGold()
+    {
+        isMiningCoroutineRunning = true;
+
+        while (mining)
+        {
+            _addGold.AddGoldToDisplay(MinerGoldPerSeconds);
+            yield return new WaitForSeconds(3f); 
+        }
+
+        isMiningCoroutineRunning = false; 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Gold Ore"))
+        {
+            print("Started mining gold.");
+            mining = true;
+
+            // Start the coroutine only if it's not already running
+            if (!isMiningCoroutineRunning)
+            {
+                StartCoroutine(MiningGold());
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Gold Ore"))
+        {
+            print("Stopped mining gold.");
+            mining = false;
+        }
     }
 }

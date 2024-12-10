@@ -13,16 +13,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        // Get input from the horizontal and vertical axes
-
-        print("movement disabled");
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
     }
 
     void FixedUpdate()
     {
-        // Move the player by setting the Rigidbody2D's velocity
-        //rb.linearVelocity = movement * moveSpeed;
+        rb.linearVelocity = movement * moveSpeed;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AddGold : MonoBehaviour
 {
-    private TMP_Text goldText;
+    [SerializeField] private TMP_Text goldText;
 
     void Start()
     {
