@@ -11,6 +11,8 @@ TagManager:
   - Display Gold
   - Gold Ore
   - Stone Ore
+  - RedBox
+  - GhostTurret
   layers:
   - Default
   - TransparentFX

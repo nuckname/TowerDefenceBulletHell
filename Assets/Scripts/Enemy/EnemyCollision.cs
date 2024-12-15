@@ -40,6 +40,12 @@ public class EnemyCollision : MonoBehaviour
             print("GET OFF ME");
             //Player hit?
         }
+        print("hi");
+        if (other.gameObject.CompareTag("RedBox"))
+        {
+            Destroy(gameObject);
+            print("-1 hp");
+        }
     }
 
 

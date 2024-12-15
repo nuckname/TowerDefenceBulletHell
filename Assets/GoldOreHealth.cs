@@ -1,13 +1,14 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class GoldMinerHealth : MonoBehaviour
+public class GoldOreHealth : MonoBehaviour
 {
-    [SerializeField] private int _goldMinerHealth = 10000; // Starting health
-    private Renderer _renderer; // For modifying material color
-    private float _baseDamageInterval = 10f / 100; // Base interval: 10 minutes (600 seconds) divided into 100 health points
-    private float _timer = 0f; // Timer to track intervals
-    private int _goldMinerCounter = 1; // Number of miners; starts at 1 by default
-    private float _damageInterval; // Actual interval accounting for the multiplier
+    public int goldMinerHealth = 10000;
+    private Renderer _renderer; 
+    private float _baseDamageInterval = 10f / 100;
+    private float _timer = 0f;
+    private int _goldMinerCounter = 1; 
+    private float _damageInterval;
 
     // Start is called before the first frame update
     void Start()
@@ -22,8 +23,7 @@ public class GoldMinerHealth : MonoBehaviour
         // Initialize the actual damage interval
         UpdateDamageInterval();
     }
-
-    // Update is called once per frame
+// Update is called once per frame
     void Update()
     {
         _timer += Time.deltaTime; // Increment the timer
@@ -37,21 +37,52 @@ public class GoldMinerHealth : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        _goldMinerHealth -= damage;
+        if (goldMinerHealth <= 10000)
+        {
+            _renderer.material.color = Color.yellow;
+            if (goldMinerHealth <= 8000)
+            {
+                _renderer.material.color = new Color(217, 255, 28);
+
+                if (goldMinerHealth <= 6000)
+                {
+                    _renderer.material.color = new Color(195, 230, 25);
+
+                    if (goldMinerHealth <= 4000)
+                    {
+                        _renderer.material.color = new Color(170, 201, 20);
+
+                        if (goldMinerHealth <= 2000)
+                        {
+                            _renderer.material.color = new Color(134, 158, 16);
+
+                            if (goldMinerHealth <= 1000)
+                            {
+                                _renderer.material.color = new Color(74, 87, 11);
+
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        goldMinerHealth -= damage;
 
         // Clamp health between 0 and 100
-        _goldMinerHealth = Mathf.Clamp(_goldMinerHealth, 0, 10000);
+        goldMinerHealth = Mathf.Clamp(goldMinerHealth, 0, 10000);
 
         // Update the color based on health
         if (_renderer != null)
         {
-            float healthPercentage = _goldMinerHealth / 100f;
+            float healthPercentage = goldMinerHealth / 100f;
             Color newColor = new Color(1f, healthPercentage, 0f, healthPercentage); // Darker yellow and more transparent
             _renderer.material.color = newColor;
         }
 
         // Destroy the object if health is zero
-        if (_goldMinerHealth <= 0)
+        if (goldMinerHealth <= 0)
         {
             Destroy(gameObject);
         }
