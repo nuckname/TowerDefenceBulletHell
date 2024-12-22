@@ -13,6 +13,11 @@ TagManager:
   - Stone Ore
   - RedBox
   - GhostTurret
+  - GhostWall
+  - UpgradeUI
+  - UpgradeRange
+  - PlayerCollision
+  - OutOfUpgradeRadius
   layers:
   - Default
   - TransparentFX

@@ -14,7 +14,12 @@ public class EnemyDropItems : MonoBehaviour
         int amountOfGoldToDrop = GenerateAmount(minimumGoldCoins, maximumGoldCoins);
         for (int i = 0; i <= amountOfGoldToDrop; i++)
         {
-            Instantiate(coin, gameObject.transform.position, Quaternion.identity);
+            float displacementY = Random.Range(-1.0f, 1.0f);
+            float displacementX = Random.Range(-1.0f, 1.0f);
+            
+            Instantiate(coin, new Vector3(gameObject.transform.position.x + displacementX,
+                gameObject.transform.position.y + displacementY,
+                gameObject.transform.position.z), Quaternion.identity);
         }
         
         int amountOfHeartsToDrop = GenerateAmount(minimumGoldCoins, maximumGoldCoins);

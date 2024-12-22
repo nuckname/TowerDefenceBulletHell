@@ -30,8 +30,10 @@ public class HealthManager : MonoBehaviour
 
     public void PlayerMinusHealth()
     {
+        print("Called Health");
         if (_playerHealthIndex >= 0 && _playerHealthIndex < PlayerHpBars.Count - 1)
         {
+            print("-1 Health");
             PlayerHpBars[_playerHealthIndex].gameObject.SetActive(false);
             _playerHealthIndex++;
         }

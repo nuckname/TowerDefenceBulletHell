@@ -1,18 +1,21 @@
 using System;
 using UnityEngine;
 
-public class UpgradeSelected : MonoBehaviour
+public class UpgradesSelectionScreen : MonoBehaviour
 {
     public bool UpgradeUIStatus;
-    [SerializeField] private ShopUI _shopUI;
-    [SerializeField] private GenerateShopText _generateShopText;
-    [SerializeField] private UpgradeManager _upgradeManager;
+    private ShopCollisionTrigger _shopCollisionTrigger;
+    
+    private GenerateShopText _generateShopText;
+    private UpgradeManager _upgradeManager;
     
     //This upgrade system is sort of dumb. A lot of scripts maybe over copmlicated. 
     
     private void Awake()
     {
         _upgradeManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<UpgradeManager>();
+        _generateShopText = GetComponent<GenerateShopText>();
+        _shopCollisionTrigger = GetComponent<ShopCollisionTrigger>();
     }
 
     void Update()
@@ -26,14 +29,14 @@ public class UpgradeSelected : MonoBehaviour
                 
                 //use state machine. cant access sh0ip again.
                 // maybe you get like 5 upgrades before it turns off?
-                _shopUI.UpgradeUI.SetActive(false);
+                _shopCollisionTrigger.UpgradeUI.SetActive(false);
             }
             
             else if (Input.GetKey(KeyCode.Alpha2))
             {
                 print("Select Upgrade 2");
                 GiveUpgrade(_generateShopText.upgrade2Selected);
-                _shopUI.UpgradeUI.SetActive(false);
+                _shopCollisionTrigger.UpgradeUI.SetActive(false);
 
             } 
             
@@ -41,7 +44,7 @@ public class UpgradeSelected : MonoBehaviour
             {
                 print("Select Upgrade 3");
                 GiveUpgrade(_generateShopText.upgrade3Selected);
-                _shopUI.UpgradeUI.SetActive(false);
+                _shopCollisionTrigger.UpgradeUI.SetActive(false);
 
             } 
         }

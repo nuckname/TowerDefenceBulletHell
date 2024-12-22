@@ -2,16 +2,24 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class ShopUI : MonoBehaviour
+public class ShopCollisionTrigger : MonoBehaviour
 {
     public GameObject UpgradeUI;
-    [SerializeField] private UpgradeSelected _upgradeSelected;
     
-    [SerializeField] private GenerateShopText _generateShopText;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private UpgradesSelectionScreen _upgradesSelectionScreen;
+    private GenerateShopText _generateShopText;
+
+    private void Awake()
     {
-        UpgradeUI.SetActive(false);
+        _upgradesSelectionScreen = GetComponent<UpgradesSelectionScreen>();
+        _generateShopText = GetComponent<GenerateShopText>();
+
+        UpgradeUI = GameObject.FindWithTag("UpgradeUI");
+    }
+
+    private void Start()
+    {
+        //UpgradeUI.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -22,7 +30,7 @@ public class ShopUI : MonoBehaviour
             //reset should be in state manager. 
             _generateShopText.GenerateUpgrades();
 
-            _upgradeSelected.UpgradeUIStatus = true;
+            _upgradesSelectionScreen.UpgradeUIStatus = true;
             UpgradeUI.SetActive(true);
         }
     }
@@ -31,7 +39,7 @@ public class ShopUI : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            _upgradeSelected.UpgradeUIStatus = false;
+            _upgradesSelectionScreen.UpgradeUIStatus = false;
             UpgradeUI.SetActive(false);
         }
     }

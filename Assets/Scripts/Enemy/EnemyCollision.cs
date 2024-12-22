@@ -12,17 +12,6 @@ public class EnemyCollision : MonoBehaviour
         _enemyHealth = GetComponent<EnemyHealth>();
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         print("coll");
@@ -35,7 +24,7 @@ public class EnemyCollision : MonoBehaviour
             
         }
         
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerCollision"))
         {
             print("GET OFF ME");
             //Player hit?

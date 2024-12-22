@@ -6,14 +6,6 @@ using UnityEngine;
 public class BulletCollision : MonoBehaviour
 {
     private GameObject basicTurret;
-    private void Awake()
-    {
-    }
-
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     private void OnCollisionEnter2D(Collision2D other)
