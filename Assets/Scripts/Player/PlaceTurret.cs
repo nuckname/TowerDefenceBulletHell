@@ -27,7 +27,7 @@ public class PlaceObject : MonoBehaviour
     void Update()
     {
         //Turret Basic
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             if (PlayerGold.CURRENT_PLAYER_GOLD <= 20)
             {

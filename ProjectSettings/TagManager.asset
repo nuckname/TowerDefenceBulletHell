@@ -17,7 +17,7 @@ TagManager:
   - UpgradeUI
   - UpgradeRange
   - PlayerCollision
-  - OutOfUpgradeRadius
+  - Turret
   layers:
   - Default
   - TransparentFX
@@ -25,7 +25,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Bullet
   - 
   - 
   - 
