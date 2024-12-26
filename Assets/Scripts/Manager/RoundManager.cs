@@ -15,8 +15,9 @@ public class RoundManager : MonoBehaviour
 
     [SerializeField] private List<GameObject> AllEnemiesInCurrentRound;
 
-    [SerializeField] private GameStateManager _gameStateManager;
+    //[SerializeField] private GameStateManager _gameStateManager;
 
+    //not working turned off statemachine for round manager
     private void Start()
     {
         //_gameStateManager.SwitchState();

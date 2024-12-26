@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeRadius : MonoBehaviour
@@ -6,7 +7,13 @@ public class UpgradeRadius : MonoBehaviour
     private Collider2D circleCollider;
     public ContactFilter2D contactFilter;
 
-    private Collider2D[] results = new Collider2D[50];
+    
+    [SerializeField]
+    private Collider2D[] results = new Collider2D[15];
+    
+
+    //[SerializeField] private List<Collider2D> results = new List<Collider2D>();
+    
     private int colliderCount;
 
     // Tracks the current selection index
@@ -15,6 +22,10 @@ public class UpgradeRadius : MonoBehaviour
 
     [SerializeField]
     private GameObject selectedGameObject;
+
+    private bool UpgradeRadiusOn = true;
+    
+    
 
     void Awake()
     {
@@ -41,7 +52,9 @@ public class UpgradeRadius : MonoBehaviour
             if (selectedGameObject != null)
             {
                 Debug.Log("Upgrade selected turret: " + selectedGameObject.name);
-                //ApplyUpgrade(selectedGameObject);
+                ApplyUpgrade(selectedGameObject);
+                
+                TurnOffRadiusSelection();
             }
             else
             {
@@ -49,27 +62,37 @@ public class UpgradeRadius : MonoBehaviour
             }
         }
     }
-    /*
+    
     private void ApplyUpgrade(GameObject turret)
     {
-        // Example logic: Apply the first upgrade from the list
-        if (availableUpgrades.Count > 0)
-        {
-            Upgrade upgrade = availableUpgrades[0]; // Pick the first upgrade for simplicity
-            Debug.Log($"Applying {upgrade.name} to {turret.name}");
+        UpgradeTower upgradeTower = turret.GetComponent<UpgradeTower>();
+        upgradeTower.SelectedUpgrade();
+        
+        //these do the same thing. I should use a state machine for this. for upgrades
+        upgradeTower.allowSwappingBetweenUpgrade = true;
+        UpgradeRadiusOn = false;
 
-            TurretController turretController = turret.GetComponent<TurretController>();
-            if (turretController != null)
+        //turn back on wear?
+
+        //opens UI
+
+        //Selects Upgrade
+
+        //Passes it into
+
+        //turret.GetComp<Upgrade>
+    }
+
+    private void TurnOffRadiusSelection()
+    {
+        for (int i = 0; i <= results.Length - 1; i++)
+        {
+            if (results[i] != null)
             {
-                turretController.UpgradeTurret(upgrade);
+                results[i].gameObject.GetComponent<SpriteRenderer>().color = Color.black;
             }
         }
-        else
-        {
-            Debug.Log("No upgrades available.");
-        }
     }
-    */
 
 
     private GameObject SwitchSelection(int direction)
@@ -94,7 +117,7 @@ public class UpgradeRadius : MonoBehaviour
             if (currentSprite != null)
             {
                 currentSprite.color = Color.green;
-                return results[UpgradeSwitchIndex].gameObject;
+                return results[UpgradeSwitchIndex].gameObject; 
             }
         }
         else
@@ -107,7 +130,7 @@ public class UpgradeRadius : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Turret"))
+        if (other.CompareTag("Turret") && UpgradeRadiusOn)
         {
             // Populate results array with colliders
             colliderCount = circleCollider.Overlap(contactFilter, results);
@@ -184,10 +207,26 @@ public class UpgradeRadius : MonoBehaviour
 
             // Adjust count and re-highlight the closest turret
             colliderCount--;
+            
+            //new
+            if (selectedGameObject == other.gameObject)
+            {
+                selectedGameObject = null;
+                UpgradeSwitchIndex = -1;
+
+                // Highlight a new turret if any remain
+                if (colliderCount > 0)
+                {
+                    HighlightFurthestTurret();
+                }
+            }
+            
+            /*
             if (colliderCount > 0)
             {
                 HighlightFurthestTurret();
             }
+            */
         }
     }
 }

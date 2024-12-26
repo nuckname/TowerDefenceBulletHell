@@ -24,10 +24,8 @@ public class ShopCollisionTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerCollision"))
         {
-            //if not null round.
-            //reset should be in state manager. 
             _generateShopText.GenerateUpgrades();
 
             _upgradesSelectionScreen.UpgradeUIStatus = true;
