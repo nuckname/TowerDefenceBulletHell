@@ -18,6 +18,8 @@ TagManager:
   - UpgradeRange
   - PlayerCollision
   - Turret
+  - UiUpgrade
+  - UiSquare
   layers:
   - Default
   - TransparentFX

@@ -1,9 +1,13 @@
 
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class UpgradeStateManager : MonoBehaviour
 {
+    public GameObject uiCirclePlusBoxPrefab;
+    
     private GameBaseState _currentState;
 
     public NoUpgradeSelectedState _noUpgradeSelectedState = new NoUpgradeSelectedState();
@@ -26,7 +30,7 @@ public class UpgradeStateManager : MonoBehaviour
         _currentState.OnTriggerEnter2D(this, collider);
 
     }
-    
+
     private void OnTriggerExit2D(Collider2D collider)
     {
         _currentState.OnTriggerExit2D(this, collider);

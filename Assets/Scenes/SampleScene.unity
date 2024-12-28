@@ -2298,7 +2298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1686c8cbe8c7fd342947e0fabfa41e6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundManager: {fileID: 654774906}
 --- !u!4 &654774903
 Transform:
   m_ObjectHideFlags: 0
@@ -2648,6 +2647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef52ce2b089953547888d87a00971879, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiCirclePlusBoxPrefab: {fileID: 0}
 --- !u!1 &714102145
 GameObject:
   m_ObjectHideFlags: 0
@@ -7329,7 +7329,7 @@ Transform:
   m_GameObject: {fileID: 2030129544}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.77, y: 6.25, z: 0}
+  m_LocalPosition: {x: -10.17, y: 5.93, z: 0}
   m_LocalScale: {x: 4.9875, y: 3.4625, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

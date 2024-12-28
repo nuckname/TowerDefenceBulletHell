@@ -15,7 +15,6 @@ public class NoUpgradeSelectedState : GameBaseState
     {
         if (Input.GetKeyDown(KeyCode.E)) 
         {
-            
             upgradeStateManager.SwitchState(upgradeStateManager._singleUpgradeOptionState);
         }
     }
