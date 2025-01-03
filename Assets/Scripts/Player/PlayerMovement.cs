@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
@@ -13,6 +14,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!IsOwner)
+        {
+            return;
+        }
         movement.x = Input.GetAxis("Horizontal");
         movement.y = Input.GetAxis("Vertical");
     }

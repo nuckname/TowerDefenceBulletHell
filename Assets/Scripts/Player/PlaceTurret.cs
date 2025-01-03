@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlaceObject : MonoBehaviour
+public class PlaceObject : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject TurretCool;
@@ -24,11 +25,39 @@ public class PlaceObject : MonoBehaviour
         _addGold = GetComponent<AddGold>();
     }
     
+    [ClientRpc]
+    private void SpawnPlaceHolderTurretClientRpc(int turretType)
+    {
+        GameObject turretToSpawn = null;
+        switch (turretType)
+        {
+            case 1:
+                turretToSpawn = GhostPlacementTurret;
+                break;
+            case 2:
+                turretToSpawn = TurretBasic;
+                break;
+            default:
+                Debug.LogError("Unknown turret type received in SpawnPlaceHolderTurretClientRpc.");
+                return;
+        }
+
+        Instantiate(turretToSpawn, gameObject.transform.position, Quaternion.identity);
+    }
+
+    
     void Update()
     {
+
         //Turret Basic
+        //refactor too messy
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (!IsServer)
+            {
+                return;
+            }
+            
             if (PlayerGold.CURRENT_PLAYER_GOLD <= 20)
             {
                 print("not enough gold");
@@ -39,7 +68,9 @@ public class PlaceObject : MonoBehaviour
             {
                 //try place turret
                 //enable radius
-                Instantiate(GhostPlacementTurret, gameObject.transform.position, quaternion.identity);
+                //Instantiate(GhostPlacementTurret, gameObject.transform.position, quaternion.identity);
+                SpawnPlaceHolderTurretClientRpc(1); // For GhostPlacementTurret
+                
                 GhostTurretHasBeenPlaced = true;
             }
             else
@@ -47,12 +78,17 @@ public class PlaceObject : MonoBehaviour
                 //disable radius
                 //Turret has been placed
                 _addGold.MinusGoldToDisplay(20);
-                ghostTurret = GameObject.FindWithTag("GhostTurret"); 
-                Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
+                ghostTurret = GameObject.FindWithTag("GhostTurret");
+                
+                //Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
+                SpawnPlaceHolderTurretClientRpc(2); // For TurretBasic
+                
                 Destroy(ghostTurret);
                 GhostTurretHasBeenPlaced = false;
             }
         }
+
+
         
         //Place miner
         if (Input.GetKeyDown(KeyCode.O))

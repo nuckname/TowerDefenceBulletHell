@@ -17,66 +17,9 @@ public class UpgradeTower : MonoBehaviour
 
     public bool allowSwappingBetweenUpgrade = false;
     private int spriteIndex = 1;
-
-    public bool pickUpgrade = false;
-    
-    
     
     private int upgradeIndex = 1;
-
-    private void DisplayUiTest()
-    { 
-        //for debugging
-        
-        
-    }
     
-    public void SelectedUpgrade()
-    {
-        print("Sleected upgrade called");
-        if (upgradeIndex == 1)
-        {
-            //single upgrade
-            Instantiate(_spriteUpgradePath1, gameObject.transform.position, Quaternion.identity);
-
-            //places transparent box around the upgrade.
-            //can select;
-            //still need to spawn text;
-            
-            //spawn one upgrade sprite
-            //Give Text info
-
-            //cost
-
-            upgradeIndex++;
-        }
-        
-        if (upgradeIndex == 2)
-        {
-            //single upgrade
-
-            
-            
-        }
-        
-        if (upgradeIndex == 3)
-        {
-            //double upgrade
-            
-        }
-        
-        if (upgradeIndex == 4)
-        {
-            
-        }
-        
-        if (upgradeIndex == 5)
-        {
-            
-        }
-        
-    }
-
     private void Update()
     {
         if (allowSwappingBetweenUpgrade)

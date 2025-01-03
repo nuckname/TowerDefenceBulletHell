@@ -8,8 +8,8 @@ public class UpgradeRadius : MonoBehaviour
     public ContactFilter2D contactFilter;
 
     
-    [SerializeField]
-    private Collider2D[] results = new Collider2D[15];
+    
+    public Collider2D[] results = new Collider2D[15];
     
 
     //[SerializeField] private List<Collider2D> results = new List<Collider2D>();
@@ -25,8 +25,6 @@ public class UpgradeRadius : MonoBehaviour
 
     private bool UpgradeRadiusOn = true;
     
-    
-
     void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
@@ -66,7 +64,7 @@ public class UpgradeRadius : MonoBehaviour
     private void ApplyUpgrade(GameObject turret)
     {
         UpgradeTower upgradeTower = turret.GetComponent<UpgradeTower>();
-        upgradeTower.SelectedUpgrade();
+        //Upgrade seleceted use states?
         
         //these do the same thing. I should use a state machine for this. for upgrades
         upgradeTower.allowSwappingBetweenUpgrade = true;
