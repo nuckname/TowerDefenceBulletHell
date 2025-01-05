@@ -5,7 +5,6 @@ using Unity.Mathematics;
 using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
-
 public class PlaceObject : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
@@ -24,9 +23,8 @@ public class PlaceObject : NetworkBehaviour
     {
         _addGold = GetComponent<AddGold>();
     }
-    
-    [ClientRpc]
-    private void SpawnPlaceHolderTurretClientRpc(int turretType)
+
+    private void SpawnPlaceHolderTurret(int turretType)
     {
         GameObject turretToSpawn = null;
         switch (turretType)
@@ -43,17 +41,17 @@ public class PlaceObject : NetworkBehaviour
         }
 
         Instantiate(turretToSpawn, gameObject.transform.position, Quaternion.identity);
+        
     }
 
     
     void Update()
     {
-
         //Turret Basic
         //refactor too messy
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (!IsServer)
+            if (!IsOwner)
             {
                 return;
             }
@@ -69,7 +67,7 @@ public class PlaceObject : NetworkBehaviour
                 //try place turret
                 //enable radius
                 //Instantiate(GhostPlacementTurret, gameObject.transform.position, quaternion.identity);
-                SpawnPlaceHolderTurretClientRpc(1); // For GhostPlacementTurret
+                SpawnPlaceHolderTurret(1); // For GhostPlacementTurret
                 
                 GhostTurretHasBeenPlaced = true;
             }
@@ -81,7 +79,7 @@ public class PlaceObject : NetworkBehaviour
                 ghostTurret = GameObject.FindWithTag("GhostTurret");
                 
                 //Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-                SpawnPlaceHolderTurretClientRpc(2); // For TurretBasic
+                SpawnPlaceHolderTurret(2); // For TurretBasic
                 
                 Destroy(ghostTurret);
                 GhostTurretHasBeenPlaced = false;

@@ -1,7 +1,8 @@
 using System;
+using Unity.Netcode;
 using UnityEngine;
 
-public class GhostTurretMovement : MonoBehaviour
+public class GhostTurretMovement : NetworkBehaviour
 {
     public float moveSpeed = 5f; // Speed of the character
 
@@ -9,6 +10,12 @@ public class GhostTurretMovement : MonoBehaviour
 
     void Update()
     {
+        /*
+        if (!IsOwner)
+        {
+            return;
+        }
+        */
         // Reset movement vector each frame
         movement = Vector3.zero;
 

@@ -404,7 +404,7 @@ GameObject:
   - component: {fileID: 3335815252357642464}
   - component: {fileID: 1900634903416962752}
   - component: {fileID: 2219967726193495971}
-  - component: {fileID: -2331389707131447007}
+  - component: {fileID: 1776391278729505495}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -564,6 +564,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c452368b907b5d4f88f356bcedb6c47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   TurretBasic: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
   TurretCool: {fileID: 0}
   GhostPlacementTurret: {fileID: 2049687118381746045, guid: 506f8a4df7516fd4784c7b3cbe926274, type: 3}
@@ -583,7 +584,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goldText: {fileID: 0}
---- !u!114 &-2331389707131447007
+--- !u!114 &1776391278729505495
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -592,11 +593,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7309831068945400738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: da52bf8bbc1de48cfb221a6ff30f7972, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
+  NetworkTransformExpanded: 1
   AuthorityMode: 1
   TickSyncChildren: 0
   UseUnreliableDeltas: 0
