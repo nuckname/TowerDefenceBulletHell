@@ -1,0 +1,247 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6056212462668788098
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4147767012571489031}
+  - component: {fileID: 5224488494037701289}
+  m_Layer: 0
+  m_Name: UpgradeUiManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4147767012571489031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056212462668788098}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 36.39, y: -9.34, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5824451652268842777}
+  - {fileID: 8315643336048813399}
+  - {fileID: 1373878991670927182}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5224488494037701289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6056212462668788098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eb87d0a583190644beec8133e5cac22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUpgradeUis:
+  - {fileID: 3714420855628116357, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+  - {fileID: 3714420855628116357, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+  - {fileID: 3714420855628116357, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+--- !u!1001 &1905312822578243655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4147767012571489031}
+    m_Modifications:
+    - target: {fileID: 3714420855628116357, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_Name
+      value: middle selected Upgrade Ring 3 upgrades with box png
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714420855628116357, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+--- !u!4 &8315643336048813399 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7572273240526900496, guid: c55df0fa6a1d85e4789a103c739624c1, type: 3}
+  m_PrefabInstance: {fileID: 1905312822578243655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4162035857607791113
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4147767012571489031}
+    m_Modifications:
+    - target: {fileID: 3714420855628116357, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_Name
+      value: left selected Upgrade Ring 3 upgrades with box png
+      objectReference: {fileID: 0}
+    - target: {fileID: 3714420855628116357, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+--- !u!4 &5824451652268842777 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7572273240526900496, guid: 6fa72b94b78d52348879e758100121e0, type: 3}
+  m_PrefabInstance: {fileID: 4162035857607791113}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8792963594903327326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4147767012571489031}
+    m_Modifications:
+    - target: {fileID: 3714420855628116357, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_Name
+      value: right selected Upgrade Ring 3 upgrades with box png
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+--- !u!4 &1373878991670927182 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7572273240526900496, guid: 3006ea0f972612b4e901fd5c185b0f19, type: 3}
+  m_PrefabInstance: {fileID: 8792963594903327326}
+  m_PrefabAsset: {fileID: 0}

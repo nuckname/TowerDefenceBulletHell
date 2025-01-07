@@ -106,7 +106,6 @@ GameObject:
   - component: {fileID: 1086541401240882012}
   - component: {fileID: 7129468448901828122}
   - component: {fileID: -6034710037862680894}
-  - component: {fileID: -1222018898408880365}
   - component: {fileID: 6991702198204369602}
   - component: {fileID: 7866157675948480850}
   m_Layer: 0
@@ -237,19 +236,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeUIStatus: 0
---- !u!114 &-1222018898408880365
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086541401240882015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d0891a262330de42a3ad9fe385c0f60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpgradeUI: {fileID: 0}
 --- !u!61 &6991702198204369602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -315,6 +301,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  allowSwappingBetweenUpgrade: 0
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0

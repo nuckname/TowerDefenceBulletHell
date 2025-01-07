@@ -3,7 +3,9 @@ using UnityEngine;
 
 public class UpgradesSelectionScreen : MonoBehaviour
 {
-    public bool UpgradeUIStatus;
+    [SerializeField] private GameObject UiTurretBox;
+    
+    public bool UpgradeUIStatus = false;
     private ShopCollisionTrigger _shopCollisionTrigger;
     
     private GenerateShopText _generateShopText;
@@ -47,6 +49,16 @@ public class UpgradesSelectionScreen : MonoBehaviour
                 _shopCollisionTrigger.UpgradeUI.SetActive(false);
 
             } 
+        }
+    }
+
+    public void ShowUpgradeUI(bool showUi)
+    {
+        if (showUi)
+        {
+            //instantiate a Turret manager.
+            
+            Instantiate(UiTurretBox, gameObject.transform.position, Quaternion.identity);
         }
     }
 

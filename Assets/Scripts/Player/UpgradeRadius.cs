@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class UpgradeRadius : MonoBehaviour
 {
+    [SerializeField] private GameObject UiManager;
+    //split script. Changing 
     private Collider2D circleCollider;
     public ContactFilter2D contactFilter;
 
-    
     
     public Collider2D[] results = new Collider2D[15];
     
@@ -23,7 +24,8 @@ public class UpgradeRadius : MonoBehaviour
     [SerializeField]
     private GameObject selectedGameObject;
 
-    private bool UpgradeRadiusOn = true;
+    public bool allowTurretSwapping = false;
+    public bool UpgradeRadiusOn = true;
     
     void Awake()
     {
@@ -31,6 +33,14 @@ public class UpgradeRadius : MonoBehaviour
     }
 
     private void Update()
+    {
+        if (allowTurretSwapping)
+        {
+            SwitchingTurretsInRadius();
+        }
+    }
+
+    private void SwitchingTurretsInRadius()
     {
         // Forward switching
         if (Input.GetKeyDown(KeyCode.L))
@@ -49,8 +59,7 @@ public class UpgradeRadius : MonoBehaviour
         {
             if (selectedGameObject != null)
             {
-                Debug.Log("Upgrade selected turret: " + selectedGameObject.name);
-                ApplyUpgrade(selectedGameObject);
+                SelectedObject(selectedGameObject);
                 
                 TurnOffRadiusSelection();
             }
@@ -61,24 +70,13 @@ public class UpgradeRadius : MonoBehaviour
         }
     }
     
-    private void ApplyUpgrade(GameObject turret)
+    private void SelectedObject(GameObject turret)
     {
-        UpgradeTower upgradeTower = turret.GetComponent<UpgradeTower>();
-        //Upgrade seleceted use states?
+        Instantiate(UiManager, new Vector3(turret.transform.position.x, turret.transform.position.y + 3.22f, turret.transform.position.z) , Quaternion.identity);
         
-        //these do the same thing. I should use a state machine for this. for upgrades
-        upgradeTower.allowSwappingBetweenUpgrade = true;
+        //This might not be scalable.
+        allowTurretSwapping = false;
         UpgradeRadiusOn = false;
-
-        //turn back on wear?
-
-        //opens UI
-
-        //Selects Upgrade
-
-        //Passes it into
-
-        //turret.GetComp<Upgrade>
     }
 
     private void TurnOffRadiusSelection()
@@ -130,6 +128,7 @@ public class UpgradeRadius : MonoBehaviour
     {
         if (other.CompareTag("Turret") && UpgradeRadiusOn)
         {
+            allowTurretSwapping = true;
             // Populate results array with colliders
             colliderCount = circleCollider.Overlap(contactFilter, results);
 
@@ -217,6 +216,11 @@ public class UpgradeRadius : MonoBehaviour
                 {
                     HighlightFurthestTurret();
                 }
+            }
+
+            if (colliderCount == 0)
+            {
+                allowTurretSwapping = false;
             }
             
             /*
