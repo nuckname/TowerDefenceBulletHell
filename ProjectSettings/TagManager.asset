@@ -20,6 +20,7 @@ TagManager:
   - Turret
   - UiUpgrade
   - UiSquare
+  - UpgradeManager
   layers:
   - Default
   - TransparentFX

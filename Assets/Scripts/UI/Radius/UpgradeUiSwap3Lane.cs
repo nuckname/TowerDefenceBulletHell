@@ -1,10 +1,13 @@
 using System;
 using UnityEngine;
+using TMPro;
 using UnityEngine.Serialization;
 
 public class UpgradeUiSwap3Lane : MonoBehaviour
 {
     [SerializeField] private GameObject[] allUpgradeUis;
+    
+    [SerializeField] private TMP_Text[] allTextUis;
 
     private GameObject currentUpgradeUi;
     
@@ -17,6 +20,15 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
+    }
+    
+    public void SetDescriptionsForUpgrades(string[] selectedUpgrades)
+    {
+        for (int i = 0; i < selectedUpgrades.Length; i++)
+        {
+            allTextUis[i].text = selectedUpgrades[i].ToString();
+            print(" set text to " + allTextUis[i].text);
+        }
     }
 
     private void Update()
@@ -74,10 +86,12 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
                 {
                     //so we can initiate UIManager Correctly.
                     allUpgradeUis[0].gameObject.SetActive(true);
+                    allTextUis[0].gameObject.SetActive(true);
                 }
                 else
                 {
                     allUpgradeUis[i].gameObject.SetActive(false);
+                    allTextUis[i].gameObject.SetActive(true);
                 }
                 
             }

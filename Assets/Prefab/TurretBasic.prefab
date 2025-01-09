@@ -105,9 +105,8 @@ GameObject:
   - component: {fileID: 1086541401240882014}
   - component: {fileID: 1086541401240882012}
   - component: {fileID: 7129468448901828122}
-  - component: {fileID: -6034710037862680894}
   - component: {fileID: 6991702198204369602}
-  - component: {fileID: 7866157675948480850}
+  - component: {fileID: 3050815689972151173}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Untagged
@@ -223,19 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c1d5792d274a3499e23c076d7adb7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-6034710037862680894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086541401240882015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba599f7cc0fa7934ba636b5b02ff7a7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UpgradeUIStatus: 0
 --- !u!61 &6991702198204369602
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -282,7 +268,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7866157675948480850
+--- !u!114 &3050815689972151173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291,17 +277,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1086541401240882015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2db9b5c62c1a254793cc95b83274870, type: 3}
+  m_Script: {fileID: 11500000, guid: 2745eca8ccb7b8a4a92c967d55a8c273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteUpgradePath1: {fileID: 4473446873791801201, guid: eea7047d461c94946b7bb30516be0793, type: 3}
-  _spriteUpgradePath3: {fileID: 0}
-  _spriteBlackTextBox: {fileID: 0}
-  spriteDebugs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  allowSwappingBetweenUpgrade: 0
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0

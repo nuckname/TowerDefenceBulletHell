@@ -3,40 +3,42 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-
-    [SerializeField] private TurretConfig basicTurret;
-
-    [SerializeField] private GenerateShopText _generateShopText;
+    //
+    //Select What Game Obhect has gottne the upgrade
+    
+    //Ui determines what to give gameObject
 
     private void Awake()
     {
-        _generateShopText = GameObject.FindGameObjectWithTag("Shop").GetComponent<GenerateShopText>();
-
-    }
-    public void BulletLifeUpgrade()
-    {
-        print("selected upgrade: bullet life time");
-
-        basicTurret.bulletLifeTime += 1;
-    }
-
-    public void Projectile()
-    {
-        print("selected upgrade: proj speed");
-        basicTurret.bulletSpeed += 2;
+           
     }
     
-    //Bullet Size
-    public void BulletSize()
+    public void SelectTurretToUpGrade(GameObject turretSelected, GameObject UiElement)
     {
-        print("selected upgrade: bullet size");
-        basicTurret.bulletSize += 0.5f;
+        if (turretSelected.CompareTag("Turret"))
+        {
+            print("Turret selected: " + turretSelected);
+            
+            //Go to Turret and Get Turret array stuff
+            string[] upgrades = turretSelected.GetComponent<BasicTurretUpgrades>().TierOneText_BasicTurretUpgrades();
+            
+            //Displays Turret UI
+            UpgradeUiSwap3Lane upgradeUiSwapLnae = UiElement.GetComponent<UpgradeUiSwap3Lane>();
+            if (upgradeUiSwapLnae != null)
+            {
+                upgradeUiSwapLnae.SetDescriptionsForUpgrades(upgrades);
+            }
+            else
+            {
+                print("UpgradeUiSwap3Lane is null");
+            }
+            
+        }
+        
+        else if (turretSelected.CompareTag("SpiralTurret"))
+        {
+            
+        }
     }
-    
-    //Fire rate.
-    private void IncreasedTurretFireRate()
-    {
-        basicTurret.fireRate += 0.5f;
-    }
-    
+
 }

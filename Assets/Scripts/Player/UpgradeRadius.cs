@@ -26,10 +26,14 @@ public class UpgradeRadius : MonoBehaviour
 
     public bool allowTurretSwapping = false;
     public bool UpgradeRadiusOn = true;
+
+    private UpgradeManager upgradeManager;
     
     void Awake()
     {
         circleCollider = GetComponent<CircleCollider2D>();
+
+        upgradeManager = GameObject.FindGameObjectWithTag("UpgradeManager").GetComponent<UpgradeManager>();
     }
 
     private void Update()
@@ -72,7 +76,12 @@ public class UpgradeRadius : MonoBehaviour
     
     private void SelectedObject(GameObject turret)
     {
+        //being called twice?
+        
         Instantiate(UiManager, new Vector3(turret.transform.position.x, turret.transform.position.y + 3.22f, turret.transform.position.z) , Quaternion.identity);
+        print( " seleceted turret: " + turret);
+        
+        upgradeManager.SelectTurretToUpGrade(turret, UiManager);
         
         //This might not be scalable.
         allowTurretSwapping = false;
