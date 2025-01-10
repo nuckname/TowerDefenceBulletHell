@@ -242,6 +242,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
       insertIndex: -1
       addedObject: {fileID: 732387961}
+    - targetCorrespondingSourceObject: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 732387967}
   m_SourcePrefab: {fileID: 100100000, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
 --- !u!1 &168655754
 GameObject:
@@ -579,6 +582,7 @@ MonoBehaviour:
   leftShootDirection: 0
   rightShootDirection: 0
   numberOfProjectiles: 1
+  modifierFireRate: 0
 --- !u!1 &183555342
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,6 +3019,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &732387967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732387960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5107f38d1cee9764a9a159da61539563, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &756651863
 GameObject:
   m_ObjectHideFlags: 0
@@ -4496,11 +4512,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1276028288 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5566227712358888546, guid: 13c178b7990408c4da0826e6281acb47, type: 3}
-  m_PrefabInstance: {fileID: 5169965047720540706}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1276028289 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4804009976519096195, guid: 13c178b7990408c4da0826e6281acb47, type: 3}
@@ -7696,9 +7707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d0891a262330de42a3ad9fe385c0f60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeUI: {fileID: 1276028288}
-  _upgradesSelectionScreen: {fileID: 0}
-  _generateShopText: {fileID: 0}
 --- !u!61 &2030129548
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7778,11 +7786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba599f7cc0fa7934ba636b5b02ff7a7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiTurretBox: {fileID: 0}
-  UpgradeUIStatus: 0
-  _shopCollisionTrigger: {fileID: 0}
-  _generateShopText: {fileID: 0}
-  _upgradeManager: {fileID: 0}
 --- !u!1 &2041108429
 GameObject:
   m_ObjectHideFlags: 0

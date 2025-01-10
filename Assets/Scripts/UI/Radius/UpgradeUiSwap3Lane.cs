@@ -16,14 +16,22 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     private bool allowUiSwapping = false;
 
     private UpgradeRadius upgradeRadius;
+    
+    [SerializeField] private string[] selectedUpgrades;
+
+    [SerializeField] private GameObject targetTurret;
 
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
     }
     
-    public void SetDescriptionsForUpgrades(string[] selectedUpgrades)
+    public void SetDescriptionsForUpgrades(string[] selectedUpgrades, GameObject _targetTurret)   
     {
+        
+        this.selectedUpgrades = selectedUpgrades; // Assign the parameter to the global field
+        this.targetTurret = _targetTurret;
+        
         for (int i = 0; i < selectedUpgrades.Length; i++)
         {
             allTextUis[i].text = selectedUpgrades[i].ToString();
@@ -44,12 +52,76 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             {
                 SwitchSelection(-1);
             }
+            
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ExitSelection();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SelectUpgrade();
+            }
         }
         
         //Select with E
         
         //Q cancels everything
     }
+
+    private void SelectUpgrade()
+    {
+        print("selected upgrade");
+
+        if (upgradeSwitchIndex == 0)
+        {
+            if (selectedUpgrades != null)
+            {
+                print(selectedUpgrades[0]);
+                print(targetTurret);
+
+                string tag = targetTurret.tag;
+
+                //would need this for every single turret in the game. How to fix?
+                if (tag == "Turret")
+                {
+                    targetTurret.GetComponent<BasicTurretUpgrades>().GetTurretInfomation(selectedUpgrades[0]);
+                }
+                
+                //Get what turret
+                //targetTurret.ApplyUpgrade
+            }
+            else
+            {
+                print("0 is null");
+            }
+        }
+                
+        else if (upgradeSwitchIndex == 1)
+        {
+            if (selectedUpgrades != null)
+            {
+                print(selectedUpgrades[1]);
+            }
+            else
+            {
+                print("1 is null");
+            }
+        }
+                
+        else if (upgradeSwitchIndex == 2)
+        {
+            if (selectedUpgrades != null)
+            {
+                print(selectedUpgrades[2]);
+            }
+            else
+            {
+                print("2 is null");
+            }
+        }
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -63,17 +135,20 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     {
         if (other.gameObject.CompareTag("UpgradeRange"))
         {
-            allowUiSwapping = false;
-
-            TurnOffAllUi(false);
-
-            upgradeRadius.UpgradeRadiusOn = true;
-            upgradeRadius.allowTurretSwapping = true;
-            
-            Destroy(gameObject);
-            
-            
+            ExitSelection();
         }
+    }
+
+    private void ExitSelection()
+    {
+        allowUiSwapping = false;
+
+        TurnOffAllUi(false);
+
+        upgradeRadius.UpgradeRadiusOn = true;
+        upgradeRadius.allowTurretSwapping = true;
+            
+        Destroy(gameObject);
     }
 
     private void TurnOffAllUi(bool showUi)

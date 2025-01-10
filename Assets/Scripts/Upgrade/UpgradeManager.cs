@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    //
+    
     //Select What Game Obhect has gottne the upgrade
     
     //Ui determines what to give gameObject
@@ -26,7 +26,7 @@ public class UpgradeManager : MonoBehaviour
             UpgradeUiSwap3Lane upgradeUiSwapLnae = UiElement.GetComponent<UpgradeUiSwap3Lane>();
             if (upgradeUiSwapLnae != null)
             {
-                upgradeUiSwapLnae.SetDescriptionsForUpgrades(upgrades);
+                upgradeUiSwapLnae.SetDescriptionsForUpgrades(upgrades, turretSelected);
             }
             else
             {

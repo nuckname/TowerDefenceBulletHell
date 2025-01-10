@@ -17,6 +17,11 @@ public class TurretShoot : MonoBehaviour
     [SerializeField] private bool rightShootDirection;
 
     public int numberOfProjectiles = 1;
+    
+    //Upgrades
+    public float modifierFireRate = 0;
+    public float modifierBulletLifeTime = 0;
+    public float modifierBulletSpeed = 0;
 
     private void Awake()
     {
@@ -48,7 +53,7 @@ public class TurretShoot : MonoBehaviour
         if (fireCooldown <= 0f)
         {
             Shoot();
-            fireCooldown = 1f / turretConfig.fireRate;
+            fireCooldown = 1f / (turretConfig.fireRate + modifierFireRate);
         }
     }
 
@@ -81,7 +86,7 @@ public class TurretShoot : MonoBehaviour
             if (bulletScript != null)
             {
                 bulletScript.SetDirection(direction);
-                bulletScript.SetSpeed(turretConfig.bulletSpeed);
+                bulletScript.SetSpeed(turretConfig.bulletSpeed + modifierBulletSpeed);
             }
 
             // Cycle through shoot points

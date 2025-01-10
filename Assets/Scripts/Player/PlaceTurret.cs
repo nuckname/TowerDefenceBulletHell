@@ -49,7 +49,7 @@ public class PlaceObject : NetworkBehaviour
     {
         //Turret Basic
         //refactor too messy
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.U))
         {
             if (!IsOwner)
             {
