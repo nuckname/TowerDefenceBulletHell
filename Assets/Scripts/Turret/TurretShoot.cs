@@ -4,21 +4,35 @@ using UnityEngine;
 public class TurretShoot : MonoBehaviour
 {
     public TurretConfig turretConfig;
+    
+    [Header("Shoot Transforms")]
+
     [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
+    
+    [Header("Shoot points")]
+
     private Transform[] shootPoints;
+    
     private List<Vector2> directions = new List<Vector2>();
     //Should be part of a scriptable object
+    [Header("Stats")]
+
     private float fireCooldown;
     private int shootPointIndex = 0;
 
+    [Header("Shoot Directions")]
     [SerializeField] private bool upShootDirection; 
     [SerializeField] private bool downShootDirection; 
     [SerializeField] private bool leftShootDirection; 
     [SerializeField] private bool rightShootDirection;
 
+    [Header("Can shoot?")]
+
+    public bool AllowTurretToShoot;
+    
     public int numberOfProjectiles = 1;
     
-    //Upgrades
+    [Header("Upgrades")]
     public float modifierFireRate = 0;
     public float modifierBulletLifeTime = 0;
     public float modifierBulletSpeed = 0;
@@ -43,17 +57,20 @@ public class TurretShoot : MonoBehaviour
 
     private void Update()
     {
-        if (turretConfig == null)
+        if (AllowTurretToShoot)
         {
-            Debug.LogWarning("TurretConfig is missing.");
-            return;
-        }
+            if (turretConfig == null)
+            {
+                Debug.LogWarning("TurretConfig is missing.");
+                return;
+            }
 
-        fireCooldown -= Time.deltaTime;
-        if (fireCooldown <= 0f)
-        {
-            Shoot();
-            fireCooldown = 1f / (turretConfig.fireRate + modifierFireRate);
+            fireCooldown -= Time.deltaTime;
+            if (fireCooldown <= 0f)
+            {
+                Shoot();
+                fireCooldown = 1f / (turretConfig.fireRate + modifierFireRate);
+            } 
         }
     }
 

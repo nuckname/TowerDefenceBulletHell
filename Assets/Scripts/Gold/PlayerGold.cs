@@ -16,4 +16,9 @@ public class PlayerGold : MonoBehaviour
         _addGold.AddGoldToDisplay(playerStartingGold);
     }
 
+    public static void UpdateGold()
+    {
+        
+    }
+
 }

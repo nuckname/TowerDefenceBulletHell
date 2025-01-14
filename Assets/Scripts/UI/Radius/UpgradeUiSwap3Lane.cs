@@ -71,14 +71,12 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private void SelectUpgrade()
     {
-        print("selected upgrade");
-
         if (upgradeSwitchIndex == 0)
         {
             if (selectedUpgrades != null)
             {
-                print(selectedUpgrades[0]);
-                print(targetTurret);
+                print("Upgrade: " + selectedUpgrades[0]);
+                print("target turret: " + targetTurret);
 
                 string tag = targetTurret.tag;
 
@@ -86,6 +84,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
                 if (tag == "Turret")
                 {
                     targetTurret.GetComponent<BasicTurretUpgrades>().GetTurretInfomation(selectedUpgrades[0]);
+                    Destroy(gameObject);
                 }
                 
                 //Get what turret

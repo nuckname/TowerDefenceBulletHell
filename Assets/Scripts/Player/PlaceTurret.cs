@@ -24,32 +24,11 @@ public class PlaceObject : NetworkBehaviour
         _addGold = GetComponent<AddGold>();
     }
 
-    private void SpawnPlaceHolderTurret(int turretType)
-    {
-        GameObject turretToSpawn = null;
-        switch (turretType)
-        {
-            case 1:
-                turretToSpawn = GhostPlacementTurret;
-                break;
-            case 2:
-                turretToSpawn = TurretBasic;
-                break;
-            default:
-                Debug.LogError("Unknown turret type received in SpawnPlaceHolderTurretClientRpc.");
-                return;
-        }
-
-        Instantiate(turretToSpawn, gameObject.transform.position, Quaternion.identity);
-        
-    }
-
-    
     void Update()
     {
         //Turret Basic
         //refactor too messy
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (!IsOwner)
             {
@@ -64,25 +43,16 @@ public class PlaceObject : NetworkBehaviour
 
             if (!GhostTurretHasBeenPlaced)
             {
-                //try place turret
-                //enable radius
-                //Instantiate(GhostPlacementTurret, gameObject.transform.position, quaternion.identity);
-                SpawnPlaceHolderTurret(1); // For GhostPlacementTurret
-                
-                GhostTurretHasBeenPlaced = true;
+                SpawnGhostTurret();
             }
-            else
+        }
+
+        //Spawn Basic Turret
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (GhostTurretHasBeenPlaced)
             {
-                //disable radius
-                //Turret has been placed
-                _addGold.MinusGoldToDisplay(20);
-                ghostTurret = GameObject.FindWithTag("GhostTurret");
-                
-                //Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-                SpawnPlaceHolderTurret(2); // For TurretBasic
-                
-                Destroy(ghostTurret);
-                GhostTurretHasBeenPlaced = false;
+                SpawnBasicTurret();    
             }
         }
 
@@ -91,12 +61,11 @@ public class PlaceObject : NetworkBehaviour
         //Place miner
         if (Input.GetKeyDown(KeyCode.O))
         {
-            if (PlayerGold.CURRENT_PLAYER_GOLD >= 00)
+            if (PlayerGold.CURRENT_PLAYER_GOLD >= 0)
             {
                 Instantiate(goldMiner, gameObject.transform.position, Quaternion.identity);
                 _addGold.MinusGoldToDisplay(100);
             }
-
 
         }
         
@@ -106,4 +75,23 @@ public class PlaceObject : NetworkBehaviour
         }
     }
 
+    private void SpawnGhostTurret()
+    {
+        Instantiate(GhostPlacementTurret, this.gameObject.transform.position, Quaternion.identity);
+        GhostTurretHasBeenPlaced = true;
+    }
+
+    private void SpawnBasicTurret()
+    {
+        if (GhostTurretHasBeenPlaced && PlayerGold.CURRENT_PLAYER_GOLD >= 20)
+        {
+            _addGold.MinusGoldToDisplay(20);
+            
+            ghostTurret = GameObject.FindWithTag("GhostTurret");
+            Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
+                                    
+            Destroy(ghostTurret);
+            GhostTurretHasBeenPlaced = false;
+        }
+    }
 }

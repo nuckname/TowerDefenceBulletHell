@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3050815689972151173}
   m_Layer: 0
   m_Name: TurretBasic
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -210,6 +210,9 @@ MonoBehaviour:
   leftShootDirection: 1
   rightShootDirection: 1
   numberOfProjectiles: 1
+  modifierFireRate: 0
+  modifierBulletLifeTime: 0
+  modifierBulletSpeed: 0
 --- !u!114 &7129468448901828122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,6 +283,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2745eca8ccb7b8a4a92c967d55a8c273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  modifierFireRateValue: 0.25
+  modifierBulletLifeTimeValue: 0.25
+  modifierBulletSpeedValue: 0.2
+  baiscTurretUpgradeTier: 0
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0
