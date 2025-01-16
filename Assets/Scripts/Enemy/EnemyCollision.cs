@@ -14,7 +14,6 @@ public class EnemyCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        print("coll");
         if (other.gameObject.CompareTag("Bullet"))
         {
             _enemyHealth.EnemyHit();  
@@ -29,7 +28,7 @@ public class EnemyCollision : MonoBehaviour
             print("GET OFF ME");
             //Player hit?
         }
-        print("hi");
+        
         if (other.gameObject.CompareTag("RedBox"))
         {
             Destroy(gameObject);
@@ -40,7 +39,6 @@ public class EnemyCollision : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        print("staycoll");
         if (other.gameObject.CompareTag("Bullet"))
         {
             _enemyHealth.EnemyHit();  

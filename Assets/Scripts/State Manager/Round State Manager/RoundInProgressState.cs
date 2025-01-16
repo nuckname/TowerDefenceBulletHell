@@ -8,7 +8,7 @@ public class RoundInProgressState : RoundBaseState
     {
         Debug.Log("Round In Progress State");
 
-        roundStateManager.AllowTurretsToShoot(false);
+        roundStateManager.AllowTurretsToShoot(true);
         
         SpawnRoundEnemies(roundCounter, roundStateManager);
     }
@@ -36,7 +36,9 @@ public class RoundInProgressState : RoundBaseState
         }
         
         roundCounter++;
-        roundStateManager.SwitchState(roundStateManager.roundOverState);
+        
+        //Causingbug where turrets dont shoot 
+        //roundStateManager.SwitchState(roundStateManager.roundOverState);
     }
     
 }

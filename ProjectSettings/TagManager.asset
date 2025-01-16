@@ -21,6 +21,8 @@ TagManager:
   - UiUpgrade
   - UiSquare
   - UpgradeManager
+  - Coin
+  - Heart
   layers:
   - Default
   - TransparentFX

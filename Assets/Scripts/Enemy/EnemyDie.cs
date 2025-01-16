@@ -9,12 +9,13 @@ public class EnemyDie : MonoBehaviour
     [SerializeField] private AddGold _addGold;
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
-    private RoundManager _roundManager;
+    [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     private Rigidbody _rigidbody;
 
     private void Awake()
     {
-        _roundManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<RoundManager>();
+        enemyOnMapCounter = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<EnemyOnMapCounter>();
+        
         _rigidbody = GetComponent<Rigidbody>();
     }
 
@@ -32,15 +33,8 @@ public class EnemyDie : MonoBehaviour
             float forceMagnitude = 5f; // Adjust the magnitude as needed
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
-
-        // Counting enemy deaths
-        _roundManager.totalEnemiesSpawnAmount -= 1;
-
-        // Starts new round
-        if (_roundManager.totalEnemiesSpawnAmount == 0)
-        {
-            _roundManager.CreateRound();
-        }
+        
+        enemyOnMapCounter.DecreaseEnemyCount();
 
         _addGold.AddGoldToDisplay(20);
 
