@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class UpgradeRadius : MonoBehaviour
@@ -10,7 +8,7 @@ public class UpgradeRadius : MonoBehaviour
     public ContactFilter2D contactFilter;
 
     
-    public Collider2D[] results = new Collider2D[15];
+    public Collider2D[] results = new Collider2D[50];
     
 
     //[SerializeField] private List<Collider2D> results = new List<Collider2D>();
@@ -145,7 +143,7 @@ public class UpgradeRadius : MonoBehaviour
         }
     }
 
-    private void HighlightFurthestTurret()
+    public void HighlightFurthestTurret()
     {
         if (colliderCount > 0)
         {

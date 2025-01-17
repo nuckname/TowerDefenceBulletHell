@@ -24,7 +24,6 @@ public class RoundStateManager : MonoBehaviour
     void Start()
     {
         currentState = roundOverState;
-        allTurrets = GameObject.FindGameObjectsWithTag("Turret");
         currentState.EnterState(this);
     }
 
@@ -46,6 +45,8 @@ public class RoundStateManager : MonoBehaviour
 
     public void AllowTurretsToShoot(bool shouldTurretShoot)
     {
+        allTurrets = GameObject.FindGameObjectsWithTag("Turret");
+        
         foreach (GameObject turret in allTurrets)
         {
             turret.GetComponent<TurretShoot>().AllowTurretToShoot = shouldTurretShoot;

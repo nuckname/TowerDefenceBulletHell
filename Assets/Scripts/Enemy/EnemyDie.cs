@@ -36,7 +36,7 @@ public class EnemyDie : MonoBehaviour
         
         enemyOnMapCounter.DecreaseEnemyCount();
 
-        _addGold.AddGoldToDisplay(20);
+        //_addGold.AddGoldToDisplay(20);
 
         _enemyDropItems.DropItems();
 

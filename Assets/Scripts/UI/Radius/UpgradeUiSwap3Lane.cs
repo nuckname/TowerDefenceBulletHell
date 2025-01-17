@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using TMPro;
-using UnityEngine.Serialization;
 
 public class UpgradeUiSwap3Lane : MonoBehaviour
 {
@@ -28,7 +27,6 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     
     public void SetDescriptionsForUpgrades(string[] selectedUpgrades, GameObject _targetTurret)   
     {
-        
         this.selectedUpgrades = selectedUpgrades; // Assign the parameter to the global field
         this.targetTurret = _targetTurret;
         
@@ -140,6 +138,17 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private void ExitSelection()
     {
+        UpgradeRadius upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
+        if (upgradeRadius != null)
+        {
+            //Actually we need to get what has been selected. And use that as a highlight. New function.
+            upgradeRadius.HighlightFurthestTurret();
+        }
+        else
+        {
+            Debug.Log("Error. UpgradeRadius null");
+        }        
+        
         allowUiSwapping = false;
 
         TurnOffAllUi(false);

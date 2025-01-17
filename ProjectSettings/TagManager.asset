@@ -23,6 +23,7 @@ TagManager:
   - UpgradeManager
   - Coin
   - Heart
+  - StateManager
   layers:
   - Default
   - TransparentFX

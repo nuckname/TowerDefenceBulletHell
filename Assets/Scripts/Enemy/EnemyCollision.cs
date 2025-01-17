@@ -6,10 +6,13 @@ using UnityEngine;
 public class EnemyCollision : MonoBehaviour
 {
     private EnemyHealth _enemyHealth;
+    [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     // Start is called before the first frame update
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
+
+        enemyOnMapCounter = GameObject.FindGameObjectWithTag("StateManager").GetComponent<EnemyOnMapCounter>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -17,8 +20,6 @@ public class EnemyCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             _enemyHealth.EnemyHit();  
-            print("bullet coll");
-            
             Destroy(other.gameObject);
             
         }
@@ -31,6 +32,15 @@ public class EnemyCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("RedBox"))
         {
+            if (enemyOnMapCounter != null)
+            {
+                enemyOnMapCounter.DecreaseEnemyCount();
+            }
+            else
+            {
+                Debug.LogWarning("EnemyOnMapCounter component not found on RedBox.");
+            }
+            
             Destroy(gameObject);
             print("-1 hp");
         }

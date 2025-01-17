@@ -8,8 +8,8 @@ public class EnemyOnMapCounter : MonoBehaviour
 
     public void IncreaseEnemyCount(int amount)
     {
-        print(CurrentEnemiesOnMap);
         CurrentEnemiesOnMap += amount;
+        print("CurrentEnemiesOnMap" + CurrentEnemiesOnMap);
     }
 
     public void DecreaseEnemyCount()
@@ -17,7 +17,6 @@ public class EnemyOnMapCounter : MonoBehaviour
         CurrentEnemiesOnMap--;
         if (CurrentEnemiesOnMap <= 0)
         {
-            Debug.Log("No Enemies Left");
             roundStateManager.SwitchState(roundStateManager.roundOverState);
         }
     }

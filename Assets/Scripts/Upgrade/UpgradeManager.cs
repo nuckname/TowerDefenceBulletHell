@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class UpgradeManager : MonoBehaviour
 {
-    
     //Select What Game Obhect has gottne the upgrade
     
     //Ui determines what to give gameObject
@@ -15,6 +14,7 @@ public class UpgradeManager : MonoBehaviour
     
     public void SelectTurretToUpGrade(GameObject turretSelected, GameObject UiElement)
     {
+        //Basic Turret
         if (turretSelected.CompareTag("Turret"))
         {
             print("Turret selected: " + turretSelected);

@@ -209,6 +209,7 @@ MonoBehaviour:
   downShootDirection: 1
   leftShootDirection: 1
   rightShootDirection: 1
+  AllowTurretToShoot: 1
   numberOfProjectiles: 1
   modifierFireRate: 0
   modifierBulletLifeTime: 0
