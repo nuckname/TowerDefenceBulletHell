@@ -22,6 +22,8 @@ public class UpgradeManager : MonoBehaviour
             //Go to Turret and Get Turret array stuff
             string[] upgrades = turretSelected.GetComponent<BasicTurretUpgrades>().TierOneText_BasicTurretUpgrades();
             
+            
+            
             //Displays Turret UI
             UpgradeUiSwap3Lane upgradeUiSwapLnae = UiElement.GetComponent<UpgradeUiSwap3Lane>();
             if (upgradeUiSwapLnae != null)

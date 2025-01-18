@@ -20,13 +20,36 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     [SerializeField] private GameObject targetTurret;
 
+    [SerializeField]
+    private GenerateRarity generateRarity;
+
+    private SelectDescription selectDescription;
+
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
+        
+        generateRarity = GetComponent<GenerateRarity>();
+        if (generateRarity == null)
+        {
+            Debug.LogError("GenerateRarity Null");
+        }
+        
+        selectDescription = GetComponent<SelectDescription>();
+        if (selectDescription == null)
+        {
+            Debug.LogError("selectDescription Null");
+        }
     }
     
     public void SetDescriptionsForUpgrades(string[] selectedUpgrades, GameObject _targetTurret)   
     {
+        //Generate rarity 
+        string selectedRarity = generateRarity.SelectRarity();
+        //Pick Upgrades
+        selectDescription.Get3Descriptions(selectedRarity);
+        
+        
         this.selectedUpgrades = selectedUpgrades; // Assign the parameter to the global field
         this.targetTurret = _targetTurret;
         
