@@ -154,6 +154,8 @@ MonoBehaviour:
   - Increase Bullet Life Time
   - Increase Bullet Speed
   targetTurret: {fileID: 0}
+  generateRarity: {fileID: 1173576448504425586}
+  selectDescription: {fileID: 2155232483070051465}
 --- !u!61 &5845366234834858286
 BoxCollider2D:
   m_ObjectHideFlags: 0

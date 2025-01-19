@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Serialization;
 
 public class UpgradeUiSwap3Lane : MonoBehaviour
 {
@@ -16,46 +17,34 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private UpgradeRadius upgradeRadius;
     
-    [SerializeField] private string[] selectedUpgrades;
+    [FormerlySerializedAs("userSelectedUpgrades")] [FormerlySerializedAs("selectedUpgrades")] [SerializeField] private string[] displayedThreeUpgrades;
 
     [SerializeField] private GameObject targetTurret;
 
-    [SerializeField]
-    private GenerateRarity generateRarity;
+    [SerializeField] private GenerateRarity generateRarity;
+    
+    [SerializeField] private SelectDescription selectDescription;
 
-    private SelectDescription selectDescription;
+    private string chosenUpgrade = "";
 
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-        
-        generateRarity = GetComponent<GenerateRarity>();
-        if (generateRarity == null)
-        {
-            Debug.LogError("GenerateRarity Null");
-        }
-        
-        selectDescription = GetComponent<SelectDescription>();
-        if (selectDescription == null)
-        {
-            Debug.LogError("selectDescription Null");
-        }
+    
     }
     
-    public void SetDescriptionsForUpgrades(string[] selectedUpgrades, GameObject _targetTurret)   
+    public void SetDescriptionsForUpgrades(GameObject _targetTurret)   
     {
         //Generate rarity 
         string selectedRarity = generateRarity.SelectRarity();
         //Pick Upgrades
-        selectDescription.Get3Descriptions(selectedRarity);
+        displayedThreeUpgrades = selectDescription.Get3Descriptions(selectedRarity);
         
+        //this.targetTurret = _targetTurret;
         
-        this.selectedUpgrades = selectedUpgrades; // Assign the parameter to the global field
-        this.targetTurret = _targetTurret;
-        
-        for (int i = 0; i < selectedUpgrades.Length; i++)
+        for (int i = 0; i < displayedThreeUpgrades.Length; i++)
         {
-            allTextUis[i].text = selectedUpgrades[i].ToString();
+            allTextUis[i].text = displayedThreeUpgrades[i].ToString();
             print(" set text to " + allTextUis[i].text);
         }
     }
@@ -94,19 +83,18 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     {
         if (upgradeSwitchIndex == 0)
         {
-            if (selectedUpgrades != null)
+            if (displayedThreeUpgrades != null)
             {
-                print("Upgrade: " + selectedUpgrades[0]);
-                print("target turret: " + targetTurret);
-
-                string tag = targetTurret.tag;
-
-                //would need this for every single turret in the game. How to fix?
-                if (tag == "Turret")
-                {
-                    targetTurret.GetComponent<BasicTurretUpgrades>().GetTurretInfomation(selectedUpgrades[0]);
-                    Destroy(gameObject);
-                }
+                print("Upgrade: " + displayedThreeUpgrades[0]);
+                chosenUpgrade = displayedThreeUpgrades[0];
+                
+                if(chosenUpgrade == "")
+                //scripts based off rarity?
+                //each upgrade has its own script???
+                
+                targetTurret.GetComponent<BasicTurretUpgrades>().GetTurretInfomation(displayedThreeUpgrades[0]);
+                Destroy(gameObject);
+                
                 
                 //Get what turret
                 //targetTurret.ApplyUpgrade
@@ -119,9 +107,9 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
                 
         else if (upgradeSwitchIndex == 1)
         {
-            if (selectedUpgrades != null)
+            if (displayedThreeUpgrades != null)
             {
-                print(selectedUpgrades[1]);
+                print(displayedThreeUpgrades[1]);
             }
             else
             {
@@ -131,15 +119,20 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
                 
         else if (upgradeSwitchIndex == 2)
         {
-            if (selectedUpgrades != null)
+            if (displayedThreeUpgrades != null)
             {
-                print(selectedUpgrades[2]);
+                print(displayedThreeUpgrades[2]);
             }
             else
             {
                 print("2 is null");
             }
         }
+    }
+
+    private void GetUpgradeScript(string selectedUpgrade)
+    {
+        
     }
 
 

@@ -19,16 +19,11 @@ public class UpgradeManager : MonoBehaviour
         {
             print("Turret selected: " + turretSelected);
             
-            //Go to Turret and Get Turret array stuff
-            string[] upgrades = turretSelected.GetComponent<BasicTurretUpgrades>().TierOneText_BasicTurretUpgrades();
-            
-            
-            
             //Displays Turret UI
             UpgradeUiSwap3Lane upgradeUiSwapLnae = UiElement.GetComponent<UpgradeUiSwap3Lane>();
             if (upgradeUiSwapLnae != null)
             {
-                upgradeUiSwapLnae.SetDescriptionsForUpgrades(upgrades, turretSelected);
+                upgradeUiSwapLnae.SetDescriptionsForUpgrades(turretSelected);
             }
             else
             {

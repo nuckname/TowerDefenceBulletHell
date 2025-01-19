@@ -22,8 +22,6 @@ public class SpawnEnemies : MonoBehaviour
         Debug.Log("Total Enemies Spawned");
         //pass in EnemyOnMapCouter
         
-        
-        
     }
 
     private IEnumerator SpawnEnemiesWithDelay(int numberOfEnemies, Color color, int health)
