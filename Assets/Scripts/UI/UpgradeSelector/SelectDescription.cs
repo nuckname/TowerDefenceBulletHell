@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -9,32 +10,41 @@ public class SelectDescription : MonoBehaviour
     private string[] upgradesSelected = new string[3];
     private int upgradeIndex = 0;
 
-    //private Dictionary<int, string> normalUpgradeDescription = new Dictionary<int, string>();
-    private Dictionary<int, string> normalUpgradeDescription;
+    private Dictionary<int, string> normalUpgradeDescription = new Dictionary<int, string>();
     private Dictionary<int, string> rareUpgradeDescription = new Dictionary<int, string>();
-    private Dictionary<int, string> LegendaryUpgradeDescription = new Dictionary<int, string>();
+    private Dictionary<int, string> legendaryUpgradeDescription = new Dictionary<int, string>();
 
-    private void Start()
+    //Currently Cant read in dictionary from LoadUpgradesFromFiles.cs
+    //Not sure why
+    //This is bad as it reads the file every time the user goes to upgrade.
+    private void Awake()
     {
-        print("a");
-        //Normal
-        normalUpgradeDescription.Add(1, "Increases the size of the turret's projectiles");
-        normalUpgradeDescription.Add(2, "Increases the speed of the turret's projectiles");
-        normalUpgradeDescription.Add(3, "Increases the lifetime of the turret's projectiles");
-        normalUpgradeDescription.Add(4, "Increases the turret's firing rate");
-        Debug.Log($"Normal Upgrade Count: {normalUpgradeDescription.Count}");
-
-        //Rare
-        rareUpgradeDescription.Add(1, "Fires an additional projectile");
-        rareUpgradeDescription.Add(2, "Allows the turret to shoot multiple projectiles at once");
-        rareUpgradeDescription.Add(3, "Allows projectiles to pierce through enemies");
-        Debug.Log($"Rare Upgrade Count: {rareUpgradeDescription.Count}");
-
-        //Legendary
-        LegendaryUpgradeDescription.Add(1, "Projectiles chain to additional targets");
-        LegendaryUpgradeDescription.Add(2, "Summons a meteor strike at the target area");
-        Debug.Log($"Legendary Upgrade Count: {LegendaryUpgradeDescription.Count}");
+        LoadUpgradesFromFile("NormalUpgrades.txt", normalUpgradeDescription);
+        LoadUpgradesFromFile("RareUpgrades.txt", rareUpgradeDescription);
+        LoadUpgradesFromFile("LegendaryUpgrades.txt", legendaryUpgradeDescription);
     }
+
+    private void LoadUpgradesFromFile(string fileName, Dictionary<int, string> upgradeDictionary)
+    {
+        string path = Path.Combine(Application.dataPath, fileName);
+        if (File.Exists(path))
+        {
+            string[] lines = File.ReadAllLines(path);
+            foreach (string line in lines)
+            {
+                string[] parts = line.Split(',');
+                if (parts.Length == 2 && int.TryParse(parts[0], out int key))
+                {
+                    upgradeDictionary.Add(key, parts[1]);
+                }
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"File not found: {path}");
+        }
+    }
+
 
     public string[] Get3Descriptions(string selectedRarity)
     {
@@ -51,7 +61,6 @@ public class SelectDescription : MonoBehaviour
                 return null;
         }
     }
-
     
     private int[] SelectUpgrades(Dictionary<int, string> potentialUpgrades)
     {
@@ -72,7 +81,7 @@ public class SelectDescription : MonoBehaviour
 
     private string[] LegendaryRarityUpgrades()
     {
-        return SelectRarityUpgrades(LegendaryUpgradeDescription);
+        return SelectRarityUpgrades(legendaryUpgradeDescription);
     }
 
     private string[] SelectRarityUpgrades(Dictionary<int, string> potentialUpgrades)

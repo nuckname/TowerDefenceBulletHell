@@ -1,0 +1,4 @@
+1,Increases the size of the turret's projectiles
+2,Increases the speed of the turret's projectiles
+3,Increases the lifetime of the turret's projectiles
+4,Increases the turret's firing rate

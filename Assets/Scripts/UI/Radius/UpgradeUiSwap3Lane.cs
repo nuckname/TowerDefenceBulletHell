@@ -17,7 +17,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private UpgradeRadius upgradeRadius;
     
-    [FormerlySerializedAs("userSelectedUpgrades")] [FormerlySerializedAs("selectedUpgrades")] [SerializeField] private string[] displayedThreeUpgrades;
+    [SerializeField] private string[] displayedThreeUpgrades;
 
     [SerializeField] private GameObject targetTurret;
 
@@ -39,9 +39,12 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         string selectedRarity = generateRarity.SelectRarity();
         //Pick Upgrades
         displayedThreeUpgrades = selectDescription.Get3Descriptions(selectedRarity);
-        
-        //this.targetTurret = _targetTurret;
-        
+        //Display Text
+        SetTextToUi();
+    }
+
+    private void SetTextToUi()
+    {
         for (int i = 0; i < displayedThreeUpgrades.Length; i++)
         {
             allTextUis[i].text = displayedThreeUpgrades[i].ToString();
@@ -87,7 +90,12 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             {
                 print("Upgrade: " + displayedThreeUpgrades[0]);
                 chosenUpgrade = displayedThreeUpgrades[0];
-                
+
+                if (displayedThreeUpgrades[0] == "Fires an additional projectile")
+                {
+                    //GetComponent<Additional Projectile>()
+                }
+
                 if(chosenUpgrade == "")
                 //scripts based off rarity?
                 //each upgrade has its own script???
@@ -109,7 +117,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         {
             if (displayedThreeUpgrades != null)
             {
-                print(displayedThreeUpgrades[1]);
+                print("Upgrade: " + displayedThreeUpgrades[1]);
             }
             else
             {
@@ -121,7 +129,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         {
             if (displayedThreeUpgrades != null)
             {
-                print(displayedThreeUpgrades[2]);
+                print("Upgrade: " + displayedThreeUpgrades[2]);
             }
             else
             {

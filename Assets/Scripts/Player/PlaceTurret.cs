@@ -8,7 +8,6 @@ using UnityEngine;
 public class PlaceObject : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
-    [SerializeField] private GameObject TurretCool;
 
     [SerializeField] private GameObject GhostPlacementTurret;
     
@@ -48,7 +47,7 @@ public class PlaceObject : NetworkBehaviour
         }
 
         //Spawn Basic Turret
-        if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (GhostTurretHasBeenPlaced)
             {
@@ -68,11 +67,6 @@ public class PlaceObject : NetworkBehaviour
             }
 
         }
-        
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-           //Instantiate(TurretCool, gameObject.transform.position, Quaternion.identity);
-        }
     }
 
     private void SpawnGhostTurret()
@@ -89,7 +83,9 @@ public class PlaceObject : NetworkBehaviour
             
             ghostTurret = GameObject.FindWithTag("GhostTurret");
             Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-                                    
+            
+            
+            
             Destroy(ghostTurret);
             GhostTurretHasBeenPlaced = false;
         }

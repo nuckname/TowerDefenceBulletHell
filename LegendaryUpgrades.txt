@@ -1,0 +1,2 @@
+1,Projectiles chain to additional targets
+2,Summons a meteor strike at the target area

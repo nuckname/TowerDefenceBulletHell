@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 5845366234834858286}
   - component: {fileID: 1173576448504425586}
   - component: {fileID: 2155232483070051465}
+  - component: {fileID: 8411657708026151131}
   m_Layer: 0
   m_Name: UpgradeUiManager 1
   m_TagString: Untagged
@@ -149,10 +150,10 @@ MonoBehaviour:
   - {fileID: 3258841213456025927}
   - {fileID: 8502066611421313276}
   upgradeSwitchIndex: 0
-  selectedUpgrades:
-  - Increase Firerate
-  - Increase Bullet Life Time
-  - Increase Bullet Speed
+  displayedThreeUpgrades:
+  - Allows the turret to shoot multiple projectiles at once
+  - Allows projectiles to pierce through enemies
+  - Fires an additional projectile
   targetTurret: {fileID: 0}
   generateRarity: {fileID: 1173576448504425586}
   selectDescription: {fileID: 2155232483070051465}
@@ -224,6 +225,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 404e002735791df48bed1a6a218121b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8411657708026151131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563423375413203857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15a514e01df297e479e04096ab9fba82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3031652540927498507
@@ -416,7 +429,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increase Bullet Speed
+  m_text: Fires an additional projectile
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -592,7 +605,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increase Firerate
+  m_text: Allows the turret to shoot multiple projectiles at once
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -944,7 +957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Increase Bullet Life Time
+  m_text: Allows projectiles to pierce through enemies
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
