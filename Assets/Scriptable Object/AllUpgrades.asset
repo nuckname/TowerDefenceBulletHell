@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b10d08868d91143b9017fc932c2077, type: 3}
+  m_Name: AllUpgrades
+  m_EditorClassIdentifier: 
+  normalUpgrades:
+  - key: 0
+    description: Increases the size of the turret's projectiles
+    allowUpgrade: 1
+  - key: 1
+    description: Increases the speed of the turret's projectiles
+    allowUpgrade: 1
+  - key: 2
+    description: Increases the lifetime of the turret's projectiles
+    allowUpgrade: 1
+  - key: 3
+    description: Increases the turret's firing rate
+    allowUpgrade: 1
+  rareUpgrades:
+  - key: 0
+    description: Fires an additional projectile
+    allowUpgrade: 1
+  - key: 1
+    description: Allows the turret to shoot multiple projectiles at once
+    allowUpgrade: 1
+  - key: 2
+    description: Allows projectiles to pierce through enemies
+    allowUpgrade: 1
+  legendaryUpgrades:
+  - key: 0
+    description: Projectiles chain to additional targets
+    allowUpgrade: 1
+  - key: 1
+    description: Summons a meteor strike at the target area
+    allowUpgrade: 1

@@ -227,6 +227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404e002735791df48bed1a6a218121b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
 --- !u!114 &8411657708026151131
 MonoBehaviour:
   m_ObjectHideFlags: 0

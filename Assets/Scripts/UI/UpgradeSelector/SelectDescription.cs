@@ -7,44 +7,10 @@ using Random = UnityEngine.Random;
 
 public class SelectDescription : MonoBehaviour
 {
-    private string[] upgradesSelected = new string[3];
+    private string[] threePotentialUpgrades = new string[3];
     private int upgradeIndex = 0;
 
-    private Dictionary<int, string> normalUpgradeDescription = new Dictionary<int, string>();
-    private Dictionary<int, string> rareUpgradeDescription = new Dictionary<int, string>();
-    private Dictionary<int, string> legendaryUpgradeDescription = new Dictionary<int, string>();
-
-    //Currently Cant read in dictionary from LoadUpgradesFromFiles.cs
-    //Not sure why
-    //This is bad as it reads the file every time the user goes to upgrade.
-    private void Awake()
-    {
-        LoadUpgradesFromFile("NormalUpgrades.txt", normalUpgradeDescription);
-        LoadUpgradesFromFile("RareUpgrades.txt", rareUpgradeDescription);
-        LoadUpgradesFromFile("LegendaryUpgrades.txt", legendaryUpgradeDescription);
-    }
-
-    private void LoadUpgradesFromFile(string fileName, Dictionary<int, string> upgradeDictionary)
-    {
-        string path = Path.Combine(Application.dataPath, fileName);
-        if (File.Exists(path))
-        {
-            string[] lines = File.ReadAllLines(path);
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split(',');
-                if (parts.Length == 2 && int.TryParse(parts[0], out int key))
-                {
-                    upgradeDictionary.Add(key, parts[1]);
-                }
-            }
-        }
-        else
-        {
-            Debug.LogWarning($"File not found: {path}");
-        }
-    }
-
+    public UpgradeData upgradeData;
 
     public string[] Get3Descriptions(string selectedRarity)
     {
@@ -61,42 +27,56 @@ public class SelectDescription : MonoBehaviour
                 return null;
         }
     }
-    
-    private int[] SelectUpgrades(Dictionary<int, string> potentialUpgrades)
+
+
+    private int[] Get3UniqueNumbers(List<Upgrade> upgradeData)
     {
-        List<int> upgradeOptions = potentialUpgrades.Keys.ToList();
-        upgradeOptions = upgradeOptions.OrderBy(x => Random.Range(0f, 1f)).ToList();
-        return upgradeOptions.Take(3).ToArray();
+        List<int> indexPool = new List<int>();
+        for (int i = 0; i < upgradeData.Count; i++)
+        {
+            indexPool.Add(i);
+        }
+
+        int[] uniqueNumbers = new int[3];
+        for (int i = 0; i < uniqueNumbers.Length; i++)
+        {
+            int randomIndex = Random.Range(0, indexPool.Count);
+            uniqueNumbers[i] = indexPool[randomIndex];
+            indexPool.RemoveAt(randomIndex);
+        }
+
+        return uniqueNumbers;
     }
 
-    private string[] NormalRarityUpgrades()
+private string[] NormalRarityUpgrades()
     {
-        return SelectRarityUpgrades(normalUpgradeDescription);
+        return SelectRarityUpgrades(upgradeData.normalUpgrades);
     }
 
     private string[] RareRarityUpgrades()
     {
-        return SelectRarityUpgrades(rareUpgradeDescription);
+        return SelectRarityUpgrades(upgradeData.rareUpgrades);
     }
 
     private string[] LegendaryRarityUpgrades()
     {
-        return SelectRarityUpgrades(legendaryUpgradeDescription);
+        return SelectRarityUpgrades(upgradeData.legendaryUpgrades);
     }
 
-    private string[] SelectRarityUpgrades(Dictionary<int, string> potentialUpgrades)
+    private string[] SelectRarityUpgrades(List<Upgrade> upgradeData)
     {
-        int[] selectRandomUpgrade = SelectUpgrades(potentialUpgrades);
+        
+        int[] ThreeUniqueNumbers = Get3UniqueNumbers(upgradeData);
 
         upgradeIndex = 0;
-        foreach (int key in selectRandomUpgrade)
+        foreach (int index in ThreeUniqueNumbers)
         {
-            upgradesSelected[upgradeIndex] = potentialUpgrades[key];
-            print($"Selected Upgrade: {key} - {potentialUpgrades[key]}");
+            threePotentialUpgrades[upgradeIndex] = upgradeData[upgradeIndex].description;
+            print($"Selected Upgrade: {index} - {upgradeData[upgradeIndex].description}");
             upgradeIndex++;
         }
 
-        return upgradesSelected;
+        return threePotentialUpgrades;
     }
     
 }
