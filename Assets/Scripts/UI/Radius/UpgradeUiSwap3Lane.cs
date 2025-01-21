@@ -49,7 +49,6 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             singleDescription.text = "Error";
         }
     }
-    
 
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
@@ -61,11 +60,9 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         {
             //Generate rarity 
             selectedRarity = generateRarity.SelectRarity();
+            
             //Pick Upgrades
             storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
-            
-            //Pass in the upgrades descriptions to the turret
-            //storeTurretDescription.storedTurretDescription = displayedThreeUpgrades;
              
             //Display Text
             SetTextToUi(storeTurretDescription.storedTurretDescription);

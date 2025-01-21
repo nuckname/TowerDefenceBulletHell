@@ -300,6 +300,37 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!1 &6020991837285098855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2731259139992641828}
+  m_Layer: 0
+  m_Name: Fire Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2731259139992641828
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6020991837285098855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7177676866748033511}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6468790551041872655
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,6 +526,7 @@ GameObject:
   - component: {fileID: 1900634903416962752}
   - component: {fileID: 2219967726193495971}
   - component: {fileID: 1776391278729505495}
+  - component: {fileID: -6025028217366042230}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -519,6 +551,7 @@ Transform:
   - {fileID: 4963999772356152828}
   - {fileID: 3756930944592646823}
   - {fileID: 1312907925879382538}
+  - {fileID: 2731259139992641828}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4319545343615916181
@@ -588,7 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1197456899
+  GlobalObjectIdHash: 3661742165
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -615,6 +648,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   moveSpeed: 5
+  slideDamping: 0.7
 --- !u!50 &3335815252357642464
 Rigidbody2D:
   serializedVersion: 5
@@ -709,6 +743,21 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!114 &-6025028217366042230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309831068945400738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f6d207b6e6d2934ea99f8371f39d645, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 5601852057121462646, guid: 74ba9ff3a9ab7b94584498f1303cfb60, type: 3}
+  shootCooldown: 0.5
+  firePoint: {fileID: 2731259139992641828}
 --- !u!1 &7372417227341453218
 GameObject:
   m_ObjectHideFlags: 0

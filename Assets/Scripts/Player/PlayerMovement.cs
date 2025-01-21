@@ -4,8 +4,9 @@ using UnityEngine;
 public class PlayerMovement : NetworkBehaviour
 {
     public float moveSpeed = 5f;
+    public float slideDamping = 0.9f; // Factor to reduce velocity when sliding
     private Rigidbody2D rb;
-    private Vector2 movement; 
+    private Vector2 movement;
 
     void Start()
     {
@@ -18,12 +19,33 @@ public class PlayerMovement : NetworkBehaviour
         {
             return;
         }
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+
+        // Movement using W, A, S, D keys
+        movement.x = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
+        movement.y = (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0);
+
+        if (movement.magnitude > 1)
+        {
+            movement.Normalize();
+        }
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = movement * moveSpeed;
+        if (movement != Vector2.zero)
+        {
+            rb.velocity = movement * moveSpeed;
+        }
+        else
+        {
+            // Apply sliding effect by reducing the velocity gradually
+            rb.velocity = rb.velocity * slideDamping;
+
+            // Stop completely if the velocity is very small
+            if (rb.velocity.magnitude < 0.1f)
+            {
+                rb.velocity = Vector2.zero;
+            }
+        }
     }
 }
