@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
 public class UpgradeUiSwap3Lane : MonoBehaviour
@@ -21,34 +22,67 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     [SerializeField] private GameObject targetTurret;
 
-    [SerializeField] private GenerateRarity generateRarity;
+    private GenerateRarity generateRarity;
     
-    [SerializeField] private SelectDescription selectDescription;
+    private SelectDescription selectDescription;
 
     private string chosenUpgrade = "";
+
+    //if the description has already been generated and the player runs away from the turret
+    //and reaccesses it the turret should no generate new upgrades or roll rarity again.
+    [SerializeField] private bool ifDescriptionAlreadyGenerated = false;
+    [SerializeField] bool noUpgradeSelected = true;
+
+    private string selectedRarity;
+
 
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-        
-        
-    }
-    
-    public void SetDescriptionsForUpgrades(GameObject _targetTurret)   
-    {
-        //Generate rarity 
-        string selectedRarity = generateRarity.SelectRarity();
-        //Pick Upgrades
-        displayedThreeUpgrades = selectDescription.Get3Descriptions(selectedRarity);
-        //Display Text
-        SetTextToUi();
     }
 
-    private void SetTextToUi()
+    private void Start()
     {
-        for (int i = 0; i < displayedThreeUpgrades.Length; i++)
+        //Sets blank Text to 'Error'
+        foreach (TMP_Text singleDescription in allTextUis)
         {
-            allTextUis[i].text = displayedThreeUpgrades[i].ToString();
+            singleDescription.text = "Error";
+        }
+    }
+
+    public void SetDescriptionsForUpgrades(GameObject _targetTurret)
+    {
+        StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
+        
+        bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
+        
+        if (!isDescriptionAlreadyGenerated)
+        {
+            //Generate rarity 
+            selectedRarity = generateRarity.SelectRarity();
+            //Pick Upgrades
+            storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
+            
+            //Pass in the upgrades descriptions to the turret
+            //storeTurretDescription.storedTurretDescription = displayedThreeUpgrades;
+             
+            //Display Text
+            SetTextToUi(storeTurretDescription.storedTurretDescription);
+        }
+
+        if (isDescriptionAlreadyGenerated)
+        {
+            //Skip the generation step as we dont want to generate them again.
+            //displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+            SetTextToUi(storeTurretDescription.storedTurretDescription);
+        }
+    }
+
+    private void SetTextToUi(string[] Text)
+    {
+        for (int i = 0; i < Text.Length; i++)
+        {
+            allTextUis[i].text = Text[i].ToString();
             print(" set text to " + allTextUis[i].text);
         }
     }
@@ -85,6 +119,10 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private void SelectUpgrade()
     {
+        //Need to rework.
+        //cant compare everything
+        //use scriptable object or something?
+        
         if (upgradeSwitchIndex == 0)
         {
             if (displayedThreeUpgrades != null)

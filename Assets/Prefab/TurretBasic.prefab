@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 7129468448901828122}
   - component: {fileID: 6991702198204369602}
   - component: {fileID: 3050815689972151173}
+  - component: {fileID: 7565467559014696028}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Turret
@@ -288,6 +289,19 @@ MonoBehaviour:
   modifierBulletLifeTimeValue: 0.25
   modifierBulletSpeedValue: 0.2
   baiscTurretUpgradeTier: 0
+--- !u!114 &7565467559014696028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086541401240882015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f69d91376b773d7478f7c0922d39c41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storedTurretDescription: []
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0

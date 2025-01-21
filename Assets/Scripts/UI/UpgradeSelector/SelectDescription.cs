@@ -65,14 +65,12 @@ private string[] NormalRarityUpgrades()
 
     private string[] SelectRarityUpgrades(List<Upgrade> upgradeData)
     {
-        
         int[] ThreeUniqueNumbers = Get3UniqueNumbers(upgradeData);
 
         upgradeIndex = 0;
         foreach (int index in ThreeUniqueNumbers)
         {
-            threePotentialUpgrades[upgradeIndex] = upgradeData[upgradeIndex].description;
-            print($"Selected Upgrade: {index} - {upgradeData[upgradeIndex].description}");
+            threePotentialUpgrades[upgradeIndex] = upgradeData[ThreeUniqueNumbers[upgradeIndex]].description;
             upgradeIndex++;
         }
 

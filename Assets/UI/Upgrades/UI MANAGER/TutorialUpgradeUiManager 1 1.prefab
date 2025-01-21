@@ -235,8 +235,13 @@ MonoBehaviour:
   - {fileID: 7837146600273848212}
   - {fileID: 4613741490032181508}
   upgradeSwitchIndex: 0
-  selectedUpgrades: []
+  displayedThreeUpgrades:
+  - ERROR
+  - ERROR
+  - ERROR
   targetTurret: {fileID: 0}
+  ifDescriptionAlreadyGenerated: 0
+  noUpgradeSelected: 1
 --- !u!61 &6618363453933360246
 BoxCollider2D:
   m_ObjectHideFlags: 0
