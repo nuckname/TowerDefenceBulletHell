@@ -25,6 +25,7 @@ TagManager:
   - Heart
   - StateManager
   - UpgradesFromFiles
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
@@ -33,7 +34,7 @@ TagManager:
   - Water
   - UI
   - Bullet
-  - 
+  - Collectable
   - 
   - 
   - 

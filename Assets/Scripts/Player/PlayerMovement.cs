@@ -34,17 +34,17 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (movement != Vector2.zero)
         {
-            rb.velocity = movement * moveSpeed;
+            rb.linearVelocity = movement * moveSpeed;
         }
         else
         {
             // Apply sliding effect by reducing the velocity gradually
-            rb.velocity = rb.velocity * slideDamping;
+            rb.linearVelocity = rb.linearVelocity * slideDamping;
 
             // Stop completely if the velocity is very small
-            if (rb.velocity.magnitude < 0.1f)
+            if (rb.linearVelocity.magnitude < 0.1f)
             {
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
             }
         }
     }

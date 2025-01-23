@@ -26,43 +26,46 @@ public class RoundOverState : RoundBaseState
     }
 
     //Fade out chat bulletshit
-    private IEnumerator FadeOutAndDestroy(GameObject obj, float duration)
+    private IEnumerator FadeOutAndDestroy(float duration, string tag)
     {
-        SpriteRenderer spriteRenderer = obj.GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        //what is obj?
+        GameObject[] gameObjectsToDestory = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject gameObject in gameObjectsToDestory)
         {
-            Color color = spriteRenderer.color;
-            float startAlpha = color.a;
-
-            for (float t = 0; t < duration; t += Time.deltaTime)
+            /*
+            SpriteRenderer spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            if (spriteRenderer != null)
             {
-                float normalizedTime = t / duration;
-                color.a = Mathf.Lerp(startAlpha, 0, normalizedTime);
-                spriteRenderer.color = color;
-                yield return null;
-            }
+                Color color = spriteRenderer.color;
+                float startAlpha = color.a;
 
-            color.a = 0;
-            spriteRenderer.color = color;
+                for (float t = 0; t < duration; t += Time.deltaTime)
+                {
+                    float normalizedTime = t / duration;
+                    color.a = Mathf.Lerp(startAlpha, 0, normalizedTime);
+                    spriteRenderer.color = color;
+                }
+
+                color.a = 0;
+                spriteRenderer.color = color;
+            }
+            */
+
+            GameObject.Destroy(gameObject);
+            yield return null;
         }
 
-        GameObject.Destroy(obj);
     }
 
-    private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
+
+private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
         yield return new WaitForSeconds(0.75f);
+       
+        roundStateManager.StartCoroutine(FadeOutAndDestroy( 1f, "Coin")); // 1 second fade-out duration
+        
+        roundStateManager.StartCoroutine(FadeOutAndDestroy( 1f, "Heart")); // 1 second fade-out duration
 
-        GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
-        foreach (GameObject coin in coins)
-        {
-            roundStateManager.StartCoroutine(FadeOutAndDestroy(coin, 1f)); // 1 second fade-out duration
-        }
 
-        GameObject[] hearts = GameObject.FindGameObjectsWithTag("Heart");
-        foreach (GameObject heart in hearts)
-        {
-            roundStateManager.StartCoroutine(FadeOutAndDestroy(heart, 1f)); // 1 second fade-out duration
-        }
     }
 }

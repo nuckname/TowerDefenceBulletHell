@@ -4,7 +4,6 @@ using Random = UnityEngine.Random;
 
 public class GenerateRarity : MonoBehaviour
 {
-
     public string SelectRarity()
     {
         float rarityRoll = Random.Range(0, 1f);

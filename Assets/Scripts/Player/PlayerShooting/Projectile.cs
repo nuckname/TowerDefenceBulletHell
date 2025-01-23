@@ -7,6 +7,6 @@ public class Projectile : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Logic for what happens when the projectile hits something
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }

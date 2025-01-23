@@ -1,21 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
-using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
+using Unity.Netcode;
+
 public class PlaceObject : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
-
     [SerializeField] private GameObject GhostPlacementTurret;
-    
     [SerializeField] private GameObject goldMiner;
-    
     [SerializeField] private AddGold _addGold;
 
-    [SerializeField] private GameObject ghostTurret;
+    public static int TurretBasicCost = 150;
+
     private bool GhostTurretHasBeenPlaced = false;
 
     private void Awake()
@@ -25,69 +20,64 @@ public class PlaceObject : NetworkBehaviour
 
     void Update()
     {
-        //Turret Basic
-        //refactor too messy
+        if (!IsOwner)
+        {
+            return;
+        }
+
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!IsOwner)
-            {
-                return;
-            }
-            
-            if (PlayerGold.CURRENT_PLAYER_GOLD <= 20)
-            {
-                print("not enough gold");
-                return;
-            }
-
             if (!GhostTurretHasBeenPlaced)
             {
-                SpawnGhostTurret();
+                if (PlayerGold.CURRENT_PLAYER_GOLD >= TurretBasicCost)
+                {
+                    SpawnGhostTurret();
+                }
+                else
+                {
+                    print("Not enought money");
+                }
             }
-        }
-
-        //Spawn Basic Turret
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            if (GhostTurretHasBeenPlaced)
+            else
             {
-                SpawnBasicTurret();    
+                BindingOfIsaacShooting.disableShooting = false;
+                SpawnBasicTurret();
             }
         }
 
-
-        
-        //Place miner
         if (Input.GetKeyDown(KeyCode.O))
         {
-            if (PlayerGold.CURRENT_PLAYER_GOLD >= 0)
-            {
-                Instantiate(goldMiner, gameObject.transform.position, Quaternion.identity);
-                _addGold.MinusGoldToDisplay(100);
-            }
-
+            PlaceGoldMiner();
         }
     }
 
     private void SpawnGhostTurret()
     {
-        Instantiate(GhostPlacementTurret, this.gameObject.transform.position, Quaternion.identity);
+        Instantiate(GhostPlacementTurret, transform.position, Quaternion.identity);
         GhostTurretHasBeenPlaced = true;
     }
 
     private void SpawnBasicTurret()
     {
-        if (GhostTurretHasBeenPlaced && PlayerGold.CURRENT_PLAYER_GOLD >= 20)
+        _addGold.MinusGoldToDisplay(TurretBasicCost);
+
+        GameObject ghostTurret = GameObject.FindWithTag("GhostTurret");
+        if (ghostTurret != null)
         {
-            _addGold.MinusGoldToDisplay(20);
-            
-            ghostTurret = GameObject.FindWithTag("GhostTurret");
             Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-            
-            
-            
             Destroy(ghostTurret);
-            GhostTurretHasBeenPlaced = false;
+        }
+
+        GhostTurretHasBeenPlaced = false;
+ 
+    }
+
+    private void PlaceGoldMiner()
+    {
+        if (PlayerGold.CURRENT_PLAYER_GOLD >= 100)
+        {
+            Instantiate(goldMiner, transform.position, Quaternion.identity);
+            _addGold.MinusGoldToDisplay(100);
         }
     }
 }

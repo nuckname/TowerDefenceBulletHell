@@ -39,10 +39,23 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
+
+        generateRarity = GetComponent<GenerateRarity>();
+        selectDescription = GetComponent<SelectDescription>();
     }
 
     private void Start()
     {
+        if (selectDescription == null)
+        {
+            Debug.LogError("selectDescription is null");
+        }
+
+        if (generateRarity == null)
+        {
+            Debug.LogError("generateRarity is null");
+        }
+
         //Sets blank Text to 'Error'
         foreach (TMP_Text singleDescription in allTextUis)
         {

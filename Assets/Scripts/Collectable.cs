@@ -1,12 +1,13 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
 {
+    private Vector3 targetpostion;
     private Rigidbody2D rb;
-
+    [SerializeField] private float speed = 5f;
     private bool hasTarget;
-    private Vector3 targetPosition;
 
     private void Awake()
     {
@@ -17,20 +18,21 @@ public class Collectable : MonoBehaviour
     {
         if (hasTarget)
         {
-            Vector2 targetDirection = (targetPosition = transform.position).normalized;
-            rb.linearVelocity = new Vector2(targetDirection.x, targetDirection.y) * 5f;
+            Vector2 targetDirection = (targetpostion - transform.position).normalized;
+            rb.linearVelocity = new Vector2(targetDirection.x, targetDirection.y) * speed;
         }
+
     }
 
     public void SetTarget(Vector3 position)
     {
-        targetPosition = position;
+        targetpostion = position;
         hasTarget = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("PlayerCollision"))
         {
             Destroy(gameObject);
         }

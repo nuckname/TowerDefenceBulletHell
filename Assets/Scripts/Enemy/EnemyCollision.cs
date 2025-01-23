@@ -23,6 +23,13 @@ public class EnemyCollision : MonoBehaviour
             Destroy(other.gameObject);
             
         }
+
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            _enemyHealth.EnemyHit();  
+            Destroy(other.gameObject);
+            
+        }
         
         if (other.gameObject.CompareTag("PlayerCollision"))
         {

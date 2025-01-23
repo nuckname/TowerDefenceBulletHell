@@ -8,6 +8,11 @@ public class GhostTurretMovement : NetworkBehaviour
 
     private Vector3 movement = Vector3.zero; // Movement vector initialized once
 
+    private void Awake()
+    {
+        BindingOfIsaacShooting.disableShooting = true;
+    }
+
     void Update()
     {
         /*
@@ -18,24 +23,30 @@ public class GhostTurretMovement : NetworkBehaviour
         */
         // Reset movement vector each frame
         movement = Vector3.zero;
+        
+        //Back option
+        if (Input.GetKey(KeyCode.Q))
+        {
+            Destroy(gameObject);
+        }
 
         // Check for input and update movement vector
-        if (Input.GetKey(KeyCode.I)) // Move Up
+        if (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.UpArrow)) // Move Up
         {
             movement += Vector3.up;
         }
 
-        if (Input.GetKey(KeyCode.K)) // Move Down
+        if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.DownArrow)) // Move Down
         {
             movement += Vector3.down;
         }
 
-        if (Input.GetKey(KeyCode.J)) // Move Left
+        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow)) // Move Left
         {
             movement += Vector3.left;
         }
 
-        if (Input.GetKey(KeyCode.L)) // Move Right
+        if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.RightArrow)) // Move Right
         {
             movement += Vector3.right;
         }
