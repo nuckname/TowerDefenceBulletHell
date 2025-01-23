@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 1173576448504425586}
   - component: {fileID: 2155232483070051465}
   - component: {fileID: 8411657708026151131}
+  - component: {fileID: -1300551357437857721}
   m_Layer: 0
   m_Name: UpgradeUiManager 1
   m_TagString: Untagged
@@ -151,10 +152,12 @@ MonoBehaviour:
   - {fileID: 8502066611421313276}
   upgradeSwitchIndex: 0
   displayedThreeUpgrades:
-  - ERROR
-  - ERROR
-  - ERROR
+  - 
+  - 
+  - 
   targetTurret: {fileID: 0}
+  generateRarity: {fileID: 1173576448504425586}
+  selectDescription: {fileID: 2155232483070051465}
   ifDescriptionAlreadyGenerated: 0
   noUpgradeSelected: 0
 --- !u!61 &5845366234834858286
@@ -238,6 +241,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15a514e01df297e479e04096ab9fba82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1300551357437857721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563423375413203857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef11e58f7f0d94daa7aa1bc60d81d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3031652540927498507
@@ -341,7 +356,7 @@ GameObject:
   - component: {fileID: 8502066611421313276}
   m_Layer: 0
   m_Name: Text (2)
-  m_TagString: Untagged
+  m_TagString: Text3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -430,7 +445,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ERROR
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -517,7 +532,7 @@ GameObject:
   - component: {fileID: 1786905581533756513}
   m_Layer: 0
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: Text1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -606,7 +621,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ERROR
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -869,7 +884,7 @@ GameObject:
   - component: {fileID: 3258841213456025927}
   m_Layer: 0
   m_Name: Text (1)
-  m_TagString: Untagged
+  m_TagString: Text2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -958,7 +973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ERROR
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

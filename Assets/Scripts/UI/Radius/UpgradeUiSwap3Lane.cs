@@ -21,10 +21,10 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     [SerializeField] private string[] displayedThreeUpgrades;
 
     [SerializeField] private GameObject targetTurret;
-
-    private GenerateRarity generateRarity;
     
-    private SelectDescription selectDescription;
+    [SerializeField] private GenerateRarity generateRarity;
+    
+    [SerializeField] private SelectDescription selectDescription;
 
     private string chosenUpgrade = "";
 
@@ -39,9 +39,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-
-        generateRarity = GetComponent<GenerateRarity>();
-        selectDescription = GetComponent<SelectDescription>();
+        
     }
 
     private void Start()
@@ -56,27 +54,28 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             Debug.LogError("generateRarity is null");
         }
 
-        //Sets blank Text to 'Error'
-        foreach (TMP_Text singleDescription in allTextUis)
-        {
-            singleDescription.text = "Error";
-        }
     }
 
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
+        string[] hi = new string[3];
+        hi[0] = "0"; 
+        hi[1] = "1";
+        hi[2] = "2";
+        SetTextToUi(hi);
+        /*
         StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
-        
+
         bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
-        
+
         if (!isDescriptionAlreadyGenerated)
         {
-            //Generate rarity 
+            //Generate rarity
             selectedRarity = generateRarity.SelectRarity();
-            
+
             //Pick Upgrades
             storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
-             
+
             //Display Text
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
@@ -84,10 +83,12 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         if (isDescriptionAlreadyGenerated)
         {
             //Skip the generation step as we dont want to generate them again.
-            //displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
+        */
     }
+
+    private GameObject[] textObject;
 
     private void SetTextToUi(string[] Text)
     {
@@ -97,6 +98,10 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             print(" set text to " + allTextUis[i].text);
         }
     }
+        
+       
+       
+
 
     private void Update()
     {
@@ -130,62 +135,8 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     private void SelectUpgrade()
     {
-        //Need to rework.
-        //cant compare everything
-        //use scriptable object or something?
-        
-        if (upgradeSwitchIndex == 0)
-        {
-            if (displayedThreeUpgrades != null)
-            {
-                print("Upgrade: " + displayedThreeUpgrades[0]);
-                chosenUpgrade = displayedThreeUpgrades[0];
-
-                if (displayedThreeUpgrades[0] == "Fires an additional projectile")
-                {
-                    //GetComponent<Additional Projectile>()
-                }
-
-                if(chosenUpgrade == "")
-                //scripts based off rarity?
-                //each upgrade has its own script???
-                
-                targetTurret.GetComponent<BasicTurretUpgrades>().GetTurretInfomation(displayedThreeUpgrades[0]);
-                Destroy(gameObject);
-                
-                
-                //Get what turret
-                //targetTurret.ApplyUpgrade
-            }
-            else
-            {
-                print("0 is null");
-            }
-        }
-                
-        else if (upgradeSwitchIndex == 1)
-        {
-            if (displayedThreeUpgrades != null)
-            {
-                print("Upgrade: " + displayedThreeUpgrades[1]);
-            }
-            else
-            {
-                print("1 is null");
-            }
-        }
-                
-        else if (upgradeSwitchIndex == 2)
-        {
-            if (displayedThreeUpgrades != null)
-            {
-                print("Upgrade: " + displayedThreeUpgrades[2]);
-            }
-            else
-            {
-                print("2 is null");
-            }
-        }
+       //Call SelectUpgrade.cs 
+       //with index or something.
     }
 
     private void GetUpgradeScript(string selectedUpgrade)

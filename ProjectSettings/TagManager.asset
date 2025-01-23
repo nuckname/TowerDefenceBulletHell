@@ -26,6 +26,9 @@ TagManager:
   - StateManager
   - UpgradesFromFiles
   - PlayerBullet
+  - Text1
+  - Text2
+  - Text3
   layers:
   - Default
   - TransparentFX

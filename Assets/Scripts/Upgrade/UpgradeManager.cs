@@ -5,10 +5,10 @@ public class UpgradeManager : MonoBehaviour
 {
     public void SelectTurretToUpGrade(GameObject turretSelected, GameObject UiElement)
     {
-        UpgradeUiSwap3Lane upgradeUiSwapLnae = UiElement.GetComponent<UpgradeUiSwap3Lane>();
-        if (upgradeUiSwapLnae != null)
+        UpgradeUiSwap3Lane upgradeUiSwapLane = UiElement.GetComponent<UpgradeUiSwap3Lane>();
+        if (upgradeUiSwapLane != null)
         {
-            upgradeUiSwapLnae.SetDescriptionsForUpgrades(turretSelected);
+            upgradeUiSwapLane.SetDescriptionsForUpgrades(turretSelected);
         }
         else
         {
