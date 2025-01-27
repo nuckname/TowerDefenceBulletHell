@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 5845366234834858286}
   - component: {fileID: 1173576448504425586}
   - component: {fileID: 2155232483070051465}
-  - component: {fileID: 8411657708026151131}
   - component: {fileID: -1300551357437857721}
   m_Layer: 0
   m_Name: UpgradeUiManager 1
@@ -142,6 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb87d0a583190644beec8133e5cac22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTurret: {fileID: 0}
   allUpgradeUis:
   - {fileID: 9187354687493550689}
   - {fileID: 2332440876935757151}
@@ -150,16 +150,15 @@ MonoBehaviour:
   - {fileID: 1786905581533756513}
   - {fileID: 3258841213456025927}
   - {fileID: 8502066611421313276}
-  upgradeSwitchIndex: 0
   displayedThreeUpgrades:
   - 
   - 
   - 
-  targetTurret: {fileID: 0}
   generateRarity: {fileID: 1173576448504425586}
   selectDescription: {fileID: 2155232483070051465}
   ifDescriptionAlreadyGenerated: 0
   noUpgradeSelected: 0
+  _applyUpgrade: {fileID: -1300551357437857721}
 --- !u!61 &5845366234834858286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,18 +230,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
---- !u!114 &8411657708026151131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2563423375413203857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15a514e01df297e479e04096ab9fba82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1300551357437857721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,6 +242,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ef11e58f7f0d94daa7aa1bc60d81d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
+  raritySelected: 
 --- !u!1 &3031652540927498507
 GameObject:
   m_ObjectHideFlags: 0

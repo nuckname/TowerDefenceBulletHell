@@ -7,10 +7,12 @@ public class StoreTurretDescription : MonoBehaviour
 
     private void Awake()
     {
+        /*
         Debug.LogWarning("storedTurretDescription is empty.");
         storedTurretDescription[0] = "";
         storedTurretDescription[1] = "";
         storedTurretDescription[2] = "";
+        */
     }
 
     public bool CheckTurretDescription()

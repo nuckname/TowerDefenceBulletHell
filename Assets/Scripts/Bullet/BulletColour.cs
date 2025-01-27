@@ -43,11 +43,26 @@ public class BulletColour : MonoBehaviour
         // Destroy bullet when lifetime is over
         if (lifeTime <= 0)
         {
-            Destroy(gameObject);
+            SafeDestroy();
         }
         if (lifeTime <= 1.6f)
         {
             //Turn off box colider?
         }
     }
+    
+    private void SafeDestroy()
+    {
+        if (this != null && gameObject != null)
+        {
+            print("Destory from BulletColour.cs");
+
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("Attempted to destroy a GameObject that is already null or destroyed!");
+        }
+    }
+
 }

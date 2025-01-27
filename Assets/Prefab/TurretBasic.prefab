@@ -104,9 +104,9 @@ GameObject:
   - component: {fileID: 1086541401240882013}
   - component: {fileID: 1086541401240882014}
   - component: {fileID: 1086541401240882012}
+  - component: {fileID: 4571525935793682645}
   - component: {fileID: 7129468448901828122}
   - component: {fileID: 6991702198204369602}
-  - component: {fileID: 3050815689972151173}
   - component: {fileID: 7565467559014696028}
   m_Layer: 0
   m_Name: TurretBasic
@@ -128,6 +128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1810362373020003385}
   - {fileID: 1086541400524233942}
   - {fileID: 1086541400724001877}
   - {fileID: 1086541400124926283}
@@ -215,6 +216,19 @@ MonoBehaviour:
   modifierFireRate: 0
   modifierBulletLifeTime: 0
   modifierBulletSpeed: 0
+--- !u!114 &4571525935793682645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086541401240882015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2aaa2ab1ed54e5d4193795486fc89844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PierceAmount: 0
 --- !u!114 &7129468448901828122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,22 +287,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3050815689972151173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1086541401240882015}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2745eca8ccb7b8a4a92c967d55a8c273, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  modifierFireRateValue: 0.25
-  modifierBulletLifeTimeValue: 0.25
-  modifierBulletSpeedValue: 0.2
-  baiscTurretUpgradeTier: 0
 --- !u!114 &7565467559014696028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -331,6 +329,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.48, y: -0.02, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1086541401240882013}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3227616259390124480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1810362373020003385}
+  m_Layer: 0
+  m_Name: Upgrades
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1810362373020003385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3227616259390124480}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

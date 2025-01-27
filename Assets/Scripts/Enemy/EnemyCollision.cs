@@ -20,7 +20,7 @@ public class EnemyCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             _enemyHealth.EnemyHit();  
-            Destroy(other.gameObject);
+            //Destroy(other.gameObject);
             
         }
 
@@ -52,23 +52,5 @@ public class EnemyCollision : MonoBehaviour
             print("-1 hp");
         }
     }
-
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            _enemyHealth.EnemyHit();  
-            print("stay bullet coll");
-            
-            Destroy(other.gameObject);
-            
-        }
-        
-        if (other.gameObject.CompareTag("Player"))
-        {
-            print("GET OFF ME");
-            //Player hit?
-        }
-    }
+   
 }

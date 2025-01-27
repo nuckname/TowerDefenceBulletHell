@@ -4,15 +4,17 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.Serialization;
 
-public class UpgradeUiSwap3Lane : MonoBehaviour
+public class UpgradeUiManager : MonoBehaviour
 {
+    public GameObject targetTurret;
+    
     [SerializeField] private GameObject[] allUpgradeUis;
     
     [SerializeField] private TMP_Text[] allTextUis;
 
     private GameObject currentUpgradeUi;
     
-    [SerializeField] private int upgradeSwitchIndex = 0;
+    private int upgradeSwitchIndex = 0;
 
     private bool allowUiSwapping = false;
 
@@ -20,7 +22,6 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     
     [SerializeField] private string[] displayedThreeUpgrades;
 
-    [SerializeField] private GameObject targetTurret;
     
     [SerializeField] private GenerateRarity generateRarity;
     
@@ -33,13 +34,16 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
     [SerializeField] private bool ifDescriptionAlreadyGenerated = false;
     [SerializeField] bool noUpgradeSelected = true;
 
-    private string selectedRarity;
+    private string selectedRarity = "Error";
+    private int rarityIndex = 0;
 
+    [SerializeField] private ApplyUpgrade _applyUpgrade;
 
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-        
+
+        //_applyUpgrade = GetComponent<ApplyUpgrade>();
     }
 
     private void Start()
@@ -56,14 +60,9 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
     }
 
+    
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
-        string[] hi = new string[3];
-        hi[0] = "0"; 
-        hi[1] = "1";
-        hi[2] = "2";
-        SetTextToUi(hi);
-        /*
         StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
 
         bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
@@ -72,10 +71,16 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
         {
             //Generate rarity
             selectedRarity = generateRarity.SelectRarity();
-
+            
+            //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
+            _applyUpgrade.raritySelected = selectedRarity;
+            
             //Pick Upgrades
             storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
 
+            //Puts it in global variable
+            displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+            
             //Display Text
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
@@ -85,11 +90,8 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
-        */
     }
-
-    private GameObject[] textObject;
-
+    
     private void SetTextToUi(string[] Text)
     {
         for (int i = 0; i < Text.Length; i++)
@@ -98,21 +100,18 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             print(" set text to " + allTextUis[i].text);
         }
     }
-        
-       
-       
-
 
     private void Update()
     {
         if (allowUiSwapping)
         {
-            if (Input.GetKeyDown(KeyCode.L))
+            //Swaps between upgrade screens
+            if (Input.GetKeyDown(KeyCode.RightArrow))
             {
                 SwitchSelection(1); 
             }
 
-            if (Input.GetKeyDown(KeyCode.J))
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
                 SwitchSelection(-1);
             }
@@ -124,26 +123,11 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                SelectUpgrade();
+                print("send: " + selectedRarity);
+                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
             }
         }
-        
-        //Select with E
-        
-        //Q cancels everything
     }
-
-    private void SelectUpgrade()
-    {
-       //Call SelectUpgrade.cs 
-       //with index or something.
-    }
-
-    private void GetUpgradeScript(string selectedUpgrade)
-    {
-        
-    }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -178,6 +162,7 @@ public class UpgradeUiSwap3Lane : MonoBehaviour
 
         TurnOffAllUi(false);
 
+        BindingOfIsaacShooting.disableShooting = false;
         upgradeRadius.UpgradeRadiusOn = true;
         upgradeRadius.allowTurretSwapping = true;
             

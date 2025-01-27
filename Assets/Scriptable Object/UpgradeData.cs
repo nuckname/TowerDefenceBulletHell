@@ -12,7 +12,21 @@ public class UpgradeData : ScriptableObject
 [System.Serializable]
 public class Upgrade
 {
-    public int key;
+    public string upgradeName;
     public string description;
-    public bool allowUpgrade;
+    //reference to a ScriptableObject that handles the behavior
+    public UpgradeEffect effect; 
+    public Rarity rarity;
+}
+
+public enum Rarity
+{
+    Normal,
+    Rare,
+    Legendary
+}
+
+public abstract class UpgradeEffect : ScriptableObject
+{
+    public abstract void Apply(GameObject targetTurret);
 }

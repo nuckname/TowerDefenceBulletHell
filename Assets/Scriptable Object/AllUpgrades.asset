@@ -13,35 +13,45 @@ MonoBehaviour:
   m_Name: AllUpgrades
   m_EditorClassIdentifier: 
   normalUpgrades:
-  - key: 0
+  - upgradeName: Increased Size
     description: Increases the size of the turret's projectiles
-    allowUpgrade: 1
-  - key: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 0
+  - upgradeName: Increased Speed
     description: Increases the speed of the turret's projectiles
-    allowUpgrade: 1
-  - key: 2
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 0
+  - upgradeName: Extra Lifetime
     description: Increases the lifetime of the turret's projectiles
-    allowUpgrade: 1
-  - key: 3
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 0
+  - upgradeName: Increased Firing rate
     description: Increases the turret's firing rate
-    allowUpgrade: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 0
   rareUpgrades:
-  - key: 0
+  - upgradeName: Extra Projectile
     description: Fires an additional projectile
-    allowUpgrade: 1
-  - key: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 1
+  - upgradeName: Multi shot
     description: Allows the turret to shoot multiple projectiles at once
-    allowUpgrade: 1
-  - key: 2
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 1
+  - upgradeName: Pierce
     description: Allows projectiles to pierce through enemies
-    allowUpgrade: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 1
   legendaryUpgrades:
-  - key: 0
+  - upgradeName: Chain
     description: Projectiles chain to additional targets
-    allowUpgrade: 1
-  - key: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 2
+  - upgradeName: Metor
     description: Summons a meteor strike at the target area
-    allowUpgrade: 1
-  - key: 2
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 2
+  - upgradeName: Ricochet
     description: Projectiles ricochet off terrain
-    allowUpgrade: 1
+    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    rarity: 2

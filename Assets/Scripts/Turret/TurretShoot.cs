@@ -37,9 +37,12 @@ public class TurretShoot : MonoBehaviour
     public float modifierBulletLifeTime = 0;
     public float modifierBulletSpeed = 0;
 
+    private TurretStats turretStats;
+    
     private void Awake()
     {
         shootPoints = new Transform[] { ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight };
+        
     }
 
     private void Start()
@@ -90,6 +93,7 @@ public class TurretShoot : MonoBehaviour
                 Debug.LogWarning("Shoot Point is missing.");
                 continue;
             }
+            //Set Bullet pierce Here.
 
             // Instantiate the bullet
             GameObject bullet = Instantiate(
@@ -97,6 +101,8 @@ public class TurretShoot : MonoBehaviour
                 currentShootPoint.position,
                 Quaternion.identity
             );
+            
+            
 
             // Pass the direction to the bullet script
             BasicBullet bulletScript = bullet.GetComponent<BasicBullet>();
@@ -112,5 +118,9 @@ public class TurretShoot : MonoBehaviour
             // Destroy the bullet after a set time
             Destroy(bullet, turretConfig.bulletLifeTime);
         }
+    }
+
+    private void SetBulletUpgrades()
+    {
     }
 }
