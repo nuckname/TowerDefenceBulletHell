@@ -71,9 +71,10 @@ public class UpgradeRadius : MonoBehaviour
     
     private void SelectedObject(GameObject turret)
     {
-        Instantiate(UiManager, new Vector3(turret.transform.position.x, turret.transform.position.y + 3.22f, turret.transform.position.z) , Quaternion.identity);
+        GameObject instantiatedUi = Instantiate(UiManager, new Vector3(turret.transform.position.x, turret.transform.position.y + 3.22f, turret.transform.position.z) , Quaternion.identity);
         
-        UpgradeUiManager upgradeManager = UiManager.GetComponent<UpgradeUiManager>();
+        //UpgradeUiManager upgradeManager = UiManager.GetComponent<UpgradeUiManager>();
+        UpgradeUiManager upgradeManager = instantiatedUi.GetComponent<UpgradeUiManager>();
         upgradeManager.SetDescriptionsForUpgrades(turret);
         //Sets a global Varible for the turret.
         //Fixes a bug where targetTurret was null

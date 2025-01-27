@@ -14,7 +14,6 @@ public class Upgrade
 {
     public string upgradeName;
     public string description;
-    //reference to a ScriptableObject that handles the behavior
     public UpgradeEffect effect; 
     public Rarity rarity;
 }

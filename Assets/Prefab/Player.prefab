@@ -510,6 +510,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthManager: {fileID: 0}
+  playerHP: {fileID: 0}
+  deathText: {fileID: 0}
+  currentHP: 10
 --- !u!1 &7309831068945400738
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 1197456899
+  GlobalObjectIdHash: 3661742165
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1

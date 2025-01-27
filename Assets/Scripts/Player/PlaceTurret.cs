@@ -20,10 +20,12 @@ public class PlaceObject : NetworkBehaviour
 
     void Update()
     {
+        /*
         if (!IsOwner)
         {
             return;
         }
+        */
 
         if (Input.GetKeyDown(KeyCode.Space))
         {

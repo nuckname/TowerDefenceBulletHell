@@ -97,7 +97,7 @@ public class UpgradeUiManager : MonoBehaviour
         for (int i = 0; i < Text.Length; i++)
         {
             allTextUis[i].text = Text[i].ToString();
-            print(" set text to " + allTextUis[i].text);
+            print("Set text to " + allTextUis[i].text);
         }
     }
 
@@ -123,7 +123,6 @@ public class UpgradeUiManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                print("send: " + selectedRarity);
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
             }
         }
@@ -173,7 +172,8 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (!showUi)
         {
-            for (int i = 0; i >= allUpgradeUis.Length; i++)
+            //for (int i = 0; i >= allUpgradeUis.Length; i++)
+            for (int i = 0; i < allUpgradeUis.Length; i++)
             {
                 if (i == 0)
                 {

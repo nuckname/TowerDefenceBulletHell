@@ -27,6 +27,7 @@ TagManager:
   - UpgradesFromFiles
   - PlayerBullet
   - PlayerTextHP
+  - DeathText
   layers:
   - Default
   - TransparentFX

@@ -15,10 +15,12 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+        /*
         if (!IsOwner)
         {
             return;
         }
+        */
 
         // Movement using W, A, S, D keys
         movement.x = (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0);
