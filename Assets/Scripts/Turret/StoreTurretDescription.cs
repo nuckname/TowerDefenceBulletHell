@@ -4,17 +4,8 @@ using UnityEngine;
 public class StoreTurretDescription : MonoBehaviour
 {
     public string[] storedTurretDescription = new string[3];
-
-    private void Awake()
-    {
-        /*
-        Debug.LogWarning("storedTurretDescription is empty.");
-        storedTurretDescription[0] = "";
-        storedTurretDescription[1] = "";
-        storedTurretDescription[2] = "";
-        */
-    }
-
+    public string storedTurretSelectedRarity = "";
+    
     public bool CheckTurretDescription()
     {
         // "" means its empty.

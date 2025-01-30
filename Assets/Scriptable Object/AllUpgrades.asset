@@ -13,45 +13,41 @@ MonoBehaviour:
   m_Name: AllUpgrades
   m_EditorClassIdentifier: 
   normalUpgrades:
-  - upgradeName: Increased Size
-    description: Increases the size of the turret's projectiles
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
-    rarity: 0
   - upgradeName: Increased Speed
     description: Increases the speed of the turret's projectiles
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    effect: {fileID: 11400000, guid: ef23309248dda094e9452e68295db882, type: 2}
     rarity: 0
-  - upgradeName: Extra Lifetime
+  - upgradeName: Increased Bullet Lifetime
     description: Increases the lifetime of the turret's projectiles
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    effect: {fileID: 11400000, guid: d71d92aa1263cfe4cba9299fcea34f0a, type: 2}
     rarity: 0
   - upgradeName: Increased Firing rate
     description: Increases the turret's firing rate
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 0
   rareUpgrades:
-  - upgradeName: Extra Projectile
-    description: Fires an additional projectile
+  - upgradeName: BLANK
+    description: BLANK
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 1
-  - upgradeName: Multi shot
-    description: Allows the turret to shoot multiple projectiles at once
+  - upgradeName: BLANK
+    description: BLANK
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 1
   - upgradeName: Pierce
-    description: Allows projectiles to pierce through enemies
+    description: no work Allows projectiles to pierce through enemies
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 1
   legendaryUpgrades:
   - upgradeName: Chain
-    description: Projectiles chain to additional targets
+    description: No Work Projectiles chain to additional targets
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 2
-  - upgradeName: Metor
-    description: Summons a meteor strike at the target area
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+  - upgradeName: Multi shot
+    description: Allows the turret to shoot multiple projectiles at once
+    effect: {fileID: 11400000, guid: 8328baaaf590a3b4fb11613dbe9483d8, type: 2}
     rarity: 2
-  - upgradeName: Ricochet
-    description: Projectiles ricochet off terrain
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+  - upgradeName: Extra Projectile
+    description: Fires an additional projectile
+    effect: {fileID: 11400000, guid: 99a69e51eab120342b13d1d519413eca, type: 2}
     rarity: 2

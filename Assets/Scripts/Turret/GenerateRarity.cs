@@ -7,7 +7,7 @@ public class GenerateRarity : MonoBehaviour
     public string SelectRarity()
     {
         float rarityRoll = Random.Range(0, 1f);
-        print(rarityRoll);
+        //print(rarityRoll);
         
         if (rarityRoll <= 0.20f)
         {

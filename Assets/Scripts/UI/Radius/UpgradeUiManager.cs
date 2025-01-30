@@ -27,6 +27,8 @@ public class UpgradeUiManager : MonoBehaviour
     
     [SerializeField] private SelectDescription selectDescription;
 
+    private UpgradeGold _upgradeGold;
+
     private string chosenUpgrade = "";
 
     //if the description has already been generated and the player runs away from the turret
@@ -39,11 +41,15 @@ public class UpgradeUiManager : MonoBehaviour
 
     [SerializeField] private ApplyUpgrade _applyUpgrade;
 
+    //Gold
+    private int upgradePrice;
+    private AddGold addGold;
+    
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-
-        //_applyUpgrade = GetComponent<ApplyUpgrade>();
+        addGold = GetComponent<AddGold>();
+        _upgradeGold = GetComponent<UpgradeGold>();
     }
 
     private void Start()
@@ -74,6 +80,7 @@ public class UpgradeUiManager : MonoBehaviour
             
             //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
             _applyUpgrade.raritySelected = selectedRarity;
+            storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
             
             //Pick Upgrades
             storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
@@ -87,9 +94,15 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (isDescriptionAlreadyGenerated)
         {
+            //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
+            displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+            
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
+        
+        //Set Display Gold Text and return amount
+        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity);
     }
     
     private void SetTextToUi(string[] Text)
@@ -123,7 +136,16 @@ public class UpgradeUiManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
+                //Selected Upgrade
+                if (upgradePrice <= PlayerGold.CURRENT_PLAYER_GOLD)
+                {
+                    _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
+                    addGold.MinusGoldToDisplay(upgradePrice);
+                }
+                else
+                {
+                    print("Player doesnt have enough gold to buy upgrade");
+                }
             }
         }
     }
@@ -168,7 +190,7 @@ public class UpgradeUiManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void TurnOffAllUi(bool showUi)
+    public void TurnOffAllUi(bool showUi)
     {
         if (!showUi)
         {

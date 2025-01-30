@@ -7,16 +7,9 @@ public class FireRateScriptableObject : UpgradeEffect
     
     public override void Apply(GameObject targetTurret)
     {
-        Debug.Log("Hi from FireRateScriptableObject");
-        
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            float currentUpgradeAmount = turretStats.fireRateAmount;
-            
-            TurretShoot turretshoot = targetTurret.GetComponent<TurretShoot>();
-            turretshoot.modifierFireRate += currentUpgradeAmount;
-            
-            Debug.Log($"Increased attack of {targetTurret.name} by {attackIncreaseAmount}");
+            turretStats.modifierFireRate += attackIncreaseAmount;
         }
         else
         {

@@ -487,9 +487,10 @@ MonoBehaviour:
   rightShootDirection: 0
   AllowTurretToShoot: 1
   numberOfProjectiles: 1
-  modifierFireRate: 0
-  modifierBulletLifeTime: 0
-  modifierBulletSpeed: 0
+  angleSpread: 30
+  extraProjectiles: 1
+  multiShotCount: 1
+  multiShotDelay: 0.25
 --- !u!1 &183555342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1266,6 +1267,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+      propertyPath: extraProjectiles
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+      propertyPath: AllowTurretToShoot
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+      propertyPath: numberOfProjectiles
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.67
@@ -1309,6 +1322,10 @@ PrefabInstance:
     - target: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
       propertyPath: m_Name
       value: TurretBasic (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4571525935793682645, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+      propertyPath: modifierBulletLifeTime
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

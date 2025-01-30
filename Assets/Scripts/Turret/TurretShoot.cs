@@ -1,48 +1,39 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretShoot : MonoBehaviour
 {
     public TurretConfig turretConfig;
-    
-    [Header("Shoot Transforms")]
 
-    [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
-    
-    [Header("Shoot points")]
+    [Header("Shoot Transforms")] [SerializeField]
+    private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
 
-    private Transform[] shootPoints;
-    
+    [Header("Shoot points")] private Transform[] shootPoints;
+
     private List<Vector2> directions = new List<Vector2>();
-    //Should be part of a scriptable object
-    [Header("Stats")]
 
-    private float fireCooldown;
+    //Should be part of a scriptable object
+    [Header("Stats")] private float fireCooldown;
     private int shootPointIndex = 0;
 
-    [Header("Shoot Directions")]
-    [SerializeField] private bool upShootDirection; 
-    [SerializeField] private bool downShootDirection; 
-    [SerializeField] private bool leftShootDirection; 
+    [Header("Shoot Directions")] [SerializeField]
+    private bool upShootDirection;
+
+    [SerializeField] private bool downShootDirection;
+    [SerializeField] private bool leftShootDirection;
     [SerializeField] private bool rightShootDirection;
 
-    [Header("Can shoot?")]
+    [Header("Can shoot?")] public bool AllowTurretToShoot;
 
-    public bool AllowTurretToShoot;
-    
     public int numberOfProjectiles = 1;
-    
-    [Header("Upgrades")]
-    public float modifierFireRate = 0;
-    public float modifierBulletLifeTime = 0;
-    public float modifierBulletSpeed = 0;
 
     private TurretStats turretStats;
-    
+
     private void Awake()
     {
         shootPoints = new Transform[] { ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight };
-        
+        turretStats = GetComponent<TurretStats>();
     }
 
     private void Start()
@@ -72,8 +63,8 @@ public class TurretShoot : MonoBehaviour
             if (fireCooldown <= 0f)
             {
                 Shoot();
-                fireCooldown = 1f / (turretConfig.fireRate + modifierFireRate);
-            } 
+                fireCooldown = 1f / (turretConfig.fireRate + turretStats.modifierFireRate);
+            }
         }
     }
 
@@ -85,7 +76,7 @@ public class TurretShoot : MonoBehaviour
             return;
         }
 
-        foreach (Vector2 direction in directions)
+        foreach (Vector2 baseDirection in directions)
         {
             Transform currentShootPoint = shootPoints[shootPointIndex];
             if (currentShootPoint == null)
@@ -93,34 +84,61 @@ public class TurretShoot : MonoBehaviour
                 Debug.LogWarning("Shoot Point is missing.");
                 continue;
             }
-            //Set Bullet pierce Here.
 
-            // Instantiate the bullet
-            GameObject bullet = Instantiate(
-                turretConfig.bulletPrefab,
-                currentShootPoint.position,
-                Quaternion.identity
-            );
-            
-            
+            // Calculate the starting angle
+            float baseAngle = Mathf.Atan2(baseDirection.y, baseDirection.x) * Mathf.Rad2Deg;
 
-            // Pass the direction to the bullet script
-            BasicBullet bulletScript = bullet.GetComponent<BasicBullet>();
-            if (bulletScript != null)
+            for (int i = 0; i <= turretStats.extraProjectiles; i++)
             {
-                bulletScript.SetDirection(direction);
-                bulletScript.SetSpeed(turretConfig.bulletSpeed + modifierBulletSpeed);
+                // Calculate the angle offset for each projectile
+                float angleOffset = turretStats.angleSpread * (i - turretStats.extraProjectiles / 2f);
+
+                // Convert the new angle back to a direction vector
+                float newAngle = baseAngle + angleOffset;
+                Vector2 newDirection =
+                    new Vector2(Mathf.Cos(newAngle * Mathf.Deg2Rad), Mathf.Sin(newAngle * Mathf.Deg2Rad));
+
+                // Fire the initial projectile
+                FireProjectile(currentShootPoint, newDirection);
+
+                // Start multi-shot coroutines for delayed projectiles
+                if (turretStats.multiShotCount > 0)
+                {
+                    StartCoroutine(FireMultiShot(currentShootPoint, newDirection, turretStats.multiShotCount, turretStats.multiShotDelay));
+                }
             }
 
             // Cycle through shoot points
             shootPointIndex = (shootPointIndex + 1) % shootPoints.Length;
+        }
+    }
+    
+    private void FireProjectile(Transform shootPoint, Vector2 direction)
+    {
+        GameObject bullet = Instantiate(
+            turretConfig.bulletPrefab,
+            shootPoint.position,
+            Quaternion.identity
+        );
 
-            // Destroy the bullet after a set time
-            Destroy(bullet, turretConfig.bulletLifeTime);
+        BasicBullet bulletScript = bullet.GetComponent<BasicBullet>();
+        if (bulletScript != null)
+        {
+            bulletScript.SetDirection(direction);
+            bulletScript.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
+        }
+
+        Destroy(bullet, turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime);
+    }
+
+    private IEnumerator FireMultiShot(Transform shootPoint, Vector2 direction, int count, float delay)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            yield return new WaitForSeconds(delay);
+            FireProjectile(shootPoint, direction);
         }
     }
 
-    private void SetBulletUpgrades()
-    {
-    }
 }
+
