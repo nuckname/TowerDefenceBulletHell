@@ -487,10 +487,6 @@ MonoBehaviour:
   rightShootDirection: 0
   AllowTurretToShoot: 1
   numberOfProjectiles: 1
-  angleSpread: 30
-  extraProjectiles: 1
-  multiShotCount: 1
-  multiShotDelay: 0.25
 --- !u!1 &183555342
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,79 +1255,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldOreHealth: {fileID: 1644903798}
---- !u!1001 &333785160
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: extraProjectiles
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: AllowTurretToShoot
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882012, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: numberOfProjectiles
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 14.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882013, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: m_Name
-      value: TurretBasic (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4571525935793682645, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
-      propertyPath: modifierBulletLifeTime
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
 --- !u!1 &343446073
 GameObject:
   m_ObjectHideFlags: 0
@@ -8611,5 +8534,4 @@ SceneRoots:
   - {fileID: 422069735}
   - {fileID: 578336657}
   - {fileID: 1484612855}
-  - {fileID: 333785160}
   - {fileID: 283034927}

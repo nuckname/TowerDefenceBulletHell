@@ -6,6 +6,7 @@ public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private GameObject enemy;
+    [SerializeField] private float enemySpeed;
     
     public int amountOfEnemiesSpawned = 0;
 

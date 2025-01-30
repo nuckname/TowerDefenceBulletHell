@@ -58,7 +58,9 @@ public class RoundStateManager : MonoBehaviour
     {
         int totalEnemies = redEnemies + orangeEnemies + yellowEnemies + greenEnemies + blueEnemies + purpleEnemies;
         enemyOnMapCounter.IncreaseEnemyCount(totalEnemies);
-    
+        print("enemy total enemies:" + totalEnemies);
+        
+        //Spawns Enemies.
         spawnEnemies.SpawnEnemiesPerRound(redEnemies, orangeEnemies, yellowEnemies, greenEnemies, blueEnemies, purpleEnemies);
     }
 

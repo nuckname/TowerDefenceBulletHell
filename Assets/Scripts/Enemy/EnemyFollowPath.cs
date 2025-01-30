@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFollowPath : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f;
+    public float moveSpeed = 2f;
     private Transform[] waypoints; // Local cached waypoints array
     private int waypointIndex = 0;
 

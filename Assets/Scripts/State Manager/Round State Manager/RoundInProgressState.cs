@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class RoundInProgressState : RoundBaseState
 {
-    private int roundCounter = 1;
+    private int roundCounter = 0;
     public override void EnterState(RoundStateManager roundStateManager)
     {
         Debug.Log("Round In Progress State");
@@ -30,27 +30,27 @@ public class RoundInProgressState : RoundBaseState
     {
         if (roundCounter == 1)
         {
-            roundStateManager.SpawnBasicEnemies(3,0,0,0,0,0);
+            roundStateManager.SpawnBasicEnemies(3,3,1,0,0,0);
         }
         
         else if (roundCounter == 2)
         {
-            roundStateManager.SpawnBasicEnemies(5,1,0,0,0,0);
+            roundStateManager.SpawnBasicEnemies(5,5,2,1,0,0);
         }
         
         else if (roundCounter == 3)
         {
-            roundStateManager.SpawnBasicEnemies(10,1,0,0,3,0);
+            roundStateManager.SpawnBasicEnemies(10,1,1,0,3,0);
         }
         
         else if (roundCounter == 4)
         {
-            roundStateManager.SpawnBasicEnemies(25,1,0,0,5,1);
+            roundStateManager.SpawnBasicEnemies(5,3,3,2,5,1);
         }
         
         else if (roundCounter == 5)
         {
-            roundStateManager.SpawnBasicEnemies(50,0,0,0,0,1);
+            roundStateManager.SpawnBasicEnemies(3,3,7,2,0,3);
         }
         
         else if (roundCounter == 6)

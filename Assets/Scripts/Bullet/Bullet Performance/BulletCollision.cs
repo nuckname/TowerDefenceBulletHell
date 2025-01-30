@@ -7,12 +7,11 @@ using UnityEngine.Serialization;
 public class BulletCollision : MonoBehaviour
 {
     //Upgrades
-    public int pirceUpgradeValue = 1;
     private PiercingBulletUpgrade piercingBulletUpgrade;
     
     private GameObject basicTurret;
-    public int pierceUpgradeValue = 1;
-    private int pierceCounter;
+    
+    public int pierceCounter = 3;
     private void Awake()
     {
         piercingBulletUpgrade = GetComponentInChildren<PiercingBulletUpgrade>();
@@ -23,8 +22,17 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            //Takes damage in Enemy Collision
-            piercingBulletUpgrade.PierceUpgrade(1);
+            print(pierceCounter);
+            
+            if (pierceCounter > 0)
+            {
+                pierceCounter--;
+            }
+            else
+            {
+                print("destory from pierce");
+                Destroy(gameObject);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D other)

@@ -9,12 +9,13 @@ public class EnemyOnMapCounter : MonoBehaviour
     public void IncreaseEnemyCount(int amount)
     {
         CurrentEnemiesOnMap += amount;
-        print("CurrentEnemiesOnMap" + CurrentEnemiesOnMap);
+        print("enemy CurrentEnemiesOnMap" + CurrentEnemiesOnMap);
     }
 
     public void DecreaseEnemyCount()
     {
         CurrentEnemiesOnMap--;
+        print("enemy : -1 enemy");
         if (CurrentEnemiesOnMap <= 0)
         {
             roundStateManager.SwitchState(roundStateManager.roundOverState);

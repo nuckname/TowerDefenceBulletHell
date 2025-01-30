@@ -8,7 +8,7 @@ public class TurretStats : MonoBehaviour
     public float modifierBulletSpeed = 0;
     
     [Header("Pierce")]
-    public int PierceAmount = 0;
+    public int pierceCount = 0;
 
     [Header("Extra Projectiles")]
     public float angleSpread = 30f;
