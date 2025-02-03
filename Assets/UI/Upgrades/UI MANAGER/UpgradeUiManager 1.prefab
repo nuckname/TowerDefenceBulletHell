@@ -161,6 +161,7 @@ MonoBehaviour:
   selectDescription: {fileID: 2155232483070051465}
   ifDescriptionAlreadyGenerated: 0
   noUpgradeSelected: 0
+  playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   _applyUpgrade: {fileID: -1300551357437857721}
 --- !u!61 &5845366234834858286
 BoxCollider2D:

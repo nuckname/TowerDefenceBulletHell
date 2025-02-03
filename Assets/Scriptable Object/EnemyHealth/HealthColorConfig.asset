@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc9dd6cf2bef68e4fb8d6336d590790b, type: 3}
+  m_Name: HealthColorConfig
+  m_EditorClassIdentifier: 
+  healthColorPairs:
+  - color: {r: 1, g: 0, b: 0, a: 0.16470589}
+    healthThreshold: 1
+  - color: {r: 1, g: 0, b: 0, a: 0.33333334}
+    healthThreshold: 2
+  - color: {r: 1, g: 0, b: 0, a: 0.49803922}
+    healthThreshold: 3
+  - color: {r: 1, g: 0.03245783, b: 0, a: 0.72156864}
+    healthThreshold: 4
+  - color: {r: 1, g: 0, b: 0, a: 1}
+    healthThreshold: 5
+  - color: {r: 1, g: 0.55879223, b: 0, a: 0.16470589}
+    healthThreshold: 6
+  - color: {r: 1, g: 0.56078434, b: 0, a: 0.33333334}
+    healthThreshold: 7
+  - color: {r: 1, g: 0.56078434, b: 0, a: 0.49803922}
+    healthThreshold: 8
+  - color: {r: 1, g: 0.56078434, b: 0, a: 0.72156864}
+    healthThreshold: 9
+  - color: {r: 1, g: 0.56078434, b: 0, a: 1}
+    healthThreshold: 10
+  - color: {r: 0.69286716, g: 1, b: 0, a: 1}
+    healthThreshold: 11
+  - color: {r: 0.6187502, g: 1, b: 0, a: 1}
+    healthThreshold: 12
+  - color: {r: 1, g: 0.8608516, b: 0, a: 1}
+    healthThreshold: 13
+  - color: {r: 1, g: 0.76640606, b: 0, a: 1}
+    healthThreshold: 14
+  - color: {r: 1, g: 0.39841667, b: 0, a: 1}
+    healthThreshold: 15
+  defaultColor: {r: 0.4339623, g: 0.4339623, b: 0.4339623, a: 1}

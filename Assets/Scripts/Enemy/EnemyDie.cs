@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class EnemyDie : MonoBehaviour
 {
-    [SerializeField] private AddGold _addGold;
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
@@ -35,8 +34,6 @@ public class EnemyDie : MonoBehaviour
         }
         
         enemyOnMapCounter.DecreaseEnemyCount();
-
-        //_addGold.AddGoldToDisplay(20);
 
         _enemyDropItems.DropItems();
 

@@ -527,7 +527,6 @@ GameObject:
   - component: {fileID: 2859103754874963892}
   - component: {fileID: 3335815252357642464}
   - component: {fileID: 1900634903416962752}
-  - component: {fileID: 2219967726193495971}
   - component: {fileID: 1776391278729505495}
   - component: {fileID: -6025028217366042230}
   m_Layer: 0
@@ -624,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 3661742165
+  GlobalObjectIdHash: 1197456899
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -695,20 +694,7 @@ MonoBehaviour:
   TurretBasic: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
   GhostPlacementTurret: {fileID: 2049687118381746045, guid: 506f8a4df7516fd4784c7b3cbe926274, type: 3}
   goldMiner: {fileID: 4790498764909266146, guid: f0a139b6050a18a45bce535d99de4a6c, type: 3}
-  _addGold: {fileID: 0}
---- !u!114 &2219967726193495971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7309831068945400738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldText: {fileID: 0}
+  playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
 --- !u!114 &1776391278729505495
 MonoBehaviour:
   m_ObjectHideFlags: 0

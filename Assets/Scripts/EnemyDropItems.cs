@@ -22,10 +22,12 @@ public class EnemyDropItems : MonoBehaviour
                 gameObject.transform.position.z), Quaternion.identity);
         }
         
+        
         int amountOfHeartsToDrop = GenerateAmount(minimumGoldCoins, maximumGoldCoins);
         for (int i = 0; i <= amountOfHeartsToDrop; i++)
         {
-            Instantiate(heart, gameObject.transform.position, Quaternion.identity);
+            //Only Spawn Hearts for boss fight.
+            //Instantiate(heart, gameObject.transform.position, Quaternion.identity);
         }
         
     }

@@ -28,60 +28,51 @@ public class RoundInProgressState : RoundBaseState
 
     private void SpawnRoundEnemies(int roundCounter, RoundStateManager roundStateManager)
     {
-        if (roundCounter == 1)
+        // Use a switch statement for better readability
+        switch (roundCounter)
         {
-            roundStateManager.SpawnBasicEnemies(3,3,1,0,0,0);
+            case 1:
+                roundStateManager.SpawnBasicEnemies(1); // 1 basic enemy
+                break;
+            case 2:
+                roundStateManager.SpawnBasicEnemies(2); // 2 basic enemies
+                break;
+            case 3:
+                roundStateManager.SpawnBasicEnemies(3); // 3 basic enemies
+                break;
+            case 4:
+                roundStateManager.SpawnBasicEnemies(4); // 4 basic enemies
+                break;
+            case 5:
+                roundStateManager.SpawnBasicEnemies(5); // 5 basic enemies
+                break;
+            case 6:
+                roundStateManager.SpawnBasicEnemies(6); // 6 basic enemies
+                break;
+            case 7:
+                roundStateManager.SpawnBasicEnemies(7); // 7 basic enemies
+                break;
+            case 8:
+                roundStateManager.SpawnBasicEnemies(8); // 8 basic enemies
+                break;
+            case 9:
+                roundStateManager.SpawnBasicEnemies(9); // 9 basic enemies
+                break;
+            case 10:
+                roundStateManager.SpawnBasicEnemies(10); // 10 basic enemies
+                break;
+            default:
+                // Handle rounds beyond 10 (if needed)
+                Debug.LogWarning($"Round {roundCounter} is not defined. Defaulting to 10 enemies.");
+                roundStateManager.SpawnBasicEnemies(10);
+                break;
         }
-        
-        else if (roundCounter == 2)
-        {
-            roundStateManager.SpawnBasicEnemies(5,5,2,1,0,0);
-        }
-        
-        else if (roundCounter == 3)
-        {
-            roundStateManager.SpawnBasicEnemies(10,1,1,0,3,0);
-        }
-        
-        else if (roundCounter == 4)
-        {
-            roundStateManager.SpawnBasicEnemies(5,3,3,2,5,1);
-        }
-        
-        else if (roundCounter == 5)
-        {
-            roundStateManager.SpawnBasicEnemies(3,3,7,2,0,3);
-        }
-        
-        else if (roundCounter == 6)
-        {
-            roundStateManager.SpawnBasicEnemies(10,10,10,10,10,10);
-        }
-        
-        else if (roundCounter == 7)
-        {
-            roundStateManager.SpawnBasicEnemies(10,10,0,10,20,12);
-        }
-        
-        else if (roundCounter == 8)
-        {
-            roundStateManager.SpawnBasicEnemies(10,0,0,25,25,25);
-        }
-        
-        else if (roundCounter == 9)
-        {
-            roundStateManager.SpawnBasicEnemies(0,0,0,0,0,50);
-        }
-        
-        else if (roundCounter == 10)
-        {
-            roundStateManager.SpawnBasicEnemies(0,0,0,10,25,20);
-        }
-        
-        Debug.Log(roundCounter);
-        
-        //Causingbug where turrets dont shoot 
-        //roundStateManager.SwitchState(roundStateManager.roundOverState);
+
+        Debug.Log($"Round {roundCounter} enemies spawned.");
+
+        // Ensure the state is not switched too early
+        // Uncomment and debug if necessary
+        // roundStateManager.SwitchState(roundStateManager.roundOverState);
     }
     
 }

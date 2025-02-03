@@ -3,39 +3,62 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public HealthColourConfigScriptableObject HealthColourConfigScriptableObject;
+    
     [SerializeField] private EnemyDie _enemyDie;
     [SerializeField] private EnemyCollision _enemyCollision;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private AddGold _addGold;
-    
     public int EnemyStartingHealth;
     
     public Dictionary<int, Color> colorDictionary;
 
-    void Start()
+    void Awake()
     {
-        colorDictionary = new Dictionary<int, Color>
+        // Initialize the color dictionary
+        colorDictionary = new Dictionary<int, Color>();
+
+        //Convert HealthColourConfigScriptableObject to dictionary
+        if (HealthColourConfigScriptableObject != null)
         {
-            { 1, Color.red },
-            { 2, Color.green },
-            { 3, Color.blue },
-            { 4, Color.yellow },
-            { 5, Color.gray }
-        };
-        
-        //Sets inital colour
+            foreach (var pair in HealthColourConfigScriptableObject.healthColorPairs)
+            {
+                colorDictionary[pair.healthThreshold] = pair.color;
+            }
+        }
+
+        // Set initial color
         if (colorDictionary.TryGetValue(EnemyStartingHealth, out Color initialColor))
         {
             spriteRenderer.color = initialColor;
         }
+        else
+        {
+            // Use default color if no matching threshold is found
+            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+        }
     }
+    
+    public void InitializeEnemy(int enemyHp)
+    {
+        EnemyStartingHealth = enemyHp;
+
+        // Set the initial color based on the enemyHp value
+        if (colorDictionary.TryGetValue(enemyHp, out Color initialColor))
+        {
+            spriteRenderer.color = initialColor;
+        }
+        else
+        {
+            // Use default color if no matching threshold is found
+            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+        }
+    }
+
     
     public void EnemyHit()
     {
         EnemyStartingHealth--;
-        
-        _addGold.AddGoldToDisplay(5);
         
         if (EnemyStartingHealth <= 0)
         {
@@ -46,10 +69,15 @@ public class EnemyHealth : MonoBehaviour
         {
             spriteRenderer.color = newColor;
         }
+        else
+        {
+            // Use default color if no matching threshold is found
+            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+        }
     }
         
     void Update()
     {
-
+        // Update logic if needed
     }
 }

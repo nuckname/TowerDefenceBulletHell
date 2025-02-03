@@ -5,14 +5,9 @@ using UnityEngine.Serialization;
 public class GoldMiner : MonoBehaviour
 {
     [SerializeField] private int MinerGoldPerSeconds = 1;
-    private AddGold _addGold;
     private bool mining;
     private bool isMiningCoroutineRunning;
 
-    private void Awake()
-    {
-        _addGold = GetComponent<AddGold>();
-    }
 
     private void Update()
     {
@@ -25,7 +20,7 @@ public class GoldMiner : MonoBehaviour
 
         while (mining)
         {
-            _addGold.AddGoldToDisplay(MinerGoldPerSeconds);
+            //_addGold.AddGoldToDisplay(MinerGoldPerSeconds);
             yield return new WaitForSeconds(3f); 
         }
 

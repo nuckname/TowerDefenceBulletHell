@@ -54,14 +54,10 @@ public class RoundStateManager : MonoBehaviour
     }
     
 
-    public void SpawnBasicEnemies(int redEnemies, int orangeEnemies, int yellowEnemies, int greenEnemies, int blueEnemies, int purpleEnemies)
+    public void SpawnBasicEnemies(int currentRoundIndex)
     {
-        int totalEnemies = redEnemies + orangeEnemies + yellowEnemies + greenEnemies + blueEnemies + purpleEnemies;
-        enemyOnMapCounter.IncreaseEnemyCount(totalEnemies);
-        print("enemy total enemies:" + totalEnemies);
-        
-        //Spawns Enemies.
-        spawnEnemies.SpawnEnemiesPerRound(redEnemies, orangeEnemies, yellowEnemies, greenEnemies, blueEnemies, purpleEnemies);
+        enemyOnMapCounter.MaxEnemiesOnMap = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
+        print("Total enemies" + enemyOnMapCounter.MaxEnemiesOnMap);
     }
 
 }

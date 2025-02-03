@@ -7,16 +7,13 @@ public class PlaceObject : NetworkBehaviour
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject GhostPlacementTurret;
     [SerializeField] private GameObject goldMiner;
-    [SerializeField] private AddGold _addGold;
 
     public static int TurretBasicCost = 150;
 
     private bool GhostTurretHasBeenPlaced = false;
 
-    private void Awake()
-    {
-        _addGold = GetComponent<AddGold>();
-    }
+    //Gold
+    public PlayerGoldScriptableObject playerGold;
 
     void Update()
     {
@@ -29,27 +26,28 @@ public class PlaceObject : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (!GhostTurretHasBeenPlaced)
-            {
-                if (PlayerGold.CURRENT_PLAYER_GOLD >= TurretBasicCost)
-                {
-                    SpawnGhostTurret();
-                }
-                else
-                {
-                    print("Not enought money");
-                }
-            }
-            else
-            {
-                BindingOfIsaacShooting.disableShooting = false;
-                SpawnBasicTurret();
-            }
+            BuyTurretGhost();
         }
 
         if (Input.GetKeyDown(KeyCode.O))
         {
             PlaceGoldMiner();
+        }
+    }
+
+    public void BuyTurretGhost()
+    {
+        if (!GhostTurretHasBeenPlaced)
+        {
+            if (playerGold.SpendGold(TurretBasicCost))
+            {
+                SpawnGhostTurret();
+            }
+        }
+        else
+        {
+            BindingOfIsaacShooting.disableShooting = false;
+            SpawnBasicTurret();
         }
     }
 
@@ -61,7 +59,7 @@ public class PlaceObject : NetworkBehaviour
 
     private void SpawnBasicTurret()
     {
-        _addGold.MinusGoldToDisplay(TurretBasicCost);
+        //_addGold.MinusGoldToDisplay(TurretBasicCost);
 
         GameObject ghostTurret = GameObject.FindWithTag("GhostTurret");
         if (ghostTurret != null)
@@ -76,10 +74,12 @@ public class PlaceObject : NetworkBehaviour
 
     private void PlaceGoldMiner()
     {
+        /*
         if (PlayerGold.CURRENT_PLAYER_GOLD >= 100)
         {
             Instantiate(goldMiner, transform.position, Quaternion.identity);
             _addGold.MinusGoldToDisplay(100);
         }
+        */
     }
 }

@@ -38,17 +38,18 @@ public class UpgradeUiManager : MonoBehaviour
 
     private string selectedRarity = "Error";
     private int rarityIndex = 0;
+    
+    //Gold
+    public PlayerGoldScriptableObject playerGold;
 
     [SerializeField] private ApplyUpgrade _applyUpgrade;
 
     //Gold
     private int upgradePrice;
-    private AddGold addGold;
     
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-        addGold = GetComponent<AddGold>();
         _upgradeGold = GetComponent<UpgradeGold>();
     }
 
@@ -137,15 +138,20 @@ public class UpgradeUiManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //Selected Upgrade
-                if (upgradePrice <= PlayerGold.CURRENT_PLAYER_GOLD)
-                {
-                    _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
-                    addGold.MinusGoldToDisplay(upgradePrice);
-                }
-                else
-                {
-                    print("Player doesnt have enough gold to buy upgrade");
-                }
+                //Gold
+                BuyUpgrade();
+            }
+        }
+    }
+
+    public void BuyUpgrade()
+    {
+        if (playerGold != null)
+        {
+            //Minus gold in if statement
+            if (playerGold.SpendGold(upgradePrice))
+            {
+                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
             }
         }
     }

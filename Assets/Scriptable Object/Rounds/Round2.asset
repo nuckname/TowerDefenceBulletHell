@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d90953c3925cd584b83584544f4bf9c2, type: 3}
+  m_Name: Round2
+  m_EditorClassIdentifier: 
+  waveName: Wave 2
+  enemyGroups:
+  - enemyPrefab: {fileID: 6088919820819901208, guid: 39ea077f2d37b214bb90ae5a5aca5034, type: 3}
+    count: 5
+    delayBeforeGroup: 0
+    spawnInterval: 1
+  - enemyPrefab: {fileID: 6088919820819901208, guid: 2cad5bbd2e023c240bd43d37e040c88e, type: 3}
+    count: 3
+    delayBeforeGroup: 0
+    spawnInterval: 1
+  - enemyPrefab: {fileID: 6088919820819901208, guid: cc20d6cabdd0fa4438038cc87a121598, type: 3}
+    count: 1
+    delayBeforeGroup: 1
+    spawnInterval: 1
+  delayAfterWave: 2
+  speedModifer: 0
+  randomizeSpawnOrder: 0
+  spawnInterval: 0.5
+  totalEnemies: 9

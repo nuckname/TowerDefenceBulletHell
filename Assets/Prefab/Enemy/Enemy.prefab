@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -6399053660655839645}
   - component: {fileID: 5035588526783821658}
   m_Layer: 0
-  m_Name: Enemy(1)
+  m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0.49897233, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.17726491, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8f170b897b52dc4081c51d5bcbbf844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyOnMapCounter: {fileID: 0}
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _addGold: {fileID: -6399053660655839645}
   _enemyDropItems: {fileID: 5035588526783821658}
+  enemyOnMapCounter: {fileID: 0}
 --- !u!114 &-8911375633613691611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,11 +193,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0031a3711e7ad64fb9f73b23fd0ae6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HealthColourConfigScriptableObject: {fileID: 11400000, guid: 5b08a459c366eb347ade455fbee74bb3, type: 2}
   _enemyDie: {fileID: 8801792569001409356}
   _enemyCollision: {fileID: -6422447422121149574}
   spriteRenderer: {fileID: 3739711818550496154}
   _addGold: {fileID: -6399053660655839645}
-  EnemyStartingHealth: 5
+  EnemyStartingHealth: 1
+  roundsScriptableObject: {fileID: 0}
 --- !u!114 &-6399053660655839645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goldText: {fileID: 0}
 --- !u!114 &5035588526783821658
 MonoBehaviour:
   m_ObjectHideFlags: 0
