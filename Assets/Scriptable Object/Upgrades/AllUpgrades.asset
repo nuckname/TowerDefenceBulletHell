@@ -14,15 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normalUpgrades:
   - upgradeName: Increased Speed
-    description: Increases the speed of the turret's projectiles
+    description: Increases projectile speed
     effect: {fileID: 11400000, guid: ef23309248dda094e9452e68295db882, type: 2}
     rarity: 0
   - upgradeName: Increased Bullet Lifetime
-    description: Increases the lifetime of the turret's projectiles
+    description: Increases projectile lifetime
     effect: {fileID: 11400000, guid: d71d92aa1263cfe4cba9299fcea34f0a, type: 2}
     rarity: 0
   - upgradeName: Increased Firing rate
-    description: Increases the turret's firing rate
+    description: Increases firing rate
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 0
   rareUpgrades:
@@ -35,8 +35,8 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 1
   - upgradeName: Pierce
-    description: no work Allows projectiles to pierce through enemies
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
+    description: Projectiles pierce through enemies
+    effect: {fileID: 11400000, guid: 56af038a0979ac2449071588e9ff405a, type: 2}
     rarity: 1
   legendaryUpgrades:
   - upgradeName: Chain
@@ -44,7 +44,7 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     rarity: 2
   - upgradeName: Multi shot
-    description: Allows the turret to shoot multiple projectiles at once
+    description: Shoots multiple projectiles at once. Following the same path.
     effect: {fileID: 11400000, guid: 8328baaaf590a3b4fb11613dbe9483d8, type: 2}
     rarity: 2
   - upgradeName: Extra Projectile

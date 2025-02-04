@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 3894418484581801063}
   - component: {fileID: 8801792569001409356}
   - component: {fileID: -8911375633613691611}
-  - component: {fileID: -6399053660655839645}
   - component: {fileID: 5035588526783821658}
   m_Layer: 0
   m_Name: Enemy
@@ -120,6 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyOnMapCounter: {fileID: 0}
+  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -178,7 +178,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c19941caea5cd5458404c940f11945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _addGold: {fileID: -6399053660655839645}
   _enemyDropItems: {fileID: 5035588526783821658}
   enemyOnMapCounter: {fileID: 0}
 --- !u!114 &-8911375633613691611
@@ -197,22 +196,7 @@ MonoBehaviour:
   _enemyDie: {fileID: 8801792569001409356}
   _enemyCollision: {fileID: -6422447422121149574}
   spriteRenderer: {fileID: 3739711818550496154}
-  _addGold: {fileID: -6399053660655839645}
   EnemyStartingHealth: 1
-  roundsScriptableObject: {fileID: 0}
---- !u!114 &-6399053660655839645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6088919820819901208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldText: {fileID: 0}
 --- !u!114 &5035588526783821658
 MonoBehaviour:
   m_ObjectHideFlags: 0

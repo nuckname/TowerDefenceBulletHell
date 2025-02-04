@@ -1,11 +1,14 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class GoldUi : MonoBehaviour
 {
-    public PlayerGoldScriptableObject playerGold;
-    public TMP_Text goldText;
+    [SerializeField] private PlayerGoldScriptableObject playerGold;
 
+    [SerializeField] private TMP_Text goldText;
+
+    private int _lastGoldAmount;
     private void Start()
     {
         if (playerGold == null)
@@ -13,27 +16,19 @@ public class GoldUi : MonoBehaviour
             Debug.LogError("PlayerGoldScriptableObject is not assigned in GoldUI.");
             return;
         }
-
-        if (goldText == null)
-        {
-            Debug.LogError("TMP_Text is not assigned in GoldUI.");
-            return;
-        }
-
-        UpdateGoldUI(playerGold.currentGold);
-
-        // Subscribe to the gold change event
-        playerGold.OnGoldChanged.AddListener(UpdateGoldUI);
     }
-
-    private void OnDestroy()
+    
+    //xdd
+    private void Update()
     {
-        // Unsubscribe from the event to avoid memory leaks
-        if (playerGold != null)
+        // Check if the gold amount has changed
+        if (playerGold.currentGold != _lastGoldAmount)
         {
-            playerGold.OnGoldChanged.RemoveListener(UpdateGoldUI);
+            _lastGoldAmount = playerGold.currentGold;
+            UpdateGoldUI(_lastGoldAmount);
         }
     }
+
 
     // Update the TMP_Text component when gold changes
     private void UpdateGoldUI(int goldAmount)

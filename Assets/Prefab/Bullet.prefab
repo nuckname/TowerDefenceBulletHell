@@ -59,7 +59,6 @@ GameObject:
   - component: {fileID: -5056997756861274050}
   - component: {fileID: 4977152572373008689}
   - component: {fileID: -8786673248908898272}
-  - component: {fileID: -4298481627961799436}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -196,8 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c86fd63096b1f40ac4caf00a65dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pirceUpgradeValue: 1
-  pierceUpgradeValue: 1
+  pierceCounter: 0
 --- !u!50 &-5056997756861274050
 Rigidbody2D:
   serializedVersion: 5
@@ -250,16 +248,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turretConfig: {fileID: 11400000, guid: 2841c27e2dff17b4a8337647cceb0f3b, type: 2}
---- !u!114 &-4298481627961799436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldText: {fileID: 0}

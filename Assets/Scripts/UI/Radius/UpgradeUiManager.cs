@@ -34,13 +34,16 @@ public class UpgradeUiManager : MonoBehaviour
     //if the description has already been generated and the player runs away from the turret
     //and reaccesses it the turret should no generate new upgrades or roll rarity again.
     [SerializeField] private bool ifDescriptionAlreadyGenerated = false;
-    [SerializeField] bool noUpgradeSelected = true;
+    
+    //Not used?
+    //[SerializeField] bool noUpgradeSelected = true;
 
     private string selectedRarity = "Error";
     private int rarityIndex = 0;
     
     //Gold
     public PlayerGoldScriptableObject playerGold;
+    private int rerollGoldAmount = 50;
 
     [SerializeField] private ApplyUpgrade _applyUpgrade;
 
@@ -77,7 +80,8 @@ public class UpgradeUiManager : MonoBehaviour
         if (!isDescriptionAlreadyGenerated)
         {
             //Generate rarity
-            selectedRarity = generateRarity.SelectRarity();
+            //pass in selectedRarity so they it doesnt reroll the same rarity twice.
+            selectedRarity = generateRarity.SelectRarity(selectedRarity);
             
             //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
             _applyUpgrade.raritySelected = selectedRarity;
@@ -141,6 +145,17 @@ public class UpgradeUiManager : MonoBehaviour
                 //Gold
                 BuyUpgrade();
             }
+            
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                print("reroll");
+                
+                if (playerGold.SpendGold(50))
+                {
+                    _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret, true);
+                }
+                //_applyUpgrade.
+            }
         }
     }
 
@@ -151,7 +166,7 @@ public class UpgradeUiManager : MonoBehaviour
             //Minus gold in if statement
             if (playerGold.SpendGold(upgradePrice))
             {
-                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
+                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret, false);
             }
         }
     }

@@ -8,26 +8,17 @@ using UnityEngine.Events;
 public class PlayerGoldScriptableObject : ScriptableObject
 {
     public int currentGold;
-    public int StartingAmountOfGold = 300; 
-    
-    // Event to notify when gold changes
-    public event Action<int> OnGoldChanged;
+    public int startingAmountOfGold;
 
-    private TextMeshPro goldText;
-
-    private void Awake()
+    private void OnEnable()
     {
-        //Set Starting amount of Gold
-        StartingAmountOfGold = 300;
-        currentGold = StartingAmountOfGold;
-        
-        //Get Display Gold Text
-        goldText = GameObject.FindWithTag("Display Gold").GetComponent<TextMeshPro>();
-
-        if (goldText == null)
-        {
-            Debug.LogError("Text Display is Null");
-        }
+        startingAmountOfGold = 300;
+        currentGold = startingAmountOfGold;
+    }
+    
+    private void Reset()
+    {
+        currentGold = startingAmountOfGold;
     }
 
     public void AddGold(int amount)
@@ -35,7 +26,6 @@ public class PlayerGoldScriptableObject : ScriptableObject
         Debug.Log("Added Gold.");
 
         currentGold += amount;
-        goldText.text += currentGold;
     }
 
     public bool SpendGold(int amount)
@@ -44,7 +34,6 @@ public class PlayerGoldScriptableObject : ScriptableObject
         {
             Debug.Log("Spent Gold");
             currentGold -= amount;
-            goldText.text += currentGold;
             return true;
         }
         Debug.Log("Not enoguh Gold");

@@ -10,27 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d90953c3925cd584b83584544f4bf9c2, type: 3}
-  m_Name: Round2
+  m_Name: Round3
   m_EditorClassIdentifier: 
   waveName: Wave 2
   enemyGroups:
-  - enemyHp: 5
-    count: 5
+  - enemyHp: 3
+    count: 20
     delayBeforeGroup: 0
-    spawnInterval: 1
-    bossSpawn: 0
-  - enemyHp: 5
-    count: 10
-    delayBeforeGroup: 0
-    spawnInterval: 1
-    bossSpawn: 0
-  - enemyHp: 20
-    count: 3
-    delayBeforeGroup: 1
-    spawnInterval: 1
+    spawnInterval: 0.25
     bossSpawn: 0
   delayAfterWave: 2
-  speedModifer: 0
+  speedModifer: 5
   randomizeSpawnOrder: 0
   spawnInterval: 0.5
-  totalEnemies: 18
+  totalEnemies: 20

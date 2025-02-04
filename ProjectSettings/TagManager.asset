@@ -28,6 +28,10 @@ TagManager:
   - PlayerBullet
   - PlayerTextHP
   - DeathText
+  - Death Pannel
+  - Text3
+  - Text1
+  - Text2
   layers:
   - Default
   - TransparentFX

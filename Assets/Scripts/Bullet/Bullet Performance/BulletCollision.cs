@@ -9,12 +9,20 @@ public class BulletCollision : MonoBehaviour
     //Upgrades
     private PiercingBulletUpgrade piercingBulletUpgrade;
     
+    public TurretStats turretStats;
+    
     private GameObject basicTurret;
     
-    public int pierceCounter = 3;
+    public int pierceIndex = 0;
     private void Awake()
     {
         piercingBulletUpgrade = GetComponentInChildren<PiercingBulletUpgrade>();
+    }
+
+    private void Start()
+    {
+        //Sets Pierce from counter and then lowers it.
+        pierceIndex = turretStats.pierceCount;
     }
 
     // Update is called once per frame
@@ -22,11 +30,9 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            print(pierceCounter);
-            
-            if (pierceCounter > 0)
+            if (pierceIndex > 0)
             {
-                pierceCounter--;
+                pierceIndex--;
             }
             else
             {
@@ -40,17 +46,6 @@ public class BulletCollision : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("OutOfZone"))
         {
             Destroy(gameObject);
-        }
-        
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            print("enemy");
-            //Destroy(gameObject);
-        }
-        
-        if (other.gameObject.CompareTag("Player"))
-        {
-            print("-1 hp?");
         }
     }
 }

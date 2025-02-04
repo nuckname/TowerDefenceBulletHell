@@ -13,8 +13,13 @@ public class ApplyUpgrade : MonoBehaviour
         upgradeUiManager = GetComponent<UpgradeUiManager>();
     }
 
-    public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret)
+    public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret, bool isReRoll)
     {
+        if (isReRoll)
+        {
+            print("raritySelected = null now");
+            raritySelected = "";
+        }
         //fixes a bug where UpgradeUiMager was getting destroied and so was raritySelected.
         //EG: when you press q and then reselect and pick an upgrade
         if (raritySelected == "")

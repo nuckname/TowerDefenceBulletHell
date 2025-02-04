@@ -4,30 +4,31 @@ using Random = UnityEngine.Random;
 
 public class GenerateRarity : MonoBehaviour
 {
-    public string SelectRarity()
+    public string SelectRarity(string excludeRarity = null)
     {
-        float rarityRoll = Random.Range(0, 1f);
-        //print(rarityRoll);
-        
-        if (rarityRoll <= 0.20f)
+        string selectedRarity;
+
+        do
         {
-            Debug.Log("Legendary Rarity");
-            return "Legendary Rarity";
+            float rarityRoll = Random.Range(0, 1f);
+
+            if (rarityRoll <= 0.20f)
+            {
+                selectedRarity = "Legendary Rarity";
+            }
+            else if (rarityRoll <= 0.50f)
+            {
+                selectedRarity = "Rare Rarity";
+            }
+            else //50 %
+            {
+                selectedRarity = "Normal Rarity";
+            }
         }
-        if (rarityRoll <= 0.50f)
-        {
-            Debug.Log("Rare Rarity");
-            return "Rare Rarity";
-        }
-        if (rarityRoll <= 0.70f)
-        {
-            Debug.Log("Normal Rarity");
-            return "Normal Rarity";
-        }
-        else
-        {
-            Debug.LogWarning("Rarity Error Returned Normal");
-            return "Normal Rarity";
-        }
+        //Ensure the selected rarity is not the same as the excluded one
+        while (selectedRarity == excludeRarity); 
+
+        Debug.Log($"Selected Rarity: {selectedRarity}");
+        return selectedRarity;
     }
 }

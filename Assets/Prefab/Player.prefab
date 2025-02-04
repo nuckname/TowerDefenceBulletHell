@@ -429,6 +429,7 @@ GameObject:
   - component: {fileID: 3756930944592646823}
   - component: {fileID: 7100972034993782912}
   - component: {fileID: 6278807831771051293}
+  - component: {fileID: 6797560733173272164}
   m_Layer: 0
   m_Name: PlayerCollision
   m_TagString: PlayerCollision
@@ -509,10 +510,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6fff52d7252b44886ca5c04d412b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthManager: {fileID: 0}
-  playerHP: {fileID: 0}
+  playerHealth: {fileID: 6797560733173272164}
+  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
+--- !u!114 &6797560733173272164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6856858152171935069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9068e58bac4e74e4a8d5f8c390ba765f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
+  healthText: {fileID: 0}
+  floatingTextPrefab: {fileID: 0}
   deathText: {fileID: 0}
-  currentHP: 10
 --- !u!1 &7309831068945400738
 GameObject:
   m_ObjectHideFlags: 0
