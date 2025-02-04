@@ -512,6 +512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 6797560733173272164}
   playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
+  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+  CoinGiveGoldAmount: 5
 --- !u!114 &6797560733173272164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -525,9 +527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  healthText: {fileID: 0}
-  floatingTextPrefab: {fileID: 0}
-  deathText: {fileID: 0}
 --- !u!1 &7309831068945400738
 GameObject:
   m_ObjectHideFlags: 0

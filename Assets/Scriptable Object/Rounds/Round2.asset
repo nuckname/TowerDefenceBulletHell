@@ -20,12 +20,17 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
   - enemyHp: 5
-    count: 10
+    count: 7
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
-  - enemyHp: 20
+  - enemyHp: 10
     count: 3
+    delayBeforeGroup: 1
+    spawnInterval: 1
+    bossSpawn: 0
+  - enemyHp: 15
+    count: 2
     delayBeforeGroup: 1
     spawnInterval: 1
     bossSpawn: 0
@@ -33,4 +38,4 @@ MonoBehaviour:
   speedModifer: 0
   randomizeSpawnOrder: 0
   spawnInterval: 0.5
-  totalEnemies: 18
+  totalEnemies: 17

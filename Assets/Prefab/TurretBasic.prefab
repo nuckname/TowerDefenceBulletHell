@@ -228,7 +228,7 @@ MonoBehaviour:
   modifierFireRate: 0
   modifierBulletLifeTime: 1
   modifierBulletSpeed: 0
-  PierceAmount: 0
+  pierceCount: 0
   angleSpread: 30
   extraProjectiles: 0
   multiShotCount: 0

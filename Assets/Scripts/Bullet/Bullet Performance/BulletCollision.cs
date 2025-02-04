@@ -22,7 +22,7 @@ public class BulletCollision : MonoBehaviour
     private void Start()
     {
         //Sets Pierce from counter and then lowers it.
-        pierceIndex = turretStats.pierceCount;
+        //pierceIndex = turretStats.pierceCount;
     }
 
     // Update is called once per frame
@@ -30,6 +30,7 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            /*
             if (pierceIndex > 0)
             {
                 pierceIndex--;
@@ -37,8 +38,9 @@ public class BulletCollision : MonoBehaviour
             else
             {
                 print("destory from pierce");
-                Destroy(gameObject);
             }
+            */
+            Destroy(gameObject);
         }
     }
     private void OnCollisionEnter2D(Collision2D other)
