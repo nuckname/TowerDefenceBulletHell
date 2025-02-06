@@ -42,6 +42,27 @@ public class BulletCollision : MonoBehaviour
             */
             Destroy(gameObject);
         }
+
+        if (other.gameObject.CompareTag("PlayerBullet"))
+        {
+            Destroy(other);
+            Destroy(gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("PlayerCollision"))
+        {
+            Destroy(gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+        
+        if (other.gameObject.CompareTag("Turret"))
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnCollisionEnter2D(Collision2D other)
     {

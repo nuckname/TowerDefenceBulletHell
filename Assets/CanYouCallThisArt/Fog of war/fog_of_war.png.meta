@@ -234,7 +234,12 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      fog_of_war_0: -4754792397827362388
+      fog_of_war_1: -2888690782999742558
+      fog_of_war_2: 5005520987984314579
+      fog_of_war_3: -98946230402280232
+      fog_of_war_4: 5988765640439679439
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

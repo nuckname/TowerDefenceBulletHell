@@ -8,12 +8,16 @@ public class PlaceObject : NetworkBehaviour
     [SerializeField] private GameObject GhostPlacementTurret;
     [SerializeField] private GameObject goldMiner;
 
-    public static int TurretBasicCost = 150;
+    public static int TurretBasicCost = 25;
 
     private bool GhostTurretHasBeenPlaced = false;
 
+    //[SerializeField] private GhostBlockPathCollision ghostBlockPathCollision;
+    [SerializeField] private bool canPlaceGhost;
     //Gold
     public PlayerGoldScriptableObject playerGold;
+
+    private GameObject curentGhost;
 
     void Update()
     {
@@ -46,30 +50,35 @@ public class PlaceObject : NetworkBehaviour
         }
         else
         {
-            BindingOfIsaacShooting.disableShooting = false;
-            SpawnBasicTurret();
+            SpawnBasicTurret(curentGhost);
         }
     }
 
-    private void SpawnGhostTurret()
+    private GameObject SpawnGhostTurret()
     {
-        Instantiate(GhostPlacementTurret, transform.position, Quaternion.identity);
         GhostTurretHasBeenPlaced = true;
+        return curentGhost = Instantiate(GhostPlacementTurret, transform.position, Quaternion.identity);
     }
 
-    private void SpawnBasicTurret()
+    private void SpawnBasicTurret(GameObject currentGhost)
     {
-        //_addGold.MinusGoldToDisplay(TurretBasicCost);
-
-        GameObject ghostTurret = GameObject.FindWithTag("GhostTurret");
-        if (ghostTurret != null)
+        if (currentGhost.GetComponent<GhostBlockPathCollision>().canPlaceGhost)
         {
-            Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-            Destroy(ghostTurret);
-        }
+            BindingOfIsaacShooting.disableShooting = false;
+            
+            GameObject ghostTurret = GameObject.FindWithTag("GhostTurret");
+            if (ghostTurret != null)
+            {
+                Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
+                GhostTurretHasBeenPlaced = false;
+                Destroy(ghostTurret);
+            }
 
-        GhostTurretHasBeenPlaced = false;
- 
+        }
+        else
+        {
+            print("Ghost on path");
+        }
     }
 
     private void PlaceGoldMiner()

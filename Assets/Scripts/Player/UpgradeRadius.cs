@@ -67,6 +67,12 @@ public class UpgradeRadius : MonoBehaviour
                 Debug.Log("No turret selected to upgrade.");
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            print("Rotate");
+            RotateObject(selectedGameObject);
+        }
     }
     
     private void SelectedObject(GameObject turret)
@@ -85,6 +91,11 @@ public class UpgradeRadius : MonoBehaviour
         UpgradeRadiusOn = false;
         BindingOfIsaacShooting.disableShooting = true;
 
+    }
+
+    private void RotateObject(GameObject turret)
+    {
+        turret.transform.Rotate(0, 0, -90);
     }
 
     private void TurnOffRadiusSelection()

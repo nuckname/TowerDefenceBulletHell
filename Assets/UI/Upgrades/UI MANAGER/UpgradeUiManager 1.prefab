@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 1173576448504425586}
   - component: {fileID: 2155232483070051465}
   - component: {fileID: -1300551357437857721}
-  - component: {fileID: 1378727780104279641}
   - component: {fileID: 8386765241846531893}
   m_Layer: 0
   m_Name: UpgradeUiManager 1
@@ -160,7 +159,6 @@ MonoBehaviour:
   generateRarity: {fileID: 1173576448504425586}
   selectDescription: {fileID: 2155232483070051465}
   ifDescriptionAlreadyGenerated: 0
-  noUpgradeSelected: 0
   playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   _applyUpgrade: {fileID: -1300551357437857721}
 --- !u!61 &5845366234834858286
@@ -248,19 +246,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
   raritySelected: 
---- !u!114 &1378727780104279641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2563423375413203857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17502b1a861f86645ac7831934439764, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  goldText: {fileID: 0}
 --- !u!114 &8386765241846531893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -274,9 +259,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayUpgradeGoldAmount: {fileID: 6646746697880016098}
-  NormalUpgradePriece: 250
-  RareUpgradePriece: 300
-  LegendaryUpgradePriece: 450
+  NormalUpgradePriece: 50
+  RareUpgradePriece: 100
+  LegendaryUpgradePriece: 200
 --- !u!1 &3031652540927498507
 GameObject:
   m_ObjectHideFlags: 0
