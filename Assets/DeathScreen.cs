@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,6 +23,19 @@ public class DeathScreen : MonoBehaviour
 
             Hide();
         });
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Space))
+        {
+            spawnPlayerButton.onClick.Invoke();
+        }
+        
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            quitButton.onClick.Invoke();
+        }
     }
 
     private void Hide()

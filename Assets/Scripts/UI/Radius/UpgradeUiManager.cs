@@ -69,7 +69,24 @@ public class UpgradeUiManager : MonoBehaviour
         }
 
     }
+    
+    private void GenerateDecription(StoreTurretDescription storeTurretDescription)
+    {
+        selectedRarity = generateRarity.SelectRarity(selectedRarity);
+            
+        //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
+        _applyUpgrade.raritySelected = selectedRarity;
+        storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
+            
+        //Pick Upgrades
+        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
 
+        //Puts it in global variable
+        displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+            
+        //Display Text
+        SetTextToUi(storeTurretDescription.storedTurretDescription);
+    }
     
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
@@ -79,22 +96,7 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
-            //Generate rarity
-            //pass in selectedRarity so they it doesnt reroll the same rarity twice.
-            selectedRarity = generateRarity.SelectRarity(selectedRarity);
-            
-            //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
-            _applyUpgrade.raritySelected = selectedRarity;
-            storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
-            
-            //Pick Upgrades
-            storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
-
-            //Puts it in global variable
-            displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
-            
-            //Display Text
-            SetTextToUi(storeTurretDescription.storedTurretDescription);
+            GenerateDecription(storeTurretDescription);
         }
 
         if (isDescriptionAlreadyGenerated)
@@ -141,21 +143,24 @@ public class UpgradeUiManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.E))
             {
-                //Selected Upgrade
-                //Gold
                 BuyUpgrade();
             }
             
             if (Input.GetKeyDown(KeyCode.R))
             {
-                print("reroll");
-                
-                if (playerGold.SpendGold(50))
-                {
-                    _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret, true);
-                }
-                //_applyUpgrade.
+                ReRoll();
             }
+        }
+    }
+
+    private void ReRoll()
+    {
+        if (playerGold.SpendGold(50))
+        {
+            StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
+            GenerateDecription(storeTurretDescription);
+            
+            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity);
         }
     }
 
@@ -166,7 +171,7 @@ public class UpgradeUiManager : MonoBehaviour
             //Minus gold in if statement
             if (playerGold.SpendGold(upgradePrice))
             {
-                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret, false);
+                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
             }
         }
     }

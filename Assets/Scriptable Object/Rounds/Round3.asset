@@ -15,12 +15,12 @@ MonoBehaviour:
   waveName: Wave 2
   enemyGroups:
   - enemyHp: 3
-    count: 20
+    count: 15
     delayBeforeGroup: 0
-    spawnInterval: 0.25
+    spawnInterval: 0.5
     bossSpawn: 0
   delayAfterWave: 2
-  speedModifer: 5
+  speedModifer: 4
   randomizeSpawnOrder: 0
   spawnInterval: 0.5
-  totalEnemies: 20
+  totalEnemies: 15

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ApplyUpgrade : MonoBehaviour
@@ -7,64 +8,73 @@ public class ApplyUpgrade : MonoBehaviour
 
     private StoreTurretDescription storeTurretDescription;
     private UpgradeUiManager upgradeUiManager;
-    
+
     private void Awake()
     {
         upgradeUiManager = GetComponent<UpgradeUiManager>();
     }
 
-    public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret, bool isReRoll)
+    public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret)
     {
-        if (isReRoll)
+        if (string.IsNullOrEmpty(raritySelected))
         {
-            print("raritySelected = null now");
-            upgradeSelected = null;
-            raritySelected = "";
+            SetRarity(targetTurret);
         }
-        //fixes a bug where UpgradeUiMager was getting destroied and so was raritySelected.
-        //EG: when you press q and then reselect and pick an upgrade
-        if (raritySelected == "")
+
+        if (!string.IsNullOrEmpty(upgradeSelected))
         {
-            storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
-            raritySelected = storeTurretDescription.storedTurretSelectedRarity;
-            print("1 new rarity Selected:" + raritySelected);
+            ApplySelectedUpgrade(upgradeSelected, targetTurret);
         }
-        
-        if (upgradeSelected != null)
+    }
+
+    private void ResetUpgradeSelection()
+    {
+        print("raritySelected = null now");
+        raritySelected = "";
+    }
+
+    private void SetRarity(GameObject targetTurret)
+    {
+        storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
+        raritySelected = storeTurretDescription.storedTurretSelectedRarity;
+        print("1 new rarity Selected: " + raritySelected);
+    }
+
+    private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
+    {
+        if (string.IsNullOrEmpty(raritySelected))
         {
-            if (raritySelected == null)
+            Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
+            raritySelected = "Normal Rarity";
+        }
+
+        print("raritySelected: " + raritySelected);
+
+        var upgrades = GetUpgradesByRarity();
+        ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
+    }
+
+    private List<Upgrade> GetUpgradesByRarity()
+    {
+        return raritySelected switch
+        {
+            "Normal Rarity" => upgradeData.normalUpgrades,
+            "Rare Rarity" => upgradeData.rareUpgrades,
+            "Legendary Rarity" => upgradeData.legendaryUpgrades,
+            _ => throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}")
+        };
+    }
+
+    private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> upgrades, GameObject targetTurret)
+    {
+        foreach (var upgrade in upgrades)
+        {
+            if (upgrade.description == upgradeSelected)
             {
-                Debug.LogError("raritySelected is null, made is Normal Rarity");
-                raritySelected = "Normal Rarity";
-            }
-            print("raritySelected: " + raritySelected);
-            //Gets the correct Scriptable Object
-            var upgrades = raritySelected switch
-            {
-                "Normal Rarity" => upgradeData.normalUpgrades,
-                "Rare Rarity" => upgradeData.rareUpgrades,
-                "Legendary Rarity" => upgradeData.legendaryUpgrades,
-                _ => throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}")
-                //_ => upgradeData.normalUpgrades
-
-            };
-
-            for (int i = 0; i < upgrades.Count; i++)
-            {
-                if (upgrades[i].description == upgradeSelected)
-                {
-                    upgrades[i].effect.Apply(targetTurret);
-
-                    ClearUpgradesDescription(targetTurret);
-                    
-                    //Regenerate Description
-                    upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
-
-                    //Maybe a setting that turns off ui?
-                    //upgradeUiManager.TurnOffAllUi(true);
-                    
-                    break; 
-                }
+                upgrade.effect.Apply(targetTurret);
+                ClearUpgradesDescription(targetTurret);
+                upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+                break;
             }
         }
     }
@@ -72,10 +82,9 @@ public class ApplyUpgrade : MonoBehaviour
     private void ClearUpgradesDescription(GameObject targetTurret)
     {
         string[] tempDesc = targetTurret.GetComponent<StoreTurretDescription>().storedTurretDescription;
-        for (int j = 0; j < tempDesc.Length; j++)
+        for (int i = 0; i < tempDesc.Length; i++)
         {
-            tempDesc[j] = "";
+            tempDesc[i] = "";
         }
     }
-    
 }
