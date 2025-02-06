@@ -15,12 +15,12 @@ MonoBehaviour:
   waveName: Wave 1
   enemyGroups:
   - enemyHp: 5
-    count: 3
+    count: 4
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
   - enemyHp: 5
-    count: 3
+    count: 4
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
@@ -33,4 +33,4 @@ MonoBehaviour:
   speedModifer: 0
   randomizeSpawnOrder: 0
   spawnInterval: 0.5
-  totalEnemies: 7
+  totalEnemies: 9

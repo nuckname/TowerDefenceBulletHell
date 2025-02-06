@@ -56,7 +56,7 @@ public class BulletCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
         
         if (other.gameObject.CompareTag("Turret"))

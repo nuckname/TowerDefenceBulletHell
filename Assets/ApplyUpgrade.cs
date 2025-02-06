@@ -18,6 +18,7 @@ public class ApplyUpgrade : MonoBehaviour
         if (isReRoll)
         {
             print("raritySelected = null now");
+            upgradeSelected = null;
             raritySelected = "";
         }
         //fixes a bug where UpgradeUiMager was getting destroied and so was raritySelected.

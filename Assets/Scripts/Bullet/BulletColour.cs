@@ -55,8 +55,6 @@ public class BulletColour : MonoBehaviour
     {
         if (this != null && gameObject != null)
         {
-            print("Destory from BulletColour.cs");
-
             Destroy(gameObject);
         }
         else

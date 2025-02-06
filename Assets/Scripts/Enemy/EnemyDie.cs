@@ -32,7 +32,6 @@ public class EnemyDie : MonoBehaviour
             float forceMagnitude = 5f; // Adjust the magnitude as needed
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
-        
         enemyOnMapCounter.DecreaseEnemyCount();
 
         _enemyDropItems.DropItems();

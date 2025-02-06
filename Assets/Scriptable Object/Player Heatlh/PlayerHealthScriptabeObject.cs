@@ -13,6 +13,7 @@ public class PlayerHealthScriptabeObject : ScriptableObject
 
     private void OnEnable()
     {
+        Debug.Log("health reset?");
         maxHealth = 10;
         currentHealth = 10;
     }

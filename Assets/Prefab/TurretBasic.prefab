@@ -209,9 +209,9 @@ MonoBehaviour:
   ShootPointLeft: {fileID: 1086541401797522628}
   ShootPointRight: {fileID: 1086541400124926283}
   upShootDirection: 1
-  downShootDirection: 1
-  leftShootDirection: 1
-  rightShootDirection: 1
+  downShootDirection: 0
+  leftShootDirection: 0
+  rightShootDirection: 0
   AllowTurretToShoot: 0
 --- !u!114 &4571525935793682645
 MonoBehaviour:

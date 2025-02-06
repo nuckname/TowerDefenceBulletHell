@@ -9,7 +9,6 @@ public class EnemyOnMapCounter : MonoBehaviour
     public void DecreaseEnemyCount()
     {
         MaxEnemiesOnMap--;
-        print("enemy : -1 enemy");
         if (MaxEnemiesOnMap <= 0)
         {
             roundStateManager.SwitchState(roundStateManager.roundOverState);

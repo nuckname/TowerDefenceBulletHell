@@ -33,6 +33,8 @@ public class TurretShoot : MonoBehaviour
 
     private void Start()
     {
+        //
+        
         AddDirectionsToTurret();
         InitializeActiveShootPoints();
     }

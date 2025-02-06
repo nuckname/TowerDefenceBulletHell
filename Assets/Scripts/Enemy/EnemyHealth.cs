@@ -12,6 +12,9 @@ public class EnemyHealth : MonoBehaviour
     public int EnemyStartingHealth;
     
     public Dictionary<int, Color> colorDictionary;
+    
+    private bool isDead = false;
+
 
     void Awake()
     {
@@ -58,13 +61,17 @@ public class EnemyHealth : MonoBehaviour
     
     public void EnemyHit()
     {
+        //Attemps to fix a bug where fast moving projectiles causes this method to be called twice. 
+        if (isDead) return;
+
         EnemyStartingHealth--;
-        
+
         if (EnemyStartingHealth <= 0)
         {
-            _enemyDie.EnemyHasDied(); 
+            isDead = true; // Mark the enemy as dead
+            _enemyDie.EnemyHasDied();
         }
-        
+
         if (colorDictionary.TryGetValue(EnemyStartingHealth, out Color newColor))
         {
             spriteRenderer.color = newColor;

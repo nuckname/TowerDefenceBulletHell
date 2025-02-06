@@ -1,6 +1,7 @@
 using System;
 using System.Net.Mime;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,17 +10,18 @@ public class PlayerGoldScriptableObject : ScriptableObject
 {
     public int currentGold;
     public int startingAmountOfGold;
-
+    
     private void OnEnable()
     {
-        startingAmountOfGold = 300;
-        currentGold = startingAmountOfGold;
+        ResetGold();
     }
     
-    private void Reset()
+    public void ResetGold()
     {
         currentGold = startingAmountOfGold;
+        Debug.Log("Gold has been reset.");
     }
+
 
     public void AddGold(int amount)
     {

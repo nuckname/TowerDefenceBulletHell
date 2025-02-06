@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour
     public PlayerHealthScriptabeObject playerHealthScriptabeObject; 
     private TextMeshProUGUI healthText; 
     
+    [SerializeField] private PlayerGoldScriptableObject playerGoldScriptableObject;
+
+    
     //public GameObject floatingTextPrefab;
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerHasDied()
     {
+        playerGoldScriptableObject.ResetGold();
+        
         Scene currentScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(currentScene.name);
     }
