@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5d00138356ec84a895b20f6ad91282, type: 3}
-  m_Name: PlayerOneGold
+  m_Script: {fileID: 11500000, guid: c7e2d71b9b7c7b34f9e2ff83ed640f05, type: 3}
+  m_Name: GoldOnHit
   m_EditorClassIdentifier: 
-  currentGold: 300000
-  startingAmountOfGold: 300000
+  speedIncreaseAmount: 0

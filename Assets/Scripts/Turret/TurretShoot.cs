@@ -25,7 +25,14 @@ public class TurretShoot : MonoBehaviour
     [Header("Can shoot?")] public bool AllowTurretToShoot;
 
     private TurretStats turretStats;
+    
+    private bool homingEnabled = false; 
 
+    public void EnableHomingBullets(bool enable)
+    {
+        homingEnabled = enable;
+    }
+    
     private void Awake()
     {
         turretStats = GetComponent<TurretStats>();
@@ -33,8 +40,6 @@ public class TurretShoot : MonoBehaviour
 
     private void Start()
     {
-        //
-        
         AddDirectionsToTurret();
         InitializeActiveShootPoints();
     }
@@ -74,7 +79,7 @@ public class TurretShoot : MonoBehaviour
             }
         }
     }
-
+    private int index = 0;
     private void Shoot()
     {
         if (turretConfig.bulletPrefab == null)
@@ -83,43 +88,32 @@ public class TurretShoot : MonoBehaviour
             return;
         }
 
-        // Check how many directions are enabled
-        int activeDirections = directions.Count;
-
-        if (activeDirections == 1)
+        if (directions.Count == 0 || activeShootPoints.Count == 0)
         {
-            // If only one direction is enabled, always use the corresponding shoot point
-            Vector2 baseDirection = directions[0];
-            Transform currentShootPoint = GetShootPointForDirection(baseDirection);
-
-            if (currentShootPoint == null)
-            {
-                Debug.LogWarning("Shoot Point is missing.");
-                return;
-            }
-
-            // Fire projectiles in the single direction
-            FireProjectilesInDirection(currentShootPoint, baseDirection);
+            Debug.LogWarning("No available directions or shoot points.");
+            return;
         }
-        else
+
+        // Choose the first available direction and shoot point
+        Vector2 baseDirection = directions[index];
+        Transform currentShootPoint = activeShootPoints[index];
+
+        if (currentShootPoint == null)
         {
-            // If multiple directions are enabled, cycle through active shoot points
-            for (int i = 0; i < directions.Count; i++)
-            {
-                Vector2 baseDirection = directions[i];
-                Transform currentShootPoint = activeShootPoints[i];
+            Debug.LogWarning("Shoot Point is missing.");
+            return;
+        }
 
-                if (currentShootPoint == null)
-                {
-                    Debug.LogWarning("Shoot Point is missing.");
-                    continue;
-                }
+        // Fire a single projectile in the selected direction
+        FireProjectilesInDirection(currentShootPoint, baseDirection);
+        index++;
 
-                // Fire projectiles in the current direction
-                FireProjectilesInDirection(currentShootPoint, baseDirection);
-            }
+        if (index == turretStats.activeDirections)
+        {
+            index = 0;
         }
     }
+
 
     private void FireProjectilesInDirection(Transform shootPoint, Vector2 baseDirection)
     {
@@ -139,6 +133,7 @@ public class TurretShoot : MonoBehaviour
             Vector2 newDirection =
                 new Vector2(Mathf.Cos(newAngle * Mathf.Deg2Rad), Mathf.Sin(newAngle * Mathf.Deg2Rad));
 
+            
             // Fire the initial projectile
             FireProjectile(shootPoint, newDirection);
 
@@ -158,11 +153,18 @@ public class TurretShoot : MonoBehaviour
             Quaternion.identity
         );
 
+        //All bad for performance.
         BasicBullet bulletScript = bullet.GetComponent<BasicBullet>();
         if (bulletScript != null)
         {
             bulletScript.SetDirection(direction);
             bulletScript.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
+        }
+        
+        if (homingEnabled)
+        {
+            HomingBullet homing = bullet.AddComponent<HomingBullet>(); 
+            homing.enabled = true; 
         }
 
         Destroy(bullet, turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime);

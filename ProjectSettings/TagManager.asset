@@ -31,6 +31,11 @@ TagManager:
   - Death Pannel
   - PathCollision
   - TurretPlacementCollider
+  - Text3
+  - Text1
+  - Text2
+  - SnakeWall
+  - WaterCollision
   layers:
   - Default
   - TransparentFX

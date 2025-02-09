@@ -16,6 +16,7 @@ public class Upgrade
     public string description;
     public UpgradeEffect effect; 
     public Rarity rarity;
+    public bool onlyAllowedOnce = false;
 }
 
 public enum Rarity

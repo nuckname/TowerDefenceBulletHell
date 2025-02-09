@@ -13,8 +13,23 @@ public class TurretStats : MonoBehaviour
     [Header("Extra Projectiles")]
     public float angleSpread = 30f;
     public int extraProjectiles = 1;
+
+    public bool Shoot4Projectiles = false;
     
     [Header("Multi Shot")]
     public int multiShotCount = 1;
     public float multiShotDelay = 0.25f;
+
+    [Header("Extra Shoot Points")] 
+    public bool allow4ShootPoints = false;
+    public int activeDirections = 1;
+
+    [Header("TrackShooter")] 
+    public bool enableOrbit = false;
+    public float orbitRadius = 180;
+    public float orbitSpeed = 90;
+
+    [Header("Gold On hit")] 
+    public bool GoldOnHit = false;
+
 }

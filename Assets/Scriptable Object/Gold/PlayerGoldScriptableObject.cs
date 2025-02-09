@@ -19,7 +19,6 @@ public class PlayerGoldScriptableObject : ScriptableObject
     public void ResetGold()
     {
         currentGold = startingAmountOfGold;
-        Debug.Log("Gold has been reset.");
     }
 
 

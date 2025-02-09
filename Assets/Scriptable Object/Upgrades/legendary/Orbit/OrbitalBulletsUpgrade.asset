@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e5d00138356ec84a895b20f6ad91282, type: 3}
-  m_Name: PlayerOneGold
+  m_Script: {fileID: 11500000, guid: e5157badc35a146449f027c62137f61c, type: 3}
+  m_Name: OrbitalBulletsUpgrade
   m_EditorClassIdentifier: 
-  currentGold: 300000
-  startingAmountOfGold: 300000
+  orbitalBulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
+  numberOfBullets: 4
+  orbitRadius: 1.5
+  orbitSpeed: 180

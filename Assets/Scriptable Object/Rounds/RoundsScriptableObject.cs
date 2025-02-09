@@ -25,6 +25,8 @@ public class RoundsScriptableObject : ScriptableObject
 
     [Tooltip("Total number of enemies in this wave (auto-calculated)")]
     [SerializeField] private int totalEnemies;
+    
+    [SerializeField] int totalHp = 0;
 
     // Auto-calculate total enemies when the ScriptableObject is loaded or modified
     private void OnValidate()
@@ -34,13 +36,28 @@ public class RoundsScriptableObject : ScriptableObject
         {
             totalEnemies += group.count;
         }
+
+        GetTotalHp();
     }
 
     public int GetTotalEnemies()
     {
         return totalEnemies;
     }
+    
+    //Just for debugging
+    public int GetTotalHp()
+    {
+        foreach (var group in enemyGroups)
+        {
+            totalHp += group.enemyHp * group.count; 
+        }
+        return totalHp;
+    }
+
 }
+
+
 
 [System.Serializable]
 public class EnemyGroup
