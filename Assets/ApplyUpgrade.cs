@@ -8,9 +8,11 @@ public class ApplyUpgrade : MonoBehaviour
 
     private StoreTurretDescription storeTurretDescription;
     private UpgradeUiManager upgradeUiManager;
-
+    private SetNewUpgradePaths setNewUpgradePaths;
+    
     private void Awake()
     {
+        setNewUpgradePaths = GetComponent<SetNewUpgradePaths>();
         upgradeUiManager = GetComponent<UpgradeUiManager>();
     }
 
@@ -74,6 +76,18 @@ public class ApplyUpgrade : MonoBehaviour
                 upgrade.effect.Apply(targetTurret);
                 ClearUpgradesDescription(targetTurret);
                 upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+                //setNewUpgradePaths.AllowNewUpgrades(upgradeSelected);
+                
+                //If selected upgrade is only allowed to be selected once. We hide it.
+                if (upgrade.onlyAllowedOnce)
+                {
+                    upgrade.hideUpgrade = true;
+                }
+
+                if (upgrade.hasUpgradePaths)
+                {
+                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName);
+                }
                 break;
             }
         }

@@ -28,6 +28,7 @@ public class TurretShoot : MonoBehaviour
     
     private bool homingEnabled = false; 
 
+    private BulletCollision bulletCollision;
     public void EnableHomingBullets(bool enable)
     {
         homingEnabled = enable;
@@ -36,6 +37,7 @@ public class TurretShoot : MonoBehaviour
     private void Awake()
     {
         turretStats = GetComponent<TurretStats>();
+        bulletCollision = GetComponent<BulletCollision>();
     }
 
     private void Start()
@@ -154,11 +156,24 @@ public class TurretShoot : MonoBehaviour
         );
 
         //All bad for performance.
-        BasicBullet bulletScript = bullet.GetComponent<BasicBullet>();
-        if (bulletScript != null)
+        BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
+        if (basicBullet != null)
         {
-            bulletScript.SetDirection(direction);
-            bulletScript.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
+            basicBullet.SetDirection(direction);
+            basicBullet.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
+
+        }
+
+        if (turretStats.pierceCount > 1)
+        {
+            BulletCollision bulletCollision = bullet.GetComponent<BulletCollision>();
+            bulletCollision.pierceIndex = turretStats.pierceCount; 
+        }
+
+        if (turretStats.GoldOnHit)
+        {
+            BulletCollision bulletCollision = bullet.GetComponent<BulletCollision>();
+            bulletCollision.GoldOnHit = true;
         }
         
         if (homingEnabled)

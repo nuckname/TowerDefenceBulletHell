@@ -197,7 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3c86fd63096b1f40ac4caf00a65dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   turretStats: {fileID: 0}
+  GoldOnHit: 0
   pierceIndex: 0
 --- !u!50 &-5056997756861274050
 Rigidbody2D:
@@ -280,3 +282,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbitCollider: {fileID: 0}
   orbitSpeed: 0.01
+  orbitRadiusMultiplier: 1
+  bulletSpacing: 0

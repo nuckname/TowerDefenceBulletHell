@@ -6,23 +6,20 @@ using UnityEngine.Serialization;
 
 public class BulletCollision : MonoBehaviour
 {
+    [SerializeField] private PlayerGoldScriptableObject playerGoldScriptableObject;
     //Upgrades
-    private PiercingBulletUpgrade piercingBulletUpgrade;
     
     public TurretStats turretStats;
     
     private GameObject basicTurret;
-    
+
+    public bool GoldOnHit = false;
     public int pierceIndex = 0;
-    private void Awake()
-    {
-        piercingBulletUpgrade = GetComponentInChildren<PiercingBulletUpgrade>();
-    }
 
     private void Start()
     {
         //Sets Pierce from counter and then lowers it.
-        //pierceIndex = turretStats.pierceCount;
+        //pierceIndex = turretStats.pierceCount; 
     }
 
     // Update is called once per frame
@@ -30,17 +27,23 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            /*
+            //Not sure how this works with mutiplayer. 
+            if (GoldOnHit)
+            {
+                playerGoldScriptableObject.AddGold(1);
+            }
+            
             if (pierceIndex > 0)
             {
+                print("minus one: " + pierceIndex);
+                
                 pierceIndex--;
             }
             else
             {
-                print("destory from pierce");
+                Destroy(gameObject);
             }
-            */
-            Destroy(gameObject);
+            
         }
 
         if (other.gameObject.CompareTag("PlayerBullet"))
@@ -54,19 +57,7 @@ public class BulletCollision : MonoBehaviour
             Destroy(gameObject);
         }
         
-        if (other.gameObject.CompareTag("Bullet"))
-        {
-            //Destroy(gameObject);
-        }
-        
         if (other.gameObject.CompareTag("Turret"))
-        {
-            Destroy(gameObject);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("OutOfZone"))
         {
             Destroy(gameObject);
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PiercingBulletUpgrade", menuName = "Upgrades/Effects/PiercingBullet")]
 public class PiercingUpgradeScriptableObject : UpgradeEffect
 {
-    public int pierceCount = 1; // Number of enemies the bullet can pierce
+    public int pierceCount = 1;
 
     public override void Apply(GameObject targetTurret)
     {

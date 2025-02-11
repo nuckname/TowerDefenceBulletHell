@@ -3,14 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "GoldOnHit", menuName = "Upgrades/Effects/Gold On Hit")]
 public class GoldOnHitScriptableObject : UpgradeEffect
 {
-    [SerializeField] private float speedIncreaseAmount;
-        
-    
     public override void Apply(GameObject targetTurret)
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            turretStats.modifierBulletSpeed += speedIncreaseAmount;
+            turretStats.GoldOnHit = true;
         }
         else
         {

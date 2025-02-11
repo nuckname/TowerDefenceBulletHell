@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TurretStats : MonoBehaviour
@@ -31,5 +32,10 @@ public class TurretStats : MonoBehaviour
 
     [Header("Gold On hit")] 
     public bool GoldOnHit = false;
-
+    
+    [Header("Turret Luck")] 
+    public int ReduceTurretBlankChance = 0;
+    public int IncreaseChanceForRarityNormal = 0;
+    public int IncreaseChanceForRarityRare = 0;
+    public int IncreaseChanceForRarityLegendary = 0;
 }

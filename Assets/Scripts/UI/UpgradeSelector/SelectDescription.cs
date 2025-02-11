@@ -31,10 +31,15 @@ public class SelectDescription : MonoBehaviour
 
     private int[] Get3UniqueNumbers(List<Upgrade> upgradeData)
     {
+        //Only add indexes of upgrades that are NOT hidden
         List<int> indexPool = new List<int>();
         for (int i = 0; i < upgradeData.Count; i++)
         {
-            indexPool.Add(i);
+            if (!upgradeData[i].hideUpgrade)
+            {
+                indexPool.Add(i);
+                
+            }
         }
 
         int[] uniqueNumbers = new int[3];

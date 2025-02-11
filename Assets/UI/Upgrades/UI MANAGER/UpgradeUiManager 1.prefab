@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 2155232483070051465}
   - component: {fileID: -1300551357437857721}
   - component: {fileID: 8386765241846531893}
+  - component: {fileID: -1307584749320215092}
   m_Layer: 0
   m_Name: UpgradeUiManager 1
   m_TagString: Untagged
@@ -262,6 +263,18 @@ MonoBehaviour:
   NormalUpgradePriece: 50
   RareUpgradePriece: 100
   LegendaryUpgradePriece: 200
+--- !u!114 &-1307584749320215092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2563423375413203857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9ad57e7f21e304fb1fb2427c13fdbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3031652540927498507
 GameObject:
   m_ObjectHideFlags: 0
