@@ -7,7 +7,7 @@ public class IncreaseLegendaryRarity : UpgradeEffect
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            turretStats.IncreaseChanceForRarityLegendary += 1;
+            turretStats.LegendaryIncreaseChanceForRarity += 1;
         }
         else
         {

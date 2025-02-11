@@ -67,7 +67,7 @@ MonoBehaviour:
     description: Allows the turret to shoot in an additional different directions
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}
     onlyAllowedOnce: 0
-    hideUpgrade: 1
+    hideUpgrade: 0
     hasUpgradePaths: 0
     isAnUpgradePaths: 0
   - upgradeName: Bullets spin

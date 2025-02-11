@@ -35,7 +35,8 @@ public class TurretStats : MonoBehaviour
     
     [Header("Turret Luck")] 
     public int ReduceTurretBlankChance = 0;
-    public int IncreaseChanceForRarityNormal = 0;
-    public int IncreaseChanceForRarityRare = 0;
-    public int IncreaseChanceForRarityLegendary = 0;
+    
+    public int NormalIncreaseChanceForRarity = 0;
+    public int RareIncreaseChanceForRarity = 0;
+    public int LegendaryIncreaseChanceForRarity = 0;
 }

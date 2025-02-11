@@ -7,7 +7,7 @@ public class IncreaseRareRarity : UpgradeEffect
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            turretStats.IncreaseChanceForRarityRare += 1;
+            turretStats.RareIncreaseChanceForRarity += 1;
         }
         else
         {

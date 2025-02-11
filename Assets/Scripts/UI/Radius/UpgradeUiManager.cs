@@ -70,16 +70,16 @@ public class UpgradeUiManager : MonoBehaviour
 
     }
     
-    private void GenerateDecription(StoreTurretDescription storeTurretDescription)
+    private void GenerateDecription(StoreTurretDescription storeTurretDescription, TurretStats turretStats)
     {
-        selectedRarity = generateRarity.SelectRarity(selectedRarity);
+        selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
             
         //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
         _applyUpgrade.raritySelected = selectedRarity;
         storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
             
         //Pick Upgrades
-        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity);
+        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, turretStats.ReduceTurretBlankChance);
 
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
@@ -96,7 +96,7 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
-            GenerateDecription(storeTurretDescription);
+            GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>());
         }
 
         if (isDescriptionAlreadyGenerated)
@@ -157,8 +157,12 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (playerGold.SpendGold(50))
         {
+            if (targetTurret == null)
+            {
+                Debug.LogWarning("deez");
+            }
             StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
-            GenerateDecription(storeTurretDescription);
+            GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>());
             
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity);
         }
