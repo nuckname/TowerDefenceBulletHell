@@ -86,7 +86,7 @@ public class ApplyUpgrade : MonoBehaviour
 
                 if (upgrade.hasUpgradePaths)
                 {
-                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName);
+                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, targetTurret.GetComponent<TurretStats>());
                 }
                 break;
             }

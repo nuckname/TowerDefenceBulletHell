@@ -38,9 +38,9 @@ MonoBehaviour:
     description: decrease Homing delay
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
     onlyAllowedOnce: 0
-    hideUpgrade: 0
+    hideUpgrade: 1
     hasUpgradePaths: 0
-    isAnUpgradePaths: 0
+    isAnUpgradePaths: 1
   - upgradeName: increase Homing strength
     description: increase Homing strength
     effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
@@ -55,12 +55,12 @@ MonoBehaviour:
     hideUpgrade: 0
     hasUpgradePaths: 1
     isAnUpgradePaths: 0
-  - upgradeName: Increase Normal
+  - upgradeName: Increase Normal Rarity
     description: Increase Normal Upgrade Chance
     effect: {fileID: 11400000, guid: 0fea38355bec35746826e3adf32e835b, type: 2}
     onlyAllowedOnce: 0
     hideUpgrade: 1
-    hasUpgradePaths: 0
+    hasUpgradePaths: 1
     isAnUpgradePaths: 1
   rareUpgrades:
   - upgradeName: 4 directions
@@ -105,13 +105,13 @@ MonoBehaviour:
     hideUpgrade: 1
     hasUpgradePaths: 0
     isAnUpgradePaths: 0
-  - upgradeName: Turret Luck -> increase chance to get Rare Rarity
-    description: increase chance to get Rare Rarity
+  - upgradeName: Increase Rare Rarity
+    description: increase chance to get Rare Rarity Upgrades
     effect: {fileID: 11400000, guid: 22861134a8d1f4b41992e719895087eb, type: 2}
     onlyAllowedOnce: 0
     hideUpgrade: 1
-    hasUpgradePaths: 0
-    isAnUpgradePaths: 0
+    hasUpgradePaths: 1
+    isAnUpgradePaths: 1
   legendaryUpgrades:
   - upgradeName: Chain
     description: No Work Projectiles chain to additional targets
@@ -141,10 +141,10 @@ MonoBehaviour:
     hideUpgrade: 0
     hasUpgradePaths: 0
     isAnUpgradePaths: 0
-  - upgradeName: increase chance to get Legendary Rarity
-    description: increase chance to get Legendary Rarity
+  - upgradeName: Increase Legendary Rarity
+    description: increase chance to get Legendary Rarity upgrades
     effect: {fileID: 11400000, guid: 155ad99110d37e14491ed8832915332b, type: 2}
     onlyAllowedOnce: 0
     hideUpgrade: 1
-    hasUpgradePaths: 0
+    hasUpgradePaths: 1
     isAnUpgradePaths: 1

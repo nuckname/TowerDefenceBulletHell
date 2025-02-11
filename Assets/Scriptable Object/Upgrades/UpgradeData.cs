@@ -11,13 +11,23 @@ public class UpgradeData : ScriptableObject
     private void OnEnable()
     {
         ResetOnlyAllowedOnceUpgrades();
+
     }
 
     /// <summary>
     /// Iterates through all upgrade lists and for each upgrade that is only allowed once,
     /// sets the hideUpgrade flag to false.
     /// </summary>
-    private void ResetOnlyAllowedOnceUpgrades()
+    ///
+    
+    
+    //Just hard coding values are start hiden
+    private void HideStartingUpgrades()
+    {
+        //normalUpgrades[]
+    }
+
+private void ResetOnlyAllowedOnceUpgrades()
     {
         foreach (var upgrade in normalUpgrades)
         {
