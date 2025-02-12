@@ -25,6 +25,13 @@ public class TurretStats : MonoBehaviour
     public bool allow4ShootPoints = false;
     public int activeDirections = 1;
 
+    [Header("Bouncing")] 
+    public int amountOfBounces = 0;
+
+    [Header("Bouncing")] 
+    //When player has 3 pierce? enable 
+    public bool projectilesReturn = false;
+    
     [Header("TrackShooter")] 
     public bool enableOrbit = false;
     public float orbitRadius = 180;
@@ -39,4 +46,7 @@ public class TurretStats : MonoBehaviour
     public int NormalIncreaseChanceForRarity = 0;
     public int RareIncreaseChanceForRarity = 0;
     public int LegendaryIncreaseChanceForRarity = 0;
+
+    [Header("Spiral")] 
+    public bool spiralBullets = false;
 }

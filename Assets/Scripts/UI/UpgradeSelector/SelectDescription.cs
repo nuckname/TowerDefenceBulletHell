@@ -82,8 +82,8 @@ public class SelectDescription : MonoBehaviour
         int[] threeUniqueNumbers = Get3UniqueNumbers(upgradeList);
         upgradeIndex = 0;
 
-        // Define a base blank chance (e.g., 35%).
-        float baseBlankChance = 0.35f;
+        // Define a base blank chance (e.g., 25%).
+        float baseBlankChance = 0.25f;
         // Define how much each point of reduceBlankChance decreases the blank chance (e.g., 5% per point).
         float reductionFactor = 0.05f;
         // Compute the effective blank chance, clamped to a minimum of 0.

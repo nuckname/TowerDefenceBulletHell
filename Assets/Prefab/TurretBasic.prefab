@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 7129468448901828122}
   - component: {fileID: 6991702198204369602}
   - component: {fileID: 7565467559014696028}
+  - component: {fileID: 8950624624173130891}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Turret
@@ -237,9 +238,17 @@ MonoBehaviour:
   multiShotDelay: 0.25
   allow4ShootPoints: 0
   activeDirections: 1
+  amountOfBounces: 0
+  projectilesReturn: 0
   enableOrbit: 0
   orbitRadius: 180
   orbitSpeed: 90
+  GoldOnHit: 0
+  ReduceTurretBlankChance: 0
+  NormalIncreaseChanceForRarity: 0
+  RareIncreaseChanceForRarity: 0
+  LegendaryIncreaseChanceForRarity: 0
+  spiralBullets: 0
 --- !u!114 &7129468448901828122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -315,6 +324,19 @@ MonoBehaviour:
   - 
   - 
   storedTurretSelectedRarity: 
+--- !u!114 &8950624624173130891
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086541401240882015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445384b48bf73bf4a857e9fcfb8dee4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0

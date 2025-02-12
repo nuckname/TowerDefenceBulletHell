@@ -44,4 +44,4 @@ MonoBehaviour:
   randomizeSpawnOrder: 0
   spawnInterval: 0.5
   totalEnemies: 18
-  totalHp: 1290
+  totalHp: 310

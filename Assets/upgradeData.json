@@ -1,0 +1,228 @@
+{
+    "normalUpgrades": [
+        {
+            "upgradeName": "Increased Speed",
+            "description": "Increases projectile speed",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55636
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Increased Bullet Lifetime",
+            "description": "Increases projectile lifetime",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55638
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Increased Firing rate",
+            "description": "Increases firing rate",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55640
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "decrease Homing delay",
+            "description": "decrease Homing delay",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55640
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": true
+        },
+        {
+            "upgradeName": "increase Homing strength",
+            "description": "increase Homing strength",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55640
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": true
+        },
+        {
+            "upgradeName": "Reduce Blanks",
+            "description": "Reduce blank on all rarites turrets",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55642
+            },
+            "hasUpgradePaths": true,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Increase Normal Rarity",
+            "description": "Increase Normal Upgrade Chance",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55644
+            },
+            "hasUpgradePaths": true,
+            "isAnUpgradePaths": true
+        },
+        {
+            "upgradeName": "",
+            "description": "",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55644
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        }
+    ],
+    "rareUpgrades": [
+        {
+            "upgradeName": "4 directions",
+            "description": "Allows the turret to shoot in an additional different directions",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55646
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Bullets spin",
+            "description": "BLANK",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55640
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Pierce",
+            "description": "Projectiles pierce through enemies",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55648
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Money",
+            "description": "Gives 1 gold per bullet hit.",
+            "onlyAllowedOnce": true,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55650
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": true
+        },
+        {
+            "upgradeName": "Increase Homing Speed",
+            "description": "Increase Homing Speed",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55648
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": true
+        },
+        {
+            "upgradeName": "Ricochet ",
+            "description": "NOT WORKING projeciles bounce off walls ",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55648
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Increase Rare Rarity",
+            "description": "increase chance to get Rare Rarity Upgrades",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55652
+            },
+            "hasUpgradePaths": true,
+            "isAnUpgradePaths": true
+        }
+    ],
+    "legendaryUpgrades": [
+        {
+            "upgradeName": "Chain",
+            "description": "No Work Projectiles chain to additional targets",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55640
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Multi shot",
+            "description": "Shoots multiple projectiles at once. Following the same path.",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55654
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Extra Projectile",
+            "description": "Fires an additional projectile",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55656
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Homing",
+            "description": "Bullets home after a short period of time",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": false,
+            "effect": {
+                "instanceID": 55658
+            },
+            "hasUpgradePaths": false,
+            "isAnUpgradePaths": false
+        },
+        {
+            "upgradeName": "Increase Legendary Rarity",
+            "description": "increase chance to get Legendary Rarity upgrades",
+            "onlyAllowedOnce": false,
+            "hideUpgrade": true,
+            "effect": {
+                "instanceID": 55660
+            },
+            "hasUpgradePaths": true,
+            "isAnUpgradePaths": true
+        }
+    ]
+}

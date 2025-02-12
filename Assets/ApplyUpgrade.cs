@@ -76,6 +76,9 @@ public class ApplyUpgrade : MonoBehaviour
                 upgrade.effect.Apply(targetTurret);
                 ClearUpgradesDescription(targetTurret);
                 upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+                
+                //Apply bullet upgrades
+                
                 //setNewUpgradePaths.AllowNewUpgrades(upgradeSelected);
                 
                 //If selected upgrade is only allowed to be selected once. We hide it.

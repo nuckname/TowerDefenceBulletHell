@@ -28,6 +28,8 @@ public class TurretShoot : MonoBehaviour
     
     private bool homingEnabled = false; 
 
+    private BulletFactory bulletFactory;
+    
     private BulletCollision bulletCollision;
     public void EnableHomingBullets(bool enable)
     {
@@ -38,6 +40,9 @@ public class TurretShoot : MonoBehaviour
     {
         turretStats = GetComponent<TurretStats>();
         bulletCollision = GetComponent<BulletCollision>();
+        
+        bulletFactory = gameObject.AddComponent<BulletFactory>();
+        bulletFactory.bulletPrefab = turretConfig.bulletPrefab;
     }
 
     private void Start()
@@ -149,42 +154,18 @@ public class TurretShoot : MonoBehaviour
 
     private void FireProjectile(Transform shootPoint, Vector2 direction)
     {
-        GameObject bullet = Instantiate(
-            turretConfig.bulletPrefab,
-            shootPoint.position,
-            Quaternion.identity
-        );
+        // Use the bullet factory to create and configure the bullet
+        GameObject bullet = bulletFactory.CreateBullet(shootPoint.position, Quaternion.identity, turretStats, homingEnabled);
 
-        //All bad for performance.
+        // Set the bullet's direction
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
         if (basicBullet != null)
         {
             basicBullet.SetDirection(direction);
-            basicBullet.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
-
-        }
-
-        if (turretStats.pierceCount > 1)
-        {
-            BulletCollision bulletCollision = bullet.GetComponent<BulletCollision>();
-            bulletCollision.pierceIndex = turretStats.pierceCount; 
-        }
-
-        if (turretStats.GoldOnHit)
-        {
-            BulletCollision bulletCollision = bullet.GetComponent<BulletCollision>();
-            bulletCollision.GoldOnHit = true;
-        }
-        
-        if (homingEnabled)
-        {
-            HomingBullet homing = bullet.AddComponent<HomingBullet>(); 
-            homing.enabled = true; 
         }
 
         Destroy(bullet, turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime);
     }
-
     private IEnumerator FireMultiShot(Transform shootPoint, Vector2 direction, int count, float delay)
     {
         for (int i = 0; i < count; i++)
