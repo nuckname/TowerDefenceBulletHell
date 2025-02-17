@@ -41,7 +41,7 @@ public class TurretShoot : MonoBehaviour
         turretStats = GetComponent<TurretStats>();
         bulletCollision = GetComponent<BulletCollision>();
         
-        bulletFactory = gameObject.AddComponent<BulletFactory>();
+        bulletFactory = GetComponent<BulletFactory>();
         bulletFactory.bulletPrefab = turretConfig.bulletPrefab;
     }
 
@@ -155,6 +155,7 @@ public class TurretShoot : MonoBehaviour
     private void FireProjectile(Transform shootPoint, Vector2 direction)
     {
         // Use the bullet factory to create and configure the bullet
+        
         GameObject bullet = bulletFactory.CreateBullet(shootPoint.position, Quaternion.identity, turretStats, homingEnabled);
 
         // Set the bullet's direction

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Round3
   m_EditorClassIdentifier: 
   waveName: Wave 2
+  currentWave: 3
   enemyGroups:
   - enemyHp: 3
     count: 15
@@ -21,6 +22,10 @@ MonoBehaviour:
     bossSpawn: 0
   delayAfterWave: 2
   speedModifer: 4
-  randomizeSpawnOrder: 0
   spawnInterval: 0.5
   totalEnemies: 15
+  totalHp: 225
+  coinGoldAmount: 0
+  increaseGoldAmoutForEachCoinMutipler: 0
+  maxAmountOfGold: 1
+  minAmountOfGold: 4

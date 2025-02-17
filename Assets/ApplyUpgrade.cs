@@ -39,7 +39,6 @@ public class ApplyUpgrade : MonoBehaviour
     {
         storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
         raritySelected = storeTurretDescription.storedTurretSelectedRarity;
-        print("1 new rarity Selected: " + raritySelected);
     }
 
     private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
@@ -49,9 +48,6 @@ public class ApplyUpgrade : MonoBehaviour
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
             raritySelected = "Normal Rarity";
         }
-
-        print("raritySelected: " + raritySelected);
-
         var upgrades = GetUpgradesByRarity();
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
     }

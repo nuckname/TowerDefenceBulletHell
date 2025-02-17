@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class TurretStats : MonoBehaviour
 {
+    [Header("Total Upgrade Count")] 
+    public int totalAmountOfUpgrades = 0;
+    
     [Header("Basic")]
     public float modifierFireRate = 0;
     public float modifierBulletLifeTime = 1;
@@ -26,9 +29,14 @@ public class TurretStats : MonoBehaviour
     public int activeDirections = 1;
 
     [Header("Bouncing")] 
-    public int amountOfBounces = 0;
+    public int amountOfBounces = 1;
+    public bool AllowBulletsToBounce = false;
+    
+    [Header("Chain")] 
+    public int chainRange = 5;
+    public bool AllowBulletsToBouncesToChain = false;
 
-    [Header("Bouncing")] 
+    [Header("Return Projectiles")] 
     //When player has 3 pierce? enable 
     public bool projectilesReturn = false;
     

@@ -3,8 +3,11 @@ using UnityEngine;
 
 public class EnemyDropItems : MonoBehaviour
 {
-    private int minimumGoldCoins = 1;
-    private int maximumGoldCoins = 4;
+    [SerializeField] private RoundsScriptableObject roundsScriptableObject;
+    
+    //updated from SpawnEnemies.cs
+    public int minimumGoldCoins = 1;
+    public int maximumGoldCoins = 4;
 
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject heart;
@@ -23,12 +26,15 @@ public class EnemyDropItems : MonoBehaviour
         }
         
         
-        int amountOfHeartsToDrop = GenerateAmount(minimumGoldCoins, maximumGoldCoins);
+        /*
+        int amountOfHeartsToDrop = GenerateAmount(roundsScriptableObject.minAmountOfGold, roundsScriptableObject.maxAmountOfGold);
+        
         for (int i = 0; i <= amountOfHeartsToDrop; i++)
         {
             //Only Spawn Hearts for boss fight.
             //Instantiate(heart, gameObject.transform.position, Quaternion.identity);
         }
+        */
         
     }
 

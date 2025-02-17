@@ -79,6 +79,17 @@ MonoBehaviour:
     hasUpgradePaths: 1
     defaultIsAnUpgradePaths: 0
     isAnUpgradePaths: 0
+  - upgradeName: Chain Range
+    description: Projectile increase range when trying bounces to the clostest enemy
+    effect: {fileID: 11400000, guid: 5969416e24c01f343bc9dee17e7a10ec, type: 2}
+    defaultOnlyAllowedOnce: 0
+    onlyAllowedOnce: 0
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
   - upgradeName: Increase Normal Rarity
     description: Increase Normal Upgrade Chance
     effect: {fileID: 11400000, guid: 0fea38355bec35746826e3adf32e835b, type: 2}
@@ -88,6 +99,17 @@ MonoBehaviour:
     hideUpgrade: 1
     defaultHasUpgradePaths: 1
     hasUpgradePaths: 1
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
+  - upgradeName: Increase Bounces
+    description: +1 to number of bounces
+    effect: {fileID: 11400000, guid: af29d20063146054fa8da2930ad26099, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
   rareUpgrades:
@@ -146,26 +168,15 @@ MonoBehaviour:
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
-  - upgradeName: 'Ricochet '
-    description: 'NOT WORKING projeciles bounce off walls '
+  - upgradeName: Ricochet
+    description: 'Projeciles bounce off walls '
     effect: {fileID: 11400000, guid: 56af038a0979ac2449071588e9ff405a, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
-    defaultHideUpgrade: 0
-    hideUpgrade: 0
-    defaultHasUpgradePaths: 1
-    hasUpgradePaths: 1
-    defaultIsAnUpgradePaths: 0
-    isAnUpgradePaths: 0
-  - upgradeName: Ricochet Upgrade
-    description: +1 to projectiles bouncing
-    effect: {fileID: 11400000, guid: 22861134a8d1f4b41992e719895087eb, type: 2}
-    defaultOnlyAllowedOnce: 0
-    onlyAllowedOnce: 0
     defaultHideUpgrade: 1
     hideUpgrade: 1
-    defaultHasUpgradePaths: 0
-    hasUpgradePaths: 0
+    defaultHasUpgradePaths: 1
+    hasUpgradePaths: 1
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
   - upgradeName: Increase Rare Rarity
@@ -179,18 +190,29 @@ MonoBehaviour:
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
-  legendaryUpgrades:
   - upgradeName: Chain
-    description: No Work Projectiles chain to additional targets
-    effect: {fileID: 11400000, guid: c025682394ce1a34fb89646e7cd880e5, type: 2}
-    defaultOnlyAllowedOnce: 0
-    onlyAllowedOnce: 0
-    defaultHideUpgrade: 0
-    hideUpgrade: 0
+    description: Projectile try bounces to the clostest enemy
+    effect: {fileID: 11400000, guid: 8334a2d9d0fa8ee438d1c4688b53cf98, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
     defaultHasUpgradePaths: 0
     hasUpgradePaths: 0
-    defaultIsAnUpgradePaths: 0
-    isAnUpgradePaths: 0
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
+  - upgradeName: Can Bounce
+    description: Projectiles can bounce
+    effect: {fileID: 11400000, guid: 98f2ba3c3fcf1424693fe9c5e16b3012, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 0
+    hideUpgrade: 0
+    defaultHasUpgradePaths: 1
+    hasUpgradePaths: 1
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
+  legendaryUpgrades:
   - upgradeName: Multi shot
     description: Shoots multiple projectiles at once. Following the same path.
     effect: {fileID: 11400000, guid: 8328baaaf590a3b4fb11613dbe9483d8, type: 2}
@@ -229,6 +251,17 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: 155ad99110d37e14491ed8832915332b, type: 2}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
+  - upgradeName: remove fork cooldown? test with high friends
+    description: remove start() fork cooldown? sort of buggy,
+    effect: {fileID: 11400000, guid: 155ad99110d37e14491ed8832915332b, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
     defaultHideUpgrade: 1
     hideUpgrade: 1
     defaultHasUpgradePaths: 0

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8801792569001409356}
   - component: {fileID: -8911375633613691611}
   - component: {fileID: 5035588526783821658}
-  m_Layer: 0
+  m_Layer: 31
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -209,5 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7053a13359fcf0a468274895bd5f7abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundsScriptableObject: {fileID: 0}
+  minimumGoldCoins: 1
+  maximumGoldCoins: 4
   coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
   heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}

@@ -19,7 +19,7 @@ public class BouncingBullet : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         speed = initialSpeed;
-        rb.velocity = transform.right * speed;  // Start moving forward
+        rb.linearVelocity = transform.right * speed;  // Start moving forward
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -50,7 +50,7 @@ public class BouncingBullet : MonoBehaviour
         }
 
         // Calculate bounce reflection
-        Vector2 inDirection = rb.velocity.normalized;
+        Vector2 inDirection = rb.linearVelocity.normalized;
         Vector2 normal = collision.contacts[0].normal;
         Vector2 reflectedDirection = Vector2.Reflect(inDirection, normal);
 
@@ -62,7 +62,7 @@ public class BouncingBullet : MonoBehaviour
             return;
         }
 
-        rb.velocity = reflectedDirection * speed;
+        rb.linearVelocity = reflectedDirection * speed;
     }
 
     void HandleEnemyHit()
@@ -70,7 +70,7 @@ public class BouncingBullet : MonoBehaviour
         if (hasEnergyRebound)
         {
             speed *= 1.1f;  // Gain 10% speed on enemy hit
-            rb.velocity = rb.velocity.normalized * speed;
+            rb.linearVelocity = rb.linearVelocity.normalized * speed;
         }
     }
 

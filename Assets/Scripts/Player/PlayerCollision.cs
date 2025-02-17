@@ -1,8 +1,10 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
+    [SerializeField] private RoundsScriptableObject roundsScriptableObject;
     [SerializeField] private PlayerHealthScriptabeObject playerHealthScriptabeObject;
     [SerializeField] private PlayerGoldScriptableObject playerGoldScriptableObject;
 
@@ -10,12 +12,21 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private float iframeDuration = 1f; // Duration of invincibility frames
     [SerializeField] private float transparencyLevel = 0.5f; // How transparent the player becomes
 
+    private int _currentRoundIndex;
+    private List<RoundsScriptableObject> rounds;
+    
+    
     private bool isInvincible = false;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
-        spriteRenderer = GetComponentInParent<SpriteRenderer>(); // Get SpriteRenderer from Player object
+        //So we can get the amount of gold for the enemies to drop. 
+        rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
+        _currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
+        
+        //Get SpriteRenderer from Player object
+        spriteRenderer = GetComponentInParent<SpriteRenderer>(); 
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer not found! Make sure the PlayerCollision is a child of Player.");
@@ -37,7 +48,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            playerGoldScriptableObject.AddGold(CoinGiveGoldAmount);
+            playerGoldScriptableObject.AddGold(rounds[_currentRoundIndex].coinEnemiesDropAmount);
+            //playerGoldScriptableObject.AddGold(CoinGiveGoldAmount);
         }
     }
 

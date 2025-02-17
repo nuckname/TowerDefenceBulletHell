@@ -21,7 +21,7 @@ public class ReverseBullet : MonoBehaviour
         if (rb != null)
         {
             // Store initial direction
-            initialDirection = rb.velocity.normalized;
+            initialDirection = rb.linearVelocity.normalized;
             Debug.Log($"ReverseBullet: Initial direction set to {initialDirection}");
         }
         else
@@ -48,7 +48,7 @@ public class ReverseBullet : MonoBehaviour
     {
         if (hasReversed) return;
 
-        rb.velocity = -initialDirection * reverseSpeed;
+        rb.linearVelocity = -initialDirection * reverseSpeed;
         hasReversed = true;
 
         // Disable BasicBullet's movement

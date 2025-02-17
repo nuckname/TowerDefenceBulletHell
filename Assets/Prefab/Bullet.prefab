@@ -61,8 +61,6 @@ GameObject:
   - component: {fileID: -8786673248908898272}
   - component: {fileID: -7615069637261592277}
   - component: {fileID: 2218803637122075860}
-  - component: {fileID: 955326257506701848}
-  - component: {fileID: 3558864359569571511}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -242,6 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b135fe20e80a4948a421e8ce280156a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxBounces: 3
+  colliderLayer:
+    serializedVersion: 2
+    m_Bits: 2147483648
+  canChain: 1
+  chainRange: 5
 --- !u!114 &-8786673248908898272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,35 +290,3 @@ MonoBehaviour:
   orbitSpeed: 0.01
   orbitRadiusMultiplier: 1
   bulletSpacing: 0
---- !u!114 &955326257506701848
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0f47cb96c83424da4ef45272df0357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxBounces: 3
-  bounceSpeedMultiplier: 1
-  bounceLayers:
-    serializedVersion: 2
-    m_Bits: 2147483648
---- !u!114 &3558864359569571511
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5ed6f2c50544a44cbbf54cf75f199da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  reverseSpeed: 10
-  reverseDelay: 0.1
-  destroyOnReverse: 0

@@ -25,11 +25,8 @@ public class GenerateRarity : MonoBehaviour
         */
         
         float legendaryModifier = turretStats.LegendaryIncreaseChanceForRarity * 0.05f;
-        print("legendaryModifier: " + legendaryModifier);
         float rareModifier = turretStats.RareIncreaseChanceForRarity * 0.05f;
-        print("rareModifier: " + rareModifier);
         float normalModifier = turretStats.NormalIncreaseChanceForRarity * 0.05f;
-        print("rareModifier: " + rareModifier);
 
         // Apply modified weights
         float legendaryChance = baseLegendaryChance + legendaryModifier;
@@ -59,7 +56,6 @@ public class GenerateRarity : MonoBehaviour
             selectedRarity = "Normal Rarity";
         }
 
-        Debug.Log($"Selected Rarity: {selectedRarity} (Roll: {roll:F2})");
         return selectedRarity;
     }
 }

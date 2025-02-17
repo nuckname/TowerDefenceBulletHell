@@ -33,7 +33,6 @@ public class PlayerGoldScriptableObject : ScriptableObject
     {
         if (currentGold >= amount)
         {
-            Debug.Log("Spent Gold");
             currentGold -= amount;
             return true;
         }

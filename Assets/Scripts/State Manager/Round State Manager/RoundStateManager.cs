@@ -9,11 +9,13 @@ public class RoundStateManager : MonoBehaviour
     
     public RoundOverState roundOverState = new RoundOverState();
     public RoundInProgressState roundInProgressState = new RoundInProgressState();
-
-    [SerializeField] private GameObject[] allTurrets;
+    
+    private GameObject[] allTurrets;
 
     private SpawnEnemies spawnEnemies;
     private EnemyOnMapCounter enemyOnMapCounter;
+
+    public int currentRound = 1;
 
     private void Awake()
     {
@@ -56,8 +58,10 @@ public class RoundStateManager : MonoBehaviour
 
     public void SpawnBasicEnemies(int currentRoundIndex)
     {
+        //Sets global variable. 
+        currentRound = currentRoundIndex;
+        
         enemyOnMapCounter.MaxEnemiesOnMap = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
-        print("Total enemies" + enemyOnMapCounter.MaxEnemiesOnMap);
     }
 
 }

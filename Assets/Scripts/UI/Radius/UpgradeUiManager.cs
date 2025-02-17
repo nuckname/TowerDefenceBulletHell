@@ -109,7 +109,8 @@ public class UpgradeUiManager : MonoBehaviour
         }
         
         //Set Display Gold Text and return amount
-        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity);
+        
+        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++);
     }
     
     private void SetTextToUi(string[] Text)
@@ -117,7 +118,6 @@ public class UpgradeUiManager : MonoBehaviour
         for (int i = 0; i < Text.Length; i++)
         {
             allTextUis[i].text = Text[i].ToString();
-            print("Set text to " + allTextUis[i].text);
         }
     }
 
@@ -164,7 +164,7 @@ public class UpgradeUiManager : MonoBehaviour
             StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
             GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>());
             
-            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity);
+            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         }
     }
 

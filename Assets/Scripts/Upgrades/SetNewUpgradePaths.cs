@@ -7,6 +7,16 @@ public class SetNewUpgradePaths : MonoBehaviour
 
     public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats)
     {
+        if (turretStats.pierceCount >= 1)
+        {
+            CanBounce();
+        }
+        
+        if (turretStats.pierceCount >= 3)
+        {
+            CanChain();
+        }
+
         if (upgradeName == "Homing")
         {
             EnableHomingUpgrade();
@@ -15,7 +25,7 @@ public class SetNewUpgradePaths : MonoBehaviour
         {
             UnhideIncreaseRareRarity();
             UnhideIncreasedNormalRarity();
-            UnhideIncreasedLegendaryRarity();            
+            UnhideIncreasedLegendaryRarity();
         }
 
         if (upgradeName == "Increase Normal Rarity" ||
@@ -27,15 +37,77 @@ public class SetNewUpgradePaths : MonoBehaviour
         }
     }
 
-    private void UnhideIncreasedNormalRarity()
+    private void CanBounce()
+    {
+        for (int i = 0; i < upgradeData.rareUpgrades.Count; i++)
+        {
+            if (i >= upgradeData.normalUpgrades.Count) 
+            {
+                Debug.LogError($"Index {i} is out of range for normalUpgrades (Count: {upgradeData.normalUpgrades.Count}).");
+                break; // Prevents out-of-bounds errors.
+            }
+            
+            if (upgradeData.rareUpgrades[i].upgradeName == "Can Bounce")
+            {
+                upgradeData.rareUpgrades[i].hideUpgrade = false;
+                Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+            }
+        }
+        
+        for (int i = 0; i < upgradeData.rareUpgrades.Count; i++)
+        {
+            if (i >= upgradeData.normalUpgrades.Count) 
+            {
+                Debug.LogError($"Index {i} is out of range for normalUpgrades (Count: {upgradeData.normalUpgrades.Count}).");
+                break; // Prevents out-of-bounds errors.
+            }
+            
+            if (upgradeData.normalUpgrades[i].upgradeName == "Increase Bounces")
+            {
+                upgradeData.normalUpgrades[i].hideUpgrade = false;
+                Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
+            }
+        }
+        
+    }
+    
+    private void CanChain()
+    {
+        for (int i = 0; i < upgradeData.rareUpgrades.Count; i++)
+        {
+            if (i >= upgradeData.normalUpgrades.Count) 
+            {
+                Debug.LogError($"Index {i} is out of range for normalUpgrades (Count: {upgradeData.normalUpgrades.Count}).");
+                break; // Prevents out-of-bounds errors.
+            }
+            
+            if (upgradeData.normalUpgrades[i].upgradeName == "Ricochet")
+            {
+                upgradeData.normalUpgrades[i].hideUpgrade = false;
+                Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
+            }
+        }
+    }
+
+private void UnhideIncreasedNormalRarity()
     {
         if (upgradeData.normalUpgrades != null)
         {
             for (int i = 0; i < upgradeData.normalUpgrades.Count; i++)
             {
+                if (i >= upgradeData.normalUpgrades.Count) 
+                {
+                    Debug.LogError($"Index {i} is out of range for normalUpgrades (Count: {upgradeData.normalUpgrades.Count}).");
+                    break; // Prevents out-of-bounds errors.
+                }
+                
                 if (upgradeData.normalUpgrades[i].upgradeName == "Increase Normal Rarity")
                 {
                     upgradeData.normalUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
                 }
             }
         }
@@ -54,6 +126,8 @@ public class SetNewUpgradePaths : MonoBehaviour
                 if (upgradeData.rareUpgrades[i].upgradeName == "Increase Rare Rarity")
                 {
                     upgradeData.rareUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
                 }
             }
         }
@@ -72,6 +146,8 @@ public class SetNewUpgradePaths : MonoBehaviour
                 if (upgradeData.legendaryUpgrades[i].upgradeName == "Increase Legendary Rarity")
                 {
                     upgradeData.legendaryUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
                 }
             }
         }
@@ -97,6 +173,8 @@ public class SetNewUpgradePaths : MonoBehaviour
                 if (upgradeData.rareUpgrades[i].upgradeName == "Increase Homing Speed")
                 {
                     upgradeData.rareUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
+
                 }
             }
         }

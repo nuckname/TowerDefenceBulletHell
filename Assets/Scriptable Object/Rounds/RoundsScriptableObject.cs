@@ -8,6 +8,8 @@ public class RoundsScriptableObject : ScriptableObject
     [Tooltip("Name of the wave (for organization purposes)")]
     public string waveName;
 
+    public int currentWave;
+    
     [Tooltip("List of enemy groups in this wave")]
     public List<EnemyGroup> enemyGroups;
 
@@ -17,17 +19,19 @@ public class RoundsScriptableObject : ScriptableObject
     public float speedModifer = 0f;
 
     [Header("Wave Behavior")]
-    [Tooltip("Should this wave spawn enemies in random order?")]
-    public bool randomizeSpawnOrder = false;
-
     [Tooltip("Time between spawning each enemy in the wave")]
     public float spawnInterval = 0.5f;
 
     [Tooltip("Total number of enemies in this wave (auto-calculated)")]
     [SerializeField] private int totalEnemies;
     
-    [SerializeField] int totalHp = 0;
-
+    [Header("Gold Modifier")] 
+    public int coinEnemiesDropAmount = 5;
+    //for freeplay?
+    public float increaseGoldAmoutForEachCoinMutipler = 0;
+    public int maxAmountOfGold = 1;
+    public int minAmountOfGold = 4;
+    
     // Auto-calculate total enemies when the ScriptableObject is loaded or modified
     private void OnValidate()
     {
@@ -36,25 +40,12 @@ public class RoundsScriptableObject : ScriptableObject
         {
             totalEnemies += group.count;
         }
-
-        GetTotalHp();
     }
 
     public int GetTotalEnemies()
     {
         return totalEnemies;
     }
-    
-    //Just for debugging
-    public int GetTotalHp()
-    {
-        foreach (var group in enemyGroups)
-        {
-            totalHp += group.enemyHp * group.count; 
-        }
-        return totalHp;
-    }
-
 }
 
 
