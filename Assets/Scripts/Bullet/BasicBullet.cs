@@ -6,8 +6,9 @@ public class BasicBullet : MonoBehaviour
     private Vector2 direction;
     private float speed;
     private int currentBounces = 0;
-    
-    [Header("Bounce Settings")]
+
+    [Header("Bounce Settings")] 
+    public bool canBounce = false;
     public int maxBounces = 3;
     public LayerMask colliderLayer;
 
@@ -37,13 +38,16 @@ public class BasicBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (currentBounces >= maxBounces)
+        if (canBounce)
         {
-            Destroy(gameObject);
-            return;
-        }
+            if (currentBounces >= maxBounces)
+            {
+                Destroy(gameObject);
+                return;
+            }
 
-        Bounce(other);
+            Bounce(other);
+        }
     }
 
     private void Bounce(Collider2D other)

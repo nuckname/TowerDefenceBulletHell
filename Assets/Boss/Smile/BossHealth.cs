@@ -24,12 +24,18 @@ public class BossHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet")) // Check if hit by "Bullet"
+        if (collision.CompareTag("Bullet"))
         {
-            print("yo");
-            TakeDamage(10); // Adjust damage amount
-            //Destroy(collision.gameObject); // Destroy bullet
+            TakeDamage(1); 
+            Destroy(collision.gameObject);
         }
+        
+        if (collision.CompareTag("PlayerBullet"))
+        {
+            TakeDamage(1);
+            Destroy(collision.gameObject); 
+        }
+        
     }
 
     public void TakeDamage(int damage)

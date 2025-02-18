@@ -1,36 +1,32 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UpgradeGold : MonoBehaviour
 {
     public TMP_Text DisplayUpgradeGoldAmount;
 
-    [SerializeField] private int NormalUpgradePrice = 250;
-    [SerializeField] private int RareUpgradePriece = 300;
-    [SerializeField] private int LegendaryUpgradePriece = 450;
-    
+    [SerializeField] private Dictionary<string, int> basePrices = new Dictionary<string, int>
+    {
+        { "Normal Rarity", 50 },
+        { "Rare Rarity", 100 },
+        { "Legendary Rarity", 200 }
+    };
+
+    [SerializeField] private float scalingFactor = 1.15f; 
+
     public int DisplayGold(string rarity, int totalUpgradeAmount)
     {
-        if (rarity == "Normal Rarity")
+        if (!basePrices.ContainsKey(rarity))
         {
-            DisplayUpgradeGoldAmount.text = "$" + Mathf.RoundToInt(NormalUpgradePrice + 5f * totalUpgradeAmount).ToString();
-
-            return NormalUpgradePrice;
+            Debug.LogError("Price Error: Invalid Rarity");
+            return 0;
         }
         
-        else if (rarity == "Rare Rarity")
-        {
-            DisplayUpgradeGoldAmount.text = "$" + Mathf.RoundToInt(RareUpgradePriece + 5f * totalUpgradeAmount).ToString();
-            return RareUpgradePriece;
-        }
+        int basePrice = basePrices[rarity];
+        int upgradedCost = Mathf.RoundToInt(basePrice * Mathf.Pow(scalingFactor, totalUpgradeAmount));
         
-        else if (rarity == "Legendary Rarity")
-        {
-            DisplayUpgradeGoldAmount.text = "$" + Mathf.RoundToInt(LegendaryUpgradePriece + 5f * totalUpgradeAmount).ToString();
-            return LegendaryUpgradePriece;
-        }
-
-        Debug.LogError("Prie Error");
-        return NormalUpgradePrice;
+        DisplayUpgradeGoldAmount.text = "$" + upgradedCost.ToString();
+        return upgradedCost;
     }
 }

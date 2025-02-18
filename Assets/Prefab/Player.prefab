@@ -126,7 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 040114ed442582a47af2f178e46d9e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiManager: {fileID: 2563423375413203857, guid: 2cf5b2650556d2d46861e2dc52422858, type: 3}
+  facingUpwardsUiManager: {fileID: 2563423375413203857, guid: 2cf5b2650556d2d46861e2dc52422858, type: 3}
+  facingDownUiManager: {fileID: 2563423375413203857, guid: 29011cd98eebf644fbeb8662eacef522, type: 3}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0
@@ -510,6 +511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63c6fff52d7252b44886ca5c04d412b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roundsScriptableObject: {fileID: 0}
   playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
   playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   CoinGiveGoldAmount: 5

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RoundStateManager : MonoBehaviour
 {
-    private RoundBaseState currentState;
+    public RoundBaseState currentState;
     
     public RoundOverState roundOverState = new RoundOverState();
     public RoundInProgressState roundInProgressState = new RoundInProgressState();

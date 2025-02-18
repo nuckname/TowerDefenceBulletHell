@@ -244,7 +244,7 @@ MonoBehaviour:
   colliderLayer:
     serializedVersion: 2
     m_Bits: 2147483648
-  canChain: 1
+  canChain: 0
   chainRange: 5
 --- !u!114 &-8786673248908898272
 MonoBehaviour:
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff0326eec2680cb429c5b2e2ce25407e, type: 3}
   m_Name: 

@@ -227,10 +227,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaa2ab1ed54e5d4193795486fc89844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  totalAmountOfUpgrades: 0
   modifierFireRate: 0
   modifierBulletLifeTime: 1
   modifierBulletSpeed: 0
-  pierceCount: 0
+  pierceCount: 1
   angleSpread: 30
   extraProjectiles: 0
   Shoot4Projectiles: 0
@@ -239,6 +240,9 @@ MonoBehaviour:
   allow4ShootPoints: 0
   activeDirections: 1
   amountOfBounces: 0
+  AllowBulletsToBounce: 0
+  chainRange: 5
+  AllowBulletsToBouncesToChain: 0
   projectilesReturn: 0
   enableOrbit: 0
   orbitRadius: 180

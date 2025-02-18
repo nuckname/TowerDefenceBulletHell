@@ -14,6 +14,12 @@ public class SpawnEnemies : MonoBehaviour
 
     public int SpawnEnemiesPerRound(int currentRoundIndex)
     {
+        if (roundsScriptableObject[currentRoundIndex].boss != null)
+        {
+            Instantiate(roundsScriptableObject[currentRoundIndex].boss, spawnPoint.position, Quaternion.identity);
+            amountOfEnemiesSpawned++;
+        }
+        
         // Check if there are rounds left to spawn
         if (currentRoundIndex < roundsScriptableObject.Count)
         {

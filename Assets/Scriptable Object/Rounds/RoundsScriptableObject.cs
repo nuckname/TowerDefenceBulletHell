@@ -31,6 +31,9 @@ public class RoundsScriptableObject : ScriptableObject
     public float increaseGoldAmoutForEachCoinMutipler = 0;
     public int maxAmountOfGold = 1;
     public int minAmountOfGold = 4;
+
+    [Header("Boss")]
+    public GameObject boss;
     
     // Auto-calculate total enemies when the ScriptableObject is loaded or modified
     private void OnValidate()

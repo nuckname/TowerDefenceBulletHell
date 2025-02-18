@@ -72,6 +72,8 @@ public class ApplyUpgrade : MonoBehaviour
                 upgrade.effect.Apply(targetTurret);
                 ClearUpgradesDescription(targetTurret);
                 upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+                
+                targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
                 //Apply bullet upgrades
                 
                 //setNewUpgradePaths.AllowNewUpgrades(upgradeSelected);

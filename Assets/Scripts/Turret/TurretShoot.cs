@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurretShoot : MonoBehaviour
 {
+    private RoundStateManager roundStateManager;
+    
     public TurretConfig turretConfig;
 
     [Header("Shoot Transforms")] [SerializeField]
@@ -38,6 +40,8 @@ public class TurretShoot : MonoBehaviour
     
     private void Awake()
     {
+        roundStateManager = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>();
+        
         turretStats = GetComponent<TurretStats>();
         bulletCollision = GetComponent<BulletCollision>();
         
@@ -47,6 +51,12 @@ public class TurretShoot : MonoBehaviour
 
     private void Start()
     {
+        
+        if (roundStateManager.currentState == roundStateManager.roundInProgressState)
+        {
+            AllowTurretToShoot = true;
+        }
+        
         AddDirectionsToTurret();
         InitializeActiveShootPoints();
     }

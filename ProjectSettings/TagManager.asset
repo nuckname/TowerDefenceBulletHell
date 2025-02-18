@@ -37,6 +37,7 @@ TagManager:
   - SnakeWall
   - WaterCollision
   - SnakeBody
+  - WaterWall
   layers:
   - Default
   - TransparentFX

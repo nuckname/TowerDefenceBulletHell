@@ -15,7 +15,7 @@ public class BossController : MonoBehaviour
     
     [Header("Boss Attributes")]
     public float speed = 2f;
-    public int maxHealth = 100;
+    public int maxHealth = 1000;
     private int currentHealth;
     private bool isStaggering = false;
 

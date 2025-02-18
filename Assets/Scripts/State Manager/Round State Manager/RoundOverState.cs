@@ -7,7 +7,6 @@ public class RoundOverState : RoundBaseState
     public override void EnterState(RoundStateManager roundStateManager)
     {
         Debug.Log("Round Over State");
-        Debug.Log("false");
         roundStateManager.AllowTurretsToShoot(false);
 
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));

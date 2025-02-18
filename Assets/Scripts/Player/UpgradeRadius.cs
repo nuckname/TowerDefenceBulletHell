@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class UpgradeRadius : MonoBehaviour
 {
-    [SerializeField] private GameObject UiManager;
+    [SerializeField] private GameObject facingUpwardsUiManager;
+    [SerializeField] private GameObject facingDownUiManager;
     //split script. Changing 
     private Collider2D circleCollider;
     public ContactFilter2D contactFilter;
@@ -24,6 +25,10 @@ public class UpgradeRadius : MonoBehaviour
 
     public bool allowTurretSwapping = false;
     public bool UpgradeRadiusOn = true;
+    
+    //Upgrade UI we spawn in.
+    private GameObject instantiatedUi;
+
 
     void Awake()
     {
@@ -74,10 +79,32 @@ public class UpgradeRadius : MonoBehaviour
             RotateObject(selectedGameObject);
         }
     }
-    
+
+    private void SpawnUiUporDownFacing(GameObject turret)
+    {
+           Vector3 spawnPosition = new Vector3(
+            turret.transform.position.x, 
+            turret.transform.position.y + 3.22f, 
+            turret.transform.position.z
+        );
+
+        if (turret.transform.position.y >= 2.95)
+        {
+            instantiatedUi = Instantiate(facingDownUiManager, spawnPosition, Quaternion.identity);
+            print("Spawn upside down");
+        }
+        else
+        {
+            print("up down");
+
+            instantiatedUi = Instantiate(facingUpwardsUiManager, spawnPosition, Quaternion.identity);
+        }
+    }
+
+ 
     private void SelectedObject(GameObject turret)
     {
-        GameObject instantiatedUi = Instantiate(UiManager, new Vector3(turret.transform.position.x, turret.transform.position.y + 3.22f, turret.transform.position.z) , Quaternion.identity);
+        SpawnUiUporDownFacing(turret);
         
         //UpgradeUiManager upgradeManager = UiManager.GetComponent<UpgradeUiManager>();
         UpgradeUiManager upgradeManager = instantiatedUi.GetComponent<UpgradeUiManager>();
@@ -145,14 +172,47 @@ public class UpgradeRadius : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        if (other.CompareTag("WaterWall"))
+        {
+            return;
+        }
+        
+        /*
         if (other.CompareTag("Turret") && UpgradeRadiusOn)
         {
+            print("Collider2D: " + other);
             allowTurretSwapping = true;
             // Populate results array with colliders
             colliderCount = circleCollider.Overlap(contactFilter, results);
 
             HighlightFurthestTurret();
         }
+        */
+        
+        if (other.CompareTag("Turret") && UpgradeRadiusOn)
+        {
+            print("Collider2D: " + other);
+            allowTurretSwapping = true;
+
+            // Populate results array with colliders
+            colliderCount = circleCollider.Overlap(contactFilter, results);
+
+            // Filter only turrets
+            int turretCount = 0;
+            for (int i = 0; i < colliderCount; i++)
+            {
+                if (results[i].CompareTag("Turret"))
+                {
+                    results[turretCount] = results[i]; // Overwrite the valid turrets at the beginning
+                    turretCount++;
+                }
+            }
+
+            colliderCount = turretCount; // Update count to reflect only turrets
+
+            HighlightFurthestTurret();
+        }
+
     }
 
     public void HighlightFurthestTurret()

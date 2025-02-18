@@ -39,8 +39,8 @@ MonoBehaviour:
   speedModifer: 0.25
   spawnInterval: 0.5
   totalEnemies: 16
-  totalHp: 1085
-  coinGoldAmount: 0
+  coinEnemiesDropAmount: 5
   increaseGoldAmoutForEachCoinMutipler: 0
-  maxAmountOfGold: 1
-  minAmountOfGold: 4
+  maxAmountOfGold: 5
+  minAmountOfGold: 8
+  boss: {fileID: 0}

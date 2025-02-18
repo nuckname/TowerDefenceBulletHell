@@ -7,12 +7,12 @@ public class SetNewUpgradePaths : MonoBehaviour
 
     public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats)
     {
-        if (turretStats.pierceCount >= 1)
+        if (turretStats.pierceCount >= 2)
         {
             CanBounce();
         }
         
-        if (turretStats.pierceCount >= 3)
+        if (turretStats.pierceCount >= 4)
         {
             CanChain();
         }

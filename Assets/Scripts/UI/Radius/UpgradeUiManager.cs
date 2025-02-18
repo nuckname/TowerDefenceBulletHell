@@ -96,8 +96,11 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
+            //Increase cost of gold case on totalAmoutOfUpgrades
+            //Also display gold cost?
             GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>());
         }
+
 
         if (isDescriptionAlreadyGenerated)
         {
@@ -109,8 +112,8 @@ public class UpgradeUiManager : MonoBehaviour
         }
         
         //Set Display Gold Text and return amount
+        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         
-        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++);
     }
     
     private void SetTextToUi(string[] Text)
