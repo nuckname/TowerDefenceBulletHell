@@ -27,7 +27,7 @@ public class GhostTurretMovement : NetworkBehaviour
         //Back option
         if (Input.GetKey(KeyCode.Q))
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         // Check for input and update movement vector

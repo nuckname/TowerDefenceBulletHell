@@ -201,6 +201,7 @@ MonoBehaviour:
   turretStats: {fileID: 0}
   GoldOnHit: 0
   pierceIndex: 0
+  bulletPool: {fileID: 2933456185114145467, guid: 561f9db9d99ae2c40a7cc1d3ca27aaa0, type: 3}
 --- !u!50 &-5056997756861274050
 Rigidbody2D:
   serializedVersion: 5
@@ -240,6 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b135fe20e80a4948a421e8ce280156a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canBounce: 0
   maxBounces: 3
   colliderLayer:
     serializedVersion: 2

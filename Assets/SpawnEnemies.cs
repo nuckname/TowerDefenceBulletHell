@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -12,8 +13,27 @@ public class SpawnEnemies : MonoBehaviour
     public List<RoundsScriptableObject> roundsScriptableObject; // List of scriptable objects for each round
     public int amountOfEnemiesSpawned = 0; // Counter for enemies spawned
 
+    private bool isDoubleHP = false;
+
+    private GameModeManager gameModeManager;
+    private void Start()
+    {
+        gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
+
+    }
+
     public int SpawnEnemiesPerRound(int currentRoundIndex)
     {
+        
+        if (gameModeManager.CurrentMode == GameMode.DoubleHP)
+        {
+            isDoubleHP = true;
+        }
+        else
+        {
+            isDoubleHP = false;
+        }
+        
         if (roundsScriptableObject[currentRoundIndex].boss != null)
         {
             Instantiate(roundsScriptableObject[currentRoundIndex].boss, spawnPoint.position, Quaternion.identity);
@@ -51,13 +71,24 @@ public class SpawnEnemies : MonoBehaviour
                 // Instantiate the enemy prefab
                 GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
-                enemy.GetComponent<EnemyDropItems>().minimumGoldCoins = round.minAmountOfGold;
-                enemy.GetComponent<EnemyDropItems>().maximumGoldCoins = round.maxAmountOfGold;
+                EnemyDropItems enemyDropItems = enemy.GetComponent<EnemyDropItems>();
+                    
+                enemyDropItems.minimumGoldCoins = round.minAmountOfGold;
+                enemyDropItems.maximumGoldCoins = round.maxAmountOfGold;
                 
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
                 {
-                    enemyHealth.InitializeEnemy(group.enemyHp); 
+                    if (isDoubleHP)
+                    {
+                        print("double HP set");
+                        enemyHealth.InitializeEnemy(group.enemyHp * 2); 
+                    }
+                    else
+                    {
+                        print("NO double HP set");
+                        enemyHealth.InitializeEnemy(group.enemyHp); 
+                    }
                 }
                 
                 // Apply speed modifier from the round

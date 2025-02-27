@@ -11,23 +11,13 @@ public class PlaceObject : NetworkBehaviour
     public static int TurretBasicCost = 25;
 
     private bool GhostTurretHasBeenPlaced = false;
-
-    //[SerializeField] private GhostBlockPathCollision ghostBlockPathCollision;
-    [SerializeField] private bool canPlaceGhost;
-    //Gold
-    public PlayerGoldScriptableObject playerGold;
-
     private GameObject curentGhost;
+
+    // Gold system
+    public PlayerGoldScriptableObject playerGold;
 
     void Update()
     {
-        /*
-        if (!IsOwner)
-        {
-            return;
-        }
-        */
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             BuyTurretGhost();
@@ -57,7 +47,7 @@ public class PlaceObject : NetworkBehaviour
     private GameObject SpawnGhostTurret()
     {
         GhostTurretHasBeenPlaced = true;
-        return curentGhost = Instantiate(GhostPlacementTurret, transform.position, Quaternion.identity);
+        return curentGhost = Instantiate(GhostPlacementTurret, transform.position, transform.rotation);
     }
 
     private void SpawnBasicTurret(GameObject currentGhost)
@@ -65,30 +55,21 @@ public class PlaceObject : NetworkBehaviour
         if (currentGhost.GetComponent<GhostBlockPathCollision>().canPlaceGhost)
         {
             BindingOfIsaacShooting.disableShooting = false;
-            
-            GameObject ghostTurret = GameObject.FindWithTag("GhostTurret");
-            if (ghostTurret != null)
-            {
-                Instantiate(TurretBasic, ghostTurret.transform.position, Quaternion.identity);
-                GhostTurretHasBeenPlaced = false;
-                Destroy(ghostTurret);
-            }
 
+            // Spawn the turret at the ghost's position with the ghost's rotation
+            Instantiate(TurretBasic, currentGhost.transform.position, currentGhost.transform.rotation);
+            
+            GhostTurretHasBeenPlaced = false;
+            Destroy(currentGhost);
         }
         else
         {
-            print("Ghost on path");
+            Debug.Log("Ghost on path - cannot place turret.");
         }
     }
 
     private void PlaceGoldMiner()
     {
-        /*
-        if (PlayerGold.CURRENT_PLAYER_GOLD >= 100)
-        {
-            Instantiate(goldMiner, transform.position, Quaternion.identity);
-            _addGold.MinusGoldToDisplay(100);
-        }
-        */
+        // Gold miner placement logic (commented out in original)
     }
 }

@@ -15,12 +15,16 @@ public class PlayerCollision : MonoBehaviour
     private int _currentRoundIndex;
     private List<RoundsScriptableObject> rounds;
     
+    [SerializeField] private GameModeManager gameModeManager;
     
     private bool isInvincible = false;
     private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
+        gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
+
+        
         //So we can get the amount of gold for the enemies to drop. 
         rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
         _currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
@@ -48,8 +52,15 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            playerGoldScriptableObject.AddGold(rounds[_currentRoundIndex].coinEnemiesDropAmount);
-            //playerGoldScriptableObject.AddGold(CoinGiveGoldAmount);
+            int amount = rounds[_currentRoundIndex].amountOfGoldGainedForEachCoin;
+            if (gameModeManager.CurrentMode == GameMode.HalfCash)
+            {
+                playerGoldScriptableObject.AddGold(Mathf.RoundToInt(amount / 2));
+            }
+            else
+            {
+                playerGoldScriptableObject.AddGold(amount);
+            }
         }
     }
 

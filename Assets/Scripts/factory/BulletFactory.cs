@@ -16,7 +16,7 @@ public class BulletFactory : MonoBehaviour
         return bullet;
     }
 
-    private void ConfigureBullet(GameObject bullet, TurretStats turretStats, bool homingEnabled)
+    public void ConfigureBullet(GameObject bullet, TurretStats turretStats, bool homingEnabled)
     {
         // Configure BasicBullet
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();

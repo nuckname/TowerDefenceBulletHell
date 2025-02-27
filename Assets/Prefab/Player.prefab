@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   facingUpwardsUiManager: {fileID: 2563423375413203857, guid: 2cf5b2650556d2d46861e2dc52422858, type: 3}
-  facingDownUiManager: {fileID: 2563423375413203857, guid: 29011cd98eebf644fbeb8662eacef522, type: 3}
+  facingDownUiManager: {fileID: 2563423375413203857, guid: e0886207031893046baf45ddc0b72e97, type: 3}
   contactFilter:
     useTriggers: 0
     useLayerMask: 0

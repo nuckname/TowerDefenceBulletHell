@@ -38,6 +38,8 @@ TagManager:
   - WaterCollision
   - SnakeBody
   - WaterWall
+  - BulletPooling
+  - GameModeManager
   layers:
   - Default
   - TransparentFX

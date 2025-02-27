@@ -11,9 +11,11 @@ public class PlayerGoldScriptableObject : ScriptableObject
     public int currentGold;
     public int startingAmountOfGold;
     
+ 
     private void OnEnable()
     {
         ResetGold();
+
     }
     
     public void ResetGold()
@@ -24,8 +26,6 @@ public class PlayerGoldScriptableObject : ScriptableObject
 
     public void AddGold(int amount)
     {
-        Debug.Log("Added Gold.");
-
         currentGold += amount;
     }
 

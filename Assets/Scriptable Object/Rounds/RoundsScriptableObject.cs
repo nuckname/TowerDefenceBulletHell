@@ -26,7 +26,7 @@ public class RoundsScriptableObject : ScriptableObject
     [SerializeField] private int totalEnemies;
     
     [Header("Gold Modifier")] 
-    public int coinEnemiesDropAmount = 5;
+    public int amountOfGoldGainedForEachCoin = 5;
     //for freeplay?
     public float increaseGoldAmoutForEachCoinMutipler = 0;
     public int maxAmountOfGold = 1;

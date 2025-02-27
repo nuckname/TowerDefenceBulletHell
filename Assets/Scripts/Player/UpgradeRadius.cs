@@ -82,22 +82,19 @@ public class UpgradeRadius : MonoBehaviour
 
     private void SpawnUiUporDownFacing(GameObject turret)
     {
-           Vector3 spawnPosition = new Vector3(
-            turret.transform.position.x, 
-            turret.transform.position.y + 3.22f, 
-            turret.transform.position.z
-        );
-
         if (turret.transform.position.y >= 2.95)
         {
-            instantiatedUi = Instantiate(facingDownUiManager, spawnPosition, Quaternion.identity);
-            print("Spawn upside down");
+            instantiatedUi = Instantiate(facingDownUiManager, new Vector3(
+                turret.transform.position.x, 
+                turret.transform.position.y - 3.22f,
+                turret.transform.position.z), Quaternion.identity);
         }
         else
         {
-            print("up down");
-
-            instantiatedUi = Instantiate(facingUpwardsUiManager, spawnPosition, Quaternion.identity);
+            instantiatedUi = Instantiate(facingUpwardsUiManager, new Vector3(
+                turret.transform.position.x,
+                turret.transform.position.y + 3.22f, 
+                turret.transform.position.z), Quaternion.identity);
         }
     }
 
@@ -172,48 +169,30 @@ public class UpgradeRadius : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("WaterWall"))
-        {
-            return;
-        }
-        
-        /*
-        if (other.CompareTag("Turret") && UpgradeRadiusOn)
-        {
-            print("Collider2D: " + other);
-            allowTurretSwapping = true;
-            // Populate results array with colliders
-            colliderCount = circleCollider.Overlap(contactFilter, results);
-
-            HighlightFurthestTurret();
-        }
-        */
-        
         if (other.CompareTag("Turret") && UpgradeRadiusOn)
         {
             print("Collider2D: " + other);
             allowTurretSwapping = true;
 
-            // Populate results array with colliders
-            colliderCount = circleCollider.Overlap(contactFilter, results);
+            // Temporarily store all colliders detected
+            Collider2D[] tempResults = new Collider2D[50];
+            int totalColliders = circleCollider.Overlap(contactFilter, tempResults);
 
-            // Filter only turrets
-            int turretCount = 0;
-            for (int i = 0; i < colliderCount; i++)
+            // Filter only turrets into results[]
+            colliderCount = 0;
+            for (int i = 0; i < totalColliders; i++)
             {
-                if (results[i].CompareTag("Turret"))
+                if (tempResults[i] != null && tempResults[i].CompareTag("Turret"))
                 {
-                    results[turretCount] = results[i]; // Overwrite the valid turrets at the beginning
-                    turretCount++;
+                    results[colliderCount] = tempResults[i]; // Store valid turrets
+                    colliderCount++;
                 }
             }
 
-            colliderCount = turretCount; // Update count to reflect only turrets
-
             HighlightFurthestTurret();
         }
-
     }
+
 
     public void HighlightFurthestTurret()
     {

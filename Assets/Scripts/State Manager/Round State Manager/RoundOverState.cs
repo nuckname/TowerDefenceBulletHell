@@ -59,7 +59,7 @@ public class RoundOverState : RoundBaseState
 
 private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(2f);
        
         roundStateManager.StartCoroutine(FadeOutAndDestroy( 1f, "Coin")); // 1 second fade-out duration
         

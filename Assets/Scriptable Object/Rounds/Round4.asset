@@ -31,11 +31,11 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
   delayAfterWave: 2
-  speedModifer: 1
+  speedModifer: 2
   spawnInterval: 0.5
   totalEnemies: 18
-  coinEnemiesDropAmount: 5
+  amountOfGoldGainedForEachCoin: 5
   increaseGoldAmoutForEachCoinMutipler: 0
-  maxAmountOfGold: 3
-  minAmountOfGold: 5
+  maxAmountOfGold: 1
+  minAmountOfGold: 2
   boss: {fileID: 0}

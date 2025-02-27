@@ -33,6 +33,9 @@ public class TurretShoot : MonoBehaviour
     private BulletFactory bulletFactory;
     
     private BulletCollision bulletCollision;
+    
+    [SerializeField] private BulletPool bulletPool;
+
     public void EnableHomingBullets(bool enable)
     {
         homingEnabled = enable;
@@ -41,6 +44,7 @@ public class TurretShoot : MonoBehaviour
     private void Awake()
     {
         roundStateManager = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>();
+        bulletPool = GameObject.FindGameObjectWithTag("BulletPooling").GetComponent<BulletPool>();
         
         turretStats = GetComponent<TurretStats>();
         bulletCollision = GetComponent<BulletCollision>();
@@ -164,19 +168,48 @@ public class TurretShoot : MonoBehaviour
 
     private void FireProjectile(Transform shootPoint, Vector2 direction)
     {
-        // Use the bullet factory to create and configure the bullet
-        
-        GameObject bullet = bulletFactory.CreateBullet(shootPoint.position, Quaternion.identity, turretStats, homingEnabled);
+        GameObject bullet;
+        if (bulletPool != null)
+        {
+            bullet = bulletPool.GetBullet(shootPoint.position, Quaternion.identity);
+            // Re-configure the pooled bullet so it moves correctly.
+            bulletFactory.ConfigureBullet(bullet, turretStats, homingEnabled); // Make sure ConfigureBullet is public.
+        }
+        else
+        {
+            bullet = bulletFactory.CreateBullet(shootPoint.position, Quaternion.identity, turretStats, homingEnabled);
+        }
 
-        // Set the bullet's direction
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
         if (basicBullet != null)
         {
             basicBullet.SetDirection(direction);
         }
 
-        Destroy(bullet, turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime);
+        float bulletLifeTime = turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime;
+        if (bulletPool != null)
+        {
+            StartCoroutine(ReturnBulletAfterTime(bullet, bulletLifeTime));
+        }
+        else
+        {
+            Destroy(bullet, bulletLifeTime);
+        }
     }
+
+    private IEnumerator ReturnBulletAfterTime(GameObject bullet, float time)
+    {
+        yield return new WaitForSeconds(time);
+        // Only return the bullet to the pool if it hasn't been destroyed.
+        if (bullet != null)
+        {
+            bulletPool.ReturnBullet(bullet);
+        }
+    }
+
+
+
+    
     private IEnumerator FireMultiShot(Transform shootPoint, Vector2 direction, int count, float delay)
     {
         for (int i = 0; i < count; i++)

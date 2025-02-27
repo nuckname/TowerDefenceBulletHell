@@ -30,6 +30,13 @@ public class BossHealth : MonoBehaviour
             Destroy(collision.gameObject);
         }
         
+        if (collision.CompareTag("RedBox"))
+        {
+            print("Player should take damage.");
+            TakeDamage(100);
+            Destroy(collision.gameObject); 
+        }
+        
         if (collision.CompareTag("PlayerBullet"))
         {
             TakeDamage(1);

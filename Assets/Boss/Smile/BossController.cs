@@ -127,7 +127,7 @@ public class BossController : MonoBehaviour
         
         Debug.Log("Boss is staggering! Free damage window!");
 
-        yield return new WaitForSeconds(2f); // Stay vulnerable for 2 seconds
+        yield return new WaitForSeconds(3f); // Stay vulnerable for 2 seconds
         isStaggering = false;
 
         ChangeState(BossState.Idle);
