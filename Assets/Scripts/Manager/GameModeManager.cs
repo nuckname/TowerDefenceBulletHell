@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GameMode
 {
     Classic,
+    Tutorial,
     Endless,
     HalfCash,
     DoubleHP,
@@ -35,6 +36,7 @@ public class GameModeManager : MonoBehaviour
     //Set gamemode
     //Use these on buttons
     public void SetClassicMode() => SetGameMode(GameMode.Classic);
+    public void SetTutorialMode() => SetGameMode(GameMode.Tutorial);
     //public void SetEndlessMode() => SetGameMode(GameMode.Endless);
     public void SetHalfCashMode() => SetGameMode(GameMode.HalfCash);
     public void SetDoubleHPMode() => SetGameMode(GameMode.DoubleHP);
