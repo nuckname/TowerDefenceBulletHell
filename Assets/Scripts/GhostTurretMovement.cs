@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class GhostTurretMovement : NetworkBehaviour
 {
-    public float moveSpeed = 5f; // Speed of the character
+    public float moveSpeed = 5f; // Speed of movement
+    public float followSpeed = 10f; // How fast it follows the cursor
 
-    private Vector3 movement = Vector3.zero; // Movement vector initialized once
+    private Vector3 movement = Vector3.zero; // Movement vector
 
     private void Awake()
     {
@@ -21,44 +22,12 @@ public class GhostTurretMovement : NetworkBehaviour
             return;
         }
         */
-        // Reset movement vector each frame
-        movement = Vector3.zero;
-        
-        //Back option
-        if (Input.GetKey(KeyCode.Q))
-        {
-            //Destroy(gameObject);
-        }
 
-        // Check for input and update movement vector
-        if (Input.GetKey(KeyCode.I) || Input.GetKey(KeyCode.UpArrow)) // Move Up
-        {
-            movement += Vector3.up;
-        }
+        // Get mouse position in world space
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f; // Ensure it's on the same plane as the turret
 
-        if (Input.GetKey(KeyCode.K) || Input.GetKey(KeyCode.DownArrow)) // Move Down
-        {
-            movement += Vector3.down;
-        }
-
-        if (Input.GetKey(KeyCode.J) || Input.GetKey(KeyCode.LeftArrow)) // Move Left
-        {
-            movement += Vector3.left;
-        }
-
-        if (Input.GetKey(KeyCode.L) || Input.GetKey(KeyCode.RightArrow)) // Move Right
-        {
-            movement += Vector3.right;
-        }
-
-        // Normalize movement vector to prevent faster diagonal movement
-        if (movement.magnitude > 1f)
-        {
-            movement.Normalize();
-        }
-
-        // Calculate the new position based on movement
-        Vector3 newPosition = transform.position + movement * moveSpeed * Time.deltaTime;
-        transform.position = newPosition;
+        // Move smoothly toward the mouse position
+        transform.position = Vector3.Lerp(transform.position, mousePos, followSpeed * Time.deltaTime);
     }
 }

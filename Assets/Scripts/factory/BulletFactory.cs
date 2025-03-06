@@ -22,6 +22,7 @@ public class BulletFactory : MonoBehaviour
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
         if (basicBullet != null)
         {
+
             //basicBullet.SetSpeed(turretStats.modifierBulletSpeed);
             
             //basicBullet.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);

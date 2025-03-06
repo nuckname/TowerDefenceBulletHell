@@ -4,7 +4,8 @@ public class BindingOfIsaacShooting : MonoBehaviour
 {
     public GameObject projectilePrefab; 
     public float shootCooldown = 0.5f; 
-    public Transform firePoint; 
+    public Transform firePoint; // Where the projectile spawns
+    public float projectileSpeed = 10f; 
 
     private float lastShotTime;
     public static bool disableShooting = false;
@@ -13,31 +14,26 @@ public class BindingOfIsaacShooting : MonoBehaviour
     {
         if (disableShooting) return;
 
-        if (Time.time >= lastShotTime + shootCooldown)
+        // Fire only if cooldown is over
+        if (Time.time >= lastShotTime + shootCooldown && Input.GetMouseButton(0)) // Left Mouse Click
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                Shoot(Vector2.up);
-            }
-            else if (Input.GetKey(KeyCode.DownArrow))
-            {
-                Shoot(Vector2.down);
-            }
-            else if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                Shoot(Vector2.left);
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                Shoot(Vector2.right);
-            }
+            Shoot();
         }
     }
 
-    private void Shoot(Vector2 direction)
+    private void Shoot()
     {
         lastShotTime = Time.time;
+
+        // Get mouse position in world space
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos.z = 0f; // Ensure it's on the same 2D plane
+
+        // Calculate shooting direction from firePoint
+        Vector2 direction = (mousePos - firePoint.position).normalized;
+
+        // Spawn projectile and set velocity
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        projectile.GetComponent<Rigidbody2D>().linearVelocity = direction * projectile.GetComponent<Projectile>().speed;
+        projectile.GetComponent<Rigidbody2D>().linearVelocity = direction * projectileSpeed;
     }
 }

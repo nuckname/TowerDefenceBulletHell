@@ -23,6 +23,14 @@ public class PlaceObject : NetworkBehaviour
             BuyTurretGhost();
         }
 
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            if (GhostTurretHasBeenPlaced)
+            {
+                SpawnBasicTurret(curentGhost);
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.O))
         {
             PlaceGoldMiner();
@@ -46,8 +54,10 @@ public class PlaceObject : NetworkBehaviour
 
     private GameObject SpawnGhostTurret()
     {
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
         GhostTurretHasBeenPlaced = true;
-        return curentGhost = Instantiate(GhostPlacementTurret, transform.position, transform.rotation);
+        return curentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
     }
 
     private void SpawnBasicTurret(GameObject currentGhost)
@@ -56,8 +66,10 @@ public class PlaceObject : NetworkBehaviour
         {
             BindingOfIsaacShooting.disableShooting = false;
 
+            Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            
             // Spawn the turret at the ghost's position with the ghost's rotation
-            Instantiate(TurretBasic, currentGhost.transform.position, currentGhost.transform.rotation);
+            Instantiate(TurretBasic, mousePos, currentGhost.transform.rotation);
             
             GhostTurretHasBeenPlaced = false;
             Destroy(currentGhost);

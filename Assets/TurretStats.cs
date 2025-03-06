@@ -1,8 +1,19 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TurretStats : MonoBehaviour
 {
+    public List<ItemList> items = new List<ItemList>();
+
+    public GameObject turretsPersonalBullet;
+    private void Start()
+    {
+        print("Created new item");
+        IncreaseAttackSpeed item = new IncreaseAttackSpeed();
+        items.Add(new ItemList(item, item.GiveName(), 1));
+    }
+
     [Header("Total Upgrade Count")] 
     public int totalAmountOfUpgrades = 0;
     

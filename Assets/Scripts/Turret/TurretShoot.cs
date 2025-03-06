@@ -172,6 +172,7 @@ public class TurretShoot : MonoBehaviour
         if (bulletPool != null)
         {
             bullet = bulletPool.GetBullet(shootPoint.position, Quaternion.identity);
+            
             // Re-configure the pooled bullet so it moves correctly.
             bulletFactory.ConfigureBullet(bullet, turretStats, homingEnabled); // Make sure ConfigureBullet is public.
         }

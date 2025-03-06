@@ -43,13 +43,15 @@ public class UpgradeUiManager : MonoBehaviour
     
     //Gold
     public PlayerGoldScriptableObject playerGold;
-    private int rerollGoldAmount = 50;
 
     [SerializeField] private ApplyUpgrade _applyUpgrade;
 
     //Gold
     private int upgradePrice;
-    
+
+    //Buy Upgrade Index
+    private int buttonClicked = 0;
+
     private void Awake()
     {
         upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
@@ -148,15 +150,10 @@ public class UpgradeUiManager : MonoBehaviour
             {
                 BuyUpgrade();
             }
-            
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                ReRoll();
-            }
         }
     }
 
-    private void ReRoll()
+    public void ReRoll()
     {
         if (playerGold.SpendGold(50))
         {
@@ -171,14 +168,28 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
+    public void ClickedToppedButton()
+    {
+        buttonClicked = 0;
+    }
+    
+    public void ClickedMiddleButton()
+    {
+        buttonClicked = 1;
+    }
+    
+    public void ClickedBottomButton()
+    {
+        buttonClicked = 2;
+    }
+
     public void BuyUpgrade()
     {
         if (playerGold != null)
         {
-            //Minus gold in if statement
             if (playerGold.SpendGold(upgradePrice))
             {
-                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[upgradeSwitchIndex], targetTurret);
+                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
         }
     }
@@ -199,8 +210,10 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
-    private void ExitSelection()
+    public void ExitSelection()
     {
+        print("Exit");
+        
         UpgradeRadius upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
         if (upgradeRadius != null)
         {
@@ -219,7 +232,9 @@ public class UpgradeUiManager : MonoBehaviour
         BindingOfIsaacShooting.disableShooting = false;
         upgradeRadius.UpgradeRadiusOn = true;
         upgradeRadius.allowTurretSwapping = true;
-            
+        
+        this.gameObject.SetActive(false);
+        
         Destroy(gameObject);
     }
 

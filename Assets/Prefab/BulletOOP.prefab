@@ -55,15 +55,11 @@ GameObject:
   - component: {fileID: 883284380247760988}
   - component: {fileID: 501085774687262406}
   - component: {fileID: -6971105223543121742}
-  - component: {fileID: -6286402321136572564}
   - component: {fileID: -5056997756861274050}
-  - component: {fileID: 4977152572373008689}
-  - component: {fileID: -8786673248908898272}
-  - component: {fileID: -7615069637261592277}
-  - component: {fileID: 2218803637122075860}
+  - component: {fileID: -6286402321136572564}
   - component: {fileID: 708765180046670274}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: BulletOOP
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,23 +182,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-6286402321136572564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c86fd63096b1f40ac4caf00a65dbcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
-  turretStats: {fileID: 0}
-  GoldOnHit: 0
-  pierceIndex: 0
-  bulletPool: {fileID: 2933456185114145467, guid: 561f9db9d99ae2c40a7cc1d3ca27aaa0, type: 3}
 --- !u!50 &-5056997756861274050
 Rigidbody2D:
   serializedVersion: 5
@@ -230,7 +209,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &4977152572373008689
+--- !u!114 &-6286402321136572564
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -239,60 +218,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3426162796660274319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b135fe20e80a4948a421e8ce280156a, type: 3}
+  m_Script: {fileID: 11500000, guid: c3c86fd63096b1f40ac4caf00a65dbcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBounce: 0
-  maxBounces: 3
-  colliderLayer:
-    serializedVersion: 2
-    m_Bits: 2147483648
-  canChain: 0
-  chainRange: 5
---- !u!114 &-8786673248908898272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff0326eec2680cb429c5b2e2ce25407e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  turretConfig: {fileID: 11400000, guid: 2841c27e2dff17b4a8337647cceb0f3b, type: 2}
---- !u!114 &-7615069637261592277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e24e2c9074495449638f9576aeb729, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  homingDelay: 0.75
-  homingStrength: 5
-  speed: 10
---- !u!114 &2218803637122075860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81572c35995a48e408f548457946788a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbitCollider: {fileID: 0}
-  orbitSpeed: 0.01
-  orbitRadiusMultiplier: 1
-  bulletSpacing: 0
+  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+  turretStats: {fileID: 0}
+  GoldOnHit: 0
+  pierceIndex: 0
+  bulletPool: {fileID: 2933456185114145467, guid: 561f9db9d99ae2c40a7cc1d3ca27aaa0, type: 3}
 --- !u!114 &708765180046670274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,3 +238,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd0a699cddc54f44a3b7ec7ac9a311b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 5

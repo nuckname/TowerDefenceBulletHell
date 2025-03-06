@@ -114,7 +114,8 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   rareUpgrades:
   - upgradeName: 4 directions
-    description: Allows the turret to shoot in an additional different directions
+    description: Allows the turret to shoot in 4 different directions. up, down,
+      left, right.
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
