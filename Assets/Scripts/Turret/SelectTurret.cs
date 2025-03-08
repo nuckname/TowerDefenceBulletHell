@@ -27,7 +27,16 @@ public class SelectTurret : MonoBehaviour
             return null;
         }
 
-        if (hit.collider.CompareTag("Turret") || hit.collider.CompareTag("TurretPlacementCollider"))
+//        if (hit.collider.CompareTag("Turret") || hit.collider.CompareTag("TurretPlacementCollider"))
+
+        if (hit.collider.CompareTag("TurretPlacementCollider"))
+        {
+            hit.collider.gameObject.GetComponentInParent<UpgradeUiManager>();
+
+        }
+        
+        
+    if (hit.collider.CompareTag("Turret"))
         {
             Debug.Log("Turret clicked: " + hit.collider.name);
             UpgradeUi.SetActive(hit.collider.gameObject);

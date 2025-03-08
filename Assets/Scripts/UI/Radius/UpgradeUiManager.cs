@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
 public class UpgradeUiManager : MonoBehaviour
@@ -153,19 +154,20 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
-    public void ReRoll()
+    public void Reroll()
     {
         if (playerGold.SpendGold(50))
         {
             if (targetTurret == null)
             {
-                Debug.LogWarning("deez");
+                Debug.LogWarning("targetTurret is null");
             }
             StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
             GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>());
-            
+        
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         }
+
     }
 
     public void ClickedToppedButton()
@@ -210,10 +212,13 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
+    public void print()
+    {
+        Debug.Log("Print");
+    }
+
     public void ExitSelection()
     {
-        print("Exit");
-        
         UpgradeRadius upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
         if (upgradeRadius != null)
         {
@@ -235,7 +240,7 @@ public class UpgradeUiManager : MonoBehaviour
         
         this.gameObject.SetActive(false);
         
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 
     public void TurnOffAllUi(bool showUi)

@@ -15,7 +15,8 @@ public class GhostBlockPathCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("PathCollision") || other.CompareTag("TurretPlacementCollider"))
+        //if (other.CompareTag("PathCollision") || other.CompareTag("TurretPlacementCollider"))
+        if (other.CompareTag("PathCollision") || other.CompareTag("Turret"))
         {
             collisionCount++;
             UpdatePlacementState();
@@ -24,7 +25,7 @@ public class GhostBlockPathCollision : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("PathCollision") || other.CompareTag("TurretPlacementCollider"))
+        if (other.CompareTag("PathCollision") || other.CompareTag("Turret"))
         {
             collisionCount = Mathf.Max(0, collisionCount - 1);
             UpdatePlacementState();

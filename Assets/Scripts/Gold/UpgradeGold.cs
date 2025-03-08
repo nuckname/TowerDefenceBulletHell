@@ -1,6 +1,6 @@
-using TMPro;
 using UnityEngine;
 using System.Collections.Generic;
+using TMPro;
 
 public class UpgradeGold : MonoBehaviour
 {
@@ -25,8 +25,11 @@ public class UpgradeGold : MonoBehaviour
         
         int basePrice = basePrices[rarity];
         int upgradedCost = Mathf.RoundToInt(basePrice * Mathf.Pow(scalingFactor, totalUpgradeAmount));
-        
-        DisplayUpgradeGoldAmount.text = "$" + upgradedCost.ToString();
-        return upgradedCost;
+
+        // Round to the nearest multiple of 5
+        int roundedCost = Mathf.RoundToInt(upgradedCost / 5f) * 5;
+
+        DisplayUpgradeGoldAmount.text = "$" + roundedCost.ToString();
+        return roundedCost;
     }
 }

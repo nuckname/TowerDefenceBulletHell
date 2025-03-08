@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2aaa2ab1ed54e5d4193795486fc89844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turretsPersonalBullet: {fileID: 0}
   totalAmountOfUpgrades: 0
   modifierFireRate: 0
   modifierBulletLifeTime: 1
@@ -507,7 +508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &106013686985146219
 Transform:
   m_ObjectHideFlags: 0
