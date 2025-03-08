@@ -8,7 +8,9 @@ public class FourDifferentDirectionsScriptableObject : UpgradeEffect
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            turretStats.activeDirections += 4;
+            turretStats.activeDirections = 4;
+            turretStats.allow4ShootPoints = true;
+            
         }
         else
         {

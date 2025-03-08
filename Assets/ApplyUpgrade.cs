@@ -83,11 +83,14 @@ public class ApplyUpgrade : MonoBehaviour
                 {
                     upgrade.hideUpgrade = true;
                 }
-
+                
+                //Removing for now. Also another place ive commented out. SO unlocks the ability globally. 
+                /*
                 if (upgrade.hasUpgradePaths)
                 {
                     setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, targetTurret.GetComponent<TurretStats>());
                 }
+                */
                 break;
             }
         }

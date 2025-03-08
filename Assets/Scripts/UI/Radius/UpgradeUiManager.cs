@@ -93,12 +93,15 @@ public class UpgradeUiManager : MonoBehaviour
     
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
+        print("yo");
         StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
 
         bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
 
         if (!isDescriptionAlreadyGenerated)
         {
+            print("new isDescriptionAlreadyGenerated");
+
             //Increase cost of gold case on totalAmoutOfUpgrades
             //Also display gold cost?
             GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>());
@@ -107,6 +110,9 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (isDescriptionAlreadyGenerated)
         {
+            print("old isDescriptionAlreadyGenerated");
+
+            
             //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
             displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
             
@@ -212,11 +218,6 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
-    public void print()
-    {
-        Debug.Log("Print");
-    }
-
     public void ExitSelection()
     {
         UpgradeRadius upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
@@ -230,42 +231,12 @@ public class UpgradeUiManager : MonoBehaviour
             Debug.Log("Error. UpgradeRadius null");
         }        
         
-        allowUiSwapping = false;
-
-        TurnOffAllUi(false);
-
         BindingOfIsaacShooting.disableShooting = false;
-        upgradeRadius.UpgradeRadiusOn = true;
-        upgradeRadius.allowTurretSwapping = true;
         
-        this.gameObject.SetActive(false);
-        
-        //Destroy(gameObject);
+        //this.gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
-    public void TurnOffAllUi(bool showUi)
-    {
-        if (!showUi)
-        {
-            //for (int i = 0; i >= allUpgradeUis.Length; i++)
-            for (int i = 0; i < allUpgradeUis.Length; i++)
-            {
-                if (i == 0)
-                {
-                    //so we can initiate UIManager Correctly.
-                    allUpgradeUis[0].gameObject.SetActive(true);
-                    allTextUis[0].gameObject.SetActive(true);
-                }
-                else
-                {
-                    allUpgradeUis[i].gameObject.SetActive(false);
-                    allTextUis[i].gameObject.SetActive(true);
-                }
-                
-            }
-        }
-    }
-    
     private void SwitchSelection(int direction)
     {
         if (allUpgradeUis.Length > 0)

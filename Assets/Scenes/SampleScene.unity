@@ -1276,11 +1276,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4571525935793682645, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
       propertyPath: activeDirections
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4571525935793682645, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
       propertyPath: allow4ShootPoints
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7458,6 +7458,10 @@ PrefabInstance:
       propertyPath: UpgradeUi
       value: 
       objectReference: {fileID: 1648267079}
+    - target: {fileID: 727209495562684462, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: CanvasTransform
+      value: 
+      objectReference: {fileID: 248935373}
     - target: {fileID: 5850789259813473896, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2745637172

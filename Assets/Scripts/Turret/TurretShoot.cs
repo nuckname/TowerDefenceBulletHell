@@ -115,23 +115,36 @@ public class TurretShoot : MonoBehaviour
             return;
         }
 
-        // Choose the first available direction and shoot point
-        Vector2 baseDirection = directions[index];
-        Transform currentShootPoint = activeShootPoints[index];
-
-        if (currentShootPoint == null)
+        // Ensure both lists are the same size
+        if (directions.Count != activeShootPoints.Count)
         {
-            Debug.LogWarning("Shoot Point is missing.");
+            Debug.LogError("Mismatch: directions.Count (" + directions.Count + ") != activeShootPoints.Count (" + activeShootPoints.Count + ")");
             return;
         }
 
-        // Fire a single projectile in the selected direction
-        FireProjectilesInDirection(currentShootPoint, baseDirection);
-        index++;
-
-        if (index == turretStats.activeDirections)
+        // Check if the upgrade is active
+        if (turretStats.allow4ShootPoints)
         {
-            index = 0;
+            // Fire in all four directions
+            for (int i = 0; i < directions.Count; i++)
+            {
+                if (activeShootPoints[i] != null)
+                {
+                    FireProjectilesInDirection(activeShootPoints[i], directions[i]);
+                }
+                else
+                {
+                    Debug.LogWarning("Shoot point at index " + i + " is null.");
+                }
+            }
+        }
+        else
+        {
+            // Fire in only the first available direction (default behavior)
+            if (activeShootPoints.Count > 0 && directions.Count > 0)
+            {
+                FireProjectilesInDirection(activeShootPoints[0], directions[0]);
+            }
         }
     }
 

@@ -5,6 +5,8 @@ public class SelectTurret : MonoBehaviour
     [SerializeField] private GameObject UpgradeUi; // UI panel for upgrades
     private GameObject turretSelected;
 
+    [SerializeField] private Transform CanvasTransform;
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -39,14 +41,18 @@ public class SelectTurret : MonoBehaviour
     if (hit.collider.CompareTag("Turret"))
         {
             Debug.Log("Turret clicked: " + hit.collider.name);
-            UpgradeUi.SetActive(hit.collider.gameObject);
+            //UpgradeUi.SetActive(hit.collider.gameObject);
             
+            GameObject newUI = Instantiate(UpgradeUi, CanvasTransform);
+            newUI.SetActive(true);
             
-            UpgradeUiManager upgradeManager = UpgradeUi.GetComponent<UpgradeUiManager>();
+            Debug.Log("Turret clicked: " + hit.collider.name);
+            UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
             upgradeManager.SetDescriptionsForUpgrades(hit.collider.gameObject);
             
             //Sets a global Varible for the turret.
             //Fixes a bug where targetTurret was null
+            Debug.Log("Turret clicked: " + hit.collider.name);
             upgradeManager.targetTurret = hit.collider.gameObject;
         
             //This might not be scalable.
