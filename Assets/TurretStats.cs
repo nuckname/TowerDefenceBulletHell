@@ -35,10 +35,15 @@ public class TurretStats : MonoBehaviour
     public int multiShotCount = 1;
     public float multiShotDelay = 0.25f;
 
-    [Header("Extra Shoot Points")] 
+    [Header("Extra Shoot Points")]
+    [Header("North, South, East, West")]
     public bool allow4ShootPoints = false;
-    public int activeDirections = 1;
+    public int activeDirections = 0;
 
+    [Header("Diagonal")]
+    public bool allowDiagonalShooting = false;
+
+    
     [Header("Bouncing")] 
     public int amountOfBounces = 1;
     public bool AllowBulletsToBounce = false;

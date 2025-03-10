@@ -8,21 +8,17 @@ public class TurretShoot : MonoBehaviour
     
     public TurretConfig turretConfig;
 
-    [Header("Shoot Transforms")] [SerializeField]
+    [SerializeField]
     private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
+    
+    [SerializeField]
+    private Transform TopLeft,TopRight, BottomLeft, BottomRight;
 
     private List<Vector2> directions = new List<Vector2>();
     private List<Transform> activeShootPoints = new List<Transform>();
 
     [Header("Stats")] private float fireCooldown;
     private int shootPointIndex = 0;
-
-    [Header("Shoot Directions")] [SerializeField]
-    private bool upShootDirection;
-
-    [SerializeField] private bool downShootDirection;
-    [SerializeField] private bool leftShootDirection;
-    [SerializeField] private bool rightShootDirection;
 
     [Header("Can shoot?")] public bool AllowTurretToShoot;
 
@@ -55,37 +51,47 @@ public class TurretShoot : MonoBehaviour
 
     private void Start()
     {
+        directions.Add(Vector2.up);
+        activeShootPoints.Add(ShootPointUp);
         
         if (roundStateManager.currentState == roundStateManager.roundInProgressState)
         {
             AllowTurretToShoot = true;
         }
+    }
+    
+
+    public void AddUpDownLeftRightShootPoints()
+    {
+        directions.Add(Vector2.up);
+        directions.Add(Vector2.down);
+        directions.Add(Vector2.left);
+        directions.Add(Vector2.right);
         
-        AddDirectionsToTurret();
-        InitializeActiveShootPoints();
+        activeShootPoints.Add(ShootPointUp);
+        activeShootPoints.Add(ShootPointDown);
+        activeShootPoints.Add(ShootPointLeft);
+        activeShootPoints.Add(ShootPointRight);
     }
 
-    private void AddDirectionsToTurret()
+    public void AddsDiagonalShootPoints()
     {
-        if (upShootDirection) directions.Add(Vector2.up);
-        if (downShootDirection) directions.Add(Vector2.down);
-        if (leftShootDirection) directions.Add(Vector2.left);
-        if (rightShootDirection) directions.Add(Vector2.right);
-    }
-
-    private void InitializeActiveShootPoints()
-    {
-        // Map directions to their corresponding shoot points
-        if (upShootDirection) activeShootPoints.Add(ShootPointUp);
-        if (downShootDirection) activeShootPoints.Add(ShootPointDown);
-        if (leftShootDirection) activeShootPoints.Add(ShootPointLeft);
-        if (rightShootDirection) activeShootPoints.Add(ShootPointRight);
+        directions.Add(new Vector2(1, 1).normalized);  // Up-Right
+        directions.Add(new Vector2(-1, 1).normalized); // Up-Left
+        directions.Add(new Vector2(1, -1).normalized); // Down-Right
+        directions.Add(new Vector2(-1, -1).normalized);// Down-Left
+        
+        activeShootPoints.Add(TopLeft);
+        activeShootPoints.Add(TopRight);
+        activeShootPoints.Add(BottomLeft);
+        activeShootPoints.Add(BottomRight);
     }
 
     private void Update()
     {
         if (AllowTurretToShoot)
         {
+            print("Shoot");
             if (turretConfig == null)
             {
                 Debug.LogWarning("TurretConfig is missing.");
@@ -95,14 +101,17 @@ public class TurretShoot : MonoBehaviour
             fireCooldown -= Time.deltaTime;
             if (fireCooldown <= 0f)
             {
+                print("cooldown none");
+
                 Shoot();
                 fireCooldown = 1f / (turretConfig.fireRate + turretStats.modifierFireRate);
             }
         }
     }
-    private int index = 0;
+    
     private void Shoot()
     {
+        
         if (turretConfig.bulletPrefab == null)
         {
             Debug.LogWarning("Bullet Prefab is missing in TurretConfig.");
@@ -111,7 +120,7 @@ public class TurretShoot : MonoBehaviour
 
         if (directions.Count == 0 || activeShootPoints.Count == 0)
         {
-            Debug.LogWarning("No available directions or shoot points.");
+            Debug.LogError("No available directions or shoot points.");
             return;
         }
 
@@ -123,13 +132,14 @@ public class TurretShoot : MonoBehaviour
         }
 
         // Check if the upgrade is active
-        if (turretStats.allow4ShootPoints)
+        if (turretStats.allow4ShootPoints || turretStats.allowDiagonalShooting)
         {
             // Fire in all four directions
             for (int i = 0; i < directions.Count; i++)
             {
                 if (activeShootPoints[i] != null)
                 {
+                    print("Fire in direciton");
                     FireProjectilesInDirection(activeShootPoints[i], directions[i]);
                 }
                 else

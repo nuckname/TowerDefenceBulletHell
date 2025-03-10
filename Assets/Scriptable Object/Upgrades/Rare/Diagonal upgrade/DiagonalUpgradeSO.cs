@@ -1,18 +1,17 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "4DifferentDirections", menuName = "Upgrades/Effects/4ShootDifferentDirections")]
-public class FourDifferentDirectionsScriptableObject : UpgradeEffect
+[CreateAssetMenu(fileName = "DiagonalUpgradeSO", menuName = "Upgrades/Effects/DiagonalUpgradeSO")]
+public class DiagonalUpgradeSO : UpgradeEffect
 {
-    //Only allowed once.?
     public override void Apply(GameObject targetTurret)
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
+            turretStats.allowDiagonalShooting = true;
             turretStats.activeDirections += 4;
-            turretStats.allow4ShootPoints = true;
-         
+            
             TurretShoot turretShoot = targetTurret.GetComponent<TurretShoot>();
-            turretShoot.AddUpDownLeftRightShootPoints();
+            turretShoot.AddsDiagonalShootPoints();
 
         }
         else

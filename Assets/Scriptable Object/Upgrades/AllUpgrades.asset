@@ -117,10 +117,10 @@ MonoBehaviour:
     description: Allows the turret to shoot in 4 different directions. up, down,
       left, right.
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}
-    defaultOnlyAllowedOnce: 0
-    onlyAllowedOnce: 0
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
     defaultHideUpgrade: 0
-    hideUpgrade: 0
+    hideUpgrade: 1
     defaultHasUpgradePaths: 0
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 0
@@ -207,12 +207,34 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: 98f2ba3c3fcf1424693fe9c5e16b3012, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
-    defaultHideUpgrade: 0
-    hideUpgrade: 0
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
     defaultHasUpgradePaths: 1
     hasUpgradePaths: 1
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
+  - upgradeName: Orbiting
+    description: Bullets orbit around the turret
+    effect: {fileID: 11400000, guid: f01e89d4ecfe8034ca0364837aec8e65, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 0
+    hideUpgrade: 0
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 0
+    isAnUpgradePaths: 0
+  - upgradeName: Diagonal shooting
+    description: Turret shoots 4 bullets diagonal
+    effect: {fileID: 11400000, guid: 77e8cba7ea6f8024588eab45eb8dff60, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 0
+    hideUpgrade: 1
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 0
+    isAnUpgradePaths: 0
   legendaryUpgrades:
   - upgradeName: Multi shot
     description: Shoots multiple projectiles at once. Following the same path.

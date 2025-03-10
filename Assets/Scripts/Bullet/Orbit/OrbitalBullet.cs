@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class OrbitalBullet : MonoBehaviour
@@ -9,9 +10,20 @@ public class OrbitalBullet : MonoBehaviour
     private float orbitRadius;               // Radius of the orbit
     private float angle;                     // Current angle in the orbit
     public float orbitRadiusMultiplier = 1f; // Multiply the collider radius to scale the orbit size
-    public float bulletSpacing = 0f;         // Angle offset to spread the bullets evenly
+    public float bulletSpacing = 0.25f;    // Angle offset to spread the bullets evenly
+    
+    public float positionOffset = 0.25f; 
+    
+    private float orbitStartDelay = 0.25f;
 
-    private void Update()
+    private IEnumerator StartOrbitingWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // Wait for the delay
+    }
+
+    private float i = 1;
+
+    void Update()
     {
         if (isOrbiting && orbitCollider != null)
         {
@@ -23,8 +35,23 @@ public class OrbitalBullet : MonoBehaviour
                 angle -= 360f;
 
             // Calculate the new position based on the angle and the orbit radius
-            Vector2 offset = new Vector2(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle)) * orbitRadius;
-            transform.position = orbitCenter + offset;
+            Vector2 offset = new Vector2(
+                Mathf.Cos(Mathf.Deg2Rad * angle),
+                Mathf.Sin(Mathf.Deg2Rad * angle)
+            ) * orbitRadius;
+
+            // Apply the incremental position offset each update
+            transform.position = orbitCenter + offset + (Vector2.one * positionOffset);
+
+            float random = Random.Range(0f, 0.25f);
+            print(random);
+            StartOrbitingWithDelay(random);
+            
+            print(transform.position);
+        }
+        else
+        {
+            positionOffset = 0.25f;
         }
     }
 
@@ -32,12 +59,16 @@ public class OrbitalBullet : MonoBehaviour
     public void StartOrbiting(CircleCollider2D newOrbitCollider, float speed, float distanceMultiplier = 1f, float bulletOffset = 0f)
     {
         orbitCollider = newOrbitCollider;
-        orbitCenter = orbitCollider.bounds.center;  // Get the center of the collider
-        orbitRadius = orbitCollider.radius * distanceMultiplier; // Adjust orbit radius with multiplier
+        orbitCenter = orbitCollider.bounds.center;  
+        orbitRadius = orbitCollider.radius * distanceMultiplier;  
         orbitSpeed = speed;
-        bulletSpacing = bulletOffset; // Control bullet spacing
+    
+        // Apply the bullet spacing offset to the angle
+        angle = bulletOffset;
+
         isOrbiting = true;
     }
+
 
     // Optionally, you can stop orbiting
     public void StopOrbiting()

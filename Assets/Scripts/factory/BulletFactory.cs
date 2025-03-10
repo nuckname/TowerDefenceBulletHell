@@ -28,7 +28,7 @@ public class BulletFactory : MonoBehaviour
             //basicBullet.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);
             basicBullet.SetSpeed(3 + turretStats.modifierBulletSpeed);
 
-            // Add spiral behavior if enabled
+            // Add spiral behavior if enabled   
             if (turretStats.spiralBullets)
             {
                 SpiralBullet spiral = bullet.AddComponent<SpiralBullet>();

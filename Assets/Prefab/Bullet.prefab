@@ -292,7 +292,7 @@ MonoBehaviour:
   orbitCollider: {fileID: 0}
   orbitSpeed: 0.01
   orbitRadiusMultiplier: 1
-  bulletSpacing: 0
+  bulletSpacing: 1
 --- !u!114 &708765180046670274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,3 +305,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bd0a699cddc54f44a3b7ec7ac9a311b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletSpeed: 0
