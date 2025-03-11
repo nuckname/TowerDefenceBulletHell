@@ -42,12 +42,6 @@ public class OrbitalBullet : MonoBehaviour
 
             // Apply the incremental position offset each update
             transform.position = orbitCenter + offset + (Vector2.one * positionOffset);
-
-            float random = Random.Range(0f, 0.25f);
-            print(random);
-            StartOrbitingWithDelay(random);
-            
-            print(transform.position);
         }
         else
         {

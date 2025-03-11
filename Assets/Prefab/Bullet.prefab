@@ -62,6 +62,7 @@ GameObject:
   - component: {fileID: -7615069637261592277}
   - component: {fileID: 2218803637122075860}
   - component: {fileID: 708765180046670274}
+  - component: {fileID: 1473274902589581317}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -293,6 +294,7 @@ MonoBehaviour:
   orbitSpeed: 0.01
   orbitRadiusMultiplier: 1
   bulletSpacing: 1
+  positionOffset: 0.25
 --- !u!114 &708765180046670274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,3 +308,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0
+--- !u!114 &1473274902589581317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426162796660274319}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5ed6f2c50544a44cbbf54cf75f199da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  returnDelay: 1
+  returnDuration: 2

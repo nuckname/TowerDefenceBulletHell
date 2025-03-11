@@ -2,70 +2,48 @@ using UnityEngine;
 
 public class ReverseBullet : MonoBehaviour
 {
-    [Header("Reverse Settings")]
-    [SerializeField] private float reverseSpeed = 10f;
-    [SerializeField] private float reverseDelay = 1f;
-    [SerializeField] private bool destroyOnReverse = false;
+    public float speed = 10f; // Speed of the bullet
+    public float returnDelay = 1f; // Time delay before the bullet returns
+    public float returnDuration = 2f; // Duration for which the bullet returns
 
-    private Rigidbody2D rb;
     private Vector2 initialDirection;
-    private bool hasReversed;
+    private bool isReturning = false;
+    private float returnTimer = 0f;
 
-    private BasicBullet basicBullet;
-
-    private void Awake()
+    void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        basicBullet = GetComponent<BasicBullet>();
-        
-        if (rb != null)
+        // Store the initial direction of the bullet
+        initialDirection = transform.right;
+    }
+
+    void Update()
+    {
+        if (!isReturning)
         {
-            // Store initial direction
-            initialDirection = rb.linearVelocity.normalized;
-            Debug.Log($"ReverseBullet: Initial direction set to {initialDirection}");
+            // Move the bullet forward
+            transform.Translate(initialDirection * speed * Time.deltaTime);
+
+            // Check if it's time to return
+            returnTimer += Time.deltaTime;
+            if (returnTimer >= returnDelay)
+            {
+                isReturning = true;
+                returnTimer = 0f;
+            }
         }
         else
         {
-            Debug.LogError("ReverseBullet: Rigidbody2D component is missing!");
+            // Move the bullet back in the opposite direction
+            transform.Translate(-initialDirection * speed * Time.deltaTime);
+
+            // Check if the return duration is over
+            returnTimer += Time.deltaTime;
+            if (returnTimer >= returnDuration)
+            {
+                // Destroy the bullet after returning
+                Destroy(gameObject);
+            }
         }
     }
 
-    private void Start()
-    {
-        if (reverseDelay > 0)
-        {
-            Debug.Log($"ReverseBullet: Reverse scheduled in {reverseDelay} seconds");
-            Invoke(nameof(ReverseDirection), reverseDelay);
-        }
-        else
-        {
-            Debug.LogWarning("ReverseBullet: Reverse delay is 0 or negative. Reversing immediately.");
-            ReverseDirection();
-        }
-    }
-
-    private void ReverseDirection()
-    {
-        if (hasReversed) return;
-
-        rb.linearVelocity = -initialDirection * reverseSpeed;
-        hasReversed = true;
-
-        // Disable BasicBullet's movement
-        if (basicBullet != null)
-        {
-            basicBullet.enabled = false;
-        }
-
-        if (destroyOnReverse)
-        {
-            Destroy(gameObject, 1f);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        Debug.Log("ReverseBullet: Bullet destroyed or disabled.");
-        CancelInvoke();
-    }
 }

@@ -15,7 +15,7 @@ MonoBehaviour:
   waveName: Wave 2
   currentWave: 5
   enemyGroups:
-  - enemyHp: 10
+  - enemyHp: 5
     count: 10
     delayBeforeGroup: 0
     spawnInterval: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     delayBeforeGroup: 1
     spawnInterval: 1
     bossSpawn: 0
-  - enemyHp: 10
+  - enemyHp: 8
     count: 5
     delayBeforeGroup: 0
     spawnInterval: 0.5
@@ -39,8 +39,8 @@ MonoBehaviour:
   speedModifer: -0.5
   spawnInterval: 0.5
   totalEnemies: 21
-  coinEnemiesDropAmount: 5
+  amountOfGoldGainedForEachCoin: 5
   increaseGoldAmoutForEachCoinMutipler: 0
   maxAmountOfGold: 3
   minAmountOfGold: 5
-  boss: {fileID: 4834178202374031084, guid: a6a5f10dc8f361b42b482b7c89064e91, type: 3}
+  boss: {fileID: 6881960418611744032, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}

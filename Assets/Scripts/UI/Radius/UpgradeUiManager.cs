@@ -45,6 +45,11 @@ public class UpgradeUiManager : MonoBehaviour
     //Gold
     public PlayerGoldScriptableObject playerGold;
 
+    [Header("Reroll")]
+    public int currentRerollAmount = 30;
+    public int defaultRerollAmount = 30;
+    [SerializeField] private TMP_Text rerollText;
+    
     [SerializeField] private ApplyUpgrade _applyUpgrade;
 
     //Gold
@@ -93,7 +98,6 @@ public class UpgradeUiManager : MonoBehaviour
     
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
-        print("yo");
         StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
 
         bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
@@ -160,10 +164,27 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
+    private int amountOfRerolls = 1;
     public void Reroll()
     {
-        if (playerGold.SpendGold(50))
+        if (playerGold.SpendGold(currentRerollAmount))
         {
+            print("spent: " + currentRerollAmount);
+            switch (amountOfRerolls)
+            {
+                case 1:
+                    currentRerollAmount = 20;
+                    break;
+                case 2:
+                    currentRerollAmount = 10;
+                    break;
+                case >=3:
+                    currentRerollAmount = 0;
+                    break;
+            }
+            amountOfRerolls++;
+            rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
+            
             if (targetTurret == null)
             {
                 Debug.LogWarning("targetTurret is null");
@@ -197,6 +218,11 @@ public class UpgradeUiManager : MonoBehaviour
         {
             if (playerGold.SpendGold(upgradePrice))
             {
+                amountOfRerolls = 1;
+                currentRerollAmount = defaultRerollAmount;
+                rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
+                print("Set text to: " + currentRerollAmount);
+
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
         }

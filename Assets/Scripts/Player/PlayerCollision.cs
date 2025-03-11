@@ -49,6 +49,11 @@ public class PlayerCollision : MonoBehaviour
         {
             TakeDamage(1);
         }
+        
+        if (other.gameObject.CompareTag("EnemyBullet") && !isInvincible)
+        {
+            TakeDamage(1);
+        }
 
         if (other.gameObject.CompareTag("Coin"))
         {

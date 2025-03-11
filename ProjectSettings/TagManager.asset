@@ -40,6 +40,8 @@ TagManager:
   - WaterWall
   - BulletPooling
   - GameModeManager
+  - PlayerMagnet
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX

@@ -268,6 +268,8 @@ MonoBehaviour:
   selectDescription: {fileID: 6290202742975801465}
   ifDescriptionAlreadyGenerated: 0
   playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+  rerollAmount: 30
+  rerollText: {fileID: 3275370131705695315}
   _applyUpgrade: {fileID: 5842091514359436999}
 --- !u!114 &8166561556846695883
 MonoBehaviour:
@@ -417,7 +419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reroll
+  m_text: 'Reroll: $30'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -444,8 +446,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2838,7 +2840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -808, y: 423}
+  m_AnchoredPosition: {x: -427, y: 456}
   m_SizeDelta: {x: 97.5848, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4887033584904499743

@@ -13,7 +13,9 @@ public class HomingBullet : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        target = FindClosestTarget();  // Find the closest enemy
+
+        target = FindClosestTarget("Enemy");  // Find the closest enemy
+        
         StartCoroutine(ActivateHoming());  // Start homing after delay
     }
 
@@ -33,9 +35,9 @@ public class HomingBullet : MonoBehaviour
         isHomingActive = true;
     }
 
-    private Transform FindClosestTarget()
+    private Transform FindClosestTarget(string tag)
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
         Transform closest = null;
         float minDistance = Mathf.Infinity;
 
