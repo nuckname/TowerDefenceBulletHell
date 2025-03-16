@@ -13,6 +13,9 @@ public class RoundInProgressState : RoundBaseState
         roundStateManager.AllowTurretsToShoot(true);
         
         roundCounter++;
+
+        roundStateManager.selectTurret.AllowSelectingTurret = false;
+        
         SpawnRoundEnemies(roundCounter, roundStateManager);
     }
 
@@ -23,7 +26,7 @@ public class RoundInProgressState : RoundBaseState
 
     public override void OnCollisionEnter2D(RoundStateManager roundStateManager, Collision2D other)
     {
-        
+
     }
 
     private void SpawnRoundEnemies(int roundCounter, RoundStateManager roundStateManager)

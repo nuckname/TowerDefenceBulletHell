@@ -18,7 +18,7 @@ MonoBehaviour:
   - enemyHp: 10
     count: 5
     delayBeforeGroup: 0
-    spawnInterval: 1
+    spawnInterval: 0.9
     bossSpawn: 0
   - enemyHp: 5
     count: 5
@@ -41,11 +41,11 @@ MonoBehaviour:
     spawnInterval: 0.5
     bossSpawn: 0
   delayAfterWave: 3
-  speedModifer: 1.5
+  speedModifer: 2.5
   spawnInterval: 0.5
   totalEnemies: 40
   amountOfGoldGainedForEachCoin: 5
   increaseGoldAmoutForEachCoinMutipler: 0
-  maxAmountOfGold: 8
-  minAmountOfGold: 10
+  amountOfGoldToDrop: 4
+  amountOfHeartToDrop: 0
   boss: {fileID: 0}

@@ -11,19 +11,23 @@ public class SpawnEnemies : MonoBehaviour
     
     [SerializeField] private Transform spawnPoint; // Where enemies will spawn
     public List<RoundsScriptableObject> roundsScriptableObject; // List of scriptable objects for each round
-    public int amountOfEnemiesSpawned = 0; // Counter for enemies spawned
 
     private bool isDoubleHP = false;
 
     private GameModeManager gameModeManager;
+    
+    public int currentRound;
+
     private void Start()
     {
+        //Call this only once somehow. 
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
-
     }
 
     public int SpawnEnemiesPerRound(int currentRoundIndex)
     {
+        //used in enemy prefab
+        currentRound = currentRoundIndex;
         
         if (gameModeManager.CurrentMode == GameMode.DoubleHP)
         {
@@ -37,10 +41,9 @@ public class SpawnEnemies : MonoBehaviour
         if (roundsScriptableObject[currentRoundIndex].boss != null)
         {
             Instantiate(roundsScriptableObject[currentRoundIndex].boss, spawnPoint.position, Quaternion.identity);
-            amountOfEnemiesSpawned++;
         }
-        
-        // Check if there are rounds left to spawn
+
+        // Check if there are rounds remaining
         if (currentRoundIndex < roundsScriptableObject.Count)
         {
             // Get the current round's scriptable object
@@ -50,14 +53,49 @@ public class SpawnEnemies : MonoBehaviour
             // Start spawning enemies for the current round
             StartCoroutine(SpawnEnemiesWithDelay(currentRound));
 
-            // Move to the next round
             currentRoundIndex++;
             print("totalEnemies: " + totalEnemies);
+            
             return totalEnemies;
         }
-
-        return amountOfEnemiesSpawned;
+        Debug.LogError("Returned 0 Enemies ERROR");
+        return 0;
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SkipRound();
+        }
+    }
+
+    private void SkipRound()
+    {
+        if (currentRound < roundsScriptableObject.Count - 1)
+        {
+            
+            currentRound++;
+            DeleteAllEnemies();
+            StopAllCoroutines(); // Stop any ongoing enemy spawns
+            SpawnEnemiesPerRound(currentRound);
+            Debug.Log("Skipped to Round: " + currentRound);
+        }
+        else
+        {
+            Debug.Log("No more rounds to skip!");
+        }
+    }
+    
+    private void DeleteAllEnemies()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
+    }
+
 
     private IEnumerator SpawnEnemiesWithDelay(RoundsScriptableObject round)
     {
@@ -68,13 +106,12 @@ public class SpawnEnemies : MonoBehaviour
 
             for (int i = 0; i < group.count; i++)
             {
-                // Instantiate the enemy prefab
                 GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
                 EnemyDropItems enemyDropItems = enemy.GetComponent<EnemyDropItems>();
                     
-                enemyDropItems.minimumGoldCoins = round.minAmountOfGold;
-                enemyDropItems.maximumGoldCoins = round.maxAmountOfGold;
+                enemyDropItems.amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
+                enemyDropItems.amountOfHeartsToDrop = round.amountOfHeartToDrop;
                 
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)
@@ -97,10 +134,6 @@ public class SpawnEnemies : MonoBehaviour
                 {
                     enemyMovement.moveSpeed += round.speedModifer;
                 }
-
-                // Increment the enemy counter
-                amountOfEnemiesSpawned++;
-
                 // Wait for the group's spawn interval before spawning the next enemy
                 yield return new WaitForSeconds(group.spawnInterval);
             }

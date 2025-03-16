@@ -42,6 +42,7 @@ TagManager:
   - GameModeManager
   - PlayerMagnet
   - EnemyBullet
+  - BossHealthBar
   layers:
   - Default
   - TransparentFX

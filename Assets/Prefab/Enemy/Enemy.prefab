@@ -211,11 +211,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7053a13359fcf0a468274895bd5f7abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roundsScriptableObject: {fileID: 0}
-  minimumGoldCoins: 1
-  maximumGoldCoins: 4
+  spawnEnemies: {fileID: 0}
+  amountOfGoldCoinsToDrop: 4
+  amountOfHeartsToDrop: 0
   coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
   heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}
+  SpawnEnemy: {fileID: 4441853705026116023, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
 --- !u!114 &2601143581719723985
 MonoBehaviour:
   m_ObjectHideFlags: 0

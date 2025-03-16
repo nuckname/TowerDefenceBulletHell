@@ -176,8 +176,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  normalMoveSpeed: 2
-  enragedMoveSpeedMultiplier: 2
+  normalMoveSpeed: 3
+  enragedMoveSpeedMultiplier: 3
   lapCount: 0
   lastWaypointThreshold: 3
   waypoints:

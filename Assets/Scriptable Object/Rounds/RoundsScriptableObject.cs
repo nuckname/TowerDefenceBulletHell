@@ -29,8 +29,8 @@ public class RoundsScriptableObject : ScriptableObject
     public int amountOfGoldGainedForEachCoin = 5;
     //for freeplay?
     public float increaseGoldAmoutForEachCoinMutipler = 0;
-    public int maxAmountOfGold = 1;
-    public int minAmountOfGold = 4;
+    public int amountOfGoldToDrop = 4;
+    public int amountOfHeartToDrop = 0;
 
     [Header("Boss")]
     public GameObject boss;
@@ -43,6 +43,13 @@ public class RoundsScriptableObject : ScriptableObject
         {
             totalEnemies += group.count;
         }
+
+        if (boss != null)
+        {
+            totalEnemies++;
+        }
+        
+        Debug.Log("SO totalEnemies: " + totalEnemies);
     }
 
     public int GetTotalEnemies()

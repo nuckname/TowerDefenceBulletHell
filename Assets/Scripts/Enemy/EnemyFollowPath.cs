@@ -10,11 +10,32 @@ public class EnemyFollowPath : MonoBehaviour
 
     private void Start()
     {
+        SetUpWaypointsDesret();
+        //SetUpWaypointsBeachTutorial();
+    }
+
+    private void SetUpWaypointsDesret()
+    {
         // Find MapPath and cache its waypoints
         MapPath mapPath = GameObject.FindObjectOfType<MapPath>();
-        if (mapPath != null && mapPath.waypoints.Length > 0)
+        if (mapPath != null && mapPath.waypointsDesretMap.Length > 0)
         {
-            waypoints = mapPath.waypoints;
+            waypoints = mapPath.waypointsDesretMap;
+            transform.position = waypoints[waypointIndex].position;
+        }
+        else
+        {
+            Debug.LogError("MapPath or waypoints are not set up correctly.");
+        }
+    }
+    
+    private void SetUpWaypointsBeachTutorial()
+    {
+        // Find MapPath and cache its waypoints
+        MapPath mapPath = GameObject.FindObjectOfType<MapPath>();
+        if (mapPath != null && mapPath.waypointsBeachTutorial.Length > 0)
+        {
+            waypoints = mapPath.waypointsBeachTutorial;
             transform.position = waypoints[waypointIndex].position;
         }
         else

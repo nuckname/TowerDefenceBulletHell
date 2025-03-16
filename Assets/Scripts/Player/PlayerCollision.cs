@@ -20,6 +20,9 @@ public class PlayerCollision : MonoBehaviour
     private bool isInvincible = false;
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField] private GameObject floatingTextPrefab;
+
+    
     private void Awake()
     {
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
@@ -67,13 +70,34 @@ public class PlayerCollision : MonoBehaviour
                 playerGoldScriptableObject.AddGold(amount);
             }
         }
+        
+        if (other.gameObject.CompareTag("Heart"))
+        {
+            if (playerHealthScriptabeObject.currentHealth < 10)
+            {
+                playerHealthScriptabeObject.currentHealth += 1;
+            }
+        }
     }
 
     private void TakeDamage(int amount)
     {
         playerHealthScriptabeObject.TakeDamage(amount);
+        
+        ShowFloatingText();
+        
         StartCoroutine(ActivateIframes());
     }
+    
+    void ShowFloatingText()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        GameObject floatingText = Instantiate(floatingTextPrefab, canvas.transform);
+
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
+        floatingText.transform.position = screenPosition;
+    }
+
 
     private IEnumerator ActivateIframes()
     {

@@ -6,7 +6,8 @@ public class MapPath : MonoBehaviour
 {
 // Array of waypoints to walk from one to the next one
     
-    public Transform[] waypoints;
+    public Transform[] waypointsBeachTutorial;
+    public Transform[] waypointsDesretMap;
 
     // Walk speed that can be set in Inspector
   

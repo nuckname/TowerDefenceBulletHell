@@ -91,7 +91,6 @@ public class TurretShoot : MonoBehaviour
     {
         if (AllowTurretToShoot)
         {
-            print("Shoot");
             if (turretConfig == null)
             {
                 Debug.LogWarning("TurretConfig is missing.");
@@ -101,8 +100,6 @@ public class TurretShoot : MonoBehaviour
             fireCooldown -= Time.deltaTime;
             if (fireCooldown <= 0f)
             {
-                print("cooldown none");
-
                 Shoot();
                 fireCooldown = 1f / (turretConfig.fireRate + turretStats.modifierFireRate);
             }
@@ -139,7 +136,6 @@ public class TurretShoot : MonoBehaviour
             {
                 if (activeShootPoints[i] != null)
                 {
-                    print("Fire in direciton");
                     FireProjectilesInDirection(activeShootPoints[i], directions[i]);
                 }
                 else

@@ -8,11 +8,13 @@ public class EnemyDie : MonoBehaviour
 {
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
+
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     private Rigidbody _rigidbody;
 
     private void Awake()
     {
+        //I dont understand why I cant just get a refernfce it doesnt work.
         enemyOnMapCounter = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<EnemyOnMapCounter>();
         
         _rigidbody = GetComponent<Rigidbody>();
@@ -32,6 +34,8 @@ public class EnemyDie : MonoBehaviour
             float forceMagnitude = 5f; // Adjust the magnitude as needed
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
+        
+        print("DecreaseEnemyCount - 1");
         enemyOnMapCounter.DecreaseEnemyCount();
 
         _enemyDropItems.DropItems();

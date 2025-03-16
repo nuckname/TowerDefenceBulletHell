@@ -14,12 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveName: Wave 2
   currentWave: 10
-  enemyGroups: []
+  enemyGroups:
+  - enemyHp: 5
+    count: 5
+    delayBeforeGroup: 2
+    spawnInterval: 0
+    bossSpawn: 0
+  - enemyHp: 5
+    count: 5
+    delayBeforeGroup: 2
+    spawnInterval: 0
+    bossSpawn: 0
   delayAfterWave: 3
-  speedModifer: 1.5
+  speedModifer: 1
   spawnInterval: 0.5
-  totalEnemies: 0
-  coinEnemiesDropAmount: 5
+  totalEnemies: 10
+  amountOfGoldGainedForEachCoin: 5
   increaseGoldAmoutForEachCoinMutipler: 0
   maxAmountOfGold: 8
   minAmountOfGold: 11

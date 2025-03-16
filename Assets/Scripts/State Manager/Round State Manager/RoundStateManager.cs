@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class RoundStateManager : MonoBehaviour
 {
+    public SelectTurret selectTurret;
+    
     public RoundBaseState currentState;
     
     public RoundOverState roundOverState = new RoundOverState();

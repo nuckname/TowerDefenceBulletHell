@@ -29,7 +29,7 @@ public class UpgradeGold : MonoBehaviour
         // Round to the nearest multiple of 5
         int roundedCost = Mathf.RoundToInt(upgradedCost / 5f) * 5;
 
-        DisplayUpgradeGoldAmount.text = "$" + roundedCost.ToString();
+        DisplayUpgradeGoldAmount.text = "upgrade cost: $" + roundedCost.ToString();
         return roundedCost;
     }
 }

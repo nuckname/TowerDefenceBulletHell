@@ -12,6 +12,10 @@ GameObject:
   - component: {fileID: 4606486017045271472}
   - component: {fileID: 3067206463460488381}
   - component: {fileID: 6510688526200828495}
+  - component: {fileID: -1407030470621595996}
+  - component: {fileID: 8334307879350242069}
+  - component: {fileID: 2193239040954128306}
+  - component: {fileID: -4632307598143622415}
   m_Layer: 31
   m_Name: SmileBossReworked
   m_TagString: Untagged
@@ -101,19 +105,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b1c758ba66952479021b2e0114c004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 300
+  maxHealth: 100
+  currentHealth: 0
   moveSpeed: 1
   attackCooldown: 2
   explosiveCirclePrefab: {fileID: 4064301866692582828, guid: fb6422890478f17439508ce5fc9883df, type: 3}
-  explosionRadius: 5
-  explosionDamage: 100
   circleAttackPrefab: {fileID: 3997259959995160196, guid: 4c8fd9d2aa95d114bad448c80abf4a68, type: 3}
   minFireRate: 0.2
   maxFireRate: 0.8
   minBulletSpeed: 3
   maxBulletSpeed: 6
   amountOfCirclePrefabs: 2
-  randomProjectilePrefab: {fileID: 3426162796660274319, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
+  BulletPrefab: {fileID: 0}
   minRandomBulletSpeed: 2
   maxRandomBulletSpeed: 5
   randomProjectileCount: 10
@@ -164,3 +167,65 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-1407030470621595996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881960418611744032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d69a4d4baa7c2140bbc56b98da1643a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 1.25
+--- !u!114 &8334307879350242069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881960418611744032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c19941caea5cd5458404c940f11945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDropItems: {fileID: 2193239040954128306}
+  enemyOnMapCounter: {fileID: 0}
+--- !u!114 &2193239040954128306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881960418611744032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7053a13359fcf0a468274895bd5f7abf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amountOfGoldCoinsToDrop: 10
+  amountOfHeartsToDrop: 5
+  coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
+  heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}
+  roundManagerPrefab: {fileID: 0}
+--- !u!114 &-4632307598143622415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6881960418611744032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dcb86aca2a4d746b92a481ea946e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDie: {fileID: 8334307879350242069}
+  maxHealth: 100
+  spriteRenderer: {fileID: 4606486017045271472}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
+  healthBarPrefab: {fileID: 4970968215309618309, guid: b74c6af25f9f44645a190631b09c12ed, type: 3}

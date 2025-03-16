@@ -16,18 +16,18 @@ public enum BossState
 public class SmileBossReworked : MonoBehaviour
 {
     // --- Basic Stats ---
+    //This should no longer work
     [Header("Health")]
-    public float maxHealth = 1000f;
-    [SerializeField] private float currentHealth;
+    private float maxHealth = 1000f;
+    private float currentHealth;
     
     [Header("Basic States")]
     public float moveSpeed = 1f;         // Base movement speed
     public float attackCooldown = 5f;    // Time between attacks in normal state
 
     // --- Explosion Attack Stats ---
+    [Header("Red Circle Attack")]
     public GameObject explosiveCirclePrefab; // Prefab for the explosion circle
-    public float explosionRadius = 5f;         // Radius of the explosion
-    public float explosionDamage = 100f;       // Damage dealt by the explosion
 
     [Header("Circle Attack States")]
     // --- Circle Attack Stats ---
@@ -41,7 +41,7 @@ public class SmileBossReworked : MonoBehaviour
 
     [Header("Random Shooting stats")]
     // --- Random Shooting State Stats ---
-    public GameObject randomProjectilePrefab; // Prefab for random projectile attack
+    [SerializeField] private GameObject BulletPrefab; // Prefab for random projectile attack
     public float minRandomBulletSpeed = 2f;     // Minimum bullet speed for random projectiles
     public float maxRandomBulletSpeed = 5f;     // Maximum bullet speed for random projectiles
     public int randomProjectileCount = 10;      // Number of projectiles to fire in random shooting state
@@ -95,9 +95,6 @@ public class SmileBossReworked : MonoBehaviour
     // --- Normal state behavior ---
     void HandleNormalState()
     {
-        // Movement logic (e.g., follow the path).
-        MoveAlongPath();
-        
         // Handle attack cooldown.
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0f)
@@ -133,8 +130,6 @@ public class SmileBossReworked : MonoBehaviour
     {
         float enragedMoveSpeed = 1.5f;       // Faster movement when enraged.
         float enragedAttackCooldown = 3f;    // Faster attack rate when enraged.
-        
-        MoveAlongPath(enragedMoveSpeed);
         
         attackTimer -= Time.deltaTime;
         if (attackTimer <= 0f)
@@ -202,22 +197,23 @@ public class SmileBossReworked : MonoBehaviour
         for (int i = 0; i < randomProjectileCount; i++)
         {
             FireRandomProjectile();
+            yield return new WaitForSeconds(0.1f);
         }
         // Optionally, wait a short period for effect.
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
         currentState = (currentHealth <= maxHealth / 2) ? BossState.Enraged : BossState.Normal;
     }
     
     // Spawns a single projectile in a random direction.
     void FireRandomProjectile()
     {
-        if (randomProjectilePrefab != null)
+        if (BulletPrefab != null)
         {
             // Determine a random angle in degrees.
             float angle = Random.Range(0f, 360f);
             Vector2 direction = new Vector2(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad));
             
-            GameObject projectile = Instantiate(randomProjectilePrefab, transform.position, Quaternion.identity);
+            GameObject projectile = Instantiate(BulletPrefab, transform.position, Quaternion.identity);
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
@@ -225,16 +221,6 @@ public class SmileBossReworked : MonoBehaviour
                 rb.linearVelocity = direction * speed;
             }
         }
-    }
-    
-    // --- Movement Logic ---
-    // Overloaded method to support speed changes when enraged.
-    void MoveAlongPath(float customSpeed = -1f)
-    {
-        float speedToUse = customSpeed > 0f ? customSpeed : moveSpeed;
-        // Replace this with your own path-following logic.
-        // For example:
-        // transform.Translate(Vector3.forward * speedToUse * Time.deltaTime);
     }
     
     // --- State Transitions ---
@@ -250,20 +236,8 @@ public class SmileBossReworked : MonoBehaviour
     }
     
     // --- Damage Handling ---
-    public void TakeDamage(float amount)
-    {
-        currentHealth -= amount;
-        if (currentHealth <= 0)
-        {
-            Die();
-        }
-    }
-    
-    void Die()
-    {
-        // Boss death logic (animations, effects, etc.)
-        Destroy(gameObject);
-    }
+
+
     
     // --- Helper Method ---
     // Chooses a random attack (from ExplosiveAttack, CircleAttack, RandomShooting) that is not the same as the last used attack.
@@ -284,13 +258,5 @@ public class SmileBossReworked : MonoBehaviour
         
         int index = Random.Range(0, possibleAttacks.Count);
         return possibleAttacks[index];
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "PlayerBullet")
-        {
-            TakeDamage(1);
-        }
     }
 }

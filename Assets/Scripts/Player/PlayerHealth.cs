@@ -32,7 +32,6 @@ public class PlayerHealth : MonoBehaviour
         if (gameModeManager.CurrentMode == GameMode.OneHp)
         {
             print("Give player 1 hp");
-            // Increase spawn rate
             playerHealthScriptabeObject.currentHealth = 1;
         }
         else
@@ -49,7 +48,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        healthText.text = playerHealthScriptabeObject.currentHealth.ToString();
+        healthText.text = "Player Health: " + playerHealthScriptabeObject.currentHealth.ToString();
     }
 
     public void PlayerHasDied()

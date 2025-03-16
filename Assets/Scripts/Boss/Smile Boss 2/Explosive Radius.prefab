@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPlayer: 1
-  bulletCount: 20
+  bulletCount: 13
   bulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
   spawnRadius: 10
   bulletSpeed: 6.5

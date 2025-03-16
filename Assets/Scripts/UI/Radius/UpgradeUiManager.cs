@@ -141,27 +141,17 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (allowUiSwapping)
         {
-            //Swaps between upgrade screens
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                SwitchSelection(1); 
-            }
-
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                SwitchSelection(-1);
-            }
-            
             if (Input.GetKeyDown(KeyCode.Q))
             {
                 ExitSelection();
             }
-            
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                BuyUpgrade();
-            }
         }
+    }
+    
+    public void ExitSelection()
+    {
+        BindingOfIsaacShooting.disableShooting = false;
+        Destroy(gameObject);
     }
 
     private int amountOfRerolls = 1;
@@ -225,64 +215,6 @@ public class UpgradeUiManager : MonoBehaviour
 
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("UpgradeRange"))
-        {
-            allowUiSwapping = true;
-        }
-    }
-    
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("UpgradeRange"))
-        {
-            ExitSelection();
-        }
-    }
-
-    public void ExitSelection()
-    {
-        UpgradeRadius upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
-        if (upgradeRadius != null)
-        {
-            //Actually we need to get what has been selected. And use that as a highlight. New function.
-            upgradeRadius.HighlightFurthestTurret();
-        }
-        else
-        {
-            Debug.Log("Error. UpgradeRadius null");
-        }        
-        
-        BindingOfIsaacShooting.disableShooting = false;
-        
-        //this.gameObject.SetActive(false);
-        Destroy(gameObject);
-    }
-
-    private void SwitchSelection(int direction)
-    {
-        if (allUpgradeUis.Length > 0)
-        {
-            if (currentUpgradeUi != null)
-            {
-                //currentUpgradeUi.SetActive(false);
-            }
-
-            allUpgradeUis[upgradeSwitchIndex].SetActive(false);
-            
-            upgradeSwitchIndex = (upgradeSwitchIndex + direction + allUpgradeUis.Length) % allUpgradeUis.Length;
-
-            allUpgradeUis[upgradeSwitchIndex].SetActive(true);
-            //currentUpgradeUi = Instantiate(allUpgradeUis[upgradeSwitchIndex], transform.position, Quaternion.identity);
-
-        }
-        else
-        {
-            Debug.Log("No Ui to swap");
         }
     }
 }

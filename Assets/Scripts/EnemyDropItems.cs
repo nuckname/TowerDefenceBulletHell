@@ -1,46 +1,40 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyDropItems : MonoBehaviour
 {
-    [SerializeField] private RoundsScriptableObject roundsScriptableObject;
+    public int amountOfGoldCoinsToDrop;
     
-    //updated from SpawnEnemies.cs
-    public int minimumGoldCoins = 1;
-    public int maximumGoldCoins = 4;
+    public int amountOfHeartsToDrop = 0;
 
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject heart;
-    
+
+    public GameObject roundManagerPrefab;
+
+
     public void DropItems()
     {
-        int amountOfGoldToDrop = GenerateAmount(minimumGoldCoins, maximumGoldCoins);
-        for (int i = 0; i <= amountOfGoldToDrop; i++)
+        for (int i = 0; i < amountOfGoldCoinsToDrop; i++)
         {
-            float displacementY = Random.Range(-1.0f, 1.0f);
-            float displacementX = Random.Range(-1.0f, 1.0f);
-            
-            Instantiate(coin, new Vector3(gameObject.transform.position.x + displacementX,
-                gameObject.transform.position.y + displacementY,
-                gameObject.transform.position.z), Quaternion.identity);
+            SpawnItem(coin);
         }
         
-        
-        /*
-        int amountOfHeartsToDrop = GenerateAmount(roundsScriptableObject.minAmountOfGold, roundsScriptableObject.maxAmountOfGold);
-        
-        for (int i = 0; i <= amountOfHeartsToDrop; i++)
+        for (int i = 0; i < amountOfHeartsToDrop; i++)
         {
-            //Only Spawn Hearts for boss fight.
-            //Instantiate(heart, gameObject.transform.position, Quaternion.identity);
+            SpawnItem(heart);
         }
-        */
-        
     }
 
-    private int GenerateAmount(int min, int max)
+    private void SpawnItem(GameObject item)
     {
-        int randomAmount = Random.Range(min, max);
-        return randomAmount;
+        float displacementY = Random.Range(-1.0f, 1.0f);
+        float displacementX = Random.Range(-1.0f, 1.0f);
+            
+        Instantiate(item, new Vector3(gameObject.transform.position.x + displacementX,
+            gameObject.transform.position.y + displacementY,
+            gameObject.transform.position.z), Quaternion.identity);
     }
 }

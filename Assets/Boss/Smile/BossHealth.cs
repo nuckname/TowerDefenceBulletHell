@@ -1,24 +1,50 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class BossHealth : MonoBehaviour
 {
+    [SerializeField] private EnemyDie _enemyDie;
+
     [Header("Health Settings")]
-    public int maxHealth = 100;
-    private int currentHealth;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int currentHealth;
 
     [Header("Flash Effect")]
     public SpriteRenderer spriteRenderer;
     public Color damageColor = Color.red;
     public float flashDuration = 0.2f;
 
-    [Header("UI Elements")]
-    public Slider healthBar;
-    
+    [Header("UI Elements")] 
+    public GameObject healthBarPrefab;
+    private Slider healthBarSlider;
+    private GameObject spawnedHealthBar;
+
     private void Start()
     {
         currentHealth = maxHealth;
+
+        Canvas canvas = FindObjectOfType<Canvas>();
+        if (canvas == null)
+        {
+            Debug.LogError("Canvas not found in the scene!");
+            return;
+        }
+
+        spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
+
+        healthBarSlider = spawnedHealthBar.GetComponent<Slider>();
+
+        if (healthBarSlider == null)
+        {
+            Debug.LogError("Health bar slider is missing from the instantiated object!");
+            return;
+        }
+
+        RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(0, 0); 
+
         UpdateHealthUI();
     }
 
@@ -32,9 +58,7 @@ public class BossHealth : MonoBehaviour
         
         if (collision.CompareTag("RedBox"))
         {
-            print("Player should take damage.");
-            TakeDamage(100);
-            Destroy(collision.gameObject); 
+            Destroy(gameObject); 
         }
         
         if (collision.CompareTag("PlayerBullet"))
@@ -62,8 +86,8 @@ public class BossHealth : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        if (healthBar != null)
-            healthBar.value = (float)currentHealth / maxHealth;
+        if (healthBarPrefab != null)
+            healthBarSlider.value = (float)currentHealth / maxHealth;
     }
 
     private IEnumerator FlashEffect()
@@ -75,7 +99,7 @@ public class BossHealth : MonoBehaviour
 
     private void Die()
     {
+        _enemyDie.EnemyHasDied();
         Debug.Log("Boss Defeated!");
-        Destroy(gameObject); // Destroy the boss
     }
 }
