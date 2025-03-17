@@ -11,7 +11,6 @@ public class SelectDescription : MonoBehaviour
     private int upgradeIndex = 0;
 
     public UpgradeData upgradeData;
-
     /// <summary>
     /// Returns three upgrade descriptions based on the selected rarity and turret's ability to reduce blanks.
     /// </summary>
@@ -83,7 +82,8 @@ public class SelectDescription : MonoBehaviour
         upgradeIndex = 0;
 
         // Define a base blank chance (e.g., 25%).
-        float baseBlankChance = 0.25f;
+        //float baseBlankChance = 0.25f;
+        float baseBlankChance = 0.0f;
         // Define how much each point of reduceBlankChance decreases the blank chance (e.g., 5% per point).
         float reductionFactor = 0.05f;
         // Compute the effective blank chance, clamped to a minimum of 0.

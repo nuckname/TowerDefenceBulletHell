@@ -272,6 +272,7 @@ MonoBehaviour:
   defaultRerollAmount: 30
   rerollText: {fileID: 3275370131705695315}
   _applyUpgrade: {fileID: 5842091514359436999}
+  PlayerPrefab: {fileID: 7309831068945400738, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
 --- !u!114 &8166561556846695883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,6 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
+  placeObject: {fileID: 1900634903416962752, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
 --- !u!114 &5842091514359436999
 MonoBehaviour:
   m_ObjectHideFlags: 0

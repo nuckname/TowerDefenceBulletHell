@@ -15,10 +15,18 @@ public class PlaceObject : NetworkBehaviour
 
     // Gold system
     public PlayerGoldScriptableObject playerGold;
+    public bool allowTurretPlacement;
+
+    private void Start()
+    {
+        print("placeobject true");
+        allowTurretPlacement = true;
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        print(allowTurretPlacement);
+        if (Input.GetKeyDown(KeyCode.Space) && allowTurretPlacement)
         {
             BuyTurretGhost();
         }

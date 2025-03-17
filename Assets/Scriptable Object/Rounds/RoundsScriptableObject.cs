@@ -48,8 +48,6 @@ public class RoundsScriptableObject : ScriptableObject
         {
             totalEnemies++;
         }
-        
-        Debug.Log("SO totalEnemies: " + totalEnemies);
     }
 
     public int GetTotalEnemies()
@@ -57,8 +55,6 @@ public class RoundsScriptableObject : ScriptableObject
         return totalEnemies;
     }
 }
-
-
 
 [System.Serializable]
 public class EnemyGroup

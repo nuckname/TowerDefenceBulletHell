@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,10 +105,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59b1c758ba66952479021b2e0114c004, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
   moveSpeed: 1
   attackCooldown: 2
+  beamPrefab: {fileID: 0}
+  beamDuration: 2
+  beamCount: 4
   explosiveCirclePrefab: {fileID: 4064301866692582828, guid: fb6422890478f17439508ce5fc9883df, type: 3}
   circleAttackPrefab: {fileID: 3997259959995160196, guid: 4c8fd9d2aa95d114bad448c80abf4a68, type: 3}
   minFireRate: 0.2
@@ -116,7 +117,7 @@ MonoBehaviour:
   minBulletSpeed: 3
   maxBulletSpeed: 6
   amountOfCirclePrefabs: 2
-  BulletPrefab: {fileID: 0}
+  BulletPrefab: {fileID: 3426162796660274319, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
   minRandomBulletSpeed: 2
   maxRandomBulletSpeed: 5
   randomProjectileCount: 10
@@ -225,6 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyDie: {fileID: 8334307879350242069}
   maxHealth: 100
+  currentHealth: 0
   spriteRenderer: {fileID: 4606486017045271472}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2

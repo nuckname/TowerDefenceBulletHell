@@ -43,6 +43,7 @@ public class ApplyUpgrade : MonoBehaviour
 
     private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
     {
+        print(upgradeSelected);
         if (string.IsNullOrEmpty(raritySelected))
         {
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");

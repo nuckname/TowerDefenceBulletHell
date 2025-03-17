@@ -19,8 +19,6 @@ public class UpgradeUiManager : MonoBehaviour
 
     private bool allowUiSwapping = false;
 
-    private UpgradeRadius upgradeRadius;
-    
     [SerializeField] private string[] displayedThreeUpgrades;
 
     
@@ -60,12 +58,14 @@ public class UpgradeUiManager : MonoBehaviour
 
     private void Awake()
     {
-        upgradeRadius = GameObject.FindGameObjectWithTag("UpgradeRange").GetComponent<UpgradeRadius>();
         _upgradeGold = GetComponent<UpgradeGold>();
     }
 
     private void Start()
     {
+        print("Start true");
+        DisableActionsWhileOpen(true);
+
         if (selectDescription == null)
         {
             Debug.LogError("selectDescription is null");
@@ -152,6 +152,8 @@ public class UpgradeUiManager : MonoBehaviour
     {
         BindingOfIsaacShooting.disableShooting = false;
         Destroy(gameObject);
+        
+        DisableActionsWhileOpen(false);
     }
 
     private int amountOfRerolls = 1;
@@ -208,13 +210,32 @@ public class UpgradeUiManager : MonoBehaviour
         {
             if (playerGold.SpendGold(upgradePrice))
             {
+                DisableActionsWhileOpen(false);
+
                 amountOfRerolls = 1;
                 currentRerollAmount = defaultRerollAmount;
                 rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
                 print("Set text to: " + currentRerollAmount);
-
+                
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
+        }
+    }
+
+    private void DisableActionsWhileOpen(bool isOpen)
+    {
+        if (isOpen)
+        {
+            Debug.LogWarning("cant, place turret or shoot");
+            BindingOfIsaacShooting.disableShooting = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = false;
+        }
+        else
+        {
+            Debug.LogWarning("CAN, place turret or shoot");
+            BindingOfIsaacShooting.disableShooting = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = true;
+            
         }
     }
 }
