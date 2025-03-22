@@ -7,7 +7,6 @@ public class PlayerMovement : NetworkBehaviour
 
     private Rigidbody2D rb;
     private Vector2 movement;
-    private Vector2 mousePos;
 
     void Start()
     {
@@ -21,8 +20,7 @@ public class PlayerMovement : NetworkBehaviour
         movement.y = Input.GetAxisRaw("Vertical");
         movement = movement.normalized; // Prevent faster diagonal movement
 
-        // Get mouse position in world space
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
     }
 
     void FixedUpdate()
@@ -31,9 +29,7 @@ public class PlayerMovement : NetworkBehaviour
         rb.linearVelocity = movement * moveSpeed;
 
         // Rotate player to face the mouse
-        Vector2 direction = (mousePos - rb.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = angle;
+
     }
 
 }

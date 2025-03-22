@@ -19,13 +19,11 @@ public class PlaceObject : NetworkBehaviour
 
     private void Start()
     {
-        print("placeobject true");
         allowTurretPlacement = true;
     }
 
     void Update()
     {
-        print(allowTurretPlacement);
         if (Input.GetKeyDown(KeyCode.Space) && allowTurretPlacement)
         {
             BuyTurretGhost();
@@ -35,7 +33,21 @@ public class PlaceObject : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
-                SpawnBasicTurret(curentGhost);
+                if (playerGold.SpendGold(TurretBasicCost))
+                {
+                    SpawnBasicTurret(curentGhost);
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (GhostTurretHasBeenPlaced)
+            {
+                GameObject userGhostTurret = GameObject.FindGameObjectWithTag("GhostTurret");
+
+                Destroy(userGhostTurret);
+                GhostTurretHasBeenPlaced = !GhostTurretHasBeenPlaced;
             }
         }
 
@@ -49,14 +61,10 @@ public class PlaceObject : NetworkBehaviour
     {
         if (!GhostTurretHasBeenPlaced)
         {
-            if (playerGold.SpendGold(TurretBasicCost))
+            if (playerGold.currentGold >= TurretBasicCost)
             {
                 SpawnGhostTurret();
             }
-        }
-        else
-        {
-            SpawnBasicTurret(curentGhost);
         }
     }
 

@@ -5,43 +5,52 @@ using UnityEngine;
 public class EnemyFollowPath : MonoBehaviour
 {
     public float moveSpeed = 2f;
-    private Transform[] waypoints; // Local cached waypoints array
+    private Transform[] waypoints; 
     private int waypointIndex = 0;
 
     private void Start()
     {
-        SetUpWaypointsDesret();
-        //SetUpWaypointsBeachTutorial();
+        GetWaypointTransformFromGameObject();
     }
 
-    private void SetUpWaypointsDesret()
+    public void SetUpMap()
     {
-        // Find MapPath and cache its waypoints
-        MapPath mapPath = GameObject.FindObjectOfType<MapPath>();
-        if (mapPath != null && mapPath.waypointsDesretMap.Length > 0)
-        {
-            waypoints = mapPath.waypointsDesretMap;
-            transform.position = waypoints[waypointIndex].position;
-        }
-        else
-        {
-            Debug.LogError("MapPath or waypoints are not set up correctly.");
-        }
+        //remove Start()
+        //Pass in somehting not sure.
+        //Then call GetWaypointTransformFromGameObject() and find correct game object.
+        
     }
-    
-    private void SetUpWaypointsBeachTutorial()
+
+    private void GetWaypointTransformFromGameObject()
     {
-        // Find MapPath and cache its waypoints
-        MapPath mapPath = GameObject.FindObjectOfType<MapPath>();
-        if (mapPath != null && mapPath.waypointsBeachTutorial.Length > 0)
+        
+        GameObject waypointParent = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MapPath>().waypointsDesretMediumMap;
+
+        if (waypointParent != null)
         {
-            waypoints = mapPath.waypointsBeachTutorial;
-            transform.position = waypoints[waypointIndex].position;
+            // Get all children transforms, but skip the parent itself
+            List<Transform> waypointList = new List<Transform>();
+            foreach (Transform child in waypointParent.transform)
+            {
+                waypointList.Add(child);
+            }
+
+            waypoints = waypointList.ToArray();
+
+            if (waypoints.Length > 0)
+            {
+                transform.position = waypoints[waypointIndex].position;
+            }
+            else
+            {
+                Debug.LogError("No waypoint children found under the waypoint parent object.");
+            }
         }
         else
         {
-            Debug.LogError("MapPath or waypoints are not set up correctly.");
+            Debug.LogError("waypointsDesretMediumMap is null on MapPath.");
         }
+
     }
     
     private void Update()
@@ -60,6 +69,12 @@ public class EnemyFollowPath : MonoBehaviour
                 moveSpeed * Time.deltaTime
             );
 
+            if (Vector2.Distance(transform.position, waypoints[waypointIndex].position) < 0.05f)
+            {
+                waypointIndex++;
+            }
+
+/*            
             if (transform.position.x == waypoints[waypointIndex].position.x)
             {
                 if (transform.position.y == waypoints[waypointIndex].position.y)
@@ -67,6 +82,7 @@ public class EnemyFollowPath : MonoBehaviour
                     waypointIndex += 1;
                 }
             }
+  */
         }
     }
 }

@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 6991702198204369602}
   - component: {fileID: 7565467559014696028}
   - component: {fileID: 8950624624173130891}
+  - component: {fileID: -6581010435211960150}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Turret
@@ -238,6 +239,7 @@ MonoBehaviour:
   modifierFireRate: 0
   modifierBulletLifeTime: 1
   modifierBulletSpeed: 0
+  isTurretHoming: 0
   pierceCount: 1
   angleSpread: 30
   extraProjectiles: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
   - 
   - 
   storedTurretSelectedRarity: 
+  storePrice: 0
 --- !u!114 &8950624624173130891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,6 +353,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
   TurretConfig: {fileID: 11400000, guid: 2841c27e2dff17b4a8337647cceb0f3b, type: 2}
+--- !u!114 &-6581010435211960150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086541401240882015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fac2a589552796540b13e3e5340edacb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normalUpgrades:
+  - upgradeName: 
+    description: 
+    effect: {fileID: 0}
+    defaultOnlyAllowedOnce: 0
+    onlyAllowedOnce: 0
+    defaultHideUpgrade: 0
+    hideUpgrade: 0
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 0
+    isAnUpgradePaths: 0
+  rareUpgrades: []
+  legendaryUpgrades: []
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0

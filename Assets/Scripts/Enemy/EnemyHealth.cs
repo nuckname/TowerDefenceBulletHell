@@ -4,87 +4,68 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public HealthColourConfigScriptableObject HealthColourConfigScriptableObject;
-    
+
     [SerializeField] private EnemyDie _enemyDie;
     [SerializeField] private EnemyCollision _enemyCollision;
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     public int EnemyStartingHealth;
-    
-    public Dictionary<int, Color> colorDictionary;
-    
-    private bool isDead = false;
 
+    public Dictionary<int, Sprite> spriteDictionary;
+
+    private bool isDead = false;
 
     void Awake()
     {
-        // Initialize the color dictionary
-        colorDictionary = new Dictionary<int, Color>();
+        // Initialize the sprite dictionary
+        spriteDictionary = new Dictionary<int, Sprite>();
 
-        //Convert HealthColourConfigScriptableObject to dictionary
+        // Convert HealthColourConfigScriptableObject to sprite dictionary
         if (HealthColourConfigScriptableObject != null)
         {
             foreach (var pair in HealthColourConfigScriptableObject.healthColorPairs)
             {
-                colorDictionary[pair.healthThreshold] = pair.color;
+                spriteDictionary[pair.healthThreshold] = pair.sprite;
             }
         }
 
-        // Set initial color
-        if (colorDictionary.TryGetValue(EnemyStartingHealth, out Color initialColor))
+        // Set initial sprite
+        if (spriteDictionary.TryGetValue(EnemyStartingHealth, out Sprite initialSprite))
         {
-            spriteRenderer.color = initialColor;
-        }
-        else
-        {
-            // Use default color if no matching threshold is found
-            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+            spriteRenderer.sprite = initialSprite;
         }
     }
-    
+
     public void InitializeEnemy(int enemyHp)
     {
         EnemyStartingHealth = enemyHp;
 
-        // Set the initial color based on the enemyHp value
-        if (colorDictionary.TryGetValue(enemyHp, out Color initialColor))
+        if (spriteDictionary.TryGetValue(enemyHp, out Sprite sprite))
         {
-            spriteRenderer.color = initialColor;
-        }
-        else
-        {
-            // Use default color if no matching threshold is found
-            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+            spriteRenderer.sprite = sprite;
         }
     }
 
-    
     public void EnemyHit()
     {
-        //Attemps to fix a bug where fast moving projectiles causes this method to be called twice. 
         if (isDead) return;
 
         EnemyStartingHealth--;
 
         if (EnemyStartingHealth <= 0)
         {
-            isDead = true; // Mark the enemy as dead
+            isDead = true;
             _enemyDie.EnemyHasDied();
         }
 
-        if (colorDictionary.TryGetValue(EnemyStartingHealth, out Color newColor))
+        if (spriteDictionary.TryGetValue(EnemyStartingHealth, out Sprite newSprite))
         {
-            spriteRenderer.color = newColor;
-        }
-        else
-        {
-            // Use default color if no matching threshold is found
-            spriteRenderer.color = HealthColourConfigScriptableObject.defaultColor;
+            spriteRenderer.sprite = newSprite;
         }
     }
-        
+
     void Update()
     {
-        // Update logic if needed
+        // Optional update logic
     }
 }

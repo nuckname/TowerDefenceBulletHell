@@ -50,6 +50,7 @@ public class ApplyUpgrade : MonoBehaviour
             raritySelected = "Normal Rarity";
         }
         var upgrades = GetUpgradesByRarity();
+        
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
     }
 
@@ -73,10 +74,7 @@ public class ApplyUpgrade : MonoBehaviour
                 upgrade.effect.Apply(targetTurret);
                 ClearUpgradesDescription(targetTurret);
                 upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
-                
-                targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
-                //Apply bullet upgrades
-                
+
                 //setNewUpgradePaths.AllowNewUpgrades(upgradeSelected);
                 
                 //If selected upgrade is only allowed to be selected once. We hide it.

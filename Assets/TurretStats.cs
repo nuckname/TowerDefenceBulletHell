@@ -22,6 +22,10 @@ public class TurretStats : MonoBehaviour
     public float modifierBulletLifeTime = 1;
     public float modifierBulletSpeed = 0;
     
+    //This is only for the stats sheet and does nothing to the turret.
+    [Header("is homing")]
+    public bool isTurretHoming = false;
+    
     [Header("Pierce")]
     public int pierceCount = 0;
 

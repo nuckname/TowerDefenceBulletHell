@@ -5,9 +5,10 @@ using Random = UnityEngine.Random;
 
 public class EnemyDropItems : MonoBehaviour
 {
-    public int amountOfGoldCoinsToDrop;
     
-    public int amountOfHeartsToDrop = 0;
+    //Updated from SpawnEnemies.cs
+    public int amountOfGoldCoinsToDrop;
+    public int amountOfHeartsToDrop;
 
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject heart;

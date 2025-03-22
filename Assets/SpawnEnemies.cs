@@ -109,9 +109,12 @@ public class SpawnEnemies : MonoBehaviour
                 GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
                 EnemyDropItems enemyDropItems = enemy.GetComponent<EnemyDropItems>();
-                    
-                enemyDropItems.amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
-                enemyDropItems.amountOfHeartsToDrop = round.amountOfHeartToDrop;
+
+                enemy.GetComponent<EnemyDropItems>().amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
+                
+                
+                //enemyDropItems.amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
+                //enemyDropItems.amountOfHeartsToDrop = round.amountOfHeartToDrop;
                 
                 EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
                 if (enemyHealth != null)

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
@@ -5,6 +6,12 @@ using TMPro;
 public class UpgradeGold : MonoBehaviour
 {
     public TMP_Text DisplayUpgradeGoldAmount;
+    [SerializeField] private float scalingFactor; 
+
+    private void Start()
+    {
+        scalingFactor = 1.50f;
+    }
 
     [SerializeField] private Dictionary<string, int> basePrices = new Dictionary<string, int>
     {
@@ -13,7 +20,6 @@ public class UpgradeGold : MonoBehaviour
         { "Legendary Rarity", 200 }
     };
 
-    [SerializeField] private float scalingFactor = 1.15f; 
 
     public int DisplayGold(string rarity, int totalUpgradeAmount)
     {

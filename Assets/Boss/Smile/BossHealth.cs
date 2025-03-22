@@ -21,9 +21,13 @@ public class BossHealth : MonoBehaviour
     private Slider healthBarSlider;
     private GameObject spawnedHealthBar;
 
+    private float redBoxTriggerDelay = 5f;
+    private float spawnTime;
+
     private void Start()
     {
         currentHealth = maxHealth;
+        spawnTime = Time.time;
 
         Canvas canvas = FindObjectOfType<Canvas>();
         if (canvas == null)
@@ -33,7 +37,6 @@ public class BossHealth : MonoBehaviour
         }
 
         spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
-
         healthBarSlider = spawnedHealthBar.GetComponent<Slider>();
 
         if (healthBarSlider == null)
@@ -55,18 +58,25 @@ public class BossHealth : MonoBehaviour
             TakeDamage(1); 
             Destroy(collision.gameObject);
         }
-        
+
         if (collision.CompareTag("RedBox"))
         {
-            Destroy(gameObject); 
+            //So boss doesnt get instantly destory on maps where paths is same as start and end.
+            if (Time.time - spawnTime >= redBoxTriggerDelay)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("RedBox trigger ignored (within first 5 seconds).");
+            }
         }
-        
+
         if (collision.CompareTag("PlayerBullet"))
         {
             TakeDamage(1);
             Destroy(collision.gameObject); 
         }
-        
     }
 
     public void TakeDamage(int damage)

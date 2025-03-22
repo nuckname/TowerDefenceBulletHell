@@ -104,27 +104,25 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
-            print("new isDescriptionAlreadyGenerated");
-
-            //Increase cost of gold case on totalAmoutOfUpgrades
-            //Also display gold cost?
             GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>());
+            
+            _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
+
         }
 
 
         if (isDescriptionAlreadyGenerated)
         {
-            print("old isDescriptionAlreadyGenerated");
-
-            
+            //Update: not sure if I need this.
             //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
             displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
             
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
-        
+
         //Set Display Gold Text and return amount
+        print("Number of upgrades on the turret: " + _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         
     }

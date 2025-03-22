@@ -8,7 +8,8 @@ public class HealthColourConfigScriptableObject : ScriptableObject
     [System.Serializable]
     public class HealthColorPair
     {
-        public Color color;
+        //public Color color;
+        public Sprite sprite;
         [ReadOnly] public int healthThreshold; // Auto-set in OnValidate
     }
 

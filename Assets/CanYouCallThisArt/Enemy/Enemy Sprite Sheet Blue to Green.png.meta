@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 3f8d15f2f9ad0b14d9ae253bc630f038
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1678062546758809986
+    second: Enemy Sprite Sheet Blue to Green_0
+  - first:
+      213: -7258258192718379729
+    second: Enemy Sprite Sheet Blue to Green_1
+  - first:
+      213: -2191059211347162674
+    second: Enemy Sprite Sheet Blue to Green_2
+  - first:
+      213: -8360949213236881000
+    second: Enemy Sprite Sheet Blue to Green_3
+  - first:
+      213: 3135248735046216480
+    second: Enemy Sprite Sheet Blue to Green_4
+  - first:
+      213: 8147994442088237330
+    second: Enemy Sprite Sheet Blue to Green_5
+  - first:
+      213: -7022664484972266289
+    second: Enemy Sprite Sheet Blue to Green_6
+  - first:
+      213: 3366130134156840784
+    second: Enemy Sprite Sheet Blue to Green_7
+  - first:
+      213: 8260807807097447620
+    second: Enemy Sprite Sheet Blue to Green_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_0
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 28
+        width: 176
+        height: 212
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 289327adefca94710800000000000000
+      internalID: 1678062546758809986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_1
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 36
+        width: 176
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f25c3fe21ac754b90800000000000000
+      internalID: -7258258192718379729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_2
+      rect:
+        serializedVersion: 2
+        x: 443
+        y: 42
+        width: 173
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec90ec9814bc791e0800000000000000
+      internalID: -2191059211347162674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_3
+      rect:
+        serializedVersion: 2
+        x: 634
+        y: 37
+        width: 179
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8991fef1df0f7fb80800000000000000
+      internalID: -8360949213236881000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_4
+      rect:
+        serializedVersion: 2
+        x: 836
+        y: 42
+        width: 177
+        height: 204
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02b2ceefc14a28b20800000000000000
+      internalID: 3135248735046216480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_5
+      rect:
+        serializedVersion: 2
+        x: 1044
+        y: 23
+        width: 182
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 2, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 219c68076cd731170800000000000000
+      internalID: 8147994442088237330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_6
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 29
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fccf97ccbdb7a8e90800000000000000
+      internalID: -7022664484972266289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_7
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 29
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05f0822c585e6be20800000000000000
+      internalID: 3366130134156840784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy Sprite Sheet Blue to Green_8
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 28
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c421d3dee844a270800000000000000
+      internalID: 8260807807097447620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b03a81517a52a2d418dd058a2bbc4fe4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Enemy Sprite Sheet Blue to Green_0: 1678062546758809986
+      Enemy Sprite Sheet Blue to Green_1: -7258258192718379729
+      Enemy Sprite Sheet Blue to Green_2: -2191059211347162674
+      Enemy Sprite Sheet Blue to Green_3: -8360949213236881000
+      Enemy Sprite Sheet Blue to Green_4: 3135248735046216480
+      Enemy Sprite Sheet Blue to Green_5: 8147994442088237330
+      Enemy Sprite Sheet Blue to Green_6: -7022664484972266289
+      Enemy Sprite Sheet Blue to Green_7: 3366130134156840784
+      Enemy Sprite Sheet Blue to Green_8: 8260807807097447620
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

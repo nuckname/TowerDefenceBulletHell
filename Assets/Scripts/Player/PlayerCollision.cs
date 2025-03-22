@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,30 +11,31 @@ public class PlayerCollision : MonoBehaviour
 
     [SerializeField] private int CoinGiveGoldAmount = 5;
     [SerializeField] private float iframeDuration = 1f; // Duration of invincibility frames
-    [SerializeField] private float transparencyLevel = 0.5f; // How transparent the player becomes
+    [SerializeField] private float transparencyLevel = 0.5f;
 
+    private PlayerHealthSpriteSheet playerHealthSpriteSheet;
     private int _currentRoundIndex;
     private List<RoundsScriptableObject> rounds;
+    [SerializeField] private SpawnEnemies spawnEnemies;
     
     [SerializeField] private GameModeManager gameModeManager;
     
     private bool isInvincible = false;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
     [SerializeField] private GameObject floatingTextPrefab;
 
-    
     private void Awake()
     {
+        playerHealthSpriteSheet = GetComponent<PlayerHealthSpriteSheet>();
+        
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
 
         
         //So we can get the amount of gold for the enemies to drop. 
         rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
-        _currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
+        //_currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
         
-        //Get SpriteRenderer from Player object
-        spriteRenderer = GetComponentInParent<SpriteRenderer>(); 
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer not found! Make sure the PlayerCollision is a child of Player.");
@@ -60,7 +62,9 @@ public class PlayerCollision : MonoBehaviour
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            int amount = rounds[_currentRoundIndex].amountOfGoldGainedForEachCoin;
+            int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
+            print("amount given: " + amount);
+            
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
             {
                 playerGoldScriptableObject.AddGold(Mathf.RoundToInt(amount / 2));
@@ -83,6 +87,8 @@ public class PlayerCollision : MonoBehaviour
     private void TakeDamage(int amount)
     {
         playerHealthScriptabeObject.TakeDamage(amount);
+        
+        playerHealthSpriteSheet.ChangePlayerSprite();
         
         ShowFloatingText();
         

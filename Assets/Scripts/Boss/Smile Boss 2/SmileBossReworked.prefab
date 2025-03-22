@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: -4632307598143622415}
   m_Layer: 31
   m_Name: SmileBossReworked
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,7 +226,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyDie: {fileID: 8334307879350242069}
   maxHealth: 100
-  currentHealth: 0
+  currentHealth: 100
   spriteRenderer: {fileID: 4606486017045271472}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2

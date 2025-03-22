@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class StoreTurretDescription : MonoBehaviour
 {
+    //rename to turret save data or something?
     public string[] storedTurretDescription = new string[3];
     public string storedTurretSelectedRarity = "";
+    public int storePrice;
     
     public bool CheckTurretDescription()
     {

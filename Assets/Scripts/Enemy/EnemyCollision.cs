@@ -8,6 +8,7 @@ public class EnemyCollision : MonoBehaviour
     private EnemyHealth _enemyHealth;
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     // Start is called before the first frame update
+    [SerializeField] private PlayerHealthSpriteSheet playerHealthSpriteSheet;
 
     [SerializeField] private PlayerHealthScriptabeObject playerHealthScriptabeObject;
     private void Awake()
@@ -47,6 +48,7 @@ public class EnemyCollision : MonoBehaviour
                 
                 //Get current enemy hp.
                 playerHealthScriptabeObject.TakeDamage(1);
+                playerHealthSpriteSheet.ChangePlayerSprite();
             }
             else
             {
