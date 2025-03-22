@@ -48,7 +48,7 @@ public class EnemyCollision : MonoBehaviour
                 
                 //Get current enemy hp.
                 playerHealthScriptabeObject.TakeDamage(1);
-                playerHealthSpriteSheet.ChangePlayerSprite();
+                //playerHealthSpriteSheet.ChangePlayerSprite();
             }
             else
             {

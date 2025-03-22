@@ -78,7 +78,7 @@ public class UpgradeUiManager : MonoBehaviour
 
     }
     
-    private void GenerateDecription(StoreTurretDescription storeTurretDescription, TurretStats turretStats)
+    private void GenerateDecription(StoreTurretDescription storeTurretDescription, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
     {
         selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
             
@@ -87,7 +87,7 @@ public class UpgradeUiManager : MonoBehaviour
         storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
             
         //Pick Upgrades
-        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, turretStats.ReduceTurretBlankChance);
+        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
@@ -104,10 +104,9 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
-            GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>());
+            GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>());
             
             _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
-
         }
 
 
@@ -159,7 +158,6 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (playerGold.SpendGold(currentRerollAmount))
         {
-            print("spent: " + currentRerollAmount);
             switch (amountOfRerolls)
             {
                 case 1:
@@ -180,7 +178,7 @@ public class UpgradeUiManager : MonoBehaviour
                 Debug.LogWarning("targetTurret is null");
             }
             StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
-            GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>());
+            GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
         
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         }

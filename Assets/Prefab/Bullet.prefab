@@ -243,13 +243,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b135fe20e80a4948a421e8ce280156a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canBounce: 0
+  canBounce: 1
   maxBounces: 3
   colliderLayer:
     serializedVersion: 2
     m_Bits: 2147483648
-  canChain: 0
-  chainRange: 5
+  canChain: 1
+  chainRange: 100
+  maxChainAngle: 90
 --- !u!114 &-8786673248908898272
 MonoBehaviour:
   m_ObjectHideFlags: 0

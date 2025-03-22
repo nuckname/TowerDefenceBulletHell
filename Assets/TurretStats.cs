@@ -67,13 +67,6 @@ public class TurretStats : MonoBehaviour
 
     [Header("Gold On hit")] 
     public bool GoldOnHit = false;
-    
-    [Header("Turret Luck")] 
-    public int ReduceTurretBlankChance = 0;
-    
-    public int NormalIncreaseChanceForRarity = 0;
-    public int RareIncreaseChanceForRarity = 0;
-    public int LegendaryIncreaseChanceForRarity = 0;
 
     [Header("Spiral")] 
     public bool spiralBullets = false;

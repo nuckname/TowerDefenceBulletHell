@@ -5,8 +5,9 @@ public class SetNewUpgradePaths : MonoBehaviour
 {
     public UpgradeData upgradeData;
 
-    public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats)
+    public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
     {
+        print("EnableNewUpgradePath");
         if (turretStats.pierceCount >= 2)
         {
             CanBounce();
@@ -19,22 +20,10 @@ public class SetNewUpgradePaths : MonoBehaviour
 
         if (upgradeName == "Homing")
         {
+            print("Homing upgrade enabled");
             EnableHomingUpgrade();
         }
-        else if (upgradeName == "Reduce Blanks")
-        {
-            UnhideIncreaseRareRarity();
-            UnhideIncreasedNormalRarity();
-            UnhideIncreasedLegendaryRarity();
-        }
 
-        if (upgradeName == "Increase Normal Rarity" ||
-            upgradeName == "Increase Rare Rarity" ||
-            upgradeName == "Increase Legendary Rarity" ||
-            upgradeName == "Reduce Blanks")
-        {
-            DoubleTurretStats(turretStats);
-        }
     }
 
     private void CanBounce()
@@ -69,7 +58,6 @@ public class SetNewUpgradePaths : MonoBehaviour
 
             }
         }
-        
     }
     
     private void CanChain()
@@ -181,19 +169,6 @@ private void UnhideIncreasedNormalRarity()
         else
         {
             Debug.LogError("rareUpgrades list is null!");
-        }
-    }
-
-    
-    private void DoubleTurretStats(TurretStats turretStats)
-    {
-        if (turretStats.NormalIncreaseChanceForRarity > 1 &&
-            turretStats.RareIncreaseChanceForRarity > 1 &&
-            turretStats.LegendaryIncreaseChanceForRarity > 1 &&
-            turretStats.ReduceTurretBlankChance > 1)
-        {
-            Debug.Log("Special Upgrade Unlocked!");
-            // Add additional logic to enable/display the special upgrade.
         }
     }
 }

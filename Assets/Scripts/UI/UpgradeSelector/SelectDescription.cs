@@ -20,16 +20,16 @@ public class SelectDescription : MonoBehaviour
     /// (e.g. each point might reduce blank chance by 5%)
     /// </param>
     /// <returns>Array of three upgrade descriptions (may include empty strings for blanks)</returns>
-    public string[] Get3Descriptions(string selectedRarity, int reduceBlankChance)
+    public string[] Get3Descriptions(string selectedRarity, UpgradeDataOnTurret upgradeDataOnTurret)
     {
         switch (selectedRarity)
         {
             case "Normal Rarity":
-                return NormalRarityUpgrades(reduceBlankChance);
+                return SelectThreeUpgrades(upgradeDataOnTurret.normalUpgrades);
             case "Rare Rarity":
-                return RareRarityUpgrades(reduceBlankChance);
+                return SelectThreeUpgrades(upgradeDataOnTurret.rareUpgrades);
             case "Legendary Rarity":
-                return LegendaryRarityUpgrades(reduceBlankChance);
+                return SelectThreeUpgrades(upgradeDataOnTurret.legendaryUpgrades);
             default:
                 Debug.LogWarning("No Rarity Error");
                 return null;
@@ -61,48 +61,16 @@ public class SelectDescription : MonoBehaviour
         return uniqueNumbers;
     }
 
-    private string[] NormalRarityUpgrades(int reduceBlankChance)
-    {
-        return SelectRarityUpgrades(upgradeData.normalUpgrades, reduceBlankChance);
-    }
-
-    private string[] RareRarityUpgrades(int reduceBlankChance)
-    {
-        return SelectRarityUpgrades(upgradeData.rareUpgrades, reduceBlankChance);
-    }
-
-    private string[] LegendaryRarityUpgrades(int reduceBlankChance)
-    {
-        return SelectRarityUpgrades(upgradeData.legendaryUpgrades, reduceBlankChance);
-    }
-
-    private string[] SelectRarityUpgrades(List<Upgrade> upgradeList, int reduceBlankChance)
+    private string[] SelectThreeUpgrades(List<Upgrade> upgradeList)
     {
         int[] threeUniqueNumbers = Get3UniqueNumbers(upgradeList);
         upgradeIndex = 0;
 
-        // Define a base blank chance (e.g., 25%).
-        //float baseBlankChance = 0.25f;
-        float baseBlankChance = 0.0f;
-        // Define how much each point of reduceBlankChance decreases the blank chance (e.g., 5% per point).
-        float reductionFactor = 0.05f;
-        // Compute the effective blank chance, clamped to a minimum of 0.
-        float blankChance = Mathf.Max(0f, baseBlankChance - (reduceBlankChance * reductionFactor));
-
         for (int i = 0; i < threeUniqueNumbers.Length; i++)
         {
-            // Roll for blank chance.
-            if (Random.Range(0f, 1f) < blankChance)
-            {
-                // Roll resulted in a blank upgrade.
-                threePotentialUpgrades[upgradeIndex] = "You have rolled a blank upgrade :v(";
-            }
-            else
-            {
-                // No blank; use the upgrade description.
-                int index = threeUniqueNumbers[i];
-                threePotentialUpgrades[upgradeIndex] = upgradeList[index].description;
-            }
+            int index = threeUniqueNumbers[i];
+            threePotentialUpgrades[upgradeIndex] = upgradeList[index].description;
+       
             upgradeIndex++;
         }
 

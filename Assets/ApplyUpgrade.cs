@@ -49,24 +49,29 @@ public class ApplyUpgrade : MonoBehaviour
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
             raritySelected = "Normal Rarity";
         }
-        var upgrades = GetUpgradesByRarity();
+        var upgrades = GetUpgradesByRarity(targetTurret);
         
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
     }
 
-    private List<Upgrade> GetUpgradesByRarity()
+    private List<Upgrade> GetUpgradesByRarity(GameObject targetTurret)
     {
+        UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
         return raritySelected switch
         {
-            "Normal Rarity" => upgradeData.normalUpgrades,
-            "Rare Rarity" => upgradeData.rareUpgrades,
-            "Legendary Rarity" => upgradeData.legendaryUpgrades,
+            "Normal Rarity" => upgradeDataOnTurret.normalUpgrades,
+            "Rare Rarity" => upgradeDataOnTurret.rareUpgrades,
+            "Legendary Rarity" => upgradeDataOnTurret.legendaryUpgrades,
             _ => throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}")
         };
     }
 
     private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> upgrades, GameObject targetTurret)
     {
+        SetNewUpgradePaths setNewUpgradePaths = targetTurret.GetComponent<SetNewUpgradePaths>();
+        TurretStats turretStats = targetTurret.GetComponent<TurretStats>();
+        UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
+        
         foreach (var upgrade in upgrades)
         {
             if (upgrade.description == upgradeSelected)
@@ -75,21 +80,16 @@ public class ApplyUpgrade : MonoBehaviour
                 ClearUpgradesDescription(targetTurret);
                 upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
-                //setNewUpgradePaths.AllowNewUpgrades(upgradeSelected);
-                
-                //If selected upgrade is only allowed to be selected once. We hide it.
                 if (upgrade.onlyAllowedOnce)
                 {
-                    upgrade.hideUpgrade = true;
+                    //upgradePaths
+                    //upgrade.hideUpgrade = true;
                 }
                 
-                //Removing for now. Also another place ive commented out. SO unlocks the ability globally. 
-                /*
                 if (upgrade.hasUpgradePaths)
                 {
-                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, targetTurret.GetComponent<TurretStats>());
+                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
                 }
-                */
                 break;
             }
         }
