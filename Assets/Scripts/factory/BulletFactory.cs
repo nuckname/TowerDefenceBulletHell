@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletFactory : MonoBehaviour
 {
     public GameObject bulletPrefab;
-    public TurretConfig TurretConfig;
+    public TurretConfig turretConfig;
 
     public GameObject CreateBullet(Vector2 position, Quaternion rotation, TurretStats turretStats, bool homingEnabled)
     {
@@ -20,6 +20,27 @@ public class BulletFactory : MonoBehaviour
     {
         // Configure BasicBullet
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
+
+        if (turretStats.enableBulletSplit)
+        {
+            BulletSplitter bulletSplitter = bullet.GetComponent<BulletSplitter>();
+            if (bulletSplitter !=null)
+            {
+                bulletSplitter.enabled = true;
+                
+                bulletSplitter.bulletLifetime = turretStats.modifierBulletLifeTime;
+                
+                bulletSplitter.bulletPrefab = bulletPrefab;
+                
+                //It should give the bullets stats.
+                bulletSplitter.amountOfProjectilesToSplit = turretStats.splitAmount;
+                
+                //2 is default bullet speed
+                //+1 it feels better and matches default speed better
+                bulletSplitter.bulletSpeed = turretStats.modifierBulletSpeed + turretConfig.bulletSpeed + 1;
+            }
+        }
+        
         if (basicBullet != null)
         {
 

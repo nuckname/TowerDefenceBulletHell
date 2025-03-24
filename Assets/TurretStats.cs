@@ -35,6 +35,10 @@ public class TurretStats : MonoBehaviour
 
     public bool Shoot4Projectiles = false;
     
+    [Header("Bullet Split")]
+    public bool enableBulletSplit = false;
+    public int splitAmount = 0;
+    
     [Header("Multi Shot")]
     public int multiShotCount = 1;
     public float multiShotDelay = 0.25f;

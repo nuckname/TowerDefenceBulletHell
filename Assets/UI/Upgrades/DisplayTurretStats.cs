@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class DisplayTurretStats : MonoBehaviour
 {
+    /*
     public TurretStats turretStats;
     public Text statsText;
     private bool displayOn = false;
@@ -69,4 +70,5 @@ public class DisplayTurretStats : MonoBehaviour
                          $"Gold On Hit: {turretStats.GoldOnHit}\n" +
                          $"Spiral Bullets: {turretStats.spiralBullets}\n";
     }
+    */
 }
