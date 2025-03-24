@@ -26,6 +26,6 @@ MonoBehaviour:
   totalEnemies: 13
   amountOfGoldGainedForEachCoin: 5
   increaseGoldAmoutForEachCoinMutipler: 0
-  amountOfGoldToDrop: 1
+  amountOfGoldToDrop: 3
   amountOfHeartToDrop: 0
   boss: {fileID: 0}

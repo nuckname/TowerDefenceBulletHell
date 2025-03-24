@@ -37,7 +37,15 @@ public class RoundOverState : RoundBaseState
         }
 
         yield return new WaitForSeconds(2f);
-        roundStateManager.StartCoroutine(DestoryGameObject( 1.75f, "Coin")); 
+
+        if (roundStateManager.currentRound == 5)
+        {
+            //Dont clear coins            
+        }
+        else
+        {
+            roundStateManager.StartCoroutine(DestoryGameObject( 1.75f, "Coin")); 
+        }
         //roundStateManager.StartCoroutine(DestoryGameObject( 1.5f, "Heart")); // 1 second fade-out duration
     }
     

@@ -20,6 +20,11 @@ public class UpgradeGold : MonoBehaviour
         { "Legendary Rarity", 200 }
     };
 
+    public void HardCodedUpdateGoldAmount(int amount)
+    {
+        DisplayUpgradeGoldAmount.text = "upgrade cost: $" + amount;
+    }
+
 
     public int DisplayGold(string rarity, int totalUpgradeAmount)
     {

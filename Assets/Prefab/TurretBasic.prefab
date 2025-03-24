@@ -335,7 +335,7 @@ MonoBehaviour:
   - 
   - 
   storedTurretSelectedRarity: 
-  storePrice: 0
+  storeTurretPrice: 0
 --- !u!114 &8950624624173130891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   - upgradeName: Reduce Blanks
     description: Reduce the chance to get a 'blank turret upgrade' on allturrets
-    effect: {fileID: 11400000, guid: 73f2fb2486297784a86f3bb8c893981d, type: 2}
+    effect: {fileID: 0}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 1
@@ -442,7 +442,7 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   - upgradeName: Increase Normal Rarity
     description: Increase Normal Upgrade Chance
-    effect: {fileID: 11400000, guid: 0fea38355bec35746826e3adf32e835b, type: 2}
+    effect: {fileID: 0}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 1
@@ -509,7 +509,7 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   - upgradeName: Increase Rare Rarity
     description: increase chance to get Rare Rarity Upgrades
-    effect: {fileID: 11400000, guid: 22861134a8d1f4b41992e719895087eb, type: 2}
+    effect: {fileID: 0}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 1
@@ -542,7 +542,7 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   - upgradeName: 4 directions
     description: Allows the turret to shoot in 4 different directions. up, down,
-      left, right.
+      left, right. Fires all at once
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
@@ -622,7 +622,7 @@ MonoBehaviour:
     isAnUpgradePaths: 0
   - upgradeName: Increase Legendary Rarity
     description: increase chance to get Legendary Rarity upgrades
-    effect: {fileID: 11400000, guid: 155ad99110d37e14491ed8832915332b, type: 2}
+    effect: {fileID: 0}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 1
@@ -633,7 +633,18 @@ MonoBehaviour:
     isAnUpgradePaths: 1
   - upgradeName: remove fork cooldown? test with high friends
     description: remove start() fork cooldown? sort of buggy,
-    effect: {fileID: 11400000, guid: 155ad99110d37e14491ed8832915332b, type: 2}
+    effect: {fileID: 0}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 1
+    isAnUpgradePaths: 1
+  - upgradeName: Split
+    description: 
+    effect: {fileID: 0}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 1

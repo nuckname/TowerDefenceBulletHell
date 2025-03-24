@@ -17,8 +17,6 @@ public class UpgradeUiManager : MonoBehaviour
     
     private int upgradeSwitchIndex = 0;
 
-    private bool allowUiSwapping = false;
-
     [SerializeField] private string[] displayedThreeUpgrades;
 
     
@@ -105,8 +103,8 @@ public class UpgradeUiManager : MonoBehaviour
         if (!isDescriptionAlreadyGenerated)
         {
             GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>());
-            
-            _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
+            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            storeTurretDescription.storeTurretPrice = upgradePrice;
         }
 
 
@@ -116,13 +114,14 @@ public class UpgradeUiManager : MonoBehaviour
             //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
             displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
             
+            _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescription.storeTurretPrice);
+            
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
 
         //Set Display Gold Text and return amount
         print("Number of upgrades on the turret: " + _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
-        upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
         
     }
     
@@ -134,17 +133,6 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (allowUiSwapping)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                ExitSelection();
-            }
-        }
-    }
-    
     public void ExitSelection()
     {
         BindingOfIsaacShooting.disableShooting = false;

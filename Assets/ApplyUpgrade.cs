@@ -18,6 +18,8 @@ public class ApplyUpgrade : MonoBehaviour
 
     public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret)
     {
+        targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
+
         if (string.IsNullOrEmpty(raritySelected))
         {
             SetRarity(targetTurret);
@@ -88,7 +90,7 @@ public class ApplyUpgrade : MonoBehaviour
                 
                 if (upgrade.hasUpgradePaths)
                 {
-                    setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
+                    //setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
                 }
                 break;
             }

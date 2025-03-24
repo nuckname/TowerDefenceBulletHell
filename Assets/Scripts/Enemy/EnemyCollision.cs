@@ -11,6 +11,7 @@ public class EnemyCollision : MonoBehaviour
     [SerializeField] private PlayerHealthSpriteSheet playerHealthSpriteSheet;
 
     [SerializeField] private PlayerHealthScriptabeObject playerHealthScriptabeObject;
+    
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
@@ -48,6 +49,7 @@ public class EnemyCollision : MonoBehaviour
                 
                 //Get current enemy hp.
                 playerHealthScriptabeObject.TakeDamage(1);
+                print("Change player sprite");
                 //playerHealthSpriteSheet.ChangePlayerSprite();
             }
             else
