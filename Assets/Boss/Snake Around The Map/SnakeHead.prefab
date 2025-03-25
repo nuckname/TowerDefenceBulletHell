@@ -124,7 +124,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.17817724}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 3.66723}
   m_EdgeRadius: 0
 --- !u!50 &2527672533325824611
 Rigidbody2D:
@@ -194,3 +194,5 @@ MonoBehaviour:
   staticBodySegments: []
   segmentFollowSpeed: 6
   stopFollowDistance: 1
+  snakeTimer: {fileID: 341415754703389269, guid: c1f12afd23ad3464aa3241ddb1dbb8a1, type: 3}
+  canvas: {fileID: 451203920222098459, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}

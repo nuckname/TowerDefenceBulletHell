@@ -30,7 +30,7 @@ public class BulletFactory : MonoBehaviour
                 
                 bulletSplitter.bulletLifetime = turretStats.modifierBulletLifeTime;
                 
-                bulletSplitter.bulletPrefab = bulletPrefab;
+                bulletSplitter.bulletPrefab = bullet;
                 
                 //It should give the bullets stats.
                 bulletSplitter.amountOfProjectilesToSplit = turretStats.splitAmount;

@@ -12,6 +12,12 @@ public class SetNewUpgradePaths : MonoBehaviour
         {
             CanBounce();
         }
+
+        if (turretStats.allow4ShootPoints || turretStats.allowDiagonalShooting && turretStats.extraProjectiles >= 1 ||
+            turretStats.multiShotCount >= 1)
+        {
+            
+        }
         
         if (turretStats.pierceCount >= 4)
         {

@@ -110,6 +110,7 @@ public class BossHealth : MonoBehaviour
     private void Die()
     {
         _enemyDie.EnemyHasDied();
+        Destroy(spawnedHealthBar);
         Debug.Log("Boss Defeated!");
     }
 }

@@ -176,6 +176,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5601852057121462646, guid: 1620f28ae8a035a49b1aeea757b562d1, type: 3}
-  shootInterval: 2
+  shootInterval: 2.5
   projectileCount: 8
-  projectileSpeed: 5
+  projectileSpeed: 4.5

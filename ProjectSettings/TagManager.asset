@@ -7,10 +7,7 @@ TagManager:
   - Bullet
   - Enemy
   - GameManager
-  - Shop
   - Display Gold
-  - Gold Ore
-  - Stone Ore
   - RedBox
   - GhostTurret
   - GhostWall
@@ -19,7 +16,6 @@ TagManager:
   - PlayerCollision
   - Turret
   - UiUpgrade
-  - UiSquare
   - UpgradeManager
   - Coin
   - Heart
@@ -31,9 +27,6 @@ TagManager:
   - Death Pannel
   - PathCollision
   - TurretPlacementCollider
-  - Text3
-  - Text1
-  - Text2
   - SnakeWall
   - WaterCollision
   - SnakeBody
@@ -43,6 +36,7 @@ TagManager:
   - PlayerMagnet
   - EnemyBullet
   - BossHealthBar
+  - canvas
   layers:
   - Default
   - TransparentFX

@@ -1,11 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ApplyUpgrade : MonoBehaviour
 {
     public UpgradeData upgradeData;
     public string raritySelected;
 
+
+    
+    
     private StoreTurretDescription storeTurretDescription;
     private UpgradeUiManager upgradeUiManager;
     private SetNewUpgradePaths setNewUpgradePaths;
@@ -45,7 +49,6 @@ public class ApplyUpgrade : MonoBehaviour
 
     private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
     {
-        print(upgradeSelected);
         if (string.IsNullOrEmpty(raritySelected))
         {
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
@@ -59,14 +62,20 @@ public class ApplyUpgrade : MonoBehaviour
     private List<Upgrade> GetUpgradesByRarity(GameObject targetTurret)
     {
         UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
-        return raritySelected switch
+
+        switch (raritySelected)
         {
-            "Normal Rarity" => upgradeDataOnTurret.normalUpgrades,
-            "Rare Rarity" => upgradeDataOnTurret.rareUpgrades,
-            "Legendary Rarity" => upgradeDataOnTurret.legendaryUpgrades,
-            _ => throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}")
-        };
+            case "Normal Rarity":
+                return upgradeDataOnTurret.normalUpgrades;
+            case "Rare Rarity":
+                return upgradeDataOnTurret.rareUpgrades;
+            case "Legendary Rarity":
+                return upgradeDataOnTurret.legendaryUpgrades;
+            default:
+                throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}");
+        }
     }
+
 
     private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> upgrades, GameObject targetTurret)
     {

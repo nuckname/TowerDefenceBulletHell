@@ -21,6 +21,7 @@ public class TurretStats : MonoBehaviour
     public float modifierFireRate = 0;
     public float modifierBulletLifeTime = 1;
     public float modifierBulletSpeed = 0;
+    public float modifierSlowerBulletSpeed = 0;
     
     //This is only for the stats sheet and does nothing to the turret.
     [Header("is homing")]

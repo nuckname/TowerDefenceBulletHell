@@ -24,6 +24,7 @@ public class UpgradeUiManager : MonoBehaviour
     
     [SerializeField] private SelectDescription selectDescription;
 
+    private ChangeUiColourBackGround changeUiColourBackGround;
     private UpgradeGold _upgradeGold;
 
     private string chosenUpgrade = "";
@@ -57,6 +58,7 @@ public class UpgradeUiManager : MonoBehaviour
     private void Awake()
     {
         _upgradeGold = GetComponent<UpgradeGold>();
+        changeUiColourBackGround = GetComponent<ChangeUiColourBackGround>();
     }
 
     private void Start()
@@ -83,13 +85,13 @@ public class UpgradeUiManager : MonoBehaviour
         //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
         _applyUpgrade.raritySelected = selectedRarity;
         storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
-            
+
         //Pick Upgrades
         storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
-            
+        
         //Display Text
         SetTextToUi(storeTurretDescription.storedTurretDescription);
     }
@@ -120,9 +122,8 @@ public class UpgradeUiManager : MonoBehaviour
             SetTextToUi(storeTurretDescription.storedTurretDescription);
         }
 
-        //Set Display Gold Text and return amount
-        print("Number of upgrades on the turret: " + _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
-        
+        UpdateBackgroundColourUi(storeTurretDescription);
+
     }
     
     private void SetTextToUi(string[] Text)
@@ -169,7 +170,14 @@ public class UpgradeUiManager : MonoBehaviour
             GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
         
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            
+            UpdateBackgroundColourUi(storeTurretDescription);
         }
+    }
+
+    public void UpdateBackgroundColourUi(StoreTurretDescription storeTurretDescription)
+    {
+        changeUiColourBackGround.UpdateUiBackground(storeTurretDescription.storedTurretSelectedRarity);
 
     }
 

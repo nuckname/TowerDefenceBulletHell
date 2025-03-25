@@ -33,13 +33,20 @@ public class SnakeBossController : MonoBehaviour
     [Header("Segment Follow Settings")]
     public float segmentFollowSpeed = 5f;
     public float stopFollowDistance = 0.1f;
+    
+    [Header("Timer")]
+    [SerializeField] private GameObject snakeTimer;
+    private GameObject spawnedSnakeTimer;
 
     private void Start()
     {
         currentState = SnakeBossState.Normal;
         currentMoveSpeed = normalMoveSpeed;
-        SpawnBodySegments();  // Spawn initial following segments
+        SpawnBodySegments();  
         staticSegmentSpawnCoroutine = StartCoroutine(SpawnStaticSegmentRoutine());
+        
+        Canvas canvas = GameObject.FindGameObjectWithTag("canvas").GetComponent<Canvas>();
+        spawnedSnakeTimer = Instantiate(snakeTimer, canvas.transform);
     }
 
     private void Update()
