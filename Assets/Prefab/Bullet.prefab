@@ -338,5 +338,6 @@ MonoBehaviour:
   amountOfProjectilesToSplit: 0
   bulletPrefab: {fileID: 3426162796660274319}
   bulletSpeed: 0
+  bulletLifetime: 0
   gapAngle: 30
   spawnOffset: 1.5

@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 8574202694013746985}
   - component: {fileID: 5926826856625178478}
   - component: {fileID: 3179307347643891295}
+  - component: {fileID: 4543209496120795255}
   m_Layer: 5
   m_Name: UpgradeUiPannel (1)
   m_TagString: Untagged
@@ -283,6 +284,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
   raritySelected: 
+  showTurretStatsButton: {fileID: 4543209496120795255}
 --- !u!114 &8306725778073191065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,6 +359,21 @@ MonoBehaviour:
   - {fileID: 6858755736613675321, guid: 1c88aa267a8e01e49b4f2a2b54c474b4, type: 3}
   - {fileID: 21300000, guid: 676dbb396e1e272468389c45d4f5795d, type: 3}
   - {fileID: 8462350957333834025, guid: 00ae25681751ef642b98aee5e00b86c7, type: 3}
+--- !u!114 &4543209496120795255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508126564264186303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd8ae988a95041499e4678264ac4017, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretStatsPanel: {fileID: 5957142267395593970}
+  statsText: {fileID: 3678528324539308979}
+  upgradeUiManager: {fileID: 4541784668707170489}
 --- !u!1 &557648227519004268
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +899,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 111}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8670830023391647932
@@ -1025,7 +1042,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -132, y: 0.0009323651}
+  m_AnchoredPosition: {x: -150, y: 0.0009323651}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1845201532373905985
@@ -1056,7 +1073,32 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "using System.Collections.Generic;\r\nusing UnityEngine;\r\nusing UnityEngine.UI;\r\n\r\npublic
+    class ApplyUpgrade : MonoBehaviour\r\n{\r\n    public UpgradeData upgradeData;\r\n   
+    public string raritySelected;\r\n\r\n    [SerializeField] private ShowTurretStatsButton
+    showTurretStatsButton;\r\n    \r\n    \r\n    private StoreTurretDescription
+    storeTurretDescription;\r\n    private UpgradeUiManager upgradeUiManager;\r\n   
+    private SetNewUpgradePaths setNewUpgradePaths;\r\n    \r\n    private void Awake()\r\n   
+    {\r\n        setNewUpgradePaths = GetComponent<SetNewUpgradePaths>();\r\n       
+    upgradeUiManager = GetComponent<UpgradeUiManager>();\r\n    }\r\n\r\n    public
+    void ChosenUpgrade(string upgradeSelected, GameObject targetTurret)\r\n    {\r\n       
+    targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;\r\n\r\n       
+    if (string.IsNullOrEmpty(raritySelected))\r\n        {\r\n            SetRarity(targetTurret);\r\n       
+    }\r\n\r\n        if (!string.IsNullOrEmpty(upgradeSelected))\r\n        {\r\n           
+    ApplySelectedUpgrade(upgradeSelected, targetTurret);\r\n            showTurretStatsButton.UpdateStatsUI();\r\n       
+    }\r\n    }\r\n\r\n    private void ResetUpgradeSelection()\r\n    {\r\n       
+    print(\"raritySelected = null now\");\r\n        raritySelected = \"\";\r\n   
+    }\r\n\r\n    private void SetRarity(GameObject targetTurret)\r\n    {\r\n       
+    storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();\r\n       
+    raritySelected = storeTurretDescription.storedTurretSelectedRarity;\r\n    }\r\n\r\n   
+    private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)\r\n   
+    {\r\n        if (string.IsNullOrEmpty(raritySelected))\r\n        {\r\n           
+    Debug.LogError(\"raritySelected is null, defaulting to Normal Rarity\");\r\n           
+    raritySelected = \"Normal Rarity\";\r\n        }\r\n        var upgrades = GetUpgradesByRarity(targetTurret);\r\n       
+    \r\n        ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);\r\n       
+    \r\n        \r\n    }\r\n\r\n    private List<Upgrade> GetUpgradesByRarity(GameObject
+    targetTurret)\r\n    {\r\n        UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();\r\n\r\n       
+    switch (raritySelected)\r\n        {\r\n\n\r"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5520c74ad5886a144b8343805e4a434e, type: 2}
   m_sharedMaterial: {fileID: 2264243155619083341, guid: 5520c74ad5886a144b8343805e4a434e, type: 2}
@@ -1083,8 +1125,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 23
+  m_fontSizeBase: 23
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1121,7 +1163,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 47.02487, y: -407.00385, z: -99.60333, w: -662.5663}
+  m_margin: {x: 47.02487, y: -407.00385, z: -95.30623, w: -433.2291}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2150,9 +2192,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5926826856625178478}
-        m_TargetAssemblyTypeName: DisplayTurretStats, Assembly-CSharp
-        m_MethodName: ShowStats
+      - m_Target: {fileID: 4543209496120795255}
+        m_TargetAssemblyTypeName: ShowTurretStatsButton, Assembly-CSharp
+        m_MethodName: ToggleTurretStats
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2402,7 +2444,7 @@ RectTransform:
   m_GameObject: {fileID: 5957142267395593970}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.562155, y: 0.90001, z: 1}
+  m_LocalScale: {x: 0.5972897, y: 0.90001, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1439606873247148167}
@@ -2410,8 +2452,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 681, y: 0.0010948}
-  m_SizeDelta: {x: 494.3022, y: 984.94}
+  m_AnchoredPosition: {x: 739.7847, y: 11.0789}
+  m_SizeDelta: {x: 771.4344, y: 1120.2024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &774526933098190919
 CanvasRenderer:
@@ -2441,8 +2483,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -7377263099218604058, guid: 8bc83aee4dc97354fb00f726787295c1, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

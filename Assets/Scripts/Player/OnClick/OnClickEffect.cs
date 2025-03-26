@@ -4,7 +4,8 @@ public class OnClickEffect : MonoBehaviour
 {
     [SerializeField] private GameObject UpgradeUi; // UI panel for upgrades
     [SerializeField] private Transform CanvasTransform;
-    [SerializeField] private float selectionRadius = 0.5f; // Radius around the mouse click to detect turrets
+    [SerializeField] private float selectionRadius = 0.5f;
+    private GameObject newUI;
 
     public GameObject TurretSelected()
     {
@@ -37,8 +38,13 @@ public class OnClickEffect : MonoBehaviour
         {
             Debug.Log("Closest turret clicked: " + closestTurret.name);
 
-            GameObject newUI = Instantiate(UpgradeUi, CanvasTransform);
-            newUI.SetActive(true);
+            //So you cant open mutiple upgrade screens even when one is already open.
+            if (newUI == null)
+            {
+                newUI = Instantiate(UpgradeUi, CanvasTransform);
+                newUI.SetActive(true);
+            }
+
 
             UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
             upgradeManager.SetDescriptionsForUpgrades(closestTurret);

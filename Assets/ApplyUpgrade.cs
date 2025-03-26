@@ -7,7 +7,7 @@ public class ApplyUpgrade : MonoBehaviour
     public UpgradeData upgradeData;
     public string raritySelected;
 
-
+    [SerializeField] private ShowTurretStatsButton showTurretStatsButton;
     
     
     private StoreTurretDescription storeTurretDescription;
@@ -32,6 +32,7 @@ public class ApplyUpgrade : MonoBehaviour
         if (!string.IsNullOrEmpty(upgradeSelected))
         {
             ApplySelectedUpgrade(upgradeSelected, targetTurret);
+            showTurretStatsButton.UpdateStatsUI();
         }
     }
 
@@ -57,6 +58,8 @@ public class ApplyUpgrade : MonoBehaviour
         var upgrades = GetUpgradesByRarity(targetTurret);
         
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
+        
+        
     }
 
     private List<Upgrade> GetUpgradesByRarity(GameObject targetTurret)

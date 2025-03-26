@@ -57,12 +57,4 @@ MonoBehaviour:
     healthThreshold: 21
   - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 22
-  - sprite: {fileID: 0}
-    healthThreshold: 23
-  - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 24
-  - sprite: {fileID: 0}
-    healthThreshold: 25
-  - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 26
   defaultColor: {r: 1, g: 1, b: 1, a: 1}
