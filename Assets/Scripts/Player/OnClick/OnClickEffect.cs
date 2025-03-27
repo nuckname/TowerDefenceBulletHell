@@ -6,64 +6,32 @@ public class OnClickEffect : MonoBehaviour
     [SerializeField] private Transform CanvasTransform;
     [SerializeField] private float selectionRadius = 0.5f;
     private GameObject newUI;
+    public Collider2D[] colliders;
 
     public GameObject TurretSelected()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
 
-        // Get all colliders within the small radius
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(mousePos, selectionRadius);
-
-        // List to store all found turrets
-        GameObject closestTurret = null;
-        float closestDistance = Mathf.Infinity;
-
-        // Iterate through colliders to find turrets
-        foreach (Collider2D collider in colliders)
+        if (hit.collider != null && hit.collider.CompareTag("Turret"))
         {
-            if (collider.CompareTag("Turret"))
-            {
-                float distance = Vector2.Distance(mousePos, collider.transform.position);
+            GameObject selectedTurret = hit.collider.gameObject;
+            Debug.Log("Turret clicked: " + selectedTurret.name);
 
-                if (distance < closestDistance)
-                {
-                    closestDistance = distance;
-                    closestTurret = collider.gameObject;
-                }
-            }
-        }
-
-        // If a turret is found, show the UI
-        if (closestTurret != null)
-        {
-            Debug.Log("Closest turret clicked: " + closestTurret.name);
-
-            //So you cant open mutiple upgrade screens even when one is already open.
             if (newUI == null)
             {
+                Debug.Log("UI is null. Spawning new UI.");
                 newUI = Instantiate(UpgradeUi, CanvasTransform);
                 newUI.SetActive(true);
+
+                UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
+                upgradeManager.SetDescriptionsForUpgrades(selectedTurret);
+                upgradeManager.targetTurret = selectedTurret;
+
+                BindingOfIsaacShooting.disableShooting = true;
             }
-
-
-            UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
-            upgradeManager.SetDescriptionsForUpgrades(closestTurret);
-            upgradeManager.targetTurret = closestTurret;
-
-            // Disable shooting while upgrading
-            BindingOfIsaacShooting.disableShooting = true;
+            return selectedTurret;
         }
-
-        return closestTurret;
-    }
-
-    // Debugging: Draw the selection radius in the scene view
-    private void OnDrawGizmos()
-    {
-        if (Camera.main == null) return;
-
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(mousePos, selectionRadius);
+        return null;
     }
 }

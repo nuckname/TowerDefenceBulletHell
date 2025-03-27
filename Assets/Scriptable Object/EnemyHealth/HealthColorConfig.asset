@@ -35,7 +35,7 @@ MonoBehaviour:
     healthThreshold: 10
   - sprite: {fileID: -5562174706044457947, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 11
-  - sprite: {fileID: 0}
+  - sprite: {fileID: 5447502617296639289, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 12
   - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 13

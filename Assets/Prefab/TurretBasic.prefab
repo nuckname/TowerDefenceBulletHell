@@ -613,17 +613,6 @@ MonoBehaviour:
     hasUpgradePaths: 1
     defaultIsAnUpgradePaths: 0
     isAnUpgradePaths: 0
-  - upgradeName: Increase Legendary Rarity
-    description: increase chance to get Legendary Rarity upgrades
-    effect: {fileID: 0}
-    defaultOnlyAllowedOnce: 0
-    onlyAllowedOnce: 0
-    defaultHideUpgrade: 1
-    hideUpgrade: 1
-    defaultHasUpgradePaths: 0
-    hasUpgradePaths: 0
-    defaultIsAnUpgradePaths: 1
-    isAnUpgradePaths: 1
   - upgradeName: Pierce
     description: Projectiles pierce through enemies
     effect: {fileID: 11400000, guid: 56af038a0979ac2449071588e9ff405a, type: 2}
@@ -636,9 +625,9 @@ MonoBehaviour:
     defaultIsAnUpgradePaths: 0
     isAnUpgradePaths: 0
   - upgradeName: Split
-    description: 'This turret fires a single projectile at a time. Upon impact, the
-      additional projectile are converted and now split into multiple smaller projectiles
-      in a circle around the target.  '
+    description: Converts all additional projectiles to a single project on firing
+      a turret. On hit the additional projectiles fork out in a circle around the
+      enemy hit.
     effect: {fileID: 11400000, guid: aa1dc6d7f4e9f8142b47f26bb6c71819, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1

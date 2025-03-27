@@ -207,7 +207,6 @@ public class UpgradeUiManager : MonoBehaviour
                 amountOfRerolls = 1;
                 currentRerollAmount = defaultRerollAmount;
                 rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
-                print("Set text to: " + currentRerollAmount);
                 
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }

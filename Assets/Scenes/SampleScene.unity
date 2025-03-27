@@ -5206,19 +5206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9017df2f0b13799469388687bcbc8382, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointsBeachTutorial: []
-  waypointsDesretMap:
-  - {fileID: 198095437}
-  - {fileID: 2047250185}
-  - {fileID: 263876397}
-  - {fileID: 1371840899}
-  - {fileID: 1579545488}
-  - {fileID: 38727932}
-  - {fileID: 1166242931}
-  - {fileID: 634734463}
-  - {fileID: 1742175242}
-  - {fileID: 410779200}
-  - {fileID: 503294248}
+  waypointsDesretMediumMap: {fileID: 0}
 --- !u!114 &654774908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8881,6 +8869,7 @@ MonoBehaviour:
   UpgradeUi: {fileID: 508126564264186303, guid: ac9576dc31485194c9365cef415163ab, type: 3}
   CanvasTransform: {fileID: 248935373}
   selectionRadius: 0.5
+  colliders: []
 --- !u!114 &1237834970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 727209495562684462, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
@@ -15356,8 +15345,8 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042082920}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.004500015}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15367,7 +15356,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0.08113379, y: -0.10204456}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2042082925

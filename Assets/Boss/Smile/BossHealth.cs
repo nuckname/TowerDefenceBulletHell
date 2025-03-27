@@ -61,9 +61,9 @@ public class BossHealth : MonoBehaviour
 
         if (collision.CompareTag("RedBox"))
         {
-            //So boss doesnt get instantly destory on maps where paths is same as start and end.
             if (Time.time - spawnTime >= redBoxTriggerDelay)
             {
+                Destroy(spawnedHealthBar);
                 Destroy(gameObject);
             }
             else
