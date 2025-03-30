@@ -6892,6 +6892,7 @@ MonoBehaviour:
   CanvasTransform: {fileID: 248935373}
   selectionRadius: 0.5
   colliders: []
+  UiOpenCantUpgradeTurret: 0
 --- !u!114 &1237834970 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 727209495562684462, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}

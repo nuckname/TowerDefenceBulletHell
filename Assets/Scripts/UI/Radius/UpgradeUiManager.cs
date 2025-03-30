@@ -78,35 +78,38 @@ public class UpgradeUiManager : MonoBehaviour
 
     }
     
-    private void GenerateDecription(StoreTurretDescription storeTurretDescription, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
+    private void GenerateDecription(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
     {
         selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
             
         //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
         _applyUpgrade.raritySelected = selectedRarity;
-        storeTurretDescription.storedTurretSelectedRarity = selectedRarity;
+        storeTurretDescriptionAndRarity.storedTurretSelectedRarity = selectedRarity;
 
         //Pick Upgrades
-        storeTurretDescription.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
+        storeTurretDescriptionAndRarity.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
         //Puts it in global variable
-        displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+        displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;
         
         //Display Text
-        SetTextToUi(storeTurretDescription.storedTurretDescription);
+        SetTextToUi(storeTurretDescriptionAndRarity.storedTurretDescription);
     }
     
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)
     {
-        StoreTurretDescription storeTurretDescription = _targetTurret.GetComponent<StoreTurretDescription>();
+        StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = _targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
 
-        bool isDescriptionAlreadyGenerated = storeTurretDescription.CheckTurretDescription();
+        bool isDescriptionAlreadyGenerated = storeTurretDescriptionAndRarity.CheckTurretDescription();
 
         if (!isDescriptionAlreadyGenerated)
         {
-            GenerateDecription(storeTurretDescription, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>());
-            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
-            storeTurretDescription.storeTurretPrice = upgradePrice;
+            GenerateDecription(storeTurretDescriptionAndRarity, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>());
+            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            
+            print("New Description: " + upgradePrice);
+
+            storeTurretDescriptionAndRarity.storeTurretPrice = upgradePrice;
         }
 
 
@@ -114,15 +117,15 @@ public class UpgradeUiManager : MonoBehaviour
         {
             //Update: not sure if I need this.
             //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
-            displayedThreeUpgrades = storeTurretDescription.storedTurretDescription;
+            displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;
             
-            _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescription.storeTurretPrice);
+            _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescriptionAndRarity.storeTurretPrice);
             
             //Skip the generation step as we dont want to generate them again.
-            SetTextToUi(storeTurretDescription.storedTurretDescription);
+            SetTextToUi(storeTurretDescriptionAndRarity.storedTurretDescription);
         }
 
-        UpdateBackgroundColourUi(storeTurretDescription);
+        UpdateBackgroundColourUi(storeTurretDescriptionAndRarity);
 
     }
     
@@ -166,18 +169,21 @@ public class UpgradeUiManager : MonoBehaviour
             {
                 Debug.LogWarning("targetTurret is null");
             }
-            StoreTurretDescription storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
-            GenerateDecription(storeTurretDescription, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
+            StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+            GenerateDecription(storeTurretDescriptionAndRarity, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
         
-            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescription.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
             
-            UpdateBackgroundColourUi(storeTurretDescription);
+            storeTurretDescriptionAndRarity.storeTurretPrice = upgradePrice;
+            
+            print("Reroll upgradePrice: " + upgradePrice);
+            UpdateBackgroundColourUi(storeTurretDescriptionAndRarity);
         }
     }
 
-    public void UpdateBackgroundColourUi(StoreTurretDescription storeTurretDescription)
+    public void UpdateBackgroundColourUi(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity)
     {
-        changeUiColourBackGround.UpdateUiBackground(storeTurretDescription.storedTurretSelectedRarity);
+        changeUiColourBackGround.UpdateUiBackground(storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
 
     }
 
@@ -200,8 +206,16 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (playerGold != null)
         {
-            if (playerGold.SpendGold(upgradePrice))
+            int newUpgradePrice = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretPrice;
+            
+            if (playerGold.SpendGold(newUpgradePrice))
             {
+                if (newUpgradePrice == 0)
+                {
+                    Debug.LogError("Spent 0");
+                }
+
+                print("Player spent: " + newUpgradePrice);
                 DisableActionsWhileOpen(false);
 
                 amountOfRerolls = 1;
@@ -220,12 +234,18 @@ public class UpgradeUiManager : MonoBehaviour
             Debug.LogWarning("cant, place turret or shoot");
             BindingOfIsaacShooting.disableShooting = true;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = false;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<OnClickEffect>().UiOpenCantUpgradeTurret = true;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<SelectTurret>().AllowSelectingTurret = false;
         }
         else
         {
             Debug.LogWarning("CAN, place turret or shoot");
             BindingOfIsaacShooting.disableShooting = false;
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = true;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<OnClickEffect>().UiOpenCantUpgradeTurret = false;
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<SelectTurret>().AllowSelectingTurret = true;
+
+
             
         }
     }

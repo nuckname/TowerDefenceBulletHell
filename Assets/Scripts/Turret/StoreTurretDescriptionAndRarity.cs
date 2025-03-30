@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class StoreTurretDescription : MonoBehaviour
+public class StoreTurretDescriptionAndRarity : MonoBehaviour
 {
     //rename to turret save data or something?
     public string[] storedTurretDescription = new string[3];

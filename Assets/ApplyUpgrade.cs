@@ -10,7 +10,7 @@ public class ApplyUpgrade : MonoBehaviour
     [SerializeField] private ShowTurretStatsButton showTurretStatsButton;
     
     
-    private StoreTurretDescription storeTurretDescription;
+    private StoreTurretDescriptionAndRarity _storeTurretDescriptionAndRarity;
     private UpgradeUiManager upgradeUiManager;
     private SetNewUpgradePaths setNewUpgradePaths;
     
@@ -44,8 +44,8 @@ public class ApplyUpgrade : MonoBehaviour
 
     private void SetRarity(GameObject targetTurret)
     {
-        storeTurretDescription = targetTurret.GetComponent<StoreTurretDescription>();
-        raritySelected = storeTurretDescription.storedTurretSelectedRarity;
+        _storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+        raritySelected = _storeTurretDescriptionAndRarity.storedTurretSelectedRarity;
     }
 
     private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
@@ -55,13 +55,14 @@ public class ApplyUpgrade : MonoBehaviour
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
             raritySelected = "Normal Rarity";
         }
-        var upgrades = GetUpgradesByRarity(targetTurret);
+        List<Upgrade> upgrades = GetUpgradesByRarity(targetTurret);
         
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
         
         
     }
 
+    //using SO. now using turret refactor. 
     private List<Upgrade> GetUpgradesByRarity(GameObject targetTurret)
     {
         UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
@@ -79,39 +80,60 @@ public class ApplyUpgrade : MonoBehaviour
         }
     }
 
-
-    private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> upgrades, GameObject targetTurret)
+private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgradesInSelectedRarity, GameObject targetTurret)
+{
+    SetNewUpgradePaths setNewUpgradePaths = targetTurret.GetComponent<SetNewUpgradePaths>();
+    TurretStats turretStats = targetTurret.GetComponent<TurretStats>();
+    UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
+    
+    foreach (Upgrade upgrade in allUpgradesInSelectedRarity)
     {
-        SetNewUpgradePaths setNewUpgradePaths = targetTurret.GetComponent<SetNewUpgradePaths>();
-        TurretStats turretStats = targetTurret.GetComponent<TurretStats>();
-        UpgradeDataOnTurret upgradeDataOnTurret = targetTurret.GetComponent<UpgradeDataOnTurret>();
-        
-        foreach (var upgrade in upgrades)
+        if (upgrade.description == upgradeSelected)
         {
-            if (upgrade.description == upgradeSelected)
-            {
-                upgrade.effect.Apply(targetTurret);
-                ClearUpgradesDescription(targetTurret);
-                upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+            upgrade.effect.Apply(targetTurret);
+            ClearUpgradesDescription(targetTurret);
+            upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
-                if (upgrade.onlyAllowedOnce)
+            if (upgrade.onlyAllowedOnce)
+            {
+                switch (targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storedTurretSelectedRarity)
                 {
-                    //upgradePaths
-                    //upgrade.hideUpgrade = true;
+                    case "Normal Rarity":
+                        int normalIndex = upgradeDataOnTurret.normalUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                        if (normalIndex >= 0)
+                        {
+                            upgradeDataOnTurret.normalUpgrades[normalIndex].hideUpgrade = true;
+                        }
+                        break;
+                    case "Rare Rarity":
+                        int rareIndex = upgradeDataOnTurret.rareUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                        if (rareIndex >= 0)
+                        {
+                            upgradeDataOnTurret.rareUpgrades[rareIndex].hideUpgrade = true;
+                        }
+                        break;
+                    case "Legendary Rarity":
+                        int legendaryIndex = upgradeDataOnTurret.legendaryUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                        if (legendaryIndex >= 0)
+                        {
+                            upgradeDataOnTurret.legendaryUpgrades[legendaryIndex].hideUpgrade = true;
+                        }
+                        break;
                 }
-                
-                if (upgrade.hasUpgradePaths)
-                {
-                    //setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
-                }
-                break;
             }
+            
+            if (upgrade.hasUpgradePaths)
+            {
+                //setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
+            }
+            break;
         }
     }
+}
 
     private void ClearUpgradesDescription(GameObject targetTurret)
     {
-        string[] tempDesc = targetTurret.GetComponent<StoreTurretDescription>().storedTurretDescription;
+        string[] tempDesc = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storedTurretDescription;
         for (int i = 0; i < tempDesc.Length; i++)
         {
             tempDesc[i] = "";

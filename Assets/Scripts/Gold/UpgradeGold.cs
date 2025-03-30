@@ -41,6 +41,13 @@ public class UpgradeGold : MonoBehaviour
         int roundedCost = Mathf.RoundToInt(upgradedCost / 5f) * 5;
 
         DisplayUpgradeGoldAmount.text = "upgrade cost: $" + roundedCost.ToString();
+
+        if (roundedCost == 0)
+        {
+            Debug.LogError("rounded cost is zero");
+            print("upgradedCost" + upgradedCost);
+            print("basePrice " + basePrice);
+        }
         return roundedCost;
     }
 }

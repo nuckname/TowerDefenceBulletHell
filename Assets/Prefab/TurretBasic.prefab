@@ -532,7 +532,7 @@ MonoBehaviour:
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 1
     isAnUpgradePaths: 1
-  - upgradeName: 4 directions
+  - upgradeName: Compass directions
     description: Allows the turret to shoot in 4 different directions. up, down,
       left, right. Fires all at once
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}

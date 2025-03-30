@@ -1,0 +1,1157 @@
+fileFormatVersion: 2
+guid: 82101f7989f8ad242b7007da81a324c4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5784954318166795634
+    second: SnakeArt_0
+  - first:
+      213: -8863476690278525942
+    second: SnakeArt_1
+  - first:
+      213: 237523927289256407
+    second: SnakeArt_2
+  - first:
+      213: 4460676661999676458
+    second: SnakeArt_3
+  - first:
+      213: 5726457483718877511
+    second: SnakeArt_4
+  - first:
+      213: -101549649588001448
+    second: SnakeArt_5
+  - first:
+      213: -1143898536520722785
+    second: SnakeArt_6
+  - first:
+      213: -7362656939900780883
+    second: SnakeArt_7
+  - first:
+      213: 6385555067501965802
+    second: SnakeArt_8
+  - first:
+      213: 2855278149227218614
+    second: SnakeArt_9
+  - first:
+      213: -79091138651716810
+    second: SnakeArt_10
+  - first:
+      213: -2720094831971027998
+    second: SnakeArt_11
+  - first:
+      213: -5642780628345619221
+    second: SnakeArt_12
+  - first:
+      213: -346142834533050151
+    second: SnakeArt_13
+  - first:
+      213: -9172962760922851045
+    second: SnakeArt_14
+  - first:
+      213: 6961393427464991939
+    second: SnakeArt_15
+  - first:
+      213: 6946898725446447180
+    second: SnakeArt_16
+  - first:
+      213: -2846927697882254478
+    second: SnakeArt_17
+  - first:
+      213: 4680547955642292583
+    second: SnakeArt_18
+  - first:
+      213: -3370591689611350313
+    second: SnakeArt_19
+  - first:
+      213: -2279507055553989254
+    second: SnakeArt_20
+  - first:
+      213: 2820796225696664493
+    second: SnakeArt_21
+  - first:
+      213: 6522451445984860358
+    second: SnakeArt_22
+  - first:
+      213: -457049360203394334
+    second: SnakeArt_23
+  - first:
+      213: 6711977565000487606
+    second: SnakeArt_24
+  - first:
+      213: -3095446340777694437
+    second: SnakeArt_25
+  - first:
+      213: -8099254969047216936
+    second: SnakeArt_26
+  - first:
+      213: -7688178410427399685
+    second: SnakeArt_27
+  - first:
+      213: -1533064330562836291
+    second: SnakeArt_28
+  - first:
+      213: 4465464753352445661
+    second: SnakeArt_29
+  - first:
+      213: 2842176305418341884
+    second: SnakeArt_30
+  - first:
+      213: 7907785296791284533
+    second: SnakeArt_31
+  - first:
+      213: -3876878322660545729
+    second: SnakeArt_32
+  - first:
+      213: 4693181285782223781
+    second: SnakeArt_33
+  - first:
+      213: 8363441796233973752
+    second: SnakeArt_34
+  - first:
+      213: 7990569371340456365
+    second: SnakeArt_35
+  - first:
+      213: -294192226141996224
+    second: SnakeArt_36
+  - first:
+      213: -7122236828205661043
+    second: SnakeArt_37
+  - first:
+      213: 4831830525535670241
+    second: SnakeArt_38
+  - first:
+      213: 7965047901833310387
+    second: SnakeArt_39
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SnakeArt_0
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 277
+        width: 198
+        height: 214
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8a5ec792b6b7bfa0800000000000000
+      internalID: -5784954318166795634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_1
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 286
+        width: 186
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a045ef039ea9ef480800000000000000
+      internalID: -8863476690278525942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_2
+      rect:
+        serializedVersion: 2
+        x: 661
+        y: 283
+        width: 179
+        height: 211
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d95bbfd0cadb4300800000000000000
+      internalID: 237523927289256407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_3
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 274
+        width: 189
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2cad585ac187ed30800000000000000
+      internalID: 4460676661999676458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_4
+      rect:
+        serializedVersion: 2
+        x: 1199
+        y: 302
+        width: 192
+        height: 193
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 741e07acdb6787f40800000000000000
+      internalID: 5726457483718877511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_5
+      rect:
+        serializedVersion: 2
+        x: 1285
+        y: 308
+        width: 12
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 855ed39b129379ef0800000000000000
+      internalID: -101549649588001448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_6
+      rect:
+        serializedVersion: 2
+        x: 1324
+        y: 308
+        width: 17
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f96d797775e0020f0800000000000000
+      internalID: -1143898536520722785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_7
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 276
+        width: 196
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dae362ea58692d990800000000000000
+      internalID: -7362656939900780883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_8
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 290
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae17624708c0e9850800000000000000
+      internalID: 6385555067501965802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_9
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 287
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b68f9b495cff9720800000000000000
+      internalID: 2855278149227218614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_10
+      rect:
+        serializedVersion: 2
+        x: 523
+        y: 286
+        width: 12
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63388c7470307eef0800000000000000
+      internalID: -79091138651716810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_11
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 289
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e3bdf87928404ad0800000000000000
+      internalID: -2720094831971027998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_12
+      rect:
+        serializedVersion: 2
+        x: 715
+        y: 289
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: becf00e4ae0d0b1b0800000000000000
+      internalID: -5642780628345619221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_13
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 294
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d85c1a0de0423bf0800000000000000
+      internalID: -346142834533050151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_14
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 294
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b199e4928f613b080800000000000000
+      internalID: -9172962760922851045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_15
+      rect:
+        serializedVersion: 2
+        x: 752
+        y: 289
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c43ac17076db9060800000000000000
+      internalID: 6961393427464991939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_16
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 289
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4079d4a597586060800000000000000
+      internalID: 6946898725446447180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_17
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 295
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 273f18aa75ead78d0800000000000000
+      internalID: -2846927697882254478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_18
+      rect:
+        serializedVersion: 2
+        x: 962
+        y: 284
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7695d3a2195a4f040800000000000000
+      internalID: 4680547955642292583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_19
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 289
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dee4d967b04931d0800000000000000
+      internalID: -3370591689611350313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_20
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 285
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a7535ba09609d50e0800000000000000
+      internalID: -2279507055553989254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_21
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 286
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab8968d83b752720800000000000000
+      internalID: 2820796225696664493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_22
+      rect:
+        serializedVersion: 2
+        x: 207
+        y: 285
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c819ae5807648a50800000000000000
+      internalID: 6522451445984860358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_23
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 288
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e2d148470c38a9f0800000000000000
+      internalID: -457049360203394334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_24
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 277
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b2de36a80cb52d50800000000000000
+      internalID: 6711977565000487606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_25
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 283
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1ba9a414f3ca05d0800000000000000
+      internalID: -3095446340777694437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_26
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 279
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8dc8f90748aa99f80800000000000000
+      internalID: -8099254969047216936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_27
+      rect:
+        serializedVersion: 2
+        x: 1009
+        y: 282
+        width: 13
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf1c5ac287a1e4590800000000000000
+      internalID: -7688178410427399685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_28
+      rect:
+        serializedVersion: 2
+        x: 1020
+        y: 284
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db8eaf62d1679bae0800000000000000
+      internalID: -1533064330562836291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_29
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 280
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dde899cb88488fd30800000000000000
+      internalID: 4465464753352445661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_30
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 15
+        width: 201
+        height: 213
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cfd0e719a40717720800000000000000
+      internalID: 2842176305418341884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_31
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 18
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 53b2d4784d81ebd60800000000000000
+      internalID: 7907785296791284533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_32
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 0
+        width: 200
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3be764c4bf823ac0800000000000000
+      internalID: -3876878322660545729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_33
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 12
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ab7f8d8387812140800000000000000
+      internalID: 4693181285782223781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_34
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 13
+        width: 13
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff4e24900ae01470800000000000000
+      internalID: 8363441796233973752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_35
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 10
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da14dd3e18434ee60800000000000000
+      internalID: 7990569371340456365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_36
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 10
+        width: 13
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04bff11aab1daebf0800000000000000
+      internalID: -294192226141996224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_37
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 17
+        width: 283
+        height: 215
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d84c898075bb82d90800000000000000
+      internalID: -7122236828205661043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_38
+      rect:
+        serializedVersion: 2
+        x: 771
+        y: 17
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ef4179434c1e0340800000000000000
+      internalID: 4831830525535670241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SnakeArt_39
+      rect:
+        serializedVersion: 2
+        x: 831
+        y: 19
+        width: 17
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b0beb7bdd8898e60800000000000000
+      internalID: 7965047901833310387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SnakeArt_0: -5784954318166795634
+      SnakeArt_1: -8863476690278525942
+      SnakeArt_10: -79091138651716810
+      SnakeArt_11: -2720094831971027998
+      SnakeArt_12: -5642780628345619221
+      SnakeArt_13: -346142834533050151
+      SnakeArt_14: -9172962760922851045
+      SnakeArt_15: 6961393427464991939
+      SnakeArt_16: 6946898725446447180
+      SnakeArt_17: -2846927697882254478
+      SnakeArt_18: 4680547955642292583
+      SnakeArt_19: -3370591689611350313
+      SnakeArt_2: 237523927289256407
+      SnakeArt_20: -2279507055553989254
+      SnakeArt_21: 2820796225696664493
+      SnakeArt_22: 6522451445984860358
+      SnakeArt_23: -457049360203394334
+      SnakeArt_24: 6711977565000487606
+      SnakeArt_25: -3095446340777694437
+      SnakeArt_26: -8099254969047216936
+      SnakeArt_27: -7688178410427399685
+      SnakeArt_28: -1533064330562836291
+      SnakeArt_29: 4465464753352445661
+      SnakeArt_3: 4460676661999676458
+      SnakeArt_30: 2842176305418341884
+      SnakeArt_31: 7907785296791284533
+      SnakeArt_32: -3876878322660545729
+      SnakeArt_33: 4693181285782223781
+      SnakeArt_34: 8363441796233973752
+      SnakeArt_35: 7990569371340456365
+      SnakeArt_36: -294192226141996224
+      SnakeArt_37: -7122236828205661043
+      SnakeArt_38: 4831830525535670241
+      SnakeArt_39: 7965047901833310387
+      SnakeArt_4: 5726457483718877511
+      SnakeArt_5: -101549649588001448
+      SnakeArt_6: -1143898536520722785
+      SnakeArt_7: -7362656939900780883
+      SnakeArt_8: 6385555067501965802
+      SnakeArt_9: 2855278149227218614
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

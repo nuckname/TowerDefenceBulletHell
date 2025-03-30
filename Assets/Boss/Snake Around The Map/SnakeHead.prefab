@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1454750409857608013}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.81, y: 3.91, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 3.97, y: 3.91, z: 0}
+  m_LocalScale: {x: 0.60225, y: 0.60225, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -7122236828205661043, guid: 82101f7989f8ad242b7007da81a324c4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2.83, y: 2.15}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -195,4 +195,3 @@ MonoBehaviour:
   segmentFollowSpeed: 6
   stopFollowDistance: 1
   snakeTimer: {fileID: 341415754703389269, guid: c1f12afd23ad3464aa3241ddb1dbb8a1, type: 3}
-  canvas: {fileID: 451203920222098459, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
