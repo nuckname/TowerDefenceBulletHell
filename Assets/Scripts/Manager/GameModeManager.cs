@@ -9,40 +9,29 @@ public enum GameMode
     Endless,
     HalfCash,
     DoubleHP,
-    OnlyNormalAndRare,
+    Unlucky,
     OneHp,
     Everything
 }
 
 public class GameModeManager : MonoBehaviour
 {
+    [SerializeField] private LoadCorrectScene loadCorrectScene;
+    public GamemodeSettingsSO gamemodeSettingsSO;
     public static GameModeManager Instance { get; private set; }
-    //public GameMode CurrentMode { get; private set; }
     public GameMode CurrentMode;
 
-    [SerializeField] private GameObject player;
-    [SerializeField] private Transform spawnPoint;
-
-    [SerializeField] private GameObject MainMenu;
-        
-    [SerializeField] private Button classicButton;
-    [SerializeField] private Button endlessButton;
-    [SerializeField] private Button halfCashButton;
-    [SerializeField] private Button doubleHpButton;
-    [SerializeField] private Button onlyNormalAndRareButton;
-    [SerializeField] private Button oneHpButton;
-    [SerializeField] private Button everythingButton;
-    
-    //Set gamemode
-    //Use these on buttons
-    public void SetClassicMode() => SetGameMode(GameMode.Classic);
-    public void SetTutorialMode() => SetGameMode(GameMode.Tutorial);
+    public void ClassicMode() => SetGameMode(GameMode.Classic);
+    public void TutorialMode() => SetGameMode(GameMode.Tutorial);
     //public void SetEndlessMode() => SetGameMode(GameMode.Endless);
-    public void SetHalfCashMode() => SetGameMode(GameMode.HalfCash);
-    public void SetDoubleHPMode() => SetGameMode(GameMode.DoubleHP);
+    public void HalfCashMode() => SetGameMode(GameMode.HalfCash);
+    public void DoubleHPMode() => SetGameMode(GameMode.DoubleHP);
     //public void SetOnlyNormalAndRareMode() => SetGameMode(GameMode.OnlyNormalAndRare);
-    public void SetOneHpMode() => SetGameMode(GameMode.OneHp);
-    public void SetEverythingMode() => SetGameMode(GameMode.Everything);
+    public void OneHpMode() => SetGameMode(GameMode.OneHp);
+    public void BossEveryWaveMode() => SetGameMode(GameMode.OneHp);
+    public void EverythingMode() => SetGameMode(GameMode.Everything);
+    public void UnluckyMode() => SetGameMode(GameMode.Unlucky);
+    public void EndlessMode() => SetGameMode(GameMode.Endless);
 
     private void Awake()
     {
@@ -64,9 +53,13 @@ public class GameModeManager : MonoBehaviour
 
     public void SetGameMode(GameMode mode)
     {
+        print("Gamemode set to: " + mode.ToString());
+        
+        //Load from GamemodeSettingsSO
+        loadCorrectScene.LoadScene();
+
+        gamemodeSettingsSO.gameMode = mode;
         CurrentMode = mode;
-        MainMenu.SetActive(false);
-        Instantiate(player, spawnPoint.position, Quaternion.identity);
     }
 
 }

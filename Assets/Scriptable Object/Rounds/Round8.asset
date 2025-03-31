@@ -20,7 +20,7 @@ MonoBehaviour:
     delayBeforeGroup: 0
     spawnInterval: 0.75
     bossSpawn: 0
-  - enemyHp: 5
+  - enemyHp: 8
     count: 20
     delayBeforeGroup: 0
     spawnInterval: 0.25
