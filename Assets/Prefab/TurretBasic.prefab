@@ -631,8 +631,8 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: aa1dc6d7f4e9f8142b47f26bb6c71819, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
-    defaultHideUpgrade: 0
-    hideUpgrade: 0
+    defaultHideUpgrade: 1
+    hideUpgrade: 1
     defaultHasUpgradePaths: 0
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 1

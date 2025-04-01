@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +11,15 @@ public class SelectVariationManager : MonoBehaviour
     [SerializeField] private Sprite[] desertThumbNails;
     [SerializeField] private Sprite[] ruinThumbNails;
     [SerializeField] private Sprite[] snowThumbNails;
-    
-    void Start()
+
+    private void Start()
     {
-        SelectImages(selectMapManager.mapSelected);
+        UpdateVariationMapSelector(selectMapManager.mapSelected);
     }
 
-    private void SelectImages(SelectMapManager.MapType mapSelected)
+    public void UpdateVariationMapSelector(SelectMapManager.MapType mapSelected)
     {
+        
         if (mapSelected == SelectMapManager.MapType.RuinMap)
         {
             UpdateThumbNailImages(ruinThumbNails);

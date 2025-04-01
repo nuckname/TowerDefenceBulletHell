@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae1f3d080b8eb0949825517aeb3d1fbd, type: 3}
-  m_Name: GameModeSettings
+  m_Name: MapSetUp
   m_EditorClassIdentifier: 
   mapSelected: 0
   selectedDifficulty: 0

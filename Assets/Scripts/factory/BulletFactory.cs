@@ -52,7 +52,7 @@ public class BulletFactory : MonoBehaviour
             // Add spiral behavior if enabled   
             if (turretStats.spiralBullets)
             {
-                SpiralBullet spiral = bullet.AddComponent<SpiralBullet>();
+                SpiralBullet spiral = bullet.GetComponent<SpiralBullet>();
                 spiral.enabled = true;
             }
         }
@@ -91,7 +91,8 @@ public class BulletFactory : MonoBehaviour
         // Configure HomingBullet
         if (homingEnabled)
         {
-            HomingBullet homing = bullet.AddComponent<HomingBullet>();
+            //HomingBullet homing = bullet.AddComponent<HomingBullet>();
+            HomingBullet homing = bullet.GetComponent<HomingBullet>();
             homing.enabled = true;
         }
 
