@@ -15,7 +15,6 @@ public class HomingBullet : MonoBehaviour
 
     void Start()
     {
-        homingDelay = 0.75f;
         rb = GetComponent<Rigidbody2D>();
 
         target = FindClosestTarget("Enemy");  
