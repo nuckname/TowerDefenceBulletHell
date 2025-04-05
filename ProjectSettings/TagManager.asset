@@ -37,6 +37,9 @@ TagManager:
   - EnemyBullet
   - BossHealthBar
   - canvas
+  - Text3
+  - Text1
+  - Text2
   layers:
   - Default
   - TransparentFX

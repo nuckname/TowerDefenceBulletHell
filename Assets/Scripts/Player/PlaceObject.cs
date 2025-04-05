@@ -73,6 +73,7 @@ public class PlaceObject : NetworkBehaviour
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         GhostTurretHasBeenPlaced = true;
+
         return curentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
     }
 
@@ -84,8 +85,11 @@ public class PlaceObject : NetworkBehaviour
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
+            // Determine facing direction based on rotation           
+            Quaternion ghostTurretRotation = GameObject.FindGameObjectWithTag("GhostTurret").GetComponentInChildren<GhostTurretShoot>().savedRotation;
+
             // Spawn the turret at the ghost's position with the ghost's rotation
-            Instantiate(TurretBasic, mousePos, currentGhost.transform.rotation);
+            Instantiate(TurretBasic,  mousePos, ghostTurretRotation);
             
             GhostTurretHasBeenPlaced = false;
             Destroy(currentGhost);

@@ -8,7 +8,7 @@ public class GhostTurretShoot : MonoBehaviour
     [SerializeField] private TurretConfig turretConfig;
     private float fireCooldown;
 
-    private Quaternion savedRotation;
+    public Quaternion savedRotation;
 
     void Start()
     {
