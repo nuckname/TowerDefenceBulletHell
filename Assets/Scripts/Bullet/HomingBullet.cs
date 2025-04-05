@@ -3,71 +3,54 @@ using System.Collections;
 
 public class HomingBullet : MonoBehaviour
 {
-    public float homingDelay = 0f;
-    public float homingStrength = 5f;
+    public float homingDelay = 0.05f;
+    public float homingStrength = 10f;
     public float homingRadius = 100f;
-    public float speed = 10f;  // Bullet speed
+    public float speed = 8;  
     
     private Rigidbody2D rb;
-    private Transform target;
-    private bool isHomingActive = false;
+
+    [SerializeField] private Transform target;
+    [SerializeField] private bool isHomingActive = false;
 
     void Start()
     {
+        homingDelay = 0.75f;
         rb = GetComponent<Rigidbody2D>();
-        
-        if (rb == null)
-        {
-            Debug.LogError("[HomingBullet] Rigidbody2D component is missing!");
-            return;
-        }
 
-        target = FindClosestTarget("Enemy");  // Find the closest enemy
-
+        target = FindClosestTarget("Enemy");  
         if (target != null)
         {
-            Debug.Log($"[HomingBullet] Target found: {target.name} at {target.position}");
-        }
-        else
-        {
-            Debug.LogWarning("[HomingBullet] No target found within range.");
+            target = FindClosestTarget("Enemy"); 
         }
 
-        StartCoroutine(ActivateHoming());  // Start homing after delay
-    }
-
-    void Update()
-    {
-        DrawHomingRadius();
+        StartCoroutine(ActivateHoming());  
     }
 
     void FixedUpdate()
     {
         if (!isHomingActive)
         {
-            Debug.Log("[HomingBullet] Homing not active yet.");
             return;
         }
-
+        
         if (target == null)
         {
-            Debug.LogWarning("[HomingBullet] Target lost or destroyed.");
-            return;
+            target = FindClosestTarget("Enemy"); 
+            //return;
         }
 
         Vector2 direction = ((Vector2)target.position - rb.position).normalized;
         Vector2 newVelocity = Vector2.Lerp(rb.linearVelocity, direction * speed, homingStrength * Time.fixedDeltaTime);
         rb.linearVelocity = newVelocity;
-        
-        Debug.Log($"[HomingBullet] Homing towards {target.name} | New Velocity: {newVelocity} | Target Position: {target.position}");
     }
 
     IEnumerator ActivateHoming()
     {
-        Debug.Log($"[HomingBullet] Homing activation delayed by {homingDelay} seconds.");
+        print("Waiting for homing");
         yield return new WaitForSeconds(homingDelay);
+        print("Activating homing");
         isHomingActive = true;
-        Debug.Log("[HomingBullet] Homing activated.");
     }
 
     private Transform FindClosestTarget(string tag)
@@ -84,7 +67,7 @@ public class HomingBullet : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            Debug.Log($"[HomingBullet] Checking enemy {enemy.name} at distance {distance}");
+            Debug.Log($"[HomingBullet] Enemy found");
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -94,7 +77,7 @@ public class HomingBullet : MonoBehaviour
 
         if (closest != null)
         {
-            Debug.Log($"[HomingBullet] Closest target selected: {closest.name} at distance {minDistance}");
+            Debug.Log($"[HomingBullet] Enemy found");
         }
         else
         {
