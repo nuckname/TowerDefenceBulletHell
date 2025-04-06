@@ -22,6 +22,8 @@ public class RoundStateManager : MonoBehaviour
 
     [SerializeField] private TMP_Text RoundDisplayText;
 
+    public GameObject[] mapArrows;
+
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();
@@ -53,16 +55,20 @@ public class RoundStateManager : MonoBehaviour
     public void AllowTurretsToShoot(bool shouldTurretShoot)
     {
         allTurrets = GameObject.FindGameObjectsWithTag("Turret");
-        
+        TurretShoot turretShoot;
         foreach (GameObject turret in allTurrets)
         {
-            turret.GetComponent<TurretShoot>().AllowTurretToShoot = shouldTurretShoot;
+            turretShoot = turret.GetComponent<TurretShoot>();
+            
+            turretShoot.AllowTurretToShoot = shouldTurretShoot;
+            turretShoot.fireCooldown = 0;
+            
         }
     }
 
     public void DisplayRoundUi(int currentRound)
     {
-        RoundDisplayText.text = "Round Number: " + currentRound.ToString();
+        RoundDisplayText.text = "Round Number: " + currentRound.ToString() + "/10";
     }
     
 
@@ -74,6 +80,15 @@ public class RoundStateManager : MonoBehaviour
         DisplayRoundUi(currentRound);
         
         enemyOnMapCounter.MaxEnemiesOnMap = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
+    }
+
+    public void DestroyAllPlayerBullets()
+    {
+        GameObject[] allBullets = GameObject.FindGameObjectsWithTag("PlayerBullet");
+        foreach (GameObject bullet in allBullets)
+        {
+            Destroy(bullet);
+        }
     }
 
 }

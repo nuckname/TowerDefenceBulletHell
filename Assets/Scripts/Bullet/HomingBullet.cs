@@ -36,7 +36,7 @@ public class HomingBullet : MonoBehaviour
         if (target == null)
         {
             target = FindClosestTarget("Enemy"); 
-            //return;
+            return;
         }
 
         Vector2 direction = ((Vector2)target.position - rb.position).normalized;

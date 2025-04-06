@@ -6,17 +6,21 @@ public class RoundInProgressState : RoundBaseState
     private int roundCounter = 0;
     public override void EnterState(RoundStateManager roundStateManager)
     {
-        Debug.Log("Round In Progress State");
-
-        Debug.Log("true");
-
         roundStateManager.AllowTurretsToShoot(true);
         
         roundCounter++;
 
+        roundStateManager.DestroyAllPlayerBullets();
+        
         roundStateManager.selectTurret.AllowSelectingTurret = false;
         
         SpawnRoundEnemies(roundCounter, roundStateManager);
+
+        if (roundCounter == 1)
+        {
+            roundStateManager.mapArrows[0].gameObject.SetActive(false);
+            roundStateManager.mapArrows[1].gameObject.SetActive(false);
+        }
     }
 
     public override void UpdateState(RoundStateManager roundStateManager)

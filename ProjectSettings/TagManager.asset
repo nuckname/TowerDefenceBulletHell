@@ -40,6 +40,8 @@ TagManager:
   - Text3
   - Text1
   - Text2
+  - tutorialText
+  - WinScreen
   layers:
   - Default
   - TransparentFX

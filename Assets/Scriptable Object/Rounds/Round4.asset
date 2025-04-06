@@ -34,7 +34,7 @@ MonoBehaviour:
   speedModifer: 1
   spawnInterval: 0.5
   totalEnemies: 13
-  amountOfGoldGainedForEachCoin: 5
+  amountOfGoldGainedForEachCoin: 6
   increaseGoldAmoutForEachCoinMutipler: 0
   amountOfGoldToDrop: 3
   amountOfHeartToDrop: 0

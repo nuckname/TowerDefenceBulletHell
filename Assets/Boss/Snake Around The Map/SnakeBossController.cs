@@ -37,6 +37,9 @@ public class SnakeBossController : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private GameObject snakeTimer;
     private GameObject spawnedSnakeTimer;
+    
+    [SerializeField] private GameObject VictoryScreen;
+    [SerializeField] private TutorialStateSO tutorialStateSO;
 
     private void Start()
     {
@@ -171,6 +174,15 @@ public class SnakeBossController : MonoBehaviour
         {
             Destroy(snakebody); 
         }
+
+        GameObject canvas = GameObject.FindGameObjectWithTag("canvas");
+        if (canvas != null)
+        {
+            GameObject victory = Instantiate(VictoryScreen, transform.position, Quaternion.identity);
+            victory.transform.SetParent(canvas.transform, false);
+            tutorialStateSO.playerTutorial = false;
+        }
+
         
         Destroy(gameObject);
     }

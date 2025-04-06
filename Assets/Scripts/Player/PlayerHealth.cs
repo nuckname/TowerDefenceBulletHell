@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] private TutorialStateSO tutorialStateSO;
     public PlayerHealthScriptabeObject playerHealthScriptabeObject;
     private TextMeshProUGUI healthText;
 
@@ -13,7 +14,9 @@ public class PlayerHealth : MonoBehaviour
 
     private GameModeManager gameModeManager;
 
+    [SerializeField] private GameObject deathScreen;
 
+    [SerializeField] private GameObject player;
     //public GameObject floatingTextPrefab;
     private void Awake()
     {
@@ -56,8 +59,11 @@ public class PlayerHealth : MonoBehaviour
         SetGameModeOneHp();
         playerGoldScriptableObject.ResetGold();
         
-        Scene currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        deathScreen.SetActive(true);
+        
+        tutorialStateSO.playerTutorial = false;
+        
+        Destroy(player);
     }
     
 

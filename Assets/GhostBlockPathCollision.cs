@@ -3,15 +3,11 @@ using UnityEngine;
 
 public class GhostBlockPathCollision : MonoBehaviour
 {
+    [SerializeField] private GameObject crossPrefab;
+    
     public bool canPlaceGhost;
-    [SerializeField] private SpriteRenderer spriteRenderer;
 
     private int collisionCount = 0;
-
-    private void Start()
-    {
-        spriteRenderer = GetComponent<SpriteRenderer>(); 
-    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -36,12 +32,12 @@ public class GhostBlockPathCollision : MonoBehaviour
     {
         if (collisionCount > 0)
         {
-            spriteRenderer.color = Color.red;
+            crossPrefab.SetActive(true);
             canPlaceGhost = false;
         }
         else
         {
-            spriteRenderer.color = Color.white;
+            crossPrefab.SetActive(false);
             canPlaceGhost = true;
         }
     }

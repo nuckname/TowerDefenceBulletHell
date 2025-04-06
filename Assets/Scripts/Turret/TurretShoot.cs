@@ -17,7 +17,7 @@ public class TurretShoot : MonoBehaviour
     private List<Vector2> directions = new List<Vector2>();
     private List<Transform> activeShootPoints = new List<Transform>();
 
-    [Header("Stats")] private float fireCooldown;
+    [Header("Stats")] public float fireCooldown;
     private int shootPointIndex = 0;
 
     [Header("Can shoot?")] public bool AllowTurretToShoot;
