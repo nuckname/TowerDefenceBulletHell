@@ -80,6 +80,7 @@ public class PlayerCollision : MonoBehaviour
             if (playerHealthScriptabeObject.currentHealth < 10)
             {
                 playerHealthScriptabeObject.currentHealth += 1;
+                playerHealthSpriteSheet.ChangePlayerSprite();
             }
         }
     }

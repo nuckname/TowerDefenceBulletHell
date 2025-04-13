@@ -43,7 +43,6 @@ public class BulletFactory : MonoBehaviour
         
         if (basicBullet != null)
         {
-
             //basicBullet.SetSpeed(turretStats.modifierBulletSpeed);
             
             //basicBullet.SetSpeed(turretConfig.bulletSpeed + turretStats.modifierBulletSpeed);

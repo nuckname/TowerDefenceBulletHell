@@ -222,6 +222,7 @@ MonoBehaviour:
   TopRight: {fileID: 1677544366409221968}
   BottomLeft: {fileID: 8761216767733355192}
   BottomRight: {fileID: 1931237704211502395}
+  fireCooldown: 0
   AllowTurretToShoot: 0
   bulletPool: {fileID: 0}
 --- !u!114 &4571525935793682645
@@ -243,7 +244,7 @@ MonoBehaviour:
   modifierBulletSpeed: 0
   modifierSlowerBulletSpeed: 0
   isTurretHoming: 0
-  pierceCount: 1
+  pierceCount: 0
   angleSpread: 30
   extraProjectiles: 0
   Shoot4Projectiles: 0
@@ -676,7 +677,7 @@ Transform:
   m_GameObject: {fileID: 1086541401797522629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0, z: 0}
+  m_LocalPosition: {x: -0.99, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

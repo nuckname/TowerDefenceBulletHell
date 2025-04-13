@@ -3,8 +3,8 @@ using System.Collections;
 
 public class HomingBullet : MonoBehaviour
 {
-    public float homingDelay = 0.05f;
-    public float homingStrength = 10f;
+    public float homingDelay = 0.0f;
+    public float homingStrength = 100f;
     public float homingRadius = 100f;
     public float speed = 8;  
     
@@ -84,25 +84,6 @@ public class HomingBullet : MonoBehaviour
         }
 
         return closest;
-    }
-
-    void DrawHomingRadius()
-    {
-        int segments = 40;
-        float angleStep = 360f / segments;
-        Vector3 center = transform.position;
-        float radius = homingRadius;
-
-        for (int i = 0; i < segments; i++)
-        {
-            float angle1 = Mathf.Deg2Rad * angleStep * i;
-            float angle2 = Mathf.Deg2Rad * angleStep * (i + 1);
-
-            Vector3 point1 = center + new Vector3(Mathf.Cos(angle1), Mathf.Sin(angle1)) * radius;
-            Vector3 point2 = center + new Vector3(Mathf.Cos(angle2), Mathf.Sin(angle2)) * radius;
-
-            Debug.DrawLine(point1, point2, Color.red);
-        }
     }
 
     void OnDrawGizmosSelected()

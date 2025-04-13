@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1
-  attackCooldown: 2
+  attackCooldown: 4
   beamPrefab: {fileID: 0}
   beamDuration: 2
   beamCount: 4

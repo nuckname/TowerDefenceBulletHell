@@ -11,7 +11,6 @@ public enum BossState
     Enraged,
     CircleAttack,
     RandomShooting,
-    BeamAttack
 }
 
 public class SmileBossReworked : MonoBehaviour
@@ -63,11 +62,6 @@ public class SmileBossReworked : MonoBehaviour
     
     void Update()
     {
-        if (currentHealth <= maxHealth / 2 && currentState != BossState.Enraged)
-        {
-            //EnterEnragedState();
-        }
-        
         switch (currentState)
         {
             case BossState.Normal:
@@ -76,9 +70,7 @@ public class SmileBossReworked : MonoBehaviour
             case BossState.ExplosiveAttack:
                 HandleExplosiveAttackState();
                 break;
-            case BossState.Enraged:
-                HandleEnragedState();
-                break;
+
         }
     }
     
@@ -109,12 +101,6 @@ public class SmileBossReworked : MonoBehaviour
             }
             attackTimer = attackCooldown;
         }
-    }
-
-    void TriggerBeamAttack()
-    {
-        currentState = BossState.BeamAttack;
-        StartCoroutine(BeamAttackRoutine());
     }
 
     private GameObject Beam;
@@ -167,10 +153,6 @@ public class SmileBossReworked : MonoBehaviour
                 case BossState.RandomShooting:
                     TriggerRandomShooting();
                     break;
-                case BossState.BeamAttack:
-                    TriggerBeamAttack();
-                    break;
-             
             }
             attackTimer = 3f;
         }
@@ -256,8 +238,6 @@ public class SmileBossReworked : MonoBehaviour
         {
             BossState.ExplosiveAttack,
             BossState.CircleAttack,
-            BossState.RandomShooting,
-            BossState.BeamAttack
         };
         
         if (possibleAttacks.Contains(lastAttackUsed))
