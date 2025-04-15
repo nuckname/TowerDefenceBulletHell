@@ -59,7 +59,6 @@ public class ApplyUpgrade : MonoBehaviour
         
         ApplyUpgradeEffect(upgradeSelected, upgrades, targetTurret);
         
-        
     }
 
     //using SO. now using turret refactor. 
@@ -94,38 +93,12 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
             ClearUpgradesDescription(targetTurret);
             upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
-            if (upgrade.onlyAllowedOnce)
-            {
-                switch (targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storedTurretSelectedRarity)
-                {
-                    case "Normal Rarity":
-                        int normalIndex = upgradeDataOnTurret.normalUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                        if (normalIndex >= 0)
-                        {
-                            upgradeDataOnTurret.normalUpgrades[normalIndex].hideUpgrade = true;
-                        }
-                        break;
-                    case "Rare Rarity":
-                        int rareIndex = upgradeDataOnTurret.rareUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                        if (rareIndex >= 0)
-                        {
-                            upgradeDataOnTurret.rareUpgrades[rareIndex].hideUpgrade = true;
-                        }
-                        break;
-                    case "Legendary Rarity":
-                        int legendaryIndex = upgradeDataOnTurret.legendaryUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                        if (legendaryIndex >= 0)
-                        {
-                            upgradeDataOnTurret.legendaryUpgrades[legendaryIndex].hideUpgrade = true;
-                        }
-                        break;
-                }
-            }
-            
-            if (upgrade.hasUpgradePaths)
-            {
-                //setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
-            }
+            //if ony allow once will remove it from the pool - not working
+            OnlyAllowedOnce(upgrade, targetTurret, upgradeDataOnTurret);
+
+            //if it has an upgrade path with select more - not working
+            HasUpgradePath(upgrade, turretStats, upgradeDataOnTurret);
+           
             break;
         }
     }
@@ -137,6 +110,45 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
         for (int i = 0; i < tempDesc.Length; i++)
         {
             tempDesc[i] = "";
+        }
+    }
+
+    private void HasUpgradePath(Upgrade upgrade, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
+    {
+        if (upgrade.hasUpgradePaths)
+        {
+            setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
+        }
+    }
+
+    private void OnlyAllowedOnce(Upgrade upgrade, GameObject targetTurret, UpgradeDataOnTurret upgradeDataOnTurret)
+    {
+        if (upgrade.onlyAllowedOnce)
+        {
+            switch (targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storedTurretSelectedRarity)
+            {
+                case "Normal Rarity":
+                    int normalIndex = upgradeDataOnTurret.normalUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                    if (normalIndex >= 0)
+                    {
+                        upgradeDataOnTurret.normalUpgrades[normalIndex].hideUpgrade = true;
+                    }
+                    break;
+                case "Rare Rarity":
+                    int rareIndex = upgradeDataOnTurret.rareUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                    if (rareIndex >= 0)
+                    {
+                        upgradeDataOnTurret.rareUpgrades[rareIndex].hideUpgrade = true;
+                    }
+                    break;
+                case "Legendary Rarity":
+                    int legendaryIndex = upgradeDataOnTurret.legendaryUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+                    if (legendaryIndex >= 0)
+                    {
+                        upgradeDataOnTurret.legendaryUpgrades[legendaryIndex].hideUpgrade = true;
+                    }
+                    break;
+            }
         }
     }
 }
