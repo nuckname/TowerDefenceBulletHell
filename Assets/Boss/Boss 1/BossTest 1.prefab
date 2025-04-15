@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3174815795514883231
+--- !u!1 &1745699633777510999
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,70 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2231399798466887585}
-  - component: {fileID: 438139943623447532}
-  - component: {fileID: 4031507590178040227}
+  - component: {fileID: 8192636741618546348}
   m_Layer: 0
-  m_Name: BossTest
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2231399798466887585
+--- !u!4 &8192636741618546348
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3174815795514883231}
+  m_GameObject: {fileID: 1745699633777510999}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2629552, y: -0.25902367, z: 0}
-  m_LocalScale: {x: 1.4596, y: 1.4596, z: 1.4596}
+  m_LocalPosition: {x: -6.71, y: -1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+  m_Father: {fileID: 5907587101528411606}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3631349295653363884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5907587101528411606}
+  - component: {fileID: 5845156386639457676}
+  - component: {fileID: 5516021413964776826}
+  m_Layer: 0
+  m_Name: BossTest 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5907587101528411606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3631349295653363884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.43, y: 0.26, z: 0}
+  m_LocalScale: {x: 1.4596, y: 1.4596, z: 1.4596}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8192636741618546348}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &438139943623447532
+--- !u!212 &5845156386639457676
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3174815795514883231}
+  m_GameObject: {fileID: 3631349295653363884}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -88,28 +120,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4031507590178040227
+--- !u!114 &5516021413964776826
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3174815795514883231}
+  m_GameObject: {fileID: 3631349295653363884}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45d91d19e78be35479a0cc20839c7cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineProjectilePrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
+  projectilePrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
   circlePrefab: {fileID: 2699754733973702364, guid: 6741ee8b575e0c744931456ae5c1e610, type: 3}
   circleProjectilePrefab: {fileID: 3426162796660274319, guid: d7f93b30b7bfa944eb78ba8547aed36b, type: 3}
+  groupCount: 5
+  projectilesPerGroup: 8
   smallSpacing: 1
-  largeSpacing: 3
-  topLineOrigin: {x: 0, y: 0}
-  bottomLineOrigin: {x: 0, y: 0}
-  lineProjectileSpeed: 5
-  circleSpawnCenter: {fileID: 0}
-  circleSpawnRadius: 5
-  circleProjectileSpeed: 4
+  largeSpacing: 2
+  bottomOrigin: {x: -25, y: -15}
+  verticalProjectileSpeed: 6
+  rightOrigin: {x: 25, y: 15}
+  horizontalProjectileSpeed: 7
+  circleSpawnRadius: 14
+  circleProjectileSpeed: 3
   timeBeforeShooting: 1
   circleCooldown: 0.5
+  shotsCount: 3
+  circleCount: 3

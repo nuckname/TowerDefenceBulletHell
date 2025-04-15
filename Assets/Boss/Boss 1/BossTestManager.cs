@@ -54,70 +54,111 @@ public class BossTestManager : MonoBehaviour
     // Move 1: Fires both the vertical and horizontal sets.
     IEnumerator Move1_ProjectileSets()
     {
+        int loopAmountY = Random.Range(3, 4);
         // Spawn the vertical set (from bottom going up).
-        SpawnVerticalSet(bottomOrigin);
+        SpawnVerticalSet(bottomOrigin, 4);
+
+        int loopAmountX = Random.Range(3, 4);
+
         // Spawn the horizontal set (from right going left).
-        SpawnHorizontalSet(rightOrigin);
+        SpawnHorizontalSet(rightOrigin, 4);
 
         // Allow time for projectiles to move before switching moves.
         yield return new WaitForSeconds(3f);
     }
 
     // Spawns a vertical formation from a fixed x position, only incrementing y.
-    void SpawnVerticalSet(Vector2 origin)
+    void SpawnVerticalSet(Vector2 origin, int loopAmount, float lineXOffset = 0.35f)
     {
+        // 'spawnY' marks the vertical position for each new line.
         float spawnY = origin.y;
-        float currentX = origin.x;
 
-        for (int group = 0; group < groupCount; group++)
+        // Create multiple lines by looping from 0 to loopAmount.
+        for (int j = 0; j <= loopAmount; j++)
         {
-            for (int i = 0; i < projectilesPerGroup; i++)
-            {
-                Vector2 spawnPos = new Vector2(currentX, spawnY);
-                GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+            // Reset the currentX for each line.
+            float currentX = origin.x + (j * lineXOffset);
 
-                Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-                if (rb != null)
+            // Loop through each group in the current line.
+            for (int group = 0; group < groupCount; group++)
+            {
+                // In each group, instantiate the specified number of projectiles.
+                for (int i = 0; i < projectilesPerGroup; i++)
                 {
-                    rb.linearVelocity = Vector2.up * verticalProjectileSpeed;
+                    Vector2 spawnPos = new Vector2(currentX, spawnY);
+                    GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                    // Optional: Print the Y position for debugging.
+                    print("Spawn Y: " + spawnY);
+
+                    Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+                    if (rb != null)
+                    {
+                        // Apply upward velocity to the projectile.
+                        rb.linearVelocity = Vector2.up * verticalProjectileSpeed;
+                    }
+
+                    // Increment the X position within the group.
+                    currentX += smallSpacing;
                 }
 
-                currentX += smallSpacing;
+                // After each group (except the last one), increase X by the large spacing.
+                if (group < groupCount - 1)
+                {
+                    currentX += largeSpacing;
+                }
             }
-
-            if (group < groupCount - 1)
-            {
-                currentX += largeSpacing;
-            }
+            // Move upward for the next line.
+            spawnY++;
         }
     }
 
 
     // Spawns a horizontal formation: projectiles start at the specified origin and move leftward.
     // Their vertical positions are adjusted, but if needed you can modify this logic.
-    void SpawnHorizontalSet(Vector2 origin)
+    void SpawnHorizontalSet(Vector2 origin, int loopAmount, float lineYOffset = 0.35f)
     {
-        Vector2 currentPosition = origin;
-        for (int group = 0; group < groupCount; group++)
+        float spawnX = origin.x;
+
+        for (int j = 0; j <= loopAmount; j++)
         {
-            for (int i = 0; i < projectilesPerGroup; i++)
+            // Reset the Y position each time to start a new line
+            float currentY = origin.y + (j * lineYOffset);
+     
+            
+            float currentX = spawnX;
+
+            for (int group = 0; group < groupCount; group++)
             {
-                GameObject proj = Instantiate(projectilePrefab, currentPosition, Quaternion.identity);
-                // Set projectile to move leftwards.
-                Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                for (int i = 0; i < projectilesPerGroup; i++)
                 {
-                    rb.linearVelocity = Vector2.left * horizontalProjectileSpeed;
+                    Vector2 spawnPos = new Vector2(currentX, currentY);
+                    print("Hoz: " + spawnPos.x + ", " + spawnPos.y);
+
+                    GameObject proj = Instantiate(projectilePrefab, spawnPos, Quaternion.identity);
+
+                    // Set projectile to move leftwards
+                    Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+                    if (rb != null)
+                    {
+                        rb.linearVelocity = Vector2.left * horizontalProjectileSpeed;
+                    }
+
+                    // Move down a bit for the next projectile in this group
+                    currentY -= smallSpacing;
                 }
-                // Here the vertical position is adjusted so the formation appears vertical.
-                currentPosition.y -= smallSpacing;
+
+                if (group < groupCount - 1)
+                {
+                    currentY -= largeSpacing;
+                }
             }
-            if (group < groupCount - 1)
-            {
-                currentPosition.y -= largeSpacing;
-            }
+
+            // After completing one horizontal line, move right for the next one
+            spawnX++;
         }
     }
+
 
     // Move 2: Spawns circles at random positions, then each circle fires at every other circle.
     IEnumerator Move2_CircleAttack()
