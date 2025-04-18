@@ -8,7 +8,6 @@ public class EnemyDie : MonoBehaviour
 {
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
-
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     private Rigidbody _rigidbody;
 
@@ -38,7 +37,7 @@ public class EnemyDie : MonoBehaviour
         print("DecreaseEnemyCount - 1");
         enemyOnMapCounter.DecreaseEnemyCount();
 
-        _enemyDropItems.DropItems();
+        _enemyDropItems.DropItems(false);
 
         Destroy(gameObject);
     }

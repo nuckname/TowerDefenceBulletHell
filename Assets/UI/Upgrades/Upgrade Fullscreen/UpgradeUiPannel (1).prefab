@@ -298,7 +298,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayUpgradeGoldAmount: {fileID: 6401536875210128609}
-  scalingFactor: 1.15
+  scalingFactor: 1.5
 --- !u!114 &2943511926569603087
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -37,6 +37,7 @@ public class SnakeBossController : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private GameObject snakeTimer;
     private GameObject spawnedSnakeTimer;
+    [SerializeField] private BossDie bossDie;
     
     [SerializeField] private GameObject VictoryScreen;
     [SerializeField] private TutorialStateSO tutorialStateSO;
@@ -160,7 +161,6 @@ public class SnakeBossController : MonoBehaviour
     private void DestroyBoss()
     {
         currentState = SnakeBossState.Dead;
-        Debug.Log("Snake Boss defeated!");
         
         foreach (Transform snakebody in bodySegments)
         {
@@ -175,6 +175,8 @@ public class SnakeBossController : MonoBehaviour
             Destroy(snakebody); 
         }
 
+        bossDie.EnemyHasDied();
+        /*
         GameObject canvas = GameObject.FindGameObjectWithTag("canvas");
         if (canvas != null)
         {
@@ -182,7 +184,7 @@ public class SnakeBossController : MonoBehaviour
             victory.transform.SetParent(canvas.transform, false);
             tutorialStateSO.playerTutorial = false;
         }
-
+        */
         
         Destroy(gameObject);
     }

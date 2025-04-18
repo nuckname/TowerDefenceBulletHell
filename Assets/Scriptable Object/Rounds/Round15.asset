@@ -10,32 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d90953c3925cd584b83584544f4bf9c2, type: 3}
-  m_Name: Round1
+  m_Name: Round15
   m_EditorClassIdentifier: 
-  waveName: Wave 1
-  currentWave: 1
-  enemyGroups:
-  - enemyHp: 4
-    count: 2
-    delayBeforeGroup: 0
-    spawnInterval: 1
-    bossSpawn: 0
-  - enemyHp: 2
-    count: 2
-    delayBeforeGroup: 0
-    spawnInterval: 1
-    bossSpawn: 0
-  - enemyHp: 6
-    count: 1
-    delayBeforeGroup: 1
-    spawnInterval: 1
-    bossSpawn: 0
+  waveName: Wave 2
+  currentWave: 10
+  enemyGroups: []
   delayAfterWave: 3
-  speedModifer: 0
+  speedModifer: 1
   spawnInterval: 0.5
-  totalEnemies: 5
-  amountOfGoldGainedForEachCoin: 30
+  totalEnemies: 1
+  amountOfGoldGainedForEachCoin: 50
   increaseGoldAmoutForEachCoinMutipler: 0
-  amountOfGoldToDrop: 1
+  amountOfGoldToDrop: 4
   amountOfHeartToDrop: 0
-  boss: {fileID: 0}
+  boss: {fileID: 3631349295653363884, guid: bf24bc86e8801c841a46dd22bed04868, type: 3}

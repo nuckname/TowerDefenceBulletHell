@@ -1,14 +1,20 @@
+using System;
 using UnityEngine;
 
 public class BindingOfIsaacShooting : MonoBehaviour
 {
     public GameObject projectilePrefab; 
-    public float shootCooldown = 0.5f; 
+    public float shootCooldown; 
     public Transform firePoint; // Where the projectile spawns
     public float projectileSpeed = 10f; 
 
     private float lastShotTime;
     public static bool disableShooting = false;
+
+    private void Start()
+    {
+        lastShotTime = -shootCooldown;
+    }
 
     private void Update()
     {

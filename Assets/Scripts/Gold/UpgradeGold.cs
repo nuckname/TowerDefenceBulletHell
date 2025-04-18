@@ -8,11 +8,6 @@ public class UpgradeGold : MonoBehaviour
     public TMP_Text DisplayUpgradeGoldAmount;
     [SerializeField] private float scalingFactor; 
 
-    private void Start()
-    {
-        scalingFactor = 1.50f;
-    }
-
     [SerializeField] private Dictionary<string, int> basePrices = new Dictionary<string, int>
     {
         { "Normal Rarity", 50 },

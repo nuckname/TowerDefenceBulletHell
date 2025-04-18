@@ -5,7 +5,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyDropItems : MonoBehaviour
 {
-    
+    [SerializeField] private Vector3 bossDropItemsLocation;
+
     //Updated from SpawnEnemies.cs
     public int amountOfGoldCoinsToDrop;
     public int amountOfHeartsToDrop;
@@ -13,29 +14,41 @@ public class EnemyDropItems : MonoBehaviour
     [SerializeField] private GameObject coin;
     [SerializeField] private GameObject heart;
 
-    public GameObject roundManagerPrefab;
-
-
-    public void DropItems()
+    public void DropItems(bool isBoss)
     {
         for (int i = 0; i < amountOfGoldCoinsToDrop; i++)
         {
-            SpawnItem(coin);
+            SpawnItem(coin, isBoss);
         }
         
         for (int i = 0; i < amountOfHeartsToDrop; i++)
         {
-            SpawnItem(heart);
+            SpawnItem(heart, isBoss);
         }
     }
 
-    private void SpawnItem(GameObject item)
+    private void SpawnItem(GameObject item, bool isBoss)
     {
         float displacementY = Random.Range(-1.0f, 1.0f);
         float displacementX = Random.Range(-1.0f, 1.0f);
-            
-        Instantiate(item, new Vector3(gameObject.transform.position.x + displacementX,
-            gameObject.transform.position.y + displacementY,
-            gameObject.transform.position.z), Quaternion.identity);
+
+        if (!isBoss)
+        {
+            Instantiate(item, new Vector3(gameObject.transform.position.x + displacementX,
+                gameObject.transform.position.y + displacementY,
+                gameObject.transform.position.z), Quaternion.identity);
+        }
+
+        if (isBoss)
+        {
+            Instantiate(item, new Vector3(bossDropItemsLocation.x + displacementX,
+                bossDropItemsLocation.y + displacementY,
+                bossDropItemsLocation.z), Quaternion.identity);
+        }
+    }
+
+    private void SpawnBossGold()
+    {
+        
     }
 }
