@@ -33,6 +33,13 @@ public class PlaceObject : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
+                GhostBlockPathCollision ghostBlockPathCollision = GameObject.FindGameObjectWithTag("GhostTurret").GetComponent<GhostBlockPathCollision>();
+                
+                if (!ghostBlockPathCollision.canPlaceGhost)
+                {
+                    return;
+                }
+                
                 if (playerGold.SpendGold(TurretBasicCost))
                 {
                     SpawnBasicTurret(curentGhost);
