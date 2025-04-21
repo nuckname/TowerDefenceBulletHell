@@ -176,7 +176,6 @@ public class UpgradeUiManager : MonoBehaviour
             
             storeTurretDescriptionAndRarity.storeTurretPrice = upgradePrice;
             
-            print("Reroll upgradePrice: " + upgradePrice);
             UpdateBackgroundColourUi(storeTurretDescriptionAndRarity);
         }
     }

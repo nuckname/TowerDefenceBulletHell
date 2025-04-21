@@ -20,4 +20,9 @@ public class StoreTurretDescriptionAndRarity : MonoBehaviour
             return true;
         }
     }
+
+    public string GetCurrentRarity()
+    {
+        return this.storedTurretSelectedRarity;
+    }
 }

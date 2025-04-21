@@ -91,10 +91,12 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
         {
             upgrade.effect.Apply(targetTurret);
             ClearUpgradesDescription(targetTurret);
-            upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
-
+           
             //if ony allow once will remove it from the pool - not working
+            //This must go before Generate Description as if you reroll it could re into what has been hidden
             OnlyAllowedOnce(upgrade, targetTurret, upgradeDataOnTurret);
+            
+            upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
             //if it has an upgrade path with select more - not working
             HasUpgradePath(upgrade, turretStats, upgradeDataOnTurret);
@@ -123,32 +125,39 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
 
     private void OnlyAllowedOnce(Upgrade upgrade, GameObject targetTurret, UpgradeDataOnTurret upgradeDataOnTurret)
     {
-        if (upgrade.onlyAllowedOnce)
+        if (!upgrade.onlyAllowedOnce) 
+            return;
+
+        string currentRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().GetCurrentRarity();
+        Debug.Log($"[OnlyAllowedOnce] turret={targetTurret.name} rarity='{currentRarity}' upgrade='{upgrade.upgradeName}'");
+
+        List<Upgrade> poolToHide;
+        switch (currentRarity)
         {
-            switch (targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storedTurretSelectedRarity)
-            {
-                case "Normal Rarity":
-                    int normalIndex = upgradeDataOnTurret.normalUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                    if (normalIndex >= 0)
-                    {
-                        upgradeDataOnTurret.normalUpgrades[normalIndex].hideUpgrade = true;
-                    }
-                    break;
-                case "Rare Rarity":
-                    int rareIndex = upgradeDataOnTurret.rareUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                    if (rareIndex >= 0)
-                    {
-                        upgradeDataOnTurret.rareUpgrades[rareIndex].hideUpgrade = true;
-                    }
-                    break;
-                case "Legendary Rarity":
-                    int legendaryIndex = upgradeDataOnTurret.legendaryUpgrades.FindIndex(u => u.upgradeName == upgrade.upgradeName);
-                    if (legendaryIndex >= 0)
-                    {
-                        upgradeDataOnTurret.legendaryUpgrades[legendaryIndex].hideUpgrade = true;
-                    }
-                    break;
-            }
+            case "Normal Rarity":
+                poolToHide = upgradeDataOnTurret.normalUpgrades;
+                break;
+
+            case "Rare Rarity":
+                poolToHide = upgradeDataOnTurret.rareUpgrades;
+                break;
+
+            case "Legendary Rarity":
+                poolToHide = upgradeDataOnTurret.legendaryUpgrades;
+                break;
+
+            default:
+                Debug.LogWarning($"Unknown rarity '{currentRarity}' on {targetTurret.name}");
+                return;
+        }
+
+        // 3) Hide the one you picked
+        int idx = poolToHide.FindIndex(u => u.upgradeName == upgrade.upgradeName);
+        if (idx >= 0)
+        {
+            poolToHide[idx].hideUpgrade = true;
+            Debug.Log($"-- Hiding upgrade {upgrade.upgradeName} from the {currentRarity} pool.");
         }
     }
+
 }
