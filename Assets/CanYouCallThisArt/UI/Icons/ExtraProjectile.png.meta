@@ -1,22 +1,28 @@
 fileFormatVersion: 2
-guid: 00ae25681751ef642b98aee5e00b86c7
+guid: 2c48e13d27dd25045a8bc031dee50d82
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8462350957333834025
-    second: UpgradeUI Yellow_0
+      213: 6974135456674353144
+    second: ExtraProjectile_0
   - first:
-      213: 6655871435923043275
-    second: UpgradeUI Yellow_1
+      213: -3526496306881542200
+    second: ExtraProjectile_1
   - first:
-      213: 557991111667552521
-    second: UpgradeUI Yellow_2
+      213: 8515597931908192240
+    second: ExtraProjectile_2
   - first:
-      213: -1975609334842334109
-    second: UpgradeUI Yellow_3
+      213: -3399925593459415721
+    second: ExtraProjectile_3
   - first:
-      213: -4388083383261117988
-    second: UpgradeUI Yellow_4
+      213: 99827946263339222
+    second: ExtraProjectile_4
+  - first:
+      213: -3026972833130435192
+    second: ExtraProjectile_5
+  - first:
+      213: 6827902058656161701
+    second: ExtraProjectile_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,17 +114,118 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UpgradeUI Yellow_0
+      name: ExtraProjectile_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 17
+        y: 239
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ff088e4f3b19c060800000000000000
+      internalID: 6974135456674353144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraProjectile_1
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 204
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c749960b4e5f0fc0800000000000000
+      internalID: -3526496306881542200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraProjectile_2
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 200
+        width: 38
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f75075933b7d2670800000000000000
+      internalID: 8515597931908192240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraProjectile_3
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 237
+        width: 34
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 755a713bfa901d0d0800000000000000
+      internalID: -3399925593459415721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ExtraProjectile_4
+      rect:
+        serializedVersion: 2
+        x: 102
         y: 0
-        width: 989
-        height: 1040
+        width: 122
+        height: 163
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 929e1983c5f407570800000000000000
-      internalID: 8462350957333834025
+      spriteID: 6d0eeabfcf8a26100800000000000000
+      internalID: 99827946263339222
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI Yellow_1
+      name: ExtraProjectile_5
       rect:
         serializedVersion: 2
-        x: 432
-        y: 1024
-        width: 20
-        height: 17
+        x: 111
+        y: 145
+        width: 36
+        height: 38
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,20 +256,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc3bcd08ec76e5c50800000000000000
-      internalID: 6655871435923043275
+      spriteID: 88da080fe380ef5d0800000000000000
+      internalID: -3026972833130435192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI Yellow_2
+      name: ExtraProjectile_6
       rect:
         serializedVersion: 2
-        x: 481
-        y: 1025
-        width: 10
-        height: 16
+        x: 176
+        y: 145
+        width: 35
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,52 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90115cea5f16eb700800000000000000
-      internalID: 557991111667552521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UpgradeUI Yellow_3
-      rect:
-        serializedVersion: 2
-        x: 506
-        y: 1025
-        width: 10
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 364e6c5f6c93594e0800000000000000
-      internalID: -1975609334842334109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: UpgradeUI Yellow_4
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 0
-        width: 8
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd14de779656a13c0800000000000000
-      internalID: -4388083383261117988
+      spriteID: 5afdb5f1fb491ce50800000000000000
+      internalID: 6827902058656161701
       vertices: []
       indices: 
       edges: []
@@ -225,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +298,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UpgradeUI Yellow_0: 8462350957333834025
-      UpgradeUI Yellow_1: 6655871435923043275
-      UpgradeUI Yellow_2: 557991111667552521
-      UpgradeUI Yellow_3: -1975609334842334109
-      UpgradeUI Yellow_4: -4388083383261117988
+      ExtraProjectile_0: 6974135456674353144
+      ExtraProjectile_1: -3526496306881542200
+      ExtraProjectile_2: 8515597931908192240
+      ExtraProjectile_3: -3399925593459415721
+      ExtraProjectile_4: 99827946263339222
+      ExtraProjectile_5: -3026972833130435192
+      ExtraProjectile_6: 6827902058656161701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

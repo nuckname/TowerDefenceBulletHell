@@ -15,11 +15,9 @@ public class OrbitalBullet : MonoBehaviour
 
     private void OnEnable()
     {
-        // reset every time this bullet is spawned or re-enabled
         isOrbiting        = false;
         isCapturing       = false;
         orbitCollider     = null;
-        // (optionally) clear any other per‑lifetime data here
     }
     
     // Called by OrbitTrigger when this bullet first enters

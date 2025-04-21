@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 1c88aa267a8e01e49b4f2a2b54c474b4
+guid: 676dbb396e1e272468389c45d4f5795d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6858755736613675321
-    second: UpgradeUI_0
+      213: 5201917718523432121
+    second: UpgradeUI blue 1_0
   - first:
-      213: -2837101144597046438
-    second: UpgradeUI_1
+      213: 5076083181162694119
+    second: UpgradeUI blue 1_1
   - first:
-      213: 7836696766237946666
-    second: UpgradeUI_2
+      213: -6793013031402304584
+    second: UpgradeUI blue 1_2
   - first:
-      213: 7003074426054646032
-    second: UpgradeUI_3
+      213: -3855013540263391591
+    second: UpgradeUI blue 1_3
   - first:
-      213: 2518679120274603961
-    second: UpgradeUI_4
+      213: 5006142790379594549
+    second: UpgradeUI blue 1_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +58,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,11 +108,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UpgradeUI_0
+      name: UpgradeUI blue 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 931e702d0023f2f50800000000000000
-      internalID: 6858755736613675321
+      spriteID: 9bc4663aa9ce03840800000000000000
+      internalID: 5201917718523432121
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI_1
+      name: UpgradeUI blue 1_1
       rect:
         serializedVersion: 2
         x: 432
@@ -149,14 +162,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a5b50746a8790a8d0800000000000000
-      internalID: -2837101144597046438
+      spriteID: 7e5898f42ced17640800000000000000
+      internalID: 5076083181162694119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI_2
+      name: UpgradeUI blue 1_2
       rect:
         serializedVersion: 2
         x: 481
@@ -171,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a23b014303a81cc60800000000000000
-      internalID: 7836696766237946666
+      spriteID: 8bb8aac83ae5ab1a0800000000000000
+      internalID: -6793013031402304584
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI_3
+      name: UpgradeUI blue 1_3
       rect:
         serializedVersion: 2
         x: 506
@@ -193,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0191c9c261bef2160800000000000000
-      internalID: 7003074426054646032
+      spriteID: 99e87402c9d308ac0800000000000000
+      internalID: -3855013540263391591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: UpgradeUI_4
+      name: UpgradeUI blue 1_4
       rect:
         serializedVersion: 2
         x: 409
@@ -215,8 +228,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9bf392bb05524f220800000000000000
-      internalID: 2518679120274603961
+      spriteID: 533657b1854697540800000000000000
+      internalID: 5006142790379594549
       vertices: []
       indices: 
       edges: []
@@ -225,7 +238,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -235,11 +248,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      UpgradeUI_0: 6858755736613675321
-      UpgradeUI_1: -2837101144597046438
-      UpgradeUI_2: 7836696766237946666
-      UpgradeUI_3: 7003074426054646032
-      UpgradeUI_4: 2518679120274603961
+      UpgradeUI blue 1_0: 5201917718523432121
+      UpgradeUI blue 1_1: 5076083181162694119
+      UpgradeUI blue 1_2: -6793013031402304584
+      UpgradeUI blue 1_3: -3855013540263391591
+      UpgradeUI blue 1_4: 5006142790379594549
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

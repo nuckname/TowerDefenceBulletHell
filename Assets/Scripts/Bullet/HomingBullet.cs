@@ -1,92 +1,104 @@
-using UnityEngine;
 using System.Collections;
+using UnityEngine;
 
 public class HomingBullet : MonoBehaviour
 {
-    public float homingDelay = 0.0f;
+    [Header("Homing Settings")]
+    public float homingDelay    = 0.0f;
     public float homingStrength = 100f;
-    public float homingRadius = 100f;
-    public float speed = 8;  
-    
+    public float homingRadius   = 100f;
+    public float speed          =   8f;
+
+    [Tooltip("Set by the firing turret: does this shot home?")]
+    public bool  useHoming      = true;
+
     private Rigidbody2D rb;
+    private Transform   target;
+    private bool        isHomingActive;
 
-    [SerializeField] private Transform target;
-    [SerializeField] private bool isHomingActive = false;
-
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-
-        target = FindClosestTarget("Enemy");  
-        if (target != null)
-        {
-            target = FindClosestTarget("Enemy"); 
-        }
-
-        StartCoroutine(ActivateHoming());  
     }
 
-    void FixedUpdate()
+    private void OnEnable()
     {
-        if (!isHomingActive)
+        // First, fully clear any old homing state
+
+//        StopAllCoroutines();
+        isHomingActive = false;
+        target         = null;
+
+        if (useHoming)
         {
-            return;
+            // grab a fresh target
+            target = FindClosestTarget("Enemy");
+            // initial “lock‑on” direction (or fallback straight)
+            Vector2 dir = target != null
+                ? ((Vector2)target.position - (Vector2)transform.position).normalized
+                : transform.right;
+            rb.linearVelocity = dir * speed;
+
+            // kick off the homing delay
+            StartCoroutine(ActivateHoming());
         }
-        
+        else
+        {
+            // No homing: just fire straight
+            rb.linearVelocity = transform.right * speed;
+        }
+    }
+
+    private void OnDisable()
+    {
+        // ensure coroutines are dead when we drop back in the pool
+        StopAllCoroutines();
+    }
+
+    private void FixedUpdate()
+    {
+        if (!useHoming || !isHomingActive)
+            return;
+
+        // if our lock died/out of range, re‑acquire
         if (target == null)
         {
-            target = FindClosestTarget("Enemy"); 
-            return;
+            target = FindClosestTarget("Enemy");
+            if (target == null)
+                return;  // nothing to home on, keep current velocity
         }
 
-        Vector2 direction = ((Vector2)target.position - rb.position).normalized;
-        Vector2 newVelocity = Vector2.Lerp(rb.linearVelocity, direction * speed, homingStrength * Time.fixedDeltaTime);
-        rb.linearVelocity = newVelocity;
+        // steering
+        Vector2 desired = ((Vector2)target.position - rb.position).normalized * speed;
+        rb.linearVelocity     = Vector2.Lerp(rb.linearVelocity, desired, homingStrength * Time.fixedDeltaTime);
     }
 
-    IEnumerator ActivateHoming()
+    private IEnumerator ActivateHoming()
     {
-        print("Waiting for homing");
         yield return new WaitForSeconds(homingDelay);
-        print("Activating homing");
         isHomingActive = true;
     }
 
     private Transform FindClosestTarget(string tag)
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(tag);
-        Transform closest = null;
-        float minDistance = homingRadius;
-        
-        if (enemies.Length == 0)
-        {
-            Debug.LogWarning("[HomingBullet] No enemies found in the scene.");
-        }
+        Transform   best     = null;
+        float       bestDist = homingRadius;
 
-        foreach (GameObject enemy in enemies)
+        foreach (var e in enemies)
         {
-            float distance = Vector2.Distance(transform.position, enemy.transform.position);
-            Debug.Log($"[HomingBullet] Enemy found");
-            if (distance < minDistance)
+            float d = Vector2.Distance(transform.position, e.transform.position);
+            if (d < bestDist)
             {
-                minDistance = distance;
-                closest = enemy.transform;
+                bestDist = d;
+                best     = e.transform;
             }
         }
 
-        if (closest != null)
-        {
-            Debug.Log($"[HomingBullet] Enemy found");
-        }
-        else
-        {
-            Debug.LogWarning("[HomingBullet] No valid target within range.");
-        }
-
-        return closest;
+        return best;
     }
 
-    void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, homingRadius);
