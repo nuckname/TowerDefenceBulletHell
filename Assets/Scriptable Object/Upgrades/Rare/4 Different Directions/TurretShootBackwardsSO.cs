@@ -1,18 +1,21 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "4DifferentDirections", menuName = "Upgrades/Effects/4ShootDifferentDirections")]
-public class FourDifferentDirectionsScriptableObject : UpgradeEffect
+[CreateAssetMenu(fileName = "FireBackwards", menuName = "Upgrades/Effects/TurretFireBackwards")]
+public class TurretShootBackwardsSO : UpgradeEffect
 {
     //Only allowed once.?
     public override void Apply(GameObject targetTurret)
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
-            turretStats.activeDirections += 4;
+            turretStats.activeDirections += 1;
             turretStats.allow4ShootPoints = true;
-         
+            
+            //To display in turretStats
+            turretStats.TurretShootsBackwards = true;
+            
             TurretShoot turretShoot = targetTurret.GetComponent<TurretShoot>();
-            turretShoot.AddUpDownLeftRightShootPoints();
+            turretShoot.FireBackwards();
 
         }
         else

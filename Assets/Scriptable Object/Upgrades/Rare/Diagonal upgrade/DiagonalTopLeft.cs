@@ -1,17 +1,20 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DiagonalUpgradeSO", menuName = "Upgrades/Effects/DiagonalUpgradeSO")]
-public class DiagonalUpgradeSO : UpgradeEffect
+[CreateAssetMenu(fileName = "DiagonalTopLeftBotRightSO", menuName = "Upgrades/Effects/DiagonalTopLeft")]
+public class DiagonalTopLeft : UpgradeEffect
 {
     public override void Apply(GameObject targetTurret)
     {
         if (targetTurret.TryGetComponent<TurretStats>(out TurretStats turretStats))
         {
             turretStats.allowDiagonalShooting = true;
-            turretStats.activeDirections += 4;
+            turretStats.activeDirections += 2;
             
             TurretShoot turretShoot = targetTurret.GetComponent<TurretShoot>();
-            turretShoot.AddsDiagonalShootPoints();
+           
+            //Names are confusing idk
+            turretShoot.DiagonalBotLeft();
+
 
         }
         else

@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 577dcc07bd0f95e4280e817eb90ec7d0, type: 3}
-  m_Name: DiagonalUpgradeSO
+  m_Script: {fileID: 11500000, guid: 86fbdcd33a184af4e8bbd0695cbcd056, type: 3}
+  m_Name: DiagonalBotLeft
   m_EditorClassIdentifier: 

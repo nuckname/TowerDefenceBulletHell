@@ -37,6 +37,8 @@ public class TurretStats : MonoBehaviour
     [Header("Extra Shoot Points")]
     [Header("North, South, East, West")]
     public bool allow4ShootPoints = false;
+    public bool TurretShootsBackwards = false;
+    public bool TurretShootsUpAndDown = false;
     public int activeDirections = 0;
 
     [Header("Diagonal")]

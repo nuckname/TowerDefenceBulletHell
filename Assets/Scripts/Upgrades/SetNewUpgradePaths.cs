@@ -3,35 +3,57 @@ using UnityEngine;
 
 public class SetNewUpgradePaths : MonoBehaviour
 {
-    public UpgradeData upgradeData;
 
-    public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
+    public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, UpgradeDataOnTurret targetTurret)
     {
         print("EnableNewUpgradePath");
         if (turretStats.pierceCount >= 2)
         {
-            CanBounce();
+            //CanBounce();
         }
 
-        if (turretStats.allow4ShootPoints || turretStats.allowDiagonalShooting && turretStats.extraProjectiles >= 1 ||
-            turretStats.multiShotCount >= 1)
+        if (turretStats.TurretShootsBackwards)
         {
-            
+            CanShootSideWays(upgradeDataOnTurret);
         }
         
         if (turretStats.pierceCount >= 4)
         {
-            CanChain();
+           // CanChain();
         }
 
         if (upgradeName == "Homing")
         {
             print("Homing upgrade enabled");
-            EnableHomingUpgrade();
+           // EnableHomingUpgrade();
         }
-
     }
 
+    private void CanShootSideWays(UpgradeDataOnTurret upgradeDataOnTurret)
+    {
+        for (int i = 0; i < upgradeDataOnTurret.rareUpgrades.Count; i++)
+        {
+            if (upgradeDataOnTurret.rareUpgrades[i].upgradeName == "Shoot Sideways")
+            {
+                upgradeDataOnTurret.rareUpgrades[i].hideUpgrade = false;
+                Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
+            }
+        }
+    }
+
+    //Not sure to include this.
+    private void DiagnoalBotLeft(UpgradeDataOnTurret upgradeDataOnTurret)
+    {
+        for (int i = 0; i < upgradeDataOnTurret.rareUpgrades.Count; i++)
+        {
+            if (upgradeDataOnTurret.rareUpgrades[i].upgradeName == "Diagonal shooting Bot left")
+            {
+                upgradeDataOnTurret.rareUpgrades[i].hideUpgrade = false;
+                Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
+            }
+        }
+    }
+/*
     private void CanBounce()
     {
         for (int i = 0; i < upgradeData.rareUpgrades.Count; i++)
@@ -84,72 +106,7 @@ public class SetNewUpgradePaths : MonoBehaviour
             }
         }
     }
-
-private void UnhideIncreasedNormalRarity()
-    {
-        if (upgradeData.normalUpgrades != null)
-        {
-            for (int i = 0; i < upgradeData.normalUpgrades.Count; i++)
-            {
-                if (i >= upgradeData.normalUpgrades.Count) 
-                {
-                    Debug.LogError($"Index {i} is out of range for normalUpgrades (Count: {upgradeData.normalUpgrades.Count}).");
-                    break; // Prevents out-of-bounds errors.
-                }
-                
-                if (upgradeData.normalUpgrades[i].upgradeName == "Increase Normal Rarity")
-                {
-                    upgradeData.normalUpgrades[i].hideUpgrade = false;
-                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
-
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError("normalUpgrades list is null!");
-        }
-    }
-    
-    private void UnhideIncreaseRareRarity()
-    {
-        if (upgradeData.rareUpgrades != null)
-        {
-            for (int i = 0; i < upgradeData.rareUpgrades.Count; i++)
-            {
-                if (upgradeData.rareUpgrades[i].upgradeName == "Increase Rare Rarity")
-                {
-                    upgradeData.rareUpgrades[i].hideUpgrade = false;
-                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
-
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError("rareUpgrades list is null!");
-        }
-    }
-    
-    private void UnhideIncreasedLegendaryRarity()
-    {
-        if (upgradeData.legendaryUpgrades != null)
-        {
-            for (int i = 0; i < upgradeData.legendaryUpgrades.Count; i++)
-            {
-                if (upgradeData.legendaryUpgrades[i].upgradeName == "Increase Legendary Rarity")
-                {
-                    upgradeData.legendaryUpgrades[i].hideUpgrade = false;
-                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeData.rareUpgrades[i].upgradeName} </color> ");
-
-                }
-            }
-        }
-        else
-        {
-            Debug.LogError("legendaryUpgrades list is null!");
-        }
-    }
+   
 
     private void EnableHomingUpgrade()
     {
@@ -177,4 +134,5 @@ private void UnhideIncreasedNormalRarity()
             Debug.LogError("rareUpgrades list is null!");
         }
     }
+     */
 }

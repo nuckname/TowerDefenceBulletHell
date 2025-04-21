@@ -5,14 +5,12 @@ using UnityEngine;
 public class TurretShoot : MonoBehaviour
 {
     private RoundStateManager roundStateManager;
-    
+
     public TurretConfig turretConfig;
 
-    [SerializeField]
-    private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
-    
-    [SerializeField]
-    private Transform TopLeft,TopRight, BottomLeft, BottomRight;
+    [SerializeField] private Transform ShootPointUp, ShootPointDown, ShootPointLeft, ShootPointRight;
+
+    [SerializeField] private Transform TopLeft, TopRight, BottomLeft, BottomRight;
 
     private List<Vector2> directions = new List<Vector2>();
     private List<Transform> activeShootPoints = new List<Transform>();
@@ -23,28 +21,28 @@ public class TurretShoot : MonoBehaviour
     [Header("Can shoot?")] public bool AllowTurretToShoot;
 
     private TurretStats turretStats;
-    
-    private bool homingEnabled = false; 
+
+    private bool homingEnabled = false;
 
     private BulletFactory bulletFactory;
-    
+
     private BulletCollision bulletCollision;
-    
+
     [SerializeField] private BulletPool bulletPool;
 
     public void EnableHomingBullets(bool enable)
     {
         homingEnabled = enable;
     }
-    
+
     private void Awake()
     {
         roundStateManager = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>();
         bulletPool = GameObject.FindGameObjectWithTag("BulletPooling").GetComponent<BulletPool>();
-        
+
         turretStats = GetComponent<TurretStats>();
         bulletCollision = GetComponent<BulletCollision>();
-        
+
         bulletFactory = GetComponent<BulletFactory>();
         bulletFactory.bulletPrefab = turretConfig.bulletPrefab;
     }
@@ -53,39 +51,52 @@ public class TurretShoot : MonoBehaviour
     {
         directions.Add(Vector2.up);
         activeShootPoints.Add(ShootPointUp);
-        
+
         if (roundStateManager.currentState == roundStateManager.roundInProgressState)
         {
             AllowTurretToShoot = true;
         }
     }
-    
 
-    public void AddUpDownLeftRightShootPoints()
+    public void FireBackwards()
+    {
+        activeShootPoints.Add(ShootPointDown);
+        directions.Add(Vector2.down);
+
+    }
+
+    public void FireSideways()
     {
         directions.Add(Vector2.up);
-        directions.Add(Vector2.down);
         directions.Add(Vector2.left);
         directions.Add(Vector2.right);
         
         activeShootPoints.Add(ShootPointUp);
-        activeShootPoints.Add(ShootPointDown);
         activeShootPoints.Add(ShootPointLeft);
         activeShootPoints.Add(ShootPointRight);
     }
 
-    public void AddsDiagonalShootPoints()
+    //Names are confusing idk
+
+    public void DiagonalTopLeft()
     {
-        directions.Add(new Vector2(1, 1).normalized);  // Up-Right
-        directions.Add(new Vector2(-1, 1).normalized); // Up-Left
-        directions.Add(new Vector2(1, -1).normalized); // Down-Right
-        directions.Add(new Vector2(-1, -1).normalized);// Down-Left
+        directions.Add(new Vector2(1, 1).normalized); 
+        directions.Add(new Vector2(-1, -1).normalized);
         
         activeShootPoints.Add(TopLeft);
-        activeShootPoints.Add(TopRight);
-        activeShootPoints.Add(BottomLeft);
         activeShootPoints.Add(BottomRight);
     }
+    //Names are confusing idk
+//this is currently correct though
+    public void DiagonalBotLeft()
+    {
+        directions.Add(new Vector2(-1, 1).normalized); 
+        directions.Add(new Vector2(1, -1).normalized); 
+        
+        activeShootPoints.Add(TopRight);
+        activeShootPoints.Add(BottomLeft);
+    }
+
 
     private void Update()
     {

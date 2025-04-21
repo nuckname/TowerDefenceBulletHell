@@ -99,7 +99,11 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
             upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
             //if it has an upgrade path with select more - not working
-            HasUpgradePath(upgrade, turretStats, upgradeDataOnTurret);
+
+            if (upgrade.hasUpgradePaths)
+            {
+                HasUpgradePath(upgrade, turretStats, upgradeDataOnTurret, upgradeDataOnTurret, setNewUpgradePaths);
+            }
            
             break;
         }
@@ -115,12 +119,9 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
         }
     }
 
-    private void HasUpgradePath(Upgrade upgrade, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
+    private void HasUpgradePath(Upgrade upgrade, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, UpgradeDataOnTurret targetTurret, SetNewUpgradePaths setNewUpgradePaths)
     {
-        if (upgrade.hasUpgradePaths)
-        {
-            setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret);
-        }
+        setNewUpgradePaths.EnableNewUpgradePath(upgrade.upgradeName, turretStats, upgradeDataOnTurret, targetTurret);
     }
 
     private void OnlyAllowedOnce(Upgrade upgrade, GameObject targetTurret, UpgradeDataOnTurret upgradeDataOnTurret)
@@ -129,7 +130,6 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
             return;
 
         string currentRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().GetCurrentRarity();
-        Debug.Log($"[OnlyAllowedOnce] turret={targetTurret.name} rarity='{currentRarity}' upgrade='{upgrade.upgradeName}'");
 
         List<Upgrade> poolToHide;
         switch (currentRarity)
