@@ -1,73 +1,79 @@
-using System.Collections;
 using UnityEngine;
 
 public class OrbitalBullet : MonoBehaviour
 {
-    public CircleCollider2D orbitCollider;  // The circle collider to guide the orbit
-    public float orbitSpeed = 90f;           // Orbit speed in degrees per second
-    private bool isOrbiting = false;
-    private Vector2 orbitCenter;             // Center of the orbit
-    private float orbitRadius;               // Radius of the orbit
-    private float angle;                     // Current angle in the orbit
-    public float orbitRadiusMultiplier = 1f; // Multiply the collider radius to scale the orbit size
-    public float bulletSpacing = 0.25f;    // Angle offset to spread the bullets evenly
+    private CircleCollider2D orbitCollider;
+    private Vector2 orbitCenter;
+    private float   orbitRadius;
+    private float   orbitSpeed;
     
-    public float positionOffset = 0.25f; 
+    private bool isOrbiting  = false;
+    private bool isCapturing = false;
+    private float angle;       // For when we actually start orbiting
     
-    private float orbitStartDelay = 0.25f;
+    [SerializeField] private float captureSpeed = 5f; 
 
-    private IEnumerator StartOrbitingWithDelay(float delay)
+    private void OnEnable()
     {
-        yield return new WaitForSeconds(delay); // Wait for the delay
+        // reset every time this bullet is spawned or re-enabled
+        isOrbiting        = false;
+        isCapturing       = false;
+        orbitCollider     = null;
+        // (optionally) clear any other per‑lifetime data here
     }
-
-    private float i = 1;
+    
+    // Called by OrbitTrigger when this bullet first enters
+    public void StartOrbiting(CircleCollider2D newOrbitCollider, float speed, float distanceMultiplier = 1f)
+    {
+        orbitCollider = newOrbitCollider;
+        orbitCenter   = orbitCollider.bounds.center;
+        orbitRadius   = orbitCollider.radius * distanceMultiplier;
+        orbitSpeed    = speed;
+        
+        isCapturing = true;
+        isOrbiting  = false;
+    }
 
     void Update()
     {
-        if (isOrbiting && orbitCollider != null)
+        if (isCapturing)
         {
-            // Rotate the bullet around the orbit center
-            angle += orbitSpeed * Time.deltaTime;
+            Vector2 dir  = ((Vector2)transform.position - orbitCenter).normalized;
+            Vector2 goal = orbitCenter + dir * orbitRadius;
 
-            // Ensure the angle stays between 0 and 360
-            if (angle >= 360f)
-                angle -= 360f;
+            transform.position = Vector2.MoveTowards(
+                transform.position,
+                goal,
+                captureSpeed * Time.deltaTime
+            );
 
-            // Calculate the new position based on the angle and the orbit radius
-            Vector2 offset = new Vector2(
-                Mathf.Cos(Mathf.Deg2Rad * angle),
-                Mathf.Sin(Mathf.Deg2Rad * angle)
-            ) * orbitRadius;
-
-            // Apply the incremental position offset each update
-            transform.position = orbitCenter + offset + (Vector2.one * positionOffset);
+            if (Vector2.Distance(transform.position, goal) < 0.01f)
+            {
+                isCapturing = false;
+                BeginTrueOrbit(dir);
+            }
         }
-        else
+        else if (isOrbiting)
         {
-            positionOffset = 0.25f;
+            angle += orbitSpeed * Time.deltaTime;
+            if (angle >= 360f) angle -= 360f;
+
+            float   rad    = angle * Mathf.Deg2Rad;
+            Vector2 offset = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad)) * orbitRadius;
+            transform.position = orbitCenter + offset;
         }
     }
 
-    // Start orbiting the bullet around the circle collider
-    public void StartOrbiting(CircleCollider2D newOrbitCollider, float speed, float distanceMultiplier = 1f, float bulletOffset = 0f)
+    private void BeginTrueOrbit(Vector2 entryDir)
     {
-        orbitCollider = newOrbitCollider;
-        orbitCenter = orbitCollider.bounds.center;  
-        orbitRadius = orbitCollider.radius * distanceMultiplier;  
-        orbitSpeed = speed;
-    
-        // Apply the bullet spacing offset to the angle
-        angle = bulletOffset;
-
+        angle      = Mathf.Atan2(entryDir.y, entryDir.x) * Mathf.Rad2Deg;
         isOrbiting = true;
     }
 
-
-    // Optionally, you can stop orbiting
     public void StopOrbiting()
     {
-        isOrbiting = false;
+        isOrbiting   = false;
+        isCapturing  = false;
+        orbitCollider = null;
     }
-
 }
