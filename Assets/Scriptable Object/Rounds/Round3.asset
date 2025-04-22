@@ -16,14 +16,14 @@ MonoBehaviour:
   currentWave: 3
   enemyGroups:
   - enemyHp: 3
-    count: 13
+    count: 11
     delayBeforeGroup: 0
-    spawnInterval: 0.65
+    spawnInterval: 0.7
     bossSpawn: 0
   delayAfterWave: 2
   speedModifer: 4
   spawnInterval: 0.65
-  totalEnemies: 13
+  totalEnemies: 11
   amountOfGoldGainedForEachCoin: 3
   increaseGoldAmoutForEachCoinMutipler: 0
   amountOfGoldToDrop: 3

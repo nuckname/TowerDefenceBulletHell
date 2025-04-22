@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d69a4d4baa7c2140bbc56b98da1643a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.25
+  moveSpeed: 1.1
 --- !u!114 &8334307879350242069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,11 +207,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7053a13359fcf0a468274895bd5f7abf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossDropItemsLocation: {x: 0, y: 0, z: 0}
   amountOfGoldCoinsToDrop: 10
   amountOfHeartsToDrop: 5
   coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
   heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}
-  roundManagerPrefab: {fileID: 0}
 --- !u!114 &-4632307598143622415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyDie: {fileID: 8334307879350242069}
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 90
+  currentHealth: 90
   spriteRenderer: {fileID: 4606486017045271472}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2

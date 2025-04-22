@@ -202,9 +202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+  destroyBulletOnCollision: 1
   turretStats: {fileID: 0}
   GoldOnHit: 0
   pierceIndex: 0
+  slowOnHitEnabledBullet: 0
+  slowAmountBullet: 0
+  slowDurationBullet: 0
   bulletPool: {fileID: 2933456185114145467, guid: 561f9db9d99ae2c40a7cc1d3ca27aaa0, type: 3}
 --- !u!50 &-5056997756861274050
 Rigidbody2D:
@@ -346,11 +350,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e45b63779d5ac6c4e8ccf53c36e4be39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardSpeed: 8
-  lateralAmplitude: 1
-  frequency: 1
+  pivot: {x: 0, y: 0, z: 0}
+  radiusX: 2
+  radiusY: 1
+  loopsPerSecond: 0.5

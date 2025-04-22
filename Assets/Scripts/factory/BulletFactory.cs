@@ -115,10 +115,8 @@ public class BulletFactory : MonoBehaviour
             }
         }
 
-        // Configure HomingBullet
         if (homingEnabled)
         {
-            //HomingBullet homing = bullet.AddComponent<HomingBullet>();
             HomingBullet homing = bullet.GetComponent<HomingBullet>();
             homing.enabled = true;
         }
@@ -126,9 +124,7 @@ public class BulletFactory : MonoBehaviour
         // Configure Orbit (if applicable)
         if (turretStats.enableOrbit)
         {
-           // OrbitBullet orbit = bullet.AddComponent<OrbitBullet>();
-           // orbit.orbitRadius = turretStats.orbitRadius;
-           // orbit.orbitSpeed = turretStats.orbitSpeed;
+            //bullet.GetComponent<BulletCollision>().destroyBulletOnCollision = false;
         }
     }
 }
