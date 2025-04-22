@@ -64,6 +64,7 @@ GameObject:
   - component: {fileID: 708765180046670274}
   - component: {fileID: 1473274902589581317}
   - component: {fileID: 7844572092303220347}
+  - component: {fileID: 1883739144620534752}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -278,8 +279,7 @@ MonoBehaviour:
   homingStrength: 10
   homingRadius: 100
   speed: 7
-  target: {fileID: 0}
-  isHomingActive: 0
+  useHoming: 1
 --- !u!114 &2218803637122075860
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,11 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81572c35995a48e408f548457946788a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbitCollider: {fileID: 0}
-  orbitSpeed: 0.01
-  orbitRadiusMultiplier: 1
-  bulletSpacing: 1
-  positionOffset: 0.25
+  captureSpeed: 5
 --- !u!114 &708765180046670274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,3 +339,18 @@ MonoBehaviour:
   bulletLifetime: 0
   gapAngle: 30
   spawnOffset: 1.5
+--- !u!114 &1883739144620534752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3426162796660274319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45b63779d5ac6c4e8ccf53c36e4be39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  forwardSpeed: 8
+  lateralAmplitude: 1
+  frequency: 1

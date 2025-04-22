@@ -41,6 +41,17 @@ public class TurretStats : MonoBehaviour
     public bool TurretShootsUpAndDown = false;
     public int activeDirections = 0;
 
+    [Header("Figure‑8 Upgrade")]
+    public bool  enableFigure8      = false;
+    public float figure8RadiusX     = 2f;
+    public float figure8RadiusY     = 1f;
+    public float figure8LoopsPerSec = 0.5f;
+    
+    [Header("Slow On Hit")]
+    public bool slowOnHitEnabled = false;
+    public float slowAmount = 0f;
+    public float slowDuration = 0f;
+    
     [Header("Diagonal")]
     public bool allowDiagonalShooting = false;
 

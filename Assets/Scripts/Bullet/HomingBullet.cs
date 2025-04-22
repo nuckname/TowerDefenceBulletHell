@@ -97,10 +97,4 @@ public class HomingBullet : MonoBehaviour
 
         return best;
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, homingRadius);
-    }
 }

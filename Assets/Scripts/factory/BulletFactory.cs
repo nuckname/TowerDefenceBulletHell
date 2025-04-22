@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class BulletFactory : MonoBehaviour
 {
@@ -21,6 +22,33 @@ public class BulletFactory : MonoBehaviour
         // Configure BasicBullet
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
 
+        if (turretStats.enableFigure8)
+        {
+            bullet.GetComponent<BulletCollision>().destroyBulletOnCollision = false;
+            
+            var f8 = bullet.GetComponent<Figure8Bullet>();
+            if (f8 == null)
+                f8 = bullet.AddComponent<Figure8Bullet>();
+
+            // set pivot to this turret’s position
+            f8.pivot         = this.transform.position;
+            f8.radiusX       = turretStats.figure8RadiusX;
+            f8.radiusY       = turretStats.figure8RadiusY;
+            f8.loopsPerSecond = turretStats.figure8LoopsPerSec;
+
+            // disable any other motion (homing/basic)
+            // so figure‑8 is the _only_ thing moving the bullet
+            var rb = bullet.GetComponent<Rigidbody2D>();
+            if (rb != null) rb.linearVelocity = Vector2.zero;
+            bullet.GetComponent<BasicBullet>()?.SetDirection(Vector2.zero);
+        }
+
+        if (turretStats.slowOnHitEnabled)
+        {
+            bullet.GetComponent<BulletCollision>().slowOnHitEnabledBullet = true;
+            
+        }
+        
         if (turretStats.enableBulletSplit)
         {
             BulletSplitter bulletSplitter = bullet.GetComponent<BulletSplitter>();

@@ -255,6 +255,13 @@ MonoBehaviour:
   TurretShootsBackwards: 0
   TurretShootsUpAndDown: 0
   activeDirections: 1
+  enableFigure8: 0
+  figure8RadiusX: 2
+  figure8RadiusY: 1
+  figure8LoopsPerSec: 0.5
+  slowOnHitEnabled: 0
+  slowAmount: 0
+  slowDuration: 0
   allowDiagonalShooting: 0
   amountOfBounces: 0
   AllowBulletsToBounce: 0
@@ -470,6 +477,17 @@ MonoBehaviour:
     hasUpgradePaths: 0
     defaultIsAnUpgradePaths: 0
     isAnUpgradePaths: 0
+  - upgradeName: Figure8
+    description: Bullets now fly in a figure 8 pattern
+    effect: {fileID: 11400000, guid: ca1456f4f156db143b15e37146a8c62a, type: 2}
+    defaultOnlyAllowedOnce: 1
+    onlyAllowedOnce: 1
+    defaultHideUpgrade: 0
+    hideUpgrade: 0
+    defaultHasUpgradePaths: 0
+    hasUpgradePaths: 0
+    defaultIsAnUpgradePaths: 0
+    isAnUpgradePaths: 0
   legendaryUpgrades:
   - upgradeName: Multi shot
     description: Shoots multiple projectiles at once with a delay. Following the
@@ -523,12 +541,12 @@ MonoBehaviour:
     effect: {fileID: 11400000, guid: aa1dc6d7f4e9f8142b47f26bb6c71819, type: 2}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
-    defaultHideUpgrade: 1
-    hideUpgrade: 1
+    defaultHideUpgrade: 0
+    hideUpgrade: 0
     defaultHasUpgradePaths: 0
     hasUpgradePaths: 0
-    defaultIsAnUpgradePaths: 1
-    isAnUpgradePaths: 1
+    defaultIsAnUpgradePaths: 0
+    isAnUpgradePaths: 0
 --- !u!114 &-8924072509627553918
 MonoBehaviour:
   m_ObjectHideFlags: 0
