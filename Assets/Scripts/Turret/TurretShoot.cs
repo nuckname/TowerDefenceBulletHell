@@ -29,6 +29,9 @@ public class TurretShoot : MonoBehaviour
     private BulletCollision bulletCollision;
 
     [SerializeField] private BulletPool bulletPool;
+    
+    [Header("Bullet Sprites")]
+    [SerializeField] private Sprite[] bulletSprites;
 
     public void EnableHomingBullets(bool enable)
     {
@@ -158,7 +161,6 @@ public class TurretShoot : MonoBehaviour
         }
         else
         {
-            // Fire in only the first available direction (default behavior)
             if (activeShootPoints.Count > 0 && directions.Count > 0)
             {
                 FireProjectilesInDirection(activeShootPoints[0], directions[0]);
@@ -203,31 +205,41 @@ public class TurretShoot : MonoBehaviour
         if (bulletPool != null)
         {
             bullet = bulletPool.GetBullet(shootPoint.position, Quaternion.identity);
-            
-            // Re-configure the pooled bullet so it moves correctly.
-            bulletFactory.ConfigureBullet(bullet, turretStats, homingEnabled); // Make sure ConfigureBullet is public.
         }
         else
         {
             bullet = bulletFactory.CreateBullet(shootPoint.position, Quaternion.identity, turretStats, homingEnabled);
         }
+    
+        if (bulletSprites != null && bulletSprites.Length > 0)
+        {
+            var sr = bullet.GetComponentInChildren<SpriteRenderer>();
+            if (sr != null)
+            {
+                int idx = Random.Range(0, bulletSprites.Length);
+                sr.sprite = bulletSprites[idx];
+            }
+            else
+            {
+                Debug.LogWarning("No SpriteRenderer found on bullet to assign random sprite.");
+            }
+        }
+        if (bulletPool != null)
+        {
+            bulletFactory.ConfigureBullet(bullet, turretStats, homingEnabled);
+        }
 
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
         if (basicBullet != null)
-        {
             basicBullet.SetDirection(direction);
-        }
 
         float bulletLifeTime = turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime;
         if (bulletPool != null)
-        {
             StartCoroutine(ReturnBulletAfterTime(bullet, bulletLifeTime));
-        }
         else
-        {
             Destroy(bullet, bulletLifeTime);
-        }
     }
+
 
     private IEnumerator ReturnBulletAfterTime(GameObject bullet, float time)
     {

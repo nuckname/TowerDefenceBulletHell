@@ -225,6 +225,22 @@ MonoBehaviour:
   fireCooldown: 0
   AllowTurretToShoot: 0
   bulletPool: {fileID: 0}
+  bulletSprites:
+  - {fileID: 874343242196921964, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 7431529995326980795, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -7779215486825634471, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 830317617348258784, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 6112890488319390909, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 1757937406519661826, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -2121471355247410076, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -2121471355247410076, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 3619374306951625730, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -7398920399615116625, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 1017609225550985244, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: 2941505409271155289, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -3507833246552792370, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -5417137058416166357, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  - {fileID: -3543048863620948104, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
 --- !u!114 &4571525935793682645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +259,7 @@ MonoBehaviour:
   modifierBulletSpeed: 0
   modifierSlowerBulletSpeed: 0
   isTurretHoming: 0
-  pierceCount: 0
+  pierceCount: 1
   angleSpread: 30
   extraProjectiles: 0
   Shoot4Projectiles: 0
