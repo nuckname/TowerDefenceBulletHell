@@ -27,6 +27,8 @@ public class UpgradeUiManager : MonoBehaviour
     private ChangeUiColourBackGround changeUiColourBackGround;
     private UpgradeGold _upgradeGold;
 
+    private SetIconUpgrades setIconUpgrades;
+    
     private string chosenUpgrade = "";
 
     //if the description has already been generated and the player runs away from the turret
@@ -57,6 +59,7 @@ public class UpgradeUiManager : MonoBehaviour
 
     private void Awake()
     {
+        setIconUpgrades = GetComponent<SetIconUpgrades>();
         _upgradeGold = GetComponent<UpgradeGold>();
         changeUiColourBackGround = GetComponent<ChangeUiColourBackGround>();
     }
@@ -89,11 +92,15 @@ public class UpgradeUiManager : MonoBehaviour
         //Pick Upgrades
         storeTurretDescriptionAndRarity.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
+        //setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
+        
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;
         
         //Display Text
         SetTextToUi(storeTurretDescriptionAndRarity.storedTurretDescription);
+        
+        
     }
     
     public void SetDescriptionsForUpgrades(GameObject _targetTurret)

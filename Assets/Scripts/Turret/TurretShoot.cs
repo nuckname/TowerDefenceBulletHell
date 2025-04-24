@@ -119,7 +119,8 @@ public class TurretShoot : MonoBehaviour
     
     private void Shoot()
     {
-        
+     
+        //Bullet Sprite Random?
         if (turretConfig.bulletPrefab == null)
         {
             Debug.LogWarning("Bullet Prefab is missing in TurretConfig.");

@@ -8,18 +8,13 @@ public class EnemyFollowPath : MonoBehaviour
     private Transform[] waypoints; 
     private int waypointIndex = 0;
 
+
     private void Start()
     {
         GetWaypointTransformFromGameObject();
     }
+    
 
-    public void SetUpMap()
-    {
-        //remove Start()
-        //Pass in somehting not sure.
-        //Then call GetWaypointTransformFromGameObject() and find correct game object.
-        
-    }
 
     private void GetWaypointTransformFromGameObject()
     {

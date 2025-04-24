@@ -794,6 +794,7 @@ MonoBehaviour:
   transparencyLevel: 0.5
   spawnEnemies: {fileID: 0}
   gameModeManager: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   floatingTextPrefab: {fileID: 0}
 --- !u!114 &6797560733173272164
 MonoBehaviour:
@@ -807,8 +808,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9068e58bac4e74e4a8d5f8c390ba765f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialStateSO: {fileID: 0}
   playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
   playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+  deathScreen: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &7309831068945400738
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +827,6 @@ GameObject:
   - component: {fileID: 2859103754874963892}
   - component: {fileID: 3335815252357642464}
   - component: {fileID: 1900634903416962752}
-  - component: {fileID: 1776391278729505495}
   - component: {fileID: -6025028217366042230}
   - component: {fileID: 727209495562684462}
   m_Layer: 0
@@ -996,42 +999,6 @@ MonoBehaviour:
   goldMiner: {fileID: 4790498764909266146, guid: f0a139b6050a18a45bce535d99de4a6c, type: 3}
   playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   allowTurretPlacement: 0
---- !u!114 &1776391278729505495
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7309831068945400738}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da52bf8bbc1de48cfb221a6ff30f7972, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 1
-  AuthorityMode: 1
-  TickSyncChildren: 0
-  UseUnreliableDeltas: 0
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 0
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
-  SyncRotAngleZ: 0
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  SwitchTransformSpaceWhenParented: 0
-  Interpolate: 1
-  SlerpPosition: 0
 --- !u!114 &-6025028217366042230
 MonoBehaviour:
   m_ObjectHideFlags: 0

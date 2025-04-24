@@ -2,6 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum Rarity
+{
+    Legendary,
+    Rare,
+    Normal
+}
+
 public class ApplyUpgrade : MonoBehaviour
 {
     public UpgradeData upgradeData;
@@ -34,12 +41,6 @@ public class ApplyUpgrade : MonoBehaviour
             ApplySelectedUpgrade(upgradeSelected, targetTurret);
             showTurretStatsButton.UpdateStatsUI();
         }
-    }
-
-    private void ResetUpgradeSelection()
-    {
-        print("raritySelected = null now");
-        raritySelected = "";
     }
 
     private void SetRarity(GameObject targetTurret)

@@ -50,7 +50,6 @@ public class BulletCollision : MonoBehaviour
                 float slow = other.GetComponent<EnemyMovement>().speed;
 
                 ApplySlow(turretStats.slowAmount, turretStats.slowDuration);
-                
             }
             
             if (pierceIndex > 0)

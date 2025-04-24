@@ -28,6 +28,7 @@ public class BulletSplitter : MonoBehaviour
 
     private void SplitBullet()
     {
+        hasSplit = true;
         // Calculate the angle step by subtracting the gap from the full circle.
         float availableAngle = 360f - gapAngle;
         float angleStep = availableAngle / amountOfProjectilesToSplit;
@@ -67,6 +68,8 @@ public class BulletSplitter : MonoBehaviour
             {
                 Destroy(newSplitter, bulletLifetime);
             }
+            
+            
             
             Destroy(newBullet, bulletLifetime);
         }
