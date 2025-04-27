@@ -45,6 +45,7 @@ public class UpgradeSaveData
 public class SerializableUpgrade
 {
     public string upgradeName;
+    public Sprite upgradeIcon;
     public bool hideUpgrade;
     public bool onlyAllowedOnce;
     public bool hasUpgradePaths;
@@ -58,6 +59,8 @@ public class Upgrade
     public string description;
     public UpgradeEffect effect;
 
+    [Header("Icon")]
+    public Sprite upgradeIcon;
     // Runtime variables
     [Header("Only Allowed Once")]
     public bool defaultOnlyAllowedOnce = false; // Default for onlyAllowedOnce

@@ -92,7 +92,7 @@ public class UpgradeUiManager : MonoBehaviour
         //Pick Upgrades
         storeTurretDescriptionAndRarity.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
-        //setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
+        setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
         
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;

@@ -28,7 +28,7 @@ public class TutorialReworked : MonoBehaviour
         // Step 5: Update Turret
         "Tutorial Step 6:\n\nClick on the turret to update it.",
         // Step 6: Start Round
-        "Tutorial Step 7:\n\nPlace more turrets and upgrade them then press TAB to start the round."
+        "Tutorial Step 7:\n\nPlace more turrets and upgrade them. Then press TAB to start the round."
     };
 
     void Start()

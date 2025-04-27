@@ -30,8 +30,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 0.19339882, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 411817172835139982}
   - {fileID: 2767861372500442283}
+  - {fileID: 411817172835139982}
   - {fileID: 5598975614185055756}
   m_Father: {fileID: 5459135457221499416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 5926826856625178478}
   - component: {fileID: 3179307347643891295}
   - component: {fileID: 4543209496120795255}
+  - component: {fileID: 7295215306350287040}
   m_Layer: 5
   m_Name: UpgradeUiPannel (1)
   m_TagString: Untagged
@@ -300,6 +301,22 @@ MonoBehaviour:
   turretStatsPanel: {fileID: 5957142267395593970}
   statsText: {fileID: 3678528324539308979}
   upgradeUiManager: {fileID: 4541784668707170489}
+--- !u!114 &7295215306350287040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508126564264186303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 117d6c68b548fc64c9e92f7e880d5210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  imageBoxTop: {fileID: 3216895420934736441}
+  imageBoxMiddle: {fileID: 3551870359344855167}
+  imageBoxBottom: {fileID: 6093621667327952387}
+  turret: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
 --- !u!1 &557648227519004268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2548,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5d2e51b223a9b864f833fef32a74e12d, type: 3}
+  m_Sprite: {fileID: -156054984, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
