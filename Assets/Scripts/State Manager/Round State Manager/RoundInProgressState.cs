@@ -35,6 +35,7 @@ public class RoundInProgressState : RoundBaseState
 
     private void SpawnRoundEnemies(int roundCounter, RoundStateManager roundStateManager)
     {
+        
         // Use a switch statement for better readability
         switch (roundCounter)
         {
@@ -68,6 +69,23 @@ public class RoundInProgressState : RoundBaseState
             case 10:
                 roundStateManager.SpawnBasicEnemies(10); // 10 basic enemies
                 break;
+            /*
+            case 11:
+                roundStateManager.SpawnBasicEnemies(11); 
+                break;
+            case 12:
+                roundStateManager.SpawnBasicEnemies(12); 
+                break;
+            case 13:
+                roundStateManager.SpawnBasicEnemies(13);
+                break;
+            case 14:
+                roundStateManager.SpawnBasicEnemies(14);
+                break;
+            case 15:
+                roundStateManager.SpawnBasicEnemies(15);
+                break;
+                */
             default:
                 // Handle rounds beyond 10 (if needed)
                 Debug.LogWarning($"Round {roundCounter} is not defined. Defaulting to 10 enemies.");

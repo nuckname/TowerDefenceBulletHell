@@ -92,6 +92,7 @@ public class UpgradeUiManager : MonoBehaviour
         //Pick Upgrades
         storeTurretDescriptionAndRarity.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
+        //Picks Icons. Two calls of this.
         setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
         
         //Puts it in global variable
@@ -128,6 +129,9 @@ public class UpgradeUiManager : MonoBehaviour
             
             _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescriptionAndRarity.storeTurretPrice);
             
+            //Selects icons two calls.
+            setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
+
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescriptionAndRarity.storedTurretDescription);
         }
@@ -155,8 +159,11 @@ public class UpgradeUiManager : MonoBehaviour
     private int amountOfRerolls = 1;
     public void Reroll()
     {
-        if (playerGold.SpendGold(currentRerollAmount))
+        StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+        
+        if (playerGold.SpendGold(storeTurretDescriptionAndRarity.storeTurretRerollPrice))
         {
+            /*
             switch (amountOfRerolls)
             {
                 case 1:
@@ -170,13 +177,19 @@ public class UpgradeUiManager : MonoBehaviour
                     break;
             }
             amountOfRerolls++;
-            rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
+            */
+            
+            //Store Rereoll price.
+            storeTurretDescriptionAndRarity.storeTurretRerollPrice = currentRerollAmount;
+            
+            rerollText.text = "Reroll: $" + storeTurretDescriptionAndRarity.storeTurretRerollPrice;
+            
             
             if (targetTurret == null)
             {
                 Debug.LogWarning("targetTurret is null");
             }
-            StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+            
             GenerateDecription(storeTurretDescriptionAndRarity, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
         
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
@@ -184,6 +197,8 @@ public class UpgradeUiManager : MonoBehaviour
             storeTurretDescriptionAndRarity.storeTurretPrice = upgradePrice;
             
             UpdateBackgroundColourUi(storeTurretDescriptionAndRarity);
+            
+
         }
     }
 
@@ -212,7 +227,9 @@ public class UpgradeUiManager : MonoBehaviour
     {
         if (playerGold != null)
         {
-            int newUpgradePrice = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretPrice;
+            StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+            
+            int newUpgradePrice = storeTurretDescriptionAndRarity.storeTurretPrice;
             
             if (playerGold.SpendGold(newUpgradePrice))
             {
@@ -226,7 +243,7 @@ public class UpgradeUiManager : MonoBehaviour
 
                 amountOfRerolls = 1;
                 currentRerollAmount = defaultRerollAmount;
-                rerollText.text = "Reroll: $" + currentRerollAmount.ToString();
+                rerollText.text = "Reroll: $" + storeTurretDescriptionAndRarity.storeTurretRerollPrice;
                 
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }

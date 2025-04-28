@@ -7,7 +7,9 @@ public class StoreTurretDescriptionAndRarity : MonoBehaviour
     public string[] storedTurretDescription = new string[3];
     public string storedTurretSelectedRarity = "";
     public int storeTurretPrice;
-    
+    public int storeTurretRerollPrice;
+
+
     public bool CheckTurretDescription()
     {
         // "" means its empty.

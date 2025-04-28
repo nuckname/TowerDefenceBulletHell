@@ -1,0 +1,469 @@
+fileFormatVersion: 2
+guid: 502f3da8648570348b9151293bdc9d4d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3016093784141690031
+    second: CoinSpriteSheet_0
+  - first:
+      213: 3394420563121825309
+    second: CoinSpriteSheet_1
+  - first:
+      213: 3760143591262298646
+    second: CoinSpriteSheet_2
+  - first:
+      213: -7119380908746499529
+    second: CoinSpriteSheet_3
+  - first:
+      213: 1593989720197626011
+    second: CoinSpriteSheet_4
+  - first:
+      213: 3450369622003840145
+    second: CoinSpriteSheet_5
+  - first:
+      213: -1877175513406437313
+    second: CoinSpriteSheet_6
+  - first:
+      213: 8509995406466692087
+    second: CoinSpriteSheet_7
+  - first:
+      213: -3072494316746013800
+    second: CoinSpriteSheet_8
+  - first:
+      213: 4005651907120217146
+    second: CoinSpriteSheet_9
+  - first:
+      213: -8440974137358750234
+    second: CoinSpriteSheet_10
+  - first:
+      213: -9015495111585506812
+    second: CoinSpriteSheet_11
+  - first:
+      213: 7339879190928050681
+    second: CoinSpriteSheet_12
+  - first:
+      213: -9068835669246425549
+    second: CoinSpriteSheet_13
+  - first:
+      213: 86518691268241968
+    second: CoinSpriteSheet_14
+  - first:
+      213: 3351310485327270061
+    second: CoinSpriteSheet_15
+  - first:
+      213: 223914107127974619
+    second: CoinSpriteSheet_16
+  - first:
+      213: 5836545522202919458
+    second: CoinSpriteSheet_17
+  - first:
+      213: 7897950021745997263
+    second: CoinSpriteSheet_18
+  - first:
+      213: -464656138505249357
+    second: CoinSpriteSheet_19
+  - first:
+      213: -1688708234107061317
+    second: CoinSpriteSheet_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: CoinSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 15
+        width: 71
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 15b88faeeaea426d0800000000000000
+      internalID: -3016093784141690031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 14
+        width: 90
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 612a6a59ca6be2430800000000000000
+      internalID: 3760143591262298646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 8
+        width: 82
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a977998c0e23d90800000000000000
+      internalID: -7119380908746499529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 96
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f380956f0dee2f5e0800000000000000
+      internalID: -1877175513406437313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 8
+        width: 84
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f337aafbb3991670800000000000000
+      internalID: 8509995406466692087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 9
+        width: 86
+        height: 99
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89382fb92be4c55d0800000000000000
+      internalID: -3072494316746013800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 11
+        width: 90
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40adcaf46f682e280800000000000000
+      internalID: -9015495111585506812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 0
+        width: 104
+        height: 102
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f94c8d5c3d7cd560800000000000000
+      internalID: 7339879190928050681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 944
+        y: 5
+        width: 99
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 336cc20f106052280800000000000000
+      internalID: -9068835669246425549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 1074
+        y: 7
+        width: 80
+        height: 97
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03aa9739a40633100800000000000000
+      internalID: 86518691268241968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 1175
+        y: 12
+        width: 76
+        height: 88
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da059f1612f328e20800000000000000
+      internalID: 3351310485327270061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: CoinSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 1269
+        y: 9
+        width: 83
+        height: 95
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2224d46aa339ff050800000000000000
+      internalID: 5836545522202919458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e5b6b0c569adf124aa7da756f0c73d77
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      CoinSpriteSheet_0: -3016093784141690031
+      CoinSpriteSheet_11: -9015495111585506812
+      CoinSpriteSheet_12: 7339879190928050681
+      CoinSpriteSheet_13: -9068835669246425549
+      CoinSpriteSheet_14: 86518691268241968
+      CoinSpriteSheet_15: 3351310485327270061
+      CoinSpriteSheet_17: 5836545522202919458
+      CoinSpriteSheet_2: 3760143591262298646
+      CoinSpriteSheet_3: -7119380908746499529
+      CoinSpriteSheet_6: -1877175513406437313
+      CoinSpriteSheet_7: 8509995406466692087
+      CoinSpriteSheet_8: -3072494316746013800
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
