@@ -23,20 +23,19 @@ public class SetIconUpgrades : MonoBehaviour
         {
             foreach (Upgrade upgrade in upgradeDataOnTurret.legendaryUpgrades)
             {
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[0])
+                if (upgrade.description == UpgradeDescriptionSelected[0])
                 {
-                    
+                    imageBoxTop.sprite = upgrade.upgradeIcon;
                 }
             
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[1])
+                if (upgrade.description == UpgradeDescriptionSelected[1])
                 {
-                
-                
+                    imageBoxMiddle.sprite = upgrade.upgradeIcon;
                 }
                         
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[2])
+                if (upgrade.description == UpgradeDescriptionSelected[2])
                 {
-                
+                    imageBoxBottom.sprite = upgrade.upgradeIcon;
                 }
             }
         }
@@ -44,42 +43,41 @@ public class SetIconUpgrades : MonoBehaviour
         {
             foreach (Upgrade upgrade in upgradeDataOnTurret.rareUpgrades)
             {
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[0])
+                if (upgrade.description == UpgradeDescriptionSelected[0])
                 {
-                
+                    imageBoxTop.sprite = upgrade.upgradeIcon;
                 }
             
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[1])
+                if (upgrade.description == UpgradeDescriptionSelected[1])
                 {
-                
-                
+                    imageBoxMiddle.sprite = upgrade.upgradeIcon;
                 }
                         
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[2])
+                if (upgrade.description == UpgradeDescriptionSelected[2])
                 {
-                
+                    imageBoxBottom.sprite = upgrade.upgradeIcon;
                 }
             }
         }
 
         if (raritySelected == "Normal Rarity")
         {
-            foreach (Upgrade upgrade in upgradeDataOnTurret.legendaryUpgrades)
+            foreach (Upgrade upgrade in upgradeDataOnTurret.normalUpgrades)
             {
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[0])
+                if (upgrade.description == UpgradeDescriptionSelected[0])
                 {
-                
+                    imageBoxTop.sprite = upgrade.upgradeIcon;
                 }
             
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[1])
+                if (upgrade.description == UpgradeDescriptionSelected[1])
                 {
-                
-                
+                    imageBoxMiddle.sprite = upgrade.upgradeIcon;
                 }
                         
-                if (upgrade.upgradeName == UpgradeDescriptionSelected[2])
+                if (upgrade.description == UpgradeDescriptionSelected[2])
                 {
-                
+                    imageBoxBottom.sprite = upgrade.upgradeIcon;
+
                 }
             }
         }

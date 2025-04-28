@@ -432,7 +432,7 @@ MonoBehaviour:
   - upgradeName: Money
     description: Gives 1 dollar per bullet hit.
     effect: {fileID: 11400000, guid: 1cd5eb816487ca549a5752ddfb472600, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: -1695302861, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 0
@@ -444,7 +444,7 @@ MonoBehaviour:
   - upgradeName: Shoot backwards
     description: Allows turret to also fire backwards.
     effect: {fileID: 11400000, guid: 6292b97d2f534724f9d868f298dd1162, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 1932194089, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 0
@@ -456,7 +456,7 @@ MonoBehaviour:
   - upgradeName: Shoot Sideways
     description: Allows the turret to fire sideways.
     effect: {fileID: 11400000, guid: 5f8f49d80ffb532419ad2c966e66726b, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: -80230850, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 1
@@ -468,7 +468,7 @@ MonoBehaviour:
   - upgradeName: Diagonal shooting top left
     description: Turret shoots \n top left \n and bottom right diagonally
     effect: {fileID: 11400000, guid: 77e8cba7ea6f8024588eab45eb8dff60, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: -846050791, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 0
@@ -480,7 +480,7 @@ MonoBehaviour:
   - upgradeName: Diagonal shooting Bot left
     description: Turret shoots \nbottom left \nand top right diagonally
     effect: {fileID: 11400000, guid: 0da5a4dea2af7914bb061c8cb0b7d624, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 1689601302, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 0
@@ -493,7 +493,7 @@ MonoBehaviour:
     description: 'Bullets orbit around the turret. Turret collects bullets that enter
       the orbit. '
     effect: {fileID: 11400000, guid: f01e89d4ecfe8034ca0364837aec8e65, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: -78835271, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
     onlyAllowedOnce: 1
     defaultHideUpgrade: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
     description: Shoots multiple projectiles at once with a delay. Following the
       same path.
     effect: {fileID: 11400000, guid: 8328baaaf590a3b4fb11613dbe9483d8, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 900868495, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 0
@@ -531,7 +531,7 @@ MonoBehaviour:
   - upgradeName: Extra Projectile
     description: 'Fires an additional projectile at an angle '
     effect: {fileID: 11400000, guid: 99a69e51eab120342b13d1d519413eca, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 1099378166, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 0
@@ -543,7 +543,7 @@ MonoBehaviour:
   - upgradeName: Homing
     description: Bullets home to a target
     effect: {fileID: 11400000, guid: c2ecad75b1e98ed4891ddbfc7ae070cd, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: 1810113349, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 0
@@ -555,7 +555,7 @@ MonoBehaviour:
   - upgradeName: Pierce
     description: Projectiles pierce through enemies
     effect: {fileID: 11400000, guid: 56af038a0979ac2449071588e9ff405a, type: 2}
-    upgradeIcon: {fileID: 0}
+    upgradeIcon: {fileID: -156054984, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 0
     onlyAllowedOnce: 0
     defaultHideUpgrade: 0
