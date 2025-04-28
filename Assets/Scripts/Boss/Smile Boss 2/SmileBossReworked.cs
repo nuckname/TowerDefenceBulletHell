@@ -57,7 +57,7 @@ public class SmileBossReworked : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentState = BossState.Normal;
-        attackTimer = attackCooldown;
+        attackTimer = 2;
     }
     
     void Update()

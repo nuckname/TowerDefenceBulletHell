@@ -31,11 +31,13 @@ public class RoundsScriptableObject : ScriptableObject
     public float increaseGoldAmoutForEachCoinMutipler = 0;
     public int amountOfGoldToDrop = 4;
     public int amountOfHeartToDrop = 0;
+    
+    public int DEBUGtotalAmountOfGoldPerRound;
+
 
     [Header("Boss")]
     public GameObject boss;
-    
-    // Auto-calculate total enemies when the ScriptableObject is loaded or modified
+
     private void OnValidate()
     {
         totalEnemies = 0;
@@ -48,6 +50,8 @@ public class RoundsScriptableObject : ScriptableObject
         {
             totalEnemies++;
         }
+
+        DEBUGtotalAmountOfGoldPerRound = totalEnemies * amountOfGoldGainedForEachCoin * amountOfGoldToDrop;
     }
 
     public int GetTotalEnemies()
@@ -73,5 +77,7 @@ public class EnemyGroup
 
     [Tooltip("Does boss spawn")]
     public bool bossSpawn = false;
+    
+
 }
 

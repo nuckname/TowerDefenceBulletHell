@@ -8,7 +8,7 @@ public class PlaceObject : NetworkBehaviour
     [SerializeField] private GameObject GhostPlacementTurret;
     [SerializeField] private GameObject goldMiner;
 
-    public static int TurretBasicCost = 50;
+    public static int TurretBasicCost = 100;
 
     private bool GhostTurretHasBeenPlaced = false;
     private GameObject curentGhost;

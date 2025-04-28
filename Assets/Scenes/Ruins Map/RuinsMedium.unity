@@ -4105,6 +4105,79 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 329259881}
   m_CullTransparentMesh: 1
+--- !u!1001 &330160745
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3067206463460488381, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: maxFireRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067206463460488381, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: maxBulletSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067206463460488381, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: minBulletSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3067206463460488381, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: amountOfCirclePrefabs
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.90618
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04568672
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6181765790529414246, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6881960418611744032, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
+      propertyPath: m_Name
+      value: SmileBossReworked
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
 --- !u!1 &348848504
 GameObject:
   m_ObjectHideFlags: 0
@@ -16093,3 +16166,4 @@ SceneRoots:
   - {fileID: 515464788}
   - {fileID: 578336657}
   - {fileID: 565745798}
+  - {fileID: 330160745}
