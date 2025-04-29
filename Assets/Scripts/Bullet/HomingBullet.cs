@@ -4,7 +4,7 @@ using UnityEngine;
 public class HomingBullet : MonoBehaviour
 {
     [Header("Homing Settings")]
-    public float homingDelay    = 0.0f;
+    public float homingDelay    = 0.5f;
     public float homingStrength = 100f;
     public float homingRadius   = 100f;
     public float speed          =   8f;
@@ -19,13 +19,16 @@ public class HomingBullet : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        
+        isHomingActive = false;
+        target         = null;
     }
 
     private void OnEnable()
     {
         // First, fully clear any old homing state
 
-//        StopAllCoroutines();
+        StopAllCoroutines();
         isHomingActive = false;
         target         = null;
 
