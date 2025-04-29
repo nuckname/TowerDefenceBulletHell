@@ -112,11 +112,11 @@ MonoBehaviour:
   beamCount: 4
   explosiveCirclePrefab: {fileID: 4064301866692582828, guid: fb6422890478f17439508ce5fc9883df, type: 3}
   circleAttackPrefab: {fileID: 3997259959995160196, guid: 4c8fd9d2aa95d114bad448c80abf4a68, type: 3}
-  minFireRate: 0.2
-  maxFireRate: 0.1
+  minFireRate: 0.4
+  maxFireRate: 0.3
   minBulletSpeed: 4
-  maxBulletSpeed: 6
-  amountOfCirclePrefabs: 8
+  maxBulletSpeed: 5
+  amountOfCirclePrefabs: 6
   BulletPrefab: {fileID: 5601852057121462646, guid: 1620f28ae8a035a49b1aeea757b562d1, type: 3}
   minRandomBulletSpeed: 2
   maxRandomBulletSpeed: 5
