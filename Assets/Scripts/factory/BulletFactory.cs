@@ -83,6 +83,8 @@ public class BulletFactory : MonoBehaviour
                 spiral.enabled = true;
             }
         }
+        
+
 
         // Configure BulletCollision
         BulletCollision bulletCollision = bullet.GetComponent<BulletCollision>();
@@ -115,10 +117,19 @@ public class BulletFactory : MonoBehaviour
             }
         }
 
-        if (homingEnabled)
+        
+        var homing = bullet.GetComponent<HomingBullet>();
+        if (homing != null)
         {
-            HomingBullet homing = bullet.GetComponent<HomingBullet>();
-            homing.enabled = true;
+            // always override the flag on the pooled bullet:
+            homing.useHoming = homingEnabled;
+            homing.enabled   = homingEnabled;
+
+            if (!homingEnabled)
+            {
+                // clear out any old target & stop coroutines
+                homing.ResetHomingState();
+            }
         }
 
         // Configure Orbit (if applicable)
