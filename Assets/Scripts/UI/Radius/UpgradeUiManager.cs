@@ -81,10 +81,15 @@ public class UpgradeUiManager : MonoBehaviour
 
     }
     
-    private void GenerateDecription(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret)
+    private void GenerateDecription(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, string oldRarity)
     {
         selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
-            
+
+        while (selectedRarity == oldRarity)
+        {
+            selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
+        }
+    
         //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
         _applyUpgrade.raritySelected = selectedRarity;
         storeTurretDescriptionAndRarity.storedTurretSelectedRarity = selectedRarity;
@@ -112,7 +117,7 @@ public class UpgradeUiManager : MonoBehaviour
 
         if (!isDescriptionAlreadyGenerated)
         {
-            GenerateDecription(storeTurretDescriptionAndRarity, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>());
+            GenerateDecription(storeTurretDescriptionAndRarity, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>(), null);
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
             
             print("New Description: " + upgradePrice);
@@ -160,6 +165,8 @@ public class UpgradeUiManager : MonoBehaviour
     public void Reroll()
     {
         StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+
+        string oldRarity = storeTurretDescriptionAndRarity.storedTurretSelectedRarity;
         
         if (playerGold.SpendGold(storeTurretDescriptionAndRarity.storeTurretRerollPrice))
         {
@@ -190,7 +197,7 @@ public class UpgradeUiManager : MonoBehaviour
                 Debug.LogWarning("targetTurret is null");
             }
             
-            GenerateDecription(storeTurretDescriptionAndRarity, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>());
+            GenerateDecription(storeTurretDescriptionAndRarity, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>(), oldRarity);
         
             upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
             

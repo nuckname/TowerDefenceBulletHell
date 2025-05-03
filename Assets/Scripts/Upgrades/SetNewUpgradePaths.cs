@@ -4,6 +4,8 @@ using UnityEngine;
 public class SetNewUpgradePaths : MonoBehaviour
 {
 
+    [SerializeField] 
+    private int amountOfRares = 6;
     public void EnableNewUpgradePath(string upgradeName, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, UpgradeDataOnTurret targetTurret)
     {
         print("EnableNewUpgradePath");
@@ -27,6 +29,9 @@ public class SetNewUpgradePaths : MonoBehaviour
             print("Homing upgrade enabled");
            // EnableHomingUpgrade();
         }
+        
+        OutOfRareUpgrade(turretStats);
+        SetRanOutOfUpgrades(upgradeDataOnTurret);
     }
 
     private void CanShootSideWays(UpgradeDataOnTurret upgradeDataOnTurret)
@@ -39,6 +44,94 @@ public class SetNewUpgradePaths : MonoBehaviour
                 Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
             }
         }
+    }
+
+    private void SetRanOutOfUpgrades(UpgradeDataOnTurret upgradeDataOnTurret)
+    {
+        if (amountOfRares == 3)
+        {
+            for (int i = 0; i < upgradeDataOnTurret.rareUpgrades.Count; i++)
+            {
+                //Should Put this in a function. But whatever. 
+                if (upgradeDataOnTurret.rareUpgrades[i].upgradeName == "Rare Increase FireRate")
+                {
+                    upgradeDataOnTurret.rareUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
+                }
+            }
+        }
+        
+        else if (amountOfRares == 2)
+        {
+            for (int i = 0; i < upgradeDataOnTurret.rareUpgrades.Count; i++)
+            {
+                if (upgradeDataOnTurret.rareUpgrades[i].upgradeName == "Rare Increase Bullet Speed")
+                {
+                    upgradeDataOnTurret.rareUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
+                }
+            }
+        }
+        
+        else if (amountOfRares == 1)
+        {
+            for (int i = 0; i < upgradeDataOnTurret.rareUpgrades.Count; i++)
+            {
+                if (upgradeDataOnTurret.rareUpgrades[i].upgradeName == "Rare Increase Projectile Life")
+                {
+                    upgradeDataOnTurret.rareUpgrades[i].hideUpgrade = false;
+                    Debug.Log($"<color=green> Upgrade Unlocked: {upgradeDataOnTurret.rareUpgrades[i].upgradeName} </color> ");
+                }
+            }
+        }
+    }
+
+    private void OutOfRareUpgrade(TurretStats turretStats)
+    {
+
+        if (turretStats.activeDirections >= 2)
+        {
+            print("-1");
+            amountOfRares--;
+        }
+        
+        else if (turretStats.activeDirections >= 4)
+        {
+            print("-1");
+
+            amountOfRares--;
+        }
+        
+        else if (turretStats.activeDirections >= 6)
+        {
+            print("-1");
+
+            amountOfRares--;
+        }
+        else if (turretStats.activeDirections >= 8)
+        {
+            print("-1");
+
+            amountOfRares--;
+        }
+        
+        else if (turretStats.enableOrbit)
+        {
+            print("-1");
+
+            amountOfRares--;
+        }
+
+        else if (turretStats.GoldOnHit)
+        {
+            print("-1");
+
+            amountOfRares--;
+            
+        }
+
+        //if()
+        
     }
 
     //Not sure to include this.

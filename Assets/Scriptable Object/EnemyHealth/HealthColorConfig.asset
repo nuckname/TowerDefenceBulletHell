@@ -15,27 +15,27 @@ MonoBehaviour:
   healthColorPairs:
   - sprite: {fileID: 8337978452354202426, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 1
-  - sprite: {fileID: -2704023832610583983, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 2
   - sprite: {fileID: 4130516532682514485, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 3
+    healthThreshold: 2
   - sprite: {fileID: -360490648666098405, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 4
+    healthThreshold: 3
   - sprite: {fileID: -5004882250428130313, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 5
+    healthThreshold: 4
   - sprite: {fileID: 6886802239474507173, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 6
+    healthThreshold: 5
   - sprite: {fileID: -5207172127875853183, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 7
+    healthThreshold: 6
   - sprite: {fileID: -2629474050878837544, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 8
+    healthThreshold: 7
   - sprite: {fileID: 6655297842968542054, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 9
+    healthThreshold: 8
   - sprite: {fileID: 3216856136769290332, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 10
+    healthThreshold: 9
   - sprite: {fileID: -5562174706044457947, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 11
+    healthThreshold: 10
   - sprite: {fileID: 5447502617296639289, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
+    healthThreshold: 11
+  - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 12
   - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 13
@@ -55,6 +55,4 @@ MonoBehaviour:
     healthThreshold: 20
   - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
     healthThreshold: 21
-  - sprite: {fileID: 8814516477399013878, guid: 50ed8e6321c37c34fad3fb76d9c59a16, type: 3}
-    healthThreshold: 22
   defaultColor: {r: 1, g: 1, b: 1, a: 1}

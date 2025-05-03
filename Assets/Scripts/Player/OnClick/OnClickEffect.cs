@@ -30,6 +30,7 @@ public class OnClickEffect : MonoBehaviour
                 upgradeManager.SetDescriptionsForUpgrades(selectedTurret);
                 upgradeManager.targetTurret = selectedTurret;
 
+                print("BindingOfIsaacShooting.disableShooting = true;");
                 BindingOfIsaacShooting.disableShooting = true;
            
             }

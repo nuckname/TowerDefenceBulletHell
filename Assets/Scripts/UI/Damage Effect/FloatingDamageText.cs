@@ -6,7 +6,7 @@ public class FloatingDamageText : MonoBehaviour
     public float moveSpeed = 1f;
     public float fadeSpeed = 1f;
     private TextMeshProUGUI text;
-    private Color originalColor;
+    public Color originalColor;
 
     private RectTransform rectTransform;
 

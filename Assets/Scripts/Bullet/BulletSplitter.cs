@@ -22,6 +22,7 @@ public class BulletSplitter : MonoBehaviour
     {
         if (!hasSplit && other.gameObject.CompareTag("Enemy"))
         {
+            Debug.unityLogger.Log("Split triggered ERRROR SHOULD NOT WORK");
             SplitBullet();
         }
     }
@@ -35,8 +36,6 @@ public class BulletSplitter : MonoBehaviour
         
         // Center the gap by starting the bullet spawn at half the gap angle.
         float startAngle = gapAngle / 2f;
-
-        Debug.Log("Splitting bullet into " + amountOfProjectilesToSplit + " projectiles with a " + gapAngle + "° gap.");
 
         for (int i = 0; i < amountOfProjectilesToSplit; i++)
         {

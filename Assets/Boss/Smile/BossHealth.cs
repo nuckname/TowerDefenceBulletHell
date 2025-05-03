@@ -1,5 +1,7 @@
 using System;
 using System.Collections;
+using System.Net.Mime;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,12 +22,14 @@ public class BossHealth : MonoBehaviour
     public GameObject healthBarPrefab;
     private Slider healthBarSlider;
     private GameObject spawnedHealthBar;
+    private TextMeshProUGUI healthBarTexted;
 
     private float redBoxTriggerDelay = 5f;
     private float spawnTime;
 
     private void Start()
     {
+        
         currentHealth = maxHealth;
         spawnTime = Time.time;
 
@@ -38,6 +42,10 @@ public class BossHealth : MonoBehaviour
 
         spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
         healthBarSlider = spawnedHealthBar.GetComponent<Slider>();
+        
+        healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
+        
+        
 
         if (healthBarSlider == null)
         {
@@ -96,8 +104,13 @@ public class BossHealth : MonoBehaviour
 
     private void UpdateHealthUI()
     {
+        healthBarTexted.text = currentHealth + " / " + maxHealth;
+        
+        /*
+         //No longer slider now Text
         if (healthBarPrefab != null)
             healthBarSlider.value = (float)currentHealth / maxHealth;
+            */
     }
 
     private IEnumerator FlashEffect()
