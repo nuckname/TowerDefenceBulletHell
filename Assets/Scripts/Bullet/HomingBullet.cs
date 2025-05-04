@@ -68,7 +68,7 @@ public class HomingBullet : MonoBehaviour
 
         // steer toward the (possibly re-acquired) target
         Vector2 desired = ((Vector2)target.position - rb.position).normalized * speed;
-        rb.velocity = Vector2.Lerp(rb.velocity, desired, homingStrength * Time.fixedDeltaTime);
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, desired, homingStrength * Time.fixedDeltaTime);
     }
 
     private IEnumerator ActivateHoming()
@@ -104,7 +104,7 @@ public class HomingBullet : MonoBehaviour
         StopAllCoroutines();
         isHomingActive = false;
         target         = null;
-        rb.velocity    = Vector2.zero;
+        rb.linearVelocity    = Vector2.zero;
     }
 
 }

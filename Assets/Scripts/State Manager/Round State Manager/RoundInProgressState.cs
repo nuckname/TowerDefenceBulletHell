@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class RoundInProgressState : RoundBaseState
 {
@@ -9,6 +11,10 @@ public class RoundInProgressState : RoundBaseState
         roundStateManager.AllowTurretsToShoot(true);
         
         roundCounter++;
+        
+        AnalyticsResult ar = Analytics.CustomEvent("Rounds Completed:" + roundCounter);
+
+        Debug.Log("Unity Analyistics: " + ar);
 
         roundStateManager.DestroyAllPlayerBullets();
         

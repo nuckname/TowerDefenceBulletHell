@@ -16,6 +16,7 @@ public class OrbitalBulletsUpgrade : UpgradeEffect
             turretStats.orbitRadius += 1;
             turretStats.orbitSpeed += 100;
             
+            /*
             if (turretStats.allow4ShootPoints)
             {
                 turretStats.multiShotCount += 4;
@@ -34,7 +35,7 @@ public class OrbitalBulletsUpgrade : UpgradeEffect
             turretStats.allow4ShootPoints = false;
             turretStats.allowDiagonalShooting = false; 
             turretStats.extraProjectiles = 0;
-            
+            */
             
             turretStats.enableOrbit = true;
         }

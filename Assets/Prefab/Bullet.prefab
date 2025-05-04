@@ -63,8 +63,6 @@ GameObject:
   - component: {fileID: 2218803637122075860}
   - component: {fileID: 708765180046670274}
   - component: {fileID: 1473274902589581317}
-  - component: {fileID: 7844572092303220347}
-  - component: {fileID: 1883739144620534752}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Bullet
@@ -279,6 +277,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e24e2c9074495449638f9576aeb729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  debug_message_active: 
+  debug_message_target: 
   homingDelay: 0.5
   homingStrength: 10
   homingRadius: 100
@@ -325,37 +325,3 @@ MonoBehaviour:
   speed: 10
   returnDelay: 1
   returnDuration: 2
---- !u!114 &7844572092303220347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a85e12697073d9e449318679af760dd0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amountOfProjectilesToSplit: 0
-  bulletPrefab: {fileID: 3426162796660274319}
-  bulletSpeed: 0
-  bulletLifetime: 0
-  gapAngle: 30
-  spawnOffset: 1.5
---- !u!114 &1883739144620534752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3426162796660274319}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e45b63779d5ac6c4e8ccf53c36e4be39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pivot: {x: 0, y: 0, z: 0}
-  radiusX: 2
-  radiusY: 1
-  loopsPerSecond: 0.5
