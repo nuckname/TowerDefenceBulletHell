@@ -93,12 +93,12 @@ public class UpgradeUiManager : MonoBehaviour
         //Needed as accessing selectedRarity out of the scope of this script was causing errors. 
         _applyUpgrade.raritySelected = selectedRarity;
         storeTurretDescriptionAndRarity.storedTurretSelectedRarity = selectedRarity;
-
+        
         //Pick Upgrades
         storeTurretDescriptionAndRarity.storedTurretDescription = selectDescription.Get3Descriptions(selectedRarity, upgradeDataOnTurret);
 
         //Picks Icons. Two calls of this.
-        setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
+        setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity, storeTurretDescriptionAndRarity.storeTurretRotation);
         
         //Puts it in global variable
         displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;
@@ -135,7 +135,7 @@ public class UpgradeUiManager : MonoBehaviour
             _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescriptionAndRarity.storeTurretPrice);
             
             //Selects icons two calls.
-            setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity);
+            setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity, storeTurretDescriptionAndRarity.storeTurretRotation);
 
             //Skip the generation step as we dont want to generate them again.
             SetTextToUi(storeTurretDescriptionAndRarity.storedTurretDescription);

@@ -15934,13 +15934,53 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 758286518}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035809787348127958, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3787429949226252111, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
       propertyPath: m_Name
       value: UI-Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 3787429949226252111, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3787429949226252111, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
       propertyPath: m_TagString
       value: canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5208984705792701160, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5306672846646487763, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
       propertyPath: m_IsActive
@@ -16037,6 +16077,14 @@ PrefabInstance:
     - target: {fileID: 6544163278501651819, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197746995111012718, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1689601302, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
+    - target: {fileID: 7197746995111012718, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7353627874862120655, guid: 9dd33c07a1465284aa453e42ead435b5, type: 3}
       propertyPath: m_text

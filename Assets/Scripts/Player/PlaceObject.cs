@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Unity.Netcode;
+using Unity.VisualScripting;
 
 public class PlaceObject : NetworkBehaviour
 {
@@ -11,7 +12,7 @@ public class PlaceObject : NetworkBehaviour
     public static int TurretBasicCost = 100;
 
     private bool GhostTurretHasBeenPlaced = false;
-    private GameObject curentGhost;
+    private GameObject currentGhost;
 
     // Gold system
     public PlayerGoldScriptableObject playerGold;
@@ -42,7 +43,7 @@ public class PlaceObject : NetworkBehaviour
                 
                 if (playerGold.SpendGold(TurretBasicCost))
                 {
-                    SpawnBasicTurret(curentGhost);
+                    SpawnBasicTurret();
                 }
             }
         }
@@ -75,16 +76,16 @@ public class PlaceObject : NetworkBehaviour
         }
     }
 
-    private GameObject SpawnGhostTurret()
+    private void SpawnGhostTurret()
     {
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         GhostTurretHasBeenPlaced = true;
 
-        return curentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
+        currentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
     }
 
-    private void SpawnBasicTurret(GameObject currentGhost)
+    private void SpawnBasicTurret()
     {
         if (currentGhost.GetComponent<GhostBlockPathCollision>().canPlaceGhost)
         {
@@ -96,7 +97,13 @@ public class PlaceObject : NetworkBehaviour
             Quaternion ghostTurretRotation = GameObject.FindGameObjectWithTag("GhostTurret").GetComponentInChildren<GhostTurretShoot>().savedRotation;
 
             // Spawn the turret at the ghost's position with the ghost's rotation
-            Instantiate(TurretBasic,  mousePos, ghostTurretRotation);
+            GameObject newTurret =Instantiate(TurretBasic,  mousePos, ghostTurretRotation);
+            
+            //Gets the sprites rotation so I can rotate the Upgrades spirte for rare diagnoal upgrade
+            Transform spriteTransform = currentGhost.transform.Find("TurretSprite_0");
+            newTurret.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
+            
+            print("sprite transform: " + spriteTransform.rotation.eulerAngles.z);
             
             GhostTurretHasBeenPlaced = false;
             Destroy(currentGhost);
@@ -105,6 +112,11 @@ public class PlaceObject : NetworkBehaviour
         {
             Debug.Log("Ghost on path - cannot place turret.");
         }
+    }
+
+    private void GetTurretSpireRotation(GameObject curentGhost)
+    {
+
     }
 
     private void PlaceGoldMiner()

@@ -8,6 +8,7 @@ public class StoreTurretDescriptionAndRarity : MonoBehaviour
     public string storedTurretSelectedRarity = "";
     public int storeTurretPrice;
     public int storeTurretRerollPrice;
+    public float storeTurretRotation;
 
 
     public bool CheckTurretDescription()

@@ -19,8 +19,9 @@ MonoBehaviour:
   speedModifer: -0.5
   spawnInterval: 0.5
   totalEnemies: 1
-  amountOfGoldGainedForEachCoin: 50
+  amountOfGoldGainedForEachCoin: 150
   increaseGoldAmoutForEachCoinMutipler: 0
-  amountOfGoldToDrop: 6
+  amountOfGoldToDrop: 10
   amountOfHeartToDrop: 4
+  DEBUGtotalAmountOfGoldPerRound: 1500
   boss: {fileID: 6881960418611744032, guid: bb03cb7c3aa56ff48b55d0bbfb66f25f, type: 3}
