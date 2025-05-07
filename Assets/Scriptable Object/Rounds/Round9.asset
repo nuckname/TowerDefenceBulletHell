@@ -43,17 +43,12 @@ MonoBehaviour:
   - enemyHp: 10
     count: 10
     delayBeforeGroup: 0
-    spawnInterval: 0.2
-    bossSpawn: 0
-  - enemyHp: 10
-    count: 10
-    delayBeforeGroup: 0
-    spawnInterval: 0.2
+    spawnInterval: 0.24
     bossSpawn: 0
   delayAfterWave: 3
-  speedModifer: 2
+  speedModifer: 1.5
   spawnInterval: 0.5
-  totalEnemies: 46
+  totalEnemies: 36
   amountOfGoldGainedForEachCoin: 0
   increaseGoldAmoutForEachCoinMutipler: 0
   amountOfGoldToDrop: 0
