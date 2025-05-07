@@ -225,8 +225,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyDie: {fileID: 8334307879350242069}
-  maxHealth: 90
-  currentHealth: 90
+  maxHealth: 85
+  currentHealth: 85
   spriteRenderer: {fileID: 4606486017045271472}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2

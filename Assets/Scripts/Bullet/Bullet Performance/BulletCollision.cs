@@ -41,7 +41,7 @@ public class BulletCollision : MonoBehaviour
             //Not sure how this works with mutiplayer. 
             if (GoldOnHit)
             {
-                playerGoldScriptableObject.AddGold(1);
+                playerGoldScriptableObject.AddGold(5);
             }
             
             if (slowOnHitEnabledBullet)

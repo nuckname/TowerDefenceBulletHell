@@ -366,6 +366,7 @@ MonoBehaviour:
   storedTurretSelectedRarity: 
   storeTurretPrice: 0
   storeTurretRerollPrice: 30
+  storeTurretRotation: 0
 --- !u!114 &8950624624173130891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +432,7 @@ MonoBehaviour:
     isAnUpgradePaths: 0
   rareUpgrades:
   - upgradeName: Money
-    description: Gives 1 dollar per bullet hit.
+    description: Gives 5 dollar per bullet hit.
     effect: {fileID: 11400000, guid: 1cd5eb816487ca549a5752ddfb472600, type: 2}
     upgradeIcon: {fileID: -1695302861, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1
