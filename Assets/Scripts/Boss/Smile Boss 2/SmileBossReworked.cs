@@ -52,6 +52,9 @@ public class SmileBossReworked : MonoBehaviour
     [SerializeField] private BossState currentState;
     private float attackTimer;
     private BossState lastAttackUsed = BossState.Normal;
+    
+    [Header("UI")]
+    [SerializeField] private GameObject deathScreen;
 
     void Start()
     {

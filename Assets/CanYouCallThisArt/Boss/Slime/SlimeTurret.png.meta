@@ -1,0 +1,780 @@
+fileFormatVersion: 2
+guid: a184fbbff1ef07f4d9b8b24ab42acd53
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5937930816206081277
+    second: SlimeTurret_0
+  - first:
+      213: -1184678019106677317
+    second: SlimeTurret_1
+  - first:
+      213: -5322635224739323379
+    second: SlimeTurret_2
+  - first:
+      213: 7143603788378015283
+    second: SlimeTurret_3
+  - first:
+      213: 7205006280780401551
+    second: SlimeTurret_4
+  - first:
+      213: 4500906055751941836
+    second: SlimeTurret_5
+  - first:
+      213: -4556725867962971039
+    second: SlimeTurret_6
+  - first:
+      213: -1445615680757886278
+    second: SlimeTurret_7
+  - first:
+      213: 4701116955856282530
+    second: SlimeTurret_8
+  - first:
+      213: 1208969517024077932
+    second: SlimeTurret_9
+  - first:
+      213: 8421052413818369981
+    second: SlimeTurret_10
+  - first:
+      213: -5645104871699656683
+    second: SlimeTurret_11
+  - first:
+      213: -4513897848474086592
+    second: SlimeTurret_12
+  - first:
+      213: 5035807744316248574
+    second: SlimeTurret_13
+  - first:
+      213: -2040301571060791149
+    second: SlimeTurret_14
+  - first:
+      213: -1275792848821662773
+    second: SlimeTurret_15
+  - first:
+      213: -7107168459096894110
+    second: SlimeTurret_16
+  - first:
+      213: -5359410990570981829
+    second: SlimeTurret_17
+  - first:
+      213: -5533625277457439586
+    second: SlimeTurret_18
+  - first:
+      213: -6921831230996744498
+    second: SlimeTurret_19
+  - first:
+      213: 7819579414487292908
+    second: SlimeTurret_20
+  - first:
+      213: -6582566203045198294
+    second: SlimeTurret_21
+  - first:
+      213: 7250974021522320106
+    second: SlimeTurret_22
+  - first:
+      213: -4966451621128799968
+    second: SlimeTurret_23
+  - first:
+      213: 1537742205011094040
+    second: SlimeTurret_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: SlimeTurret_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1107
+        height: 1048
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 303f037126b389da0800000000000000
+      internalID: -5937930816206081277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_1
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 0
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbddee94e9d2f8fe0800000000000000
+      internalID: -1184678019106677317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_2
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 5
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d026e60b6733226b0800000000000000
+      internalID: -5322635224739323379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_3
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 0
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 336086e0ccd232360800000000000000
+      internalID: 7143603788378015283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_4
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 5
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8bcf52e9035df360800000000000000
+      internalID: 7205006280780401551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_5
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 5
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ccebf7cf53e667e30800000000000000
+      internalID: 4500906055751941836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_6
+      rect:
+        serializedVersion: 2
+        x: 499
+        y: 6
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16ccb3537f143c0c0800000000000000
+      internalID: -4556725867962971039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_7
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 7
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab211b2923420fbe0800000000000000
+      internalID: -1445615680757886278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_8
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 6
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a32169b6f8bd3140800000000000000
+      internalID: 4701116955856282530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_9
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 0
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c68ee7ece5f17c010800000000000000
+      internalID: 1208969517024077932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_10
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 6
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db7f690cd869dd470800000000000000
+      internalID: 8421052413818369981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_11
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 7
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 510d38a370f88a1b0800000000000000
+      internalID: -5645104871699656683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_12
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 0
+        width: 47
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0435d4d82d96b51c0800000000000000
+      internalID: -4513897848474086592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_13
+      rect:
+        serializedVersion: 2
+        x: 717
+        y: 5
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ef1912d6678c2e540800000000000000
+      internalID: 5035807744316248574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_14
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 7
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3980046f7846fa3e0800000000000000
+      internalID: -2040301571060791149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_15
+      rect:
+        serializedVersion: 2
+        x: 730
+        y: 6
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bcb4007d9297b4ee0800000000000000
+      internalID: -1275792848821662773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_16
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 1
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2655bac11f34e5d90800000000000000
+      internalID: -7107168459096894110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_17
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 0
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3631b5791c8f95b0800000000000000
+      internalID: -5359410990570981829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_18
+      rect:
+        serializedVersion: 2
+        x: 749
+        y: 0
+        width: 38
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e94e609e02d9433b0800000000000000
+      internalID: -5533625277457439586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_19
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 0
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec6fb393b27b0ff90800000000000000
+      internalID: -6921831230996744498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_20
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 0
+        width: 7
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cebd87d2c0ab48c60800000000000000
+      internalID: 7819579414487292908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_21
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 0
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a26cffc0ae606a4a0800000000000000
+      internalID: -6582566203045198294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_22
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 0
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aea6c6c8472a0a460800000000000000
+      internalID: 7250974021522320106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_23
+      rect:
+        serializedVersion: 2
+        x: 713
+        y: 0
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0297470609e931bb0800000000000000
+      internalID: -4966451621128799968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SlimeTurret_24
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 0
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81aefcd5368275510800000000000000
+      internalID: 1537742205011094040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      SlimeTurret_0: -5937930816206081277
+      SlimeTurret_1: -1184678019106677317
+      SlimeTurret_10: 8421052413818369981
+      SlimeTurret_11: -5645104871699656683
+      SlimeTurret_12: -4513897848474086592
+      SlimeTurret_13: 5035807744316248574
+      SlimeTurret_14: -2040301571060791149
+      SlimeTurret_15: -1275792848821662773
+      SlimeTurret_16: -7107168459096894110
+      SlimeTurret_17: -5359410990570981829
+      SlimeTurret_18: -5533625277457439586
+      SlimeTurret_19: -6921831230996744498
+      SlimeTurret_2: -5322635224739323379
+      SlimeTurret_20: 7819579414487292908
+      SlimeTurret_21: -6582566203045198294
+      SlimeTurret_22: 7250974021522320106
+      SlimeTurret_23: -4966451621128799968
+      SlimeTurret_24: 1537742205011094040
+      SlimeTurret_3: 7143603788378015283
+      SlimeTurret_4: 7205006280780401551
+      SlimeTurret_5: 4500906055751941836
+      SlimeTurret_6: -4556725867962971039
+      SlimeTurret_7: -1445615680757886278
+      SlimeTurret_8: 4701116955856282530
+      SlimeTurret_9: 1208969517024077932
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

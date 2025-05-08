@@ -44,6 +44,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //if(isInvic) return;
         if (other.gameObject.CompareTag("Bullet") && !isInvincible)
         {
             TakeDamage(1);

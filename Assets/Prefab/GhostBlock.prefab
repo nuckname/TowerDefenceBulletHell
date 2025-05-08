@@ -713,7 +713,7 @@ GameObject:
   - component: {fileID: 856762383030981212}
   - component: {fileID: 7069972526446769169}
   m_Layer: 0
-  m_Name: CostTest
+  m_Name: Cost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -21,14 +21,23 @@ public class TutorialReworked : MonoBehaviour
         "Tutorial Step 2:\n\nLeft Mouse Button to shoot.",
         // Step 2: Spawn Ghost Turret
         "Tutorial Step 3:\n\nPress SPACE to spawn a ghost turret.",
+        
+        //use scroll wheel. to rotate turret. 
+        
         // Step 3: Rotate Turret
-        "Tutorial Step 4:\n\nPress R to rotate the turret.",
+        "Tutorial Step 4:\n\nPress R snap the rotate of the turret to 90 degrees.",
+        
+        //R to reload. 
+        
+        
         // Step 4: Confirm or Cancel Turret Placement
         "Tutorial Step 5:\n\nThen press Left Mouse to confirm where you want to place it.",
         // Step 5: Update Turret
         "Tutorial Step 6:\n\nClick on the turret to update it.",
         // Step 6: Start Round
         "Tutorial Step 7:\n\nPlace more turrets and upgrade them. Then press TAB to start the round."
+        
+        //Tutoral You can sell turrets your actions have consequences. 
     };
 
     void Start()

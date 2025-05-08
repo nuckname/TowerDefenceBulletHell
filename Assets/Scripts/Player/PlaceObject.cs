@@ -2,13 +2,16 @@ using System;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.VisualScripting;
+using UnityEngine.UI;
 
 public class PlaceObject : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject GhostPlacementTurret;
     [SerializeField] private GameObject goldMiner;
-
+    
+    [SerializeField] private int amountOfTurretsBrought = 0;
+    
     public static int TurretBasicCost = 100;
 
     private bool GhostTurretHasBeenPlaced = false;
@@ -35,7 +38,6 @@ public class PlaceObject : NetworkBehaviour
             if (GhostTurretHasBeenPlaced)
             {
                 GhostBlockPathCollision ghostBlockPathCollision = GameObject.FindGameObjectWithTag("GhostTurret").GetComponent<GhostBlockPathCollision>();
-                
                 if (!ghostBlockPathCollision.canPlaceGhost)
                 {
                     return;
@@ -83,6 +85,16 @@ public class PlaceObject : NetworkBehaviour
         GhostTurretHasBeenPlaced = true;
 
         currentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
+
+        /*
+        Transform costTf = currentGhost.transform.Find("Cost");
+        if (costTf != null)
+        {
+            GameObject costGO = costTf.gameObject;
+            // …or grab the Text component in one go:
+            costTf.GetComponent<Text>().text = "$" + TurretBasicCost;
+        }
+        */
     }
 
     private void SpawnBasicTurret()
@@ -104,6 +116,30 @@ public class PlaceObject : NetworkBehaviour
             newTurret.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
             
             print("sprite transform: " + spriteTransform.rotation.eulerAngles.z);
+
+            amountOfTurretsBrought++;
+
+            switch (amountOfTurretsBrought)
+            {
+                case 1:
+                    TurretBasicCost = 150;
+                    break;
+                case 2:
+                    TurretBasicCost = 200;
+                    break;
+                case 3:
+                    TurretBasicCost = 250;
+                    break;
+                case 4:
+                    TurretBasicCost = 275;
+                    break;
+                case 5:
+                    TurretBasicCost = 300;
+                    break;
+                default:
+                    TurretBasicCost = 100;
+                    break;
+            }
             
             GhostTurretHasBeenPlaced = false;
             Destroy(currentGhost);
