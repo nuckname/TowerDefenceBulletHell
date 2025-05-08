@@ -1,27 +1,44 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class BindingOfIsaacShooting : MonoBehaviour
 {
-    public GameObject projectilePrefab; 
-    public float shootCooldown; 
+    [Header("Projectile Settings")]
+    public GameObject projectilePrefab;
     public Transform firePoint; // Where the projectile spawns
-    public float projectileSpeed = 10f; 
+    public float projectileSpeed = 10f;
 
+    [Header("Shooting Settings")]
+    public float shootCooldown = 0.2f;
+    public int magazineSize = 6;            // Number of bullets per magazine
+    public float reloadTime = 2f;           // Time to reload
+
+    private int bulletsRemaining;
+    private bool isReloading = false;
     private float lastShotTime;
     public static bool disableShooting = false;
 
     private void Start()
     {
+        bulletsRemaining = magazineSize;
         lastShotTime = -shootCooldown;
     }
 
     private void Update()
     {
-        if (disableShooting) return;
+        if (disableShooting || isReloading)
+            return;
 
-        // Fire only if cooldown is over
-        if (Time.time >= lastShotTime + shootCooldown && Input.GetMouseButton(0)) // Left Mouse Click
+        // Trigger reload if out of bullets
+        if (bulletsRemaining <= 0)
+        {
+            StartCoroutine(Reload());
+            return;
+        }
+
+        // Fire only if cooldown is over and mouse button held
+        if (Time.time >= lastShotTime + shootCooldown && Input.GetMouseButton(0))
         {
             Shoot();
         }
@@ -30,6 +47,7 @@ public class BindingOfIsaacShooting : MonoBehaviour
     private void Shoot()
     {
         lastShotTime = Time.time;
+        bulletsRemaining--;
 
         // Get mouse position in world space
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -42,4 +60,20 @@ public class BindingOfIsaacShooting : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
         projectile.GetComponent<Rigidbody2D>().linearVelocity = direction * projectileSpeed;
     }
+
+    private IEnumerator Reload()
+    {
+        isReloading = true;
+        Debug.Log("Reloading...");
+
+        yield return new WaitForSeconds(reloadTime);
+
+        bulletsRemaining = magazineSize;
+        isReloading = false;
+        Debug.Log("Reload complete");
+    }
+
+    // Optional: expose current ammo count for UI
+    public int GetBulletsRemaining() => bulletsRemaining;
+    public bool IsReloading() => isReloading;
 }
