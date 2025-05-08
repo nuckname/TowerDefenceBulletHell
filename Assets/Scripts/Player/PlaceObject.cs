@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 using Unity.Netcode;
 using Unity.VisualScripting;
@@ -86,16 +87,18 @@ public class PlaceObject : NetworkBehaviour
 
         currentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
 
-        /*
-        Transform costTf = currentGhost.transform.Find("Cost");
-        if (costTf != null)
-        {
-            GameObject costGO = costTf.gameObject;f
-            // …or grab the Text component in one go:
-            costTf.GetComponent<Text>().text = "$" + TurretBasicCost;
-        }
-        */
+        SetNewTurretPrice(currentGhost);
+
     }
+    private void SetNewTurretPrice(GameObject ghostTurret)
+    {
+        Transform transform = ghostTurret.transform.Find("Cost");
+        TextMeshPro costText = transform.GetComponent<TextMeshPro>();
+
+        costText.text = "$" + TurretBasicCost;
+    }
+
+
 
     private void SpawnBasicTurret()
     {
@@ -105,20 +108,16 @@ public class PlaceObject : NetworkBehaviour
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
-            // Determine facing direction based on rotation           
             Quaternion ghostTurretRotation = GameObject.FindGameObjectWithTag("GhostTurret").GetComponentInChildren<GhostTurretRotate>().savedRotation;
 
-            // Spawn the turret at the ghost's position with the ghost's rotation
-            GameObject newTurret =Instantiate(TurretBasic,  mousePos, ghostTurretRotation);
+            GameObject _turretBasic = Instantiate(TurretBasic,  mousePos, ghostTurretRotation);
             
             //Gets the sprites rotation so I can rotate the Upgrades spirte for rare diagnoal upgrade
             Transform spriteTransform = currentGhost.transform.Find("TurretSprite_0");
-            newTurret.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
-            
-            print("sprite transform: " + spriteTransform.rotation.eulerAngles.z);
+            _turretBasic.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
 
             amountOfTurretsBrought++;
-
+            
             switch (amountOfTurretsBrought)
             {
                 case 1:

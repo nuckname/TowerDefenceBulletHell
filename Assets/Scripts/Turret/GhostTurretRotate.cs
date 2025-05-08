@@ -36,6 +36,7 @@ public class GhostTurretRotate : MonoBehaviour
             if (signedZ == 0 || signedZ == 180 || signedZ == -90 || signedZ == 90)
             {
                 transform.rotation = Quaternion.Euler(0f, 0f, signedZ + -90f);
+                savedRotation = transform.rotation;
                 return;
             }
             

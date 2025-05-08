@@ -42,6 +42,7 @@ TagManager:
   - Text2
   - tutorialText
   - WinScreen
+  - TurretGhostCost
   layers:
   - Default
   - TransparentFX
