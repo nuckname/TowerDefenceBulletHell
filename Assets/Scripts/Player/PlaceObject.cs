@@ -56,7 +56,7 @@ public class PlaceObject : NetworkBehaviour
             if (GhostTurretHasBeenPlaced)
             {
                 GameObject userGhostTurret = GameObject.FindGameObjectWithTag("GhostTurret");
-
+                BindingOfIsaacShooting.disableShooting = false;
                 Destroy(userGhostTurret);
                 GhostTurretHasBeenPlaced = !GhostTurretHasBeenPlaced;
             }
