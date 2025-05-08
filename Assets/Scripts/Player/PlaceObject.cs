@@ -115,11 +115,12 @@ public class PlaceObject : NetworkBehaviour
             //Gets the sprites rotation so I can rotate the Upgrades spirte for rare diagnoal upgrade
             Transform spriteTransform = currentGhost.transform.Find("TurretSprite_0");
             _turretBasic.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
-
-            amountOfTurretsBrought++;
             
             switch (amountOfTurretsBrought)
             {
+                case 0:
+                    TurretBasicCost = 100;
+                    break;
                 case 1:
                     TurretBasicCost = 150;
                     break;
@@ -136,9 +137,13 @@ public class PlaceObject : NetworkBehaviour
                     TurretBasicCost = 300;
                     break;
                 default:
-                    TurretBasicCost = 100;
+                    //Whatever max is
+                    TurretBasicCost = 300;
                     break;
             }
+            
+            amountOfTurretsBrought++;
+
             
             GhostTurretHasBeenPlaced = false;
             Destroy(currentGhost);
