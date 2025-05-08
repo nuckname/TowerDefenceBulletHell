@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Player 1 test no brush on head_0: 7959700231550996431
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

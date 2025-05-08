@@ -29,7 +29,8 @@ public class BasicBullet : MonoBehaviour
 
     private void Move()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
+        //transform.Translate(direction * speed * Time.deltaTime);
+        transform.Translate(direction * (speed * Time.deltaTime));
     }
 
     private void OnTriggerEnter2D(Collider2D other)

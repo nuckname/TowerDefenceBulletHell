@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e5d00138356ec84a895b20f6ad91282, type: 3}
   m_Name: PlayerOneGold
   m_EditorClassIdentifier: 
-  currentGold: 6
-  startingAmountOfGold: 350
+  currentGold: 35000000
+  startingAmountOfGold: 35000000

@@ -33,6 +33,12 @@ public class GhostTurretRotate : MonoBehaviour
             float rawZ = transform.eulerAngles.z;
             float signedZ = rawZ > 180f ? rawZ - 360f : rawZ;
 
+            if (signedZ == 0 || signedZ == 180 || signedZ == -90 || signedZ == 90)
+            {
+                transform.rotation = Quaternion.Euler(0f, 0f, signedZ + -90f);
+                return;
+            }
+            
             float snappedZ;
             // Snap ranges as specified:
             if (signedZ >= 18f  && signedZ <= 36f)  snappedZ = 0f;

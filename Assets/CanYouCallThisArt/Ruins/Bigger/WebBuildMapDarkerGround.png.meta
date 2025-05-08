@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WebBuildMapDarkerGround_0: 804729199777410453
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

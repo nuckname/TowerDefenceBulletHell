@@ -9,6 +9,8 @@ public class SelectDescription : MonoBehaviour
 {
     private string[] threePotentialUpgrades = new string[3];
     private int upgradeIndex = 0;
+    string[] NormalUpgradesHardCodedOrder;
+
 
     public UpgradeData upgradeData;
     /// <summary>
@@ -20,11 +22,21 @@ public class SelectDescription : MonoBehaviour
     /// (e.g. each point might reduce blank chance by 5%)
     /// </param>
     /// <returns>Array of three upgrade descriptions (may include empty strings for blanks)</returns>
+    ///
+    ///
+
     public string[] Get3Descriptions(string selectedRarity, UpgradeDataOnTurret upgradeDataOnTurret)
     {
         switch (selectedRarity)
         {
             case "Normal Rarity":
+                //Hard Coded upgrades
+                /*
+                NormalUpgradesHardCodedOrder[0] = "Increases projectile speed";
+                NormalUpgradesHardCodedOrder[1] = "Increases projectile lifetime";
+                NormalUpgradesHardCodedOrder[2] = "Increases firing rate";
+                return NormalUpgradesHardCodedOrder;
+                */
                 return SelectThreeUpgrades(upgradeDataOnTurret.normalUpgrades);
             case "Rare Rarity":
                 return SelectThreeUpgrades(upgradeDataOnTurret.rareUpgrades);
