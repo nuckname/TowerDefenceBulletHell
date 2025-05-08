@@ -90,7 +90,7 @@ public class PlaceObject : NetworkBehaviour
         Transform costTf = currentGhost.transform.Find("Cost");
         if (costTf != null)
         {
-            GameObject costGO = costTf.gameObject;
+            GameObject costGO = costTf.gameObject;f
             // …or grab the Text component in one go:
             costTf.GetComponent<Text>().text = "$" + TurretBasicCost;
         }
@@ -106,7 +106,7 @@ public class PlaceObject : NetworkBehaviour
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             
             // Determine facing direction based on rotation           
-            Quaternion ghostTurretRotation = GameObject.FindGameObjectWithTag("GhostTurret").GetComponentInChildren<GhostTurretShoot>().savedRotation;
+            Quaternion ghostTurretRotation = GameObject.FindGameObjectWithTag("GhostTurret").GetComponentInChildren<GhostTurretRotate>().savedRotation;
 
             // Spawn the turret at the ghost's position with the ghost's rotation
             GameObject newTurret =Instantiate(TurretBasic,  mousePos, ghostTurretRotation);

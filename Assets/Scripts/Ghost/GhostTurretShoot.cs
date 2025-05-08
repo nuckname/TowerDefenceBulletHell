@@ -1,41 +1,30 @@
+using System;
 using UnityEngine;
 
 public class GhostTurretShoot : MonoBehaviour
 {
+    [Header("Bullet Settings")]
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    [Header("Turret Settings")]
     [SerializeField] private TurretConfig turretConfig;
+
+    private GhostTurretRotate ghostTurretRotate;
+
     private float fireCooldown;
 
-    public Quaternion savedRotation;
-
-    void Start()
+    private void Start()
     {
-        // Start with the turret facing up
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-
-        // Ensure bullets shoot upwards initially
-        savedRotation = transform.rotation;
+        ghostTurretRotate = GetComponent<GhostTurretRotate>();
+        if (ghostTurretRotate == null)
+        {
+            Debug.LogError("GhostTurretRotate is null!");
+        }
     }
 
     void Update()
     {
-        // Rotate turret when 'R' is pressed
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            transform.Rotate(0, 0, -90);
-            savedRotation = transform.rotation;
-        }
-
-        // Save turret's current rotation on 'Space'
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            savedRotation = transform.rotation;
-            Debug.Log("Rotation Saved: " + savedRotation.eulerAngles);
-        }
-
-        // Fire bullets based on cooldown
         fireCooldown -= Time.deltaTime;
         if (fireCooldown <= 0f)
         {
@@ -46,15 +35,12 @@ public class GhostTurretShoot : MonoBehaviour
 
     void Shoot()
     {
-        // Rotate bullet by +90 degrees to align with turret direction
-        Quaternion bulletRotation = savedRotation * Quaternion.Euler(0, 0, 90);
+        // Rotate bullet +90° so “up” bullet sprite aligns with turret forward
+        Quaternion bulletRot = ghostTurretRotate.savedRotation * Quaternion.Euler(0, 0, 90);
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, bulletRotation);
-        GhostBullet bulletScript = bullet.GetComponent<GhostBullet>();
-
+        GameObject b = Instantiate(bulletPrefab, firePoint.position, bulletRot);
+        GhostBullet bulletScript = b.GetComponent<GhostBullet>();
         if (bulletScript != null)
-        {
-            bulletScript.SetDirection(bulletRotation);
-        }
+            bulletScript.SetDirection(bulletRot);
     }
 }

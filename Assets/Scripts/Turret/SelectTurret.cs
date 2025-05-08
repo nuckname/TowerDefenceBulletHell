@@ -17,5 +17,10 @@ public class SelectTurret : MonoBehaviour
                 onClickEffect.TurretSelected();
             }
         }
+        
+        if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftControl)))
+        {
+            onClickEffect.TurretSelected();
+        }
     }
 }

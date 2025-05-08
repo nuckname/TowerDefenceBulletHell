@@ -101,6 +101,7 @@ GameObject:
   - component: {fileID: 2326938714788381016}
   - component: {fileID: -7768687513190529410}
   - component: {fileID: -8227722247936303423}
+  - component: {fileID: 7649337352389668288}
   - component: {fileID: 4545119328524603260}
   - component: {fileID: 1765127705045396365}
   m_Layer: 0
@@ -276,6 +277,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossPrefab: {fileID: 996078564963754122}
   canPlaceGhost: 1
+--- !u!114 &7649337352389668288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049687118381746045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 400bc419d7eae3f4cbfbc93ba9ecb9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &4545119328524603260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1062,6 +1075,7 @@ GameObject:
   - component: {fileID: 1332066465015807973}
   - component: {fileID: 4112164172809343304}
   - component: {fileID: 4460161225292627977}
+  - component: {fileID: 32029766330413221}
   m_Layer: 0
   m_Name: TurretSprite_0
   m_TagString: Untagged
@@ -1155,4 +1169,17 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1785795678397743532, guid: b99ce9fbe0fad4841b5538ec71c59056, type: 3}
   firePoint: {fileID: 5751877786823386649}
   turretConfig: {fileID: 11400000, guid: 2841c27e2dff17b4a8337647cceb0f3b, type: 2}
+--- !u!114 &32029766330413221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855537310965418061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9848b5e178a7e6a4ea4f523b814b52e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scrollSpeed: 180
   savedRotation: {x: 0, y: 0, z: 0, w: 0}

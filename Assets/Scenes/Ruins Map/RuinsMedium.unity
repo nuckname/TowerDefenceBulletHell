@@ -9497,8 +9497,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -6025028217366042230, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: reloadTime
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: -6025028217366042230, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: magazineSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -6025028217366042230, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: shootCooldown
-      value: 3
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: -6025028217366042230, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: projectileSpeed
@@ -11497,75 +11505,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506962099}
   m_CullTransparentMesh: 1
---- !u!1001 &1508098350
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.06952366
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.06952366
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.046636473
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3426162796660274319, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_Name
-      value: SlimeBossBullet
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
 --- !u!1 &1514291157
 GameObject:
   m_ObjectHideFlags: 0
@@ -12212,75 +12151,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1001 &1575327268
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.10035
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.10035
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.067314774
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -5.3286204
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.2344956
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 883284380247760988, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3426162796660274319, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
-      propertyPath: m_Name
-      value: SlimeBossBullet (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e164d29a8d1b3844f8aa31689e2e1ff4, type: 3}
 --- !u!1 &1585083579
 GameObject:
   m_ObjectHideFlags: 0
@@ -16459,5 +16329,3 @@ SceneRoots:
   - {fileID: 1492537851}
   - {fileID: 1448949691}
   - {fileID: 1159915345}
-  - {fileID: 1508098350}
-  - {fileID: 1575327268}
