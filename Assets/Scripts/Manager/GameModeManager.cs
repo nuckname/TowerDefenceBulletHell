@@ -11,7 +11,8 @@ public enum GameMode
     DoubleHP,
     Unlucky,
     OneHp,
-    Everything
+    Everything,
+    FreePlay
 }
 
 public class GameModeManager : MonoBehaviour

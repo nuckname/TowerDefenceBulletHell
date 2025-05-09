@@ -5,7 +5,7 @@ using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine.UI;
 
-public class PlaceObject : NetworkBehaviour
+public class PlaceTurret : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject GhostPlacementTurret;
@@ -13,7 +13,7 @@ public class PlaceObject : NetworkBehaviour
     
     [SerializeField] private int amountOfTurretsBrought = 0;
     
-    public static int TurretBasicCost = 100;
+    public static int TurretBasicCost = 25;
 
     private bool GhostTurretHasBeenPlaced = false;
     private GameObject currentGhost;
@@ -22,6 +22,7 @@ public class PlaceObject : NetworkBehaviour
     public PlayerGoldScriptableObject playerGold;
     public bool allowTurretPlacement;
 
+    [SerializeField] private GameObject FloatingTextNotEnoughGold;
     private void Start()
     {
         allowTurretPlacement = true;
@@ -38,6 +39,12 @@ public class PlaceObject : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
+                if (playerGold.currentGold <= TurretBasicCost)
+                {
+                    SpawnFloatingText();
+                    return;
+                }
+                
                 GhostBlockPathCollision ghostBlockPathCollision = GameObject.FindGameObjectWithTag("GhostTurret").GetComponent<GhostBlockPathCollision>();
                 if (!ghostBlockPathCollision.canPlaceGhost)
                 {
@@ -68,14 +75,22 @@ public class PlaceObject : NetworkBehaviour
         }
     }
 
+    private void SpawnFloatingText()
+    {
+        GameObject canvas = GameObject.Find("Canvas");
+        GameObject floatingText = Instantiate(FloatingTextNotEnoughGold, canvas.transform);
+
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
+        floatingText.transform.position = Input.mousePosition;
+    }
+
     public void BuyTurretGhost()
     {
         if (!GhostTurretHasBeenPlaced)
         {
-            if (playerGold.currentGold >= TurretBasicCost)
-            {
-                SpawnGhostTurret();
-            }
+
+            SpawnGhostTurret();
+            
         }
     }
 
@@ -120,26 +135,22 @@ public class PlaceObject : NetworkBehaviour
             
             switch (amountOfTurretsBrought)
             {
-                case 0:
-                    TurretBasicCost = 100;
-                    break;
                 case 1:
-                    TurretBasicCost = 150;
+                    TurretBasicCost = 50;
                     break;
                 case 2:
-                    TurretBasicCost = 200;
+                    TurretBasicCost = 100;
                     break;
                 case 3:
-                    TurretBasicCost = 250;
+                    TurretBasicCost = 200;
                     break;
                 case 4:
-                    TurretBasicCost = 275;
+                    TurretBasicCost = 250;
                     break;
                 case 5:
-                    TurretBasicCost = 300;
+                    TurretBasicCost = 275;
                     break;
                 default:
-                    //Whatever max is
                     TurretBasicCost = 300;
                     break;
             }

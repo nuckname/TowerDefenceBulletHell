@@ -24,8 +24,17 @@ public class SpawnEnemies : MonoBehaviour
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
     }
 
+    private int _freePlayTotalEnemies = 0;
     public int SpawnEnemiesPerRound(int currentRoundIndex)
     {
+        if (gameModeManager.CurrentMode == GameMode.Tutorial)
+        {
+            currentRound++;
+            //_freePlayTotalEnemies = FreePlay();
+            
+
+            return _freePlayTotalEnemies;
+        }
         //used in enemy prefab
         currentRound = currentRoundIndex;
         
@@ -60,6 +69,14 @@ public class SpawnEnemies : MonoBehaviour
         }
         Debug.LogError("Returned 0 Enemies ERROR");
         return 0;
+    }
+
+    private int FreePlay(int currentRoundIndex)
+    {
+        int totalAmountOfEnemies = 0;
+        
+        
+        return totalAmountOfEnemies;
     }
 
     private void Update()

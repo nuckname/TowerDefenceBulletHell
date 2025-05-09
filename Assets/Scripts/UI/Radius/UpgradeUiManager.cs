@@ -263,7 +263,7 @@ public class UpgradeUiManager : MonoBehaviour
         {
             Debug.LogWarning("cant, place turret or shoot");
             BindingOfIsaacShooting.disableShooting = true;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = false;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceTurret>().allowTurretPlacement = false;
             //GameObject.FindGameObjectWithTag("Player").GetComponent<OnClickEffect>().UiOpenCantUpgradeTurret = true;
             //GameObject.FindGameObjectWithTag("Player").GetComponent<SelectTurret>().AllowSelectingTurret = false;
         }
@@ -271,7 +271,7 @@ public class UpgradeUiManager : MonoBehaviour
         {
             Debug.LogWarning("CAN, place turret or shoot");
             BindingOfIsaacShooting.disableShooting = false;
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceObject>().allowTurretPlacement = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlaceTurret>().allowTurretPlacement = true;
             //GameObject.FindGameObjectWithTag("Player").GetComponent<OnClickEffect>().UiOpenCantUpgradeTurret = false;
             //GameObject.FindGameObjectWithTag("Player").GetComponent<SelectTurret>().AllowSelectingTurret = true;
 

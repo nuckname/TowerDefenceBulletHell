@@ -13,7 +13,7 @@ public enum BossState
     RandomShooting,
 }
 
-public class SmileBossReworked : MonoBehaviour
+public class SlimeBossReworked : MonoBehaviour
 {
     // --- Basic Stats ---
     [Header("Health")]
@@ -247,7 +247,15 @@ public class SmileBossReworked : MonoBehaviour
         {
             possibleAttacks.Remove(lastAttackUsed);
         }
-        
+            
         return possibleAttacks[Random.Range(0, possibleAttacks.Count)];
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RedBox"))
+        {
+            print("end game");
+        }
     }
 }

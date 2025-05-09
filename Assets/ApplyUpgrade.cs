@@ -95,7 +95,10 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
            
             //if ony allow once will remove it from the pool - not working
             //This must go before Generate Description as if you reroll it could re into what has been hidden
-            OnlyAllowedOnce(upgrade, targetTurret, upgradeDataOnTurret);
+            if (upgrade.onlyAllowedOnce)
+            {
+                OnlyAllowedOnce(upgrade, targetTurret, upgradeDataOnTurret);
+            }
             
             upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
@@ -127,9 +130,6 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
 
     private void OnlyAllowedOnce(Upgrade upgrade, GameObject targetTurret, UpgradeDataOnTurret upgradeDataOnTurret)
     {
-        if (!upgrade.onlyAllowedOnce) 
-            return;
-
         string currentRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().GetCurrentRarity();
 
         List<Upgrade> poolToHide;
@@ -157,7 +157,7 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
         if (idx >= 0)
         {
             poolToHide[idx].hideUpgrade = true;
-            Debug.Log($"-- Hiding upgrade {upgrade.upgradeName} from the {currentRarity} pool.");
+            Debug.Log($"-- Hiding upgrade {upgrade.upgradeName} from the {currentRarity} pool. Set to {poolToHide[idx].hideUpgrade}");
         }
     }
 

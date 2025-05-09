@@ -69,6 +69,14 @@ public class RoundStateManager : MonoBehaviour
     public void DisplayRoundUi(int currentRound)
     {
         RoundDisplayText.text = "Round Number: " + currentRound.ToString() + "/10";
+        
+        /*
+        // If Free Play, show “∞” instead of max
+        if (findObjectOfType<GameModeManager>().CurrentMode == GameMode.FreePlay)
+            RoundDisplayText.text = $"Round: {currentRound} / ∞";
+        else
+            RoundDisplayText.text = $"Round: {currentRound} / {NormalModeMaxRounds}";
+        */
     }
     
 
