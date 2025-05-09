@@ -9,7 +9,7 @@ public class SelectDescription : MonoBehaviour
 {
     private string[] threePotentialUpgrades = new string[3];
     private int upgradeIndex = 0;
-    string[] NormalUpgradesHardCodedOrder;
+    private string[] NormalUpgradesHardCodedOrder = new string[3];
 
 
     public UpgradeData upgradeData;
@@ -30,14 +30,11 @@ public class SelectDescription : MonoBehaviour
         switch (selectedRarity)
         {
             case "Normal Rarity":
-                //Hard Coded upgrades
-                /*
+                //Hard Coded order upgrades
                 NormalUpgradesHardCodedOrder[0] = "Increases projectile speed";
                 NormalUpgradesHardCodedOrder[1] = "Increases projectile lifetime";
                 NormalUpgradesHardCodedOrder[2] = "Increases firing rate";
                 return NormalUpgradesHardCodedOrder;
-                */
-                return SelectThreeUpgrades(upgradeDataOnTurret.normalUpgrades);
             case "Rare Rarity":
                 return SelectThreeUpgrades(upgradeDataOnTurret.rareUpgrades);
             case "Legendary Rarity":

@@ -116,6 +116,8 @@ public class PlaceObject : NetworkBehaviour
             Transform spriteTransform = currentGhost.transform.Find("TurretSprite_0");
             _turretBasic.GetComponent<StoreTurretDescriptionAndRarity>().storeTurretRotation = spriteTransform.rotation.eulerAngles.z;
             
+            amountOfTurretsBrought++;
+            
             switch (amountOfTurretsBrought)
             {
                 case 0:
@@ -142,7 +144,6 @@ public class PlaceObject : NetworkBehaviour
                     break;
             }
             
-            amountOfTurretsBrought++;
 
             
             GhostTurretHasBeenPlaced = false;

@@ -7,9 +7,7 @@ public class Maget : MonoBehaviour
     {
         if (other.gameObject.TryGetComponent<Collectable>(out Collectable collectable))
         {
-            print("Collecting");
             collectable.SetTarget(gameObject.transform.position);        
         }
-        print("No collecting");
     }
 }

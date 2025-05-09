@@ -257,6 +257,8 @@ MonoBehaviour:
   - 
   storedTurretSelectedRarity: 
   storeTurretPrice: 0
+  storeTurretRerollPrice: 0
+  storeTurretRotation: 0
 --- !u!114 &5926826856625178478
 MonoBehaviour:
   m_ObjectHideFlags: 0

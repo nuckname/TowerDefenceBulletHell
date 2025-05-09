@@ -33,7 +33,7 @@ public class GoldUi : MonoBehaviour
     // Update the TMP_Text component when gold changes
     private void UpdateGoldUI(int goldAmount)
     {
-        goldText.SetText("Gold: {0}", goldAmount);
+        goldText.SetText(goldAmount.ToString());
     }
 
 }
