@@ -34,6 +34,7 @@ public class PlaceTurret : NetworkBehaviour
     private void Start()
     {
         allowTurretPlacement = true;
+        TurretBasicCost = 25;
     }
 
     void Update()

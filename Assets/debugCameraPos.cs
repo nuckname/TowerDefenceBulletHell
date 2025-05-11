@@ -6,7 +6,6 @@ public class debugCameraPos : MonoBehaviour
     void Start()
     {
         Camera cam = GetComponent<Camera>();
-        print(cam.transform.position);
     }
 
     // Update is called once per frame

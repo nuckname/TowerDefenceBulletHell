@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 529e82d15ba23474f8bc2f505906c0b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3.1
   turretConfig: {fileID: 11400000, guid: 2841c27e2dff17b4a8337647cceb0f3b, type: 2}
 --- !u!114 &8335111444888934916
 MonoBehaviour:

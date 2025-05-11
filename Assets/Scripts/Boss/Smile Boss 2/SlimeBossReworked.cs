@@ -250,12 +250,4 @@ public class SlimeBossReworked : MonoBehaviour
             
         return possibleAttacks[Random.Range(0, possibleAttacks.Count)];
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("RedBox"))
-        {
-            print("end game");
-        }
-    }
 }

@@ -73,6 +73,7 @@ public class BossHealth : MonoBehaviour
             {
                 Destroy(spawnedHealthBar);
                 Destroy(gameObject);
+                DeathScreenController.Instance.Show();
             }
             else
             {

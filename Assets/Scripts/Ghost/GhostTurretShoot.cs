@@ -16,6 +16,7 @@ public class GhostTurretShoot : MonoBehaviour
 
     private void Start()
     {
+        fireCooldown = 0.2f;
         ghostTurretRotate = GetComponent<GhostTurretRotate>();
         if (ghostTurretRotate == null)
         {

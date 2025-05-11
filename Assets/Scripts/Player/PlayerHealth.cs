@@ -58,9 +58,7 @@ public class PlayerHealth : MonoBehaviour
     {
         SetGameModeOneHp();
         playerGoldScriptableObject.ResetGold();
-        
-        //deathScreen.SetActive(true);
-        
+
         DeathScreenController.Instance.Show();
 
         tutorialStateSO.playerTutorial = false;

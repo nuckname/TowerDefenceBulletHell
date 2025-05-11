@@ -21,8 +21,10 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameModeManager gameModeManager;
     
     private bool isInvincible = false;
+    [SerializeField] private GameObject spriteRendererGameObject;
     [SerializeField] private SpriteRenderer spriteRenderer;
-
+    
+    
     [SerializeField] private GameObject floatingTextPrefab;
 
     private void Awake()
@@ -30,12 +32,12 @@ public class PlayerCollision : MonoBehaviour
         playerHealthSpriteSheet = GetComponent<PlayerHealthSpriteSheet>();
         
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
-
         
         //So we can get the amount of gold for the enemies to drop. 
         rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
         //_currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
         
+        spriteRenderer = spriteRendererGameObject.GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
             Debug.LogError("SpriteRenderer not found! Make sure the PlayerCollision is a child of Player.");

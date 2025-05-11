@@ -9,7 +9,8 @@ public class RemoveObjectOnTrigger : MonoBehaviour
         
         if (other.tag == "GhostBullet"|| 
             other.tag == "Bullet" ||
-            other.tag == "PlayerBullet")
+            other.tag == "PlayerBullet" ||
+            other.tag == "SlimeBullet")
         {
             Destroy(other.gameObject);
         }

@@ -35,12 +35,6 @@ public class EnemyCollision : MonoBehaviour
             
         }
         
-        if (other.gameObject.CompareTag("PlayerCollision"))
-        {
-            print("GET OFF ME");
-            //Player hit?
-        }
-        
         if (other.gameObject.CompareTag("RedBox"))
         {
             if (enemyOnMapCounter != null)

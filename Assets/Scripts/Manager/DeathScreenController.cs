@@ -4,7 +4,6 @@ public class DeathScreenController : MonoBehaviour
 {
     public static DeathScreenController Instance { get; private set; }
 
-    [Tooltip("Assign your Death Screen UI here")]
     [SerializeField] private GameObject _deathScreen;
 
     private void Awake()
@@ -21,6 +20,8 @@ public class DeathScreenController : MonoBehaviour
     public void Show()
     {
         _deathScreen.SetActive(true);
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        Destroy(player);
     }
 
     /// <summary>

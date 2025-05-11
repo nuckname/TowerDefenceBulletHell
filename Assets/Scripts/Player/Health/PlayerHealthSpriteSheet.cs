@@ -8,6 +8,7 @@ public class PlayerHealthSpriteSheet : MonoBehaviour
 
     public void ChangePlayerSprite()
     {
+        /*
         int hp = playerHealth.currentHealth;
         if (hp > 0 && hp <= playerHealthSpriteSheet.healthColorPairs.Count)
         {
@@ -17,5 +18,6 @@ public class PlayerHealthSpriteSheet : MonoBehaviour
         {
             Debug.LogWarning("Invalid health value passed to ChangePlayerSprite.");
         }
+        */
     }
 }

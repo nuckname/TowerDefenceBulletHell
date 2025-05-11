@@ -44,6 +44,8 @@ TagManager:
   - WinScreen
   - TurretGhostCost
   - GhostBullet
+  - TurretDisplayText
+  - SlimeBullet
   layers:
   - Default
   - TransparentFX

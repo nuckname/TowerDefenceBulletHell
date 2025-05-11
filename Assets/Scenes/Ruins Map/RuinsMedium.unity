@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 40515853}
   m_Layer: 5
   m_Name: 'Turret Cost:'
-  m_TagString: Untagged
+  m_TagString: TurretDisplayText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10892,15 +10892,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1060564749848432935, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.6896458
+      value: 2.142868
       objectReference: {fileID: 0}
     - target: {fileID: 1060564749848432935, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.6896458
+      value: 2.142868
       objectReference: {fileID: 0}
     - target: {fileID: 1060564749848432935, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.6896458
+      value: 2.142868
       objectReference: {fileID: 0}
     - target: {fileID: 1060564749848432935, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10978,6 +10978,26 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5136715987262458720, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.78820825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136715987262458720, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8276186
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136715987262458720, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.78820825
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136715987262458720, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.54
+      objectReference: {fileID: 0}
+    - target: {fileID: 5136715987262458720, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.04
+      objectReference: {fileID: 0}
     - target: {fileID: 5385433305040771845, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
@@ -10997,7 +11017,7 @@ PrefabInstance:
     - target: {fileID: 6278807831771051293, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: spriteRenderer
       value: 
-      objectReference: {fileID: 1424209807}
+      objectReference: {fileID: 1542158978}
     - target: {fileID: 6278807831771051293, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: floatingTextPrefab
       value: 
@@ -11016,11 +11036,11 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: dc20add47829eeb48a996928135b853b, type: 2}
     - target: {fileID: 7100972034993782912, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_Size.x
-      value: 0.28016484
+      value: 0.35149863
       objectReference: {fileID: 0}
     - target: {fileID: 7100972034993782912, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_Size.y
-      value: 4.5365505
+      value: 4.3132257
       objectReference: {fileID: 0}
     - target: {fileID: 7100972034993782912, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_Enabled
@@ -11028,31 +11048,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7100972034993782912, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_Offset.x
-      value: -0.04855066
+      value: -0.08421759
       objectReference: {fileID: 0}
     - target: {fileID: 7100972034993782912, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_Offset.y
-      value: 1.0854654
+      value: 1.2360289
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.3169223
+      value: 0.30851752
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.3169223
+      value: 0.30851752
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.3169223
+      value: 0.30851752
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.05
+      value: 0.41
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.01
+      value: 0.31
       objectReference: {fileID: 0}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12227,11 +12247,6 @@ RectTransform:
   m_AnchoredPosition: {x: 825.001, y: -215.09277}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!212 &1424209807 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 7730378679451332562, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
-  m_PrefabInstance: {fileID: 1237834967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1429065324 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8970528670734177796, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
@@ -13404,6 +13419,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533093783}
   m_CullTransparentMesh: 1
+--- !u!212 &1542158978 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8629743287939533651, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+  m_PrefabInstance: {fileID: 1237834967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1547875037
 GameObject:
   m_ObjectHideFlags: 0
@@ -15175,7 +15195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealthSpriteSheet: {fileID: 11400000, guid: 0d2508bf341fca3469a83d20664d89b3, type: 2}
   playerHealth: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  playerSpriteRenderer: {fileID: 1424209807}
+  playerSpriteRenderer: {fileID: 1542158978}
 --- !u!1 &1849983302
 GameObject:
   m_ObjectHideFlags: 0

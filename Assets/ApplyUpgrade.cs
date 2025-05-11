@@ -30,7 +30,6 @@ public class ApplyUpgrade : MonoBehaviour
     public void ChosenUpgrade(string upgradeSelected, GameObject targetTurret)
     {
         targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
-
         
         if (string.IsNullOrEmpty(raritySelected))
         {
