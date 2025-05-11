@@ -23,6 +23,14 @@ public class PlaceTurret : NetworkBehaviour
     public bool allowTurretPlacement;
 
     [SerializeField] private GameObject FloatingTextNotEnoughGold;
+
+    [SerializeField] private TextMeshProUGUI displayTurretText;
+
+    private void Awake()
+    {
+        displayTurretText = GameObject.FindGameObjectWithTag("TurretDisplayText").GetComponent<TextMeshProUGUI>();
+    }
+
     private void Start()
     {
         allowTurretPlacement = true;
@@ -54,6 +62,7 @@ public class PlaceTurret : NetworkBehaviour
                 if (playerGold.SpendGold(TurretBasicCost))
                 {
                     SpawnBasicTurret();
+                    UpdateTurretDisplayText(TurretBasicCost);
                 }
             }
         }
@@ -73,6 +82,11 @@ public class PlaceTurret : NetworkBehaviour
         {
             PlaceGoldMiner();
         }
+    }
+
+    private void UpdateTurretDisplayText(float turretCost)
+    {
+        displayTurretText.text = $"Turret Cost ${turretCost}";
     }
 
     private void SpawnFloatingText()
