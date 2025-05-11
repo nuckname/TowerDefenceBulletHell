@@ -29,7 +29,7 @@ public class TutorialReworked : MonoBehaviour
         // Step 6
         "Tutorial Step 7:\n\nLeft Mouse Button to confirm turret placement.",
         // Step 7
-        "Tutorial Step 8:\n\nClick on an existing turret to open its upgrade UI.",
+        "Tutorial Step 8:\n\nClick on a turret to upgrade it.",
         // Step 10
         "Tutorial Step 11:\n\nPress TAB to start the round.",
         // Step 8
