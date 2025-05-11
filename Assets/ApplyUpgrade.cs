@@ -31,6 +31,7 @@ public class ApplyUpgrade : MonoBehaviour
     {
         targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
 
+        
         if (string.IsNullOrEmpty(raritySelected))
         {
             SetRarity(targetTurret);

@@ -91,7 +91,7 @@ public class BulletFactory : MonoBehaviour
         if (bulletCollision != null)
         {
             // Set pierce count
-            if (turretStats.pierceCount > 1)
+            if (turretStats.pierceCount >= 1)
             {
                 bulletCollision.pierceIndex = turretStats.pierceCount;
             }

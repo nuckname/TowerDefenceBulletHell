@@ -252,6 +252,7 @@ public class UpgradeUiManager : MonoBehaviour
                 currentRerollAmount = defaultRerollAmount;
                 rerollText.text = "Reroll: $" + storeTurretDescriptionAndRarity.storeTurretRerollPrice;
                 
+                
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
         }

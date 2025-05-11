@@ -5,8 +5,9 @@ public class RemoveObjectOnTrigger : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //other.tag == "EnemyBullet"||
+        
         if (other.tag == "GhostBullet"|| 
-            other.tag == "EnemyBullet"|| 
             other.tag == "Bullet" ||
             other.tag == "PlayerBullet")
         {

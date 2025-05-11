@@ -16,7 +16,7 @@ MonoBehaviour:
   currentWave: 4
   enemyGroups:
   - enemyHp: 8
-    count: 3
+    count: 4
     delayBeforeGroup: 0.51
     spawnInterval: 1.12
     bossSpawn: 0
@@ -30,13 +30,18 @@ MonoBehaviour:
     delayBeforeGroup: 0.79
     spawnInterval: 0.96
     bossSpawn: 0
+  - enemyHp: 6
+    count: 2
+    delayBeforeGroup: 0.65
+    spawnInterval: 0.43
+    bossSpawn: 0
   delayAfterWave: 2
   speedModifer: 1
   spawnInterval: 0.5
-  totalEnemies: 10
+  totalEnemies: 13
   amountOfGoldGainedForEachCoin: 10
   increaseGoldAmoutForEachCoinMutipler: 0
   amountOfGoldToDrop: 5
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 500
+  DEBUGtotalAmountOfGoldPerRound: 650
   boss: {fileID: 0}

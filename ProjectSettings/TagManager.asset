@@ -43,6 +43,7 @@ TagManager:
   - tutorialText
   - WinScreen
   - TurretGhostCost
+  - GhostBullet
   layers:
   - Default
   - TransparentFX

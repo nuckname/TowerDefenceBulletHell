@@ -43,7 +43,7 @@ public class BulletCollision : MonoBehaviour
             {
                 playerGoldScriptableObject.AddGold(5);
             }
-            
+         /*   
             if (slowOnHitEnabledBullet)
             {
                 Debug.LogWarning("Slow is not set up correctly");
@@ -51,18 +51,16 @@ public class BulletCollision : MonoBehaviour
 
                 ApplySlow(turretStats.slowAmount, turretStats.slowDuration);
             }
-            
-            if (pierceIndex > 0)
-            {
-                pierceIndex--;
-            }
-            else
-            {
-                bulletPool.ReturnBullet(gameObject);
+            */
+         
+             if (pierceIndex <= 0)
+             {
+                 bulletPool.ReturnBullet(gameObject);
+                 return;
+             }
 
-                //Destroy(gameObject);
-            }
-            
+             print("- index");
+             pierceIndex--;
         }
 
         if (other.gameObject.CompareTag("PlayerBullet"))

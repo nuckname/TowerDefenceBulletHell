@@ -259,7 +259,7 @@ MonoBehaviour:
   modifierBulletSpeed: 0
   modifierSlowerBulletSpeed: 0
   isTurretHoming: 0
-  pierceCount: 1
+  pierceCount: 0
   angleSpread: 20
   extraProjectiles: 0
   Shoot4Projectiles: 0
