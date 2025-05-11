@@ -209,6 +209,38 @@ public class UpgradeUiManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (gameObject.activeInHierarchy)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Reroll();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ExitSelection();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                print("hgey");
+                ClickedToppedButton();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                ClickedMiddleButton();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                ClickedBottomButton();
+            }
+        }
+    }
+
     public void UpdateBackgroundColourUi(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity)
     {
         changeUiColourBackGround.UpdateUiBackground(storeTurretDescriptionAndRarity.storedTurretSelectedRarity);

@@ -22,7 +22,7 @@ public class BindingOfIsaacShooting : MonoBehaviour
 
     [Header("Reload Bar Settings")]
     public Vector2 barSize       = new Vector2(40, 6);
-    public Vector2 barOffset     = new Vector2(-70, 10);
+    public Vector2 barOffset     = new Vector2(10, 10);
     public Color  barBackground  = new Color(0, 0, 0, 0.6f);
     public Color  barFill        = new Color(1, 1, 1, 0.9f);
 

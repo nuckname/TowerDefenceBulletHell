@@ -46,6 +46,7 @@ TagManager:
   - GhostBullet
   - TurretDisplayText
   - SlimeBullet
+  - UpgradePannel
   layers:
   - Default
   - TransparentFX
