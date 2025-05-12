@@ -20,8 +20,6 @@ public class GhostTurretRotate : MonoBehaviour
         float scroll = Input.GetAxis("Mouse ScrollWheel");
         if (Mathf.Abs(scroll) > 0.0001f)
         {
-            Debug.Log($"Scroll delta: {scroll:F3}");
-
             transform.Rotate(0f, 0f, -scroll * scrollSpeed);
 
             savedRotation = transform.rotation;

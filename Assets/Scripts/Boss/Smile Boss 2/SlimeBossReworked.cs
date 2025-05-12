@@ -55,14 +55,14 @@ public class SlimeBossReworked : MonoBehaviour
     
     [Header("UI")]
     [SerializeField] private GameObject deathScreen;
-
+    
     void Start()
     {
         currentHealth = maxHealth;
         currentState = BossState.Normal;
         attackTimer = 2;
     }
-    
+
     void Update()
     {
         switch (currentState)
@@ -73,7 +73,6 @@ public class SlimeBossReworked : MonoBehaviour
             case BossState.ExplosiveAttack:
                 HandleExplosiveAttackState();
                 break;
-
         }
     }
     

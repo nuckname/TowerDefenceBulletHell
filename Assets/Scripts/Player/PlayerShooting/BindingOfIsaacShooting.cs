@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
+using UnityEngine.UIElements;
 
 public class BindingOfIsaacShooting : MonoBehaviour
 {
@@ -37,6 +39,17 @@ public class BindingOfIsaacShooting : MonoBehaviour
         if (disableShooting) 
             return;
 
+        // 1) UI-check
+        if (IsPointerOverUIButton())
+            return;
+
+        // 2) World-raycast check
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit2D hit     = Physics2D.Raycast(worldPoint, Vector2.zero);
+        if (hit.collider != null && hit.collider.CompareTag("Turret"))
+            return;
+
+        // … rest of your existing reload/cooldown/shoot logic …
         if (isReloading)
             return;
 
@@ -50,6 +63,28 @@ public class BindingOfIsaacShooting : MonoBehaviour
         {
             Shoot();
         }
+    }
+
+    //so we dont shoot the continue button
+    private bool IsPointerOverUIButton()
+    {
+        // First, is the pointer over *any* UI?
+        if (!EventSystem.current.IsPointerOverGameObject())
+            return false;
+
+        // Raycast into UGUI to see *which* UI element is under it
+        var ped     = new PointerEventData(EventSystem.current) { position = Input.mousePosition };
+        var results = new System.Collections.Generic.List<RaycastResult>();
+        EventSystem.current.RaycastAll(ped, results);
+
+        foreach (var r in results)
+        {
+            // Note the full qualification here
+            if (r.gameObject.TryGetComponent<UnityEngine.UI.Button>(out _))
+                return true;
+        }
+
+        return false;
     }
 
     private void Shoot()

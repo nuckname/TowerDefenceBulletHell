@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 7397882109333557167}
   - component: {fileID: 6631793544804829961}
   - component: {fileID: -7641173465562928923}
+  - component: {fileID: -6285661810729170821}
+  - component: {fileID: 3092008261287848587}
+  - component: {fileID: -925454356189811349}
   m_Layer: 31
   m_Name: SnakeHead
   m_TagString: Untagged
@@ -187,6 +190,8 @@ MonoBehaviour:
   - {fileID: 8634807209124738726, guid: 880fca1c2e0bb614e9f305dddaaf9c42, type: 3}
   - {fileID: 1720139466563595322, guid: e0e9747c996563446bf696ec77803b68, type: 3}
   - {fileID: 7397809755169166948, guid: 8e038697b73bae54f89b4f0c930a5a19, type: 3}
+  - {fileID: 7397809755169166948, guid: 8e038697b73bae54f89b4f0c930a5a19, type: 3}
+  - {fileID: 0}
   currentWaypointIndex: 0
   numberOfBodySegments: 5
   bodySegmentPrefab: {fileID: 5733080803690325748, guid: 5c04af8bfe924974485041b07f4eaacd, type: 3}
@@ -230,3 +235,52 @@ MonoBehaviour:
   amountOfHeartsToDrop: 5
   coin: {fileID: 335812380344281823, guid: d0558943cccf3904eb0048baedafe1bb, type: 3}
   heart: {fileID: 4443788591572880915, guid: c258064069830aa469d492c714873749, type: 3}
+--- !u!114 &-6285661810729170821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454750409857608013}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d69a4d4baa7c2140bbc56b98da1643a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 2
+--- !u!114 &3092008261287848587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454750409857608013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dcb86aca2a4d746b92a481ea946e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDie: {fileID: -925454356189811349}
+  maxHealth: 100
+  currentHealth: 0
+  spriteRenderer:
+  - {fileID: 1038041757660097850}
+  - {fileID: 0}
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
+  healthBarPrefab: {fileID: 4970968215309618309, guid: b74c6af25f9f44645a190631b09c12ed, type: 3}
+  isSnake: 1
+--- !u!114 &-925454356189811349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454750409857608013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c19941caea5cd5458404c940f11945b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyDropItems: {fileID: -7641173465562928923}
+  enemyOnMapCounter: {fileID: 0}

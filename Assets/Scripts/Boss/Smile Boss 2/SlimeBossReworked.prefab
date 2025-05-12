@@ -229,7 +229,8 @@ MonoBehaviour:
   _enemyDie: {fileID: 8334307879350242069}
   maxHealth: 85
   currentHealth: 85
-  spriteRenderer: {fileID: 4606486017045271472}
+  spriteRenderer:
+  - {fileID: 4606486017045271472}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2
   healthBarPrefab: {fileID: 4970968215309618309, guid: b74c6af25f9f44645a190631b09c12ed, type: 3}

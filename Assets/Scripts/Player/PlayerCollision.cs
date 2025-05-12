@@ -27,8 +27,11 @@ public class PlayerCollision : MonoBehaviour
     
     [SerializeField] private GameObject floatingTextPrefab;
 
+    private ScreenFlashOnDamage screenFlashOnDamage;
     private void Awake()
     {
+        screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
+        
         playerHealthSpriteSheet = GetComponent<PlayerHealthSpriteSheet>();
         
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
@@ -90,6 +93,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void TakeDamage(int amount)
     {
+        screenFlashOnDamage.TakeDamage();
+        
         playerHealthScriptabeObject.TakeDamage(amount);
         
         playerHealthSpriteSheet.ChangePlayerSprite();

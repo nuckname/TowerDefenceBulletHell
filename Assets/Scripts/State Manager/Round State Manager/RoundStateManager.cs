@@ -78,6 +78,14 @@ public class RoundStateManager : MonoBehaviour
             RoundDisplayText.text = $"Round: {currentRound} / {NormalModeMaxRounds}";
         */
     }
+
+    public void ButtonClickStartNextRound()
+    {
+        if (currentState == roundOverState)
+        {
+            SwitchState(this.roundInProgressState);
+        }
+    }
     
 
     public void SpawnBasicEnemies(int currentRoundIndex)

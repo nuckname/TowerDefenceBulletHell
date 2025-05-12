@@ -179,3 +179,4 @@ MonoBehaviour:
   shootInterval: 3
   projectileCount: 8
   projectileSpeed: 4
+  enemyFollowPath: {fileID: 0}

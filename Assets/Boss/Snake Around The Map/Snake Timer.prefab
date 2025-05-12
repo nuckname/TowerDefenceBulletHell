@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 14
+  m_text: 53
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 71a636055706c1c45a22d1d7289f6b30, type: 2}
   m_sharedMaterial: {fileID: 7139664725292066628, guid: 71a636055706c1c45a22d1d7289f6b30, type: 2}
@@ -151,4 +151,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 5318280523750397373}
   remainingTime: 53
-  VictoryScreen: {fileID: 3632688943598190218, guid: b741c3bbc6c26974189c6a3a99c62507, type: 3}

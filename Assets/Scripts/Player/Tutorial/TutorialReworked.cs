@@ -71,11 +71,14 @@ public class TutorialReworked : MonoBehaviour
 
             case 3: // “Use the SCROLL WHEEL to rotate your ghost turret.”
                 if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0f)
+                    //Cant press Mouse 1
                     NextStep();
                 break;
 
             case 4: // “Press R to snap-rotate your turret…”
+                    //Cant press mouse 1
             case 5: // “Or just Press R to rotate 90 degrees.”
+                    //Cant press mouse 1
                 if (Input.GetKeyDown(KeyCode.R))
                     NextStep();
                 break;

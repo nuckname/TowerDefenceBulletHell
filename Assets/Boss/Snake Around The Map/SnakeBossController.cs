@@ -1,8 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum SnakeBossState { Normal, Enraged, Dead }
+public enum SnakeBossState { Normal, Enraged, FollowPath, Dead }
 
 public class SnakeBossController : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class SnakeBossController : MonoBehaviour
     private bool countedLastWaypointThisLap = false;
 
     [Header("Waypoints")]
-    public List<Transform> waypoints;  // Assign via Inspector
+    private Transform[] waypoints;  // Assign via Inspector
     public int currentWaypointIndex = 0;
 
     [Header("Following Body Segments")]
@@ -42,6 +43,41 @@ public class SnakeBossController : MonoBehaviour
     [SerializeField] private GameObject VictoryScreen;
     [SerializeField] private TutorialStateSO tutorialStateSO;
 
+    private int waypointIndex = 0;
+    
+    private EnemyFollowPath enemyFollowPath;
+    private BossHealth bossHealth;
+
+    private void Awake()
+    {
+        enemyFollowPath = GetComponent<EnemyFollowPath>();
+        bossHealth = GetComponent<BossHealth>();
+
+        GameObject waypointParent = GameObject.FindGameObjectWithTag("GameManager").GetComponent<MapPath>().waypointsSnakeBoss;
+
+        if (waypointParent != null)
+        {
+            // Get all children transforms, but skip the parent itself
+            List<Transform> waypointList = new List<Transform>();
+            foreach (Transform child in waypointParent.transform)
+            {
+                waypointList.Add(child);
+            }
+
+            waypoints = waypointList.ToArray();
+
+            if (waypoints.Length > 0)
+            {
+                transform.position = waypoints[waypointIndex].position;
+            }
+            else
+            {
+                Debug.LogError("No waypoint children found under the waypoint parent object.");
+            }
+        }
+    }
+
+
     private void Start()
     {
         currentState = SnakeBossState.Normal;
@@ -51,6 +87,9 @@ public class SnakeBossController : MonoBehaviour
         
         Canvas canvas = GameObject.FindGameObjectWithTag("canvas").GetComponent<Canvas>();
         spawnedSnakeTimer = Instantiate(snakeTimer, canvas.transform);
+
+        //temp
+        enemyFollowPath.enabled = false;
     }
 
     private void Update()
@@ -58,14 +97,20 @@ public class SnakeBossController : MonoBehaviour
         switch (currentState)
         {
             case SnakeBossState.Normal:
-                NormalUpdate();
+                FollowPath();
+
+//                NormalUpdate();
                 break;
             case SnakeBossState.Enraged:
                 EnragedUpdate();
                 break;
+            case SnakeBossState.FollowPath:
+                FollowPath();
+                break;
             case SnakeBossState.Dead:
                 // (Do nothing or add death behavior)
                 break;
+            
         }
 
         // Move the following segments regardless of state.
@@ -78,20 +123,29 @@ public class SnakeBossController : MonoBehaviour
         MoveHead(currentMoveSpeed);
         
         // When reaching the last waypoint, transition to Enraged state.
-        if (currentWaypointIndex == waypoints.Count - 1 && 
+        if (currentWaypointIndex == waypoints.Length - 1 && 
             Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < lastWaypointThreshold)
         {
             TransitionToEnraged();
         }
     }
 
+    private void FollowPath()
+    {
+        MoveHead(currentMoveSpeed * 2f);
+        
+        bossHealth.SpawnHealthBar(1000);
+        
+        enemyFollowPath.enabled = enabled;
+    }
+    
     // ENRAGED STATE: Move and attack faster, and count laps.
     private void EnragedUpdate()
     {
         MoveHead(currentMoveSpeed * enragedMoveSpeedMultiplier);
         
         // Count laps: when near the last waypoint, increment the lap counter once.
-        if (currentWaypointIndex == waypoints.Count - 1 &&
+        if (currentWaypointIndex == waypoints.Length - 1 &&
             Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) < lastWaypointThreshold)
         {
             if (!countedLastWaypointThisLap)
@@ -103,7 +157,7 @@ public class SnakeBossController : MonoBehaviour
                 // After two laps, destroy the boss head.
                 if (lapCount >= 2)
                 {
-                    DestroyBoss();
+                    currentState = SnakeBossState.FollowPath;
                 }
             }
         }
@@ -116,7 +170,7 @@ public class SnakeBossController : MonoBehaviour
     // Moves the snake head toward the current waypoint using the provided speed.
     private void MoveHead(float speed)
     {
-        if (waypoints.Count == 0)
+        if (waypoints.Length == 0)
             return;
 
         Transform targetWaypoint = waypoints[currentWaypointIndex];
@@ -126,7 +180,7 @@ public class SnakeBossController : MonoBehaviour
         // When close to the target waypoint, move to the next one.
         if (Vector3.Distance(transform.position, targetWaypoint.position) < 0.1f)
         {
-            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Count;
+            currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length;
         }
     }
 
@@ -144,6 +198,7 @@ public class SnakeBossController : MonoBehaviour
         }
         // Note: Static body segments remain fixed.
     }
+    
 
     // Transition from Normal to Enraged: stop spawning static segments and increase speed.
     private void TransitionToEnraged()

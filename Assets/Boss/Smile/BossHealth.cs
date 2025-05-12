@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Mime;
+using NUnit.Framework.Constraints;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,7 +16,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
 
     [Header("Flash Effect")]
-    public SpriteRenderer spriteRenderer;
+    public List<SpriteRenderer> spriteRenderer;
     public Color damageColor = Color.red;
     public float flashDuration = 0.2f;
 
@@ -27,6 +29,7 @@ public class BossHealth : MonoBehaviour
     private float redBoxTriggerDelay = 5f;
     private float spawnTime;
 
+    [SerializeField] private bool isSnake = false; 
     private void Start()
     {
         
@@ -40,23 +43,25 @@ public class BossHealth : MonoBehaviour
             return;
         }
 
-        spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
-        healthBarSlider = spawnedHealthBar.GetComponent<Slider>();
-        
-        healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
-        
-        
 
-        if (healthBarSlider == null)
+        if (!isSnake)
         {
-            Debug.LogError("Health bar slider is missing from the instantiated object!");
-            return;
+            spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
+            
+            healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
         }
-
+        
         RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector2(0, 0); 
 
         UpdateHealthUI();
+    }
+
+    public void SpawnHealthBar(int healthAmount)
+    {
+        Canvas canvas = FindObjectOfType<Canvas>();
+        spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
+        currentHealth = healthAmount;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -69,7 +74,8 @@ public class BossHealth : MonoBehaviour
 
         if (collision.CompareTag("RedBox"))
         {
-            if (Time.time - spawnTime >= redBoxTriggerDelay)
+            print("hacking snake not working on end eaching end");
+            if (Time.time - spawnTime >= redBoxTriggerDelay && !isSnake)
             {
                 Destroy(spawnedHealthBar);
                 Destroy(gameObject);
@@ -116,9 +122,12 @@ public class BossHealth : MonoBehaviour
 
     private IEnumerator FlashEffect()
     {
-        spriteRenderer.color = damageColor;
-        yield return new WaitForSeconds(flashDuration);
-        spriteRenderer.color = Color.white; // Reset color
+        foreach (SpriteRenderer _spriteRenderer in spriteRenderer)
+        {
+            _spriteRenderer.color = damageColor;
+            yield return new WaitForSeconds(flashDuration);
+            _spriteRenderer.color = Color.white; 
+        }
     }
 
     private void Die()
