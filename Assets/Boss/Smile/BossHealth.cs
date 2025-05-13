@@ -43,18 +43,17 @@ public class BossHealth : MonoBehaviour
             return;
         }
 
-
         if (!isSnake)
         {
             spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
             
             healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
+            RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(0, 0); 
+            
+            UpdateHealthUI();
         }
         
-        RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
-        rectTransform.anchoredPosition = new Vector2(0, 0); 
-
-        UpdateHealthUI();
     }
 
     public void SpawnHealthBar(int healthAmount)

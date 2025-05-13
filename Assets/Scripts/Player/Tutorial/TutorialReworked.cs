@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -8,11 +9,15 @@ public class TutorialReworked : MonoBehaviour
 
     [Header("Tutorial State")]
     [SerializeField]
-    private TutorialStateSO tutorialStateSO;
+    private TutorialStateSO _tutorialStateSO;
 
-    private int currentStep = 0;
+    private int _currentStep = 0;
 
-    private readonly string[] messages = new string[]
+    [SerializeField] 
+    private PlaceTurret placeTurret;
+
+    private GhostBlockPathCollision ghostBlockPathCollision;
+    private readonly string[] _messages = new string[]
     {
         // Step 0
         "Tutorial Step 1:\n\nUse WASD to move.",
@@ -38,18 +43,28 @@ public class TutorialReworked : MonoBehaviour
 
     void Start()
     {
-        if (tutorialStateSO.playerTutorial)
-            tutorialText.text = messages[currentStep];
+        if (_tutorialStateSO.playerTutorial)
+        {
+            tutorialText.text = _messages[_currentStep];
+            placeTurret.tutorialCannotPlaced = true;
+            print("cannot place turret");
+        }
         else
+        {
             tutorialText.text = "";
+            placeTurret.tutorialCannotPlaced = false;
+            print("can place turret");
+        }
+        
+        
     }
 
     void Update()
     {
-        if (!tutorialStateSO.playerTutorial)
+        if (!_tutorialStateSO.playerTutorial)
             return;
 
-        switch (currentStep)
+        switch (_currentStep)
         {
             case 0: // “Use WASD to move.”
                 if (Input.GetKeyDown(KeyCode.W) ||
@@ -66,39 +81,64 @@ public class TutorialReworked : MonoBehaviour
 
             case 2: // “Press SPACE to spawn a ghost turret.”
                 if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
+                }
                 break;
-
             case 3: // “Use the SCROLL WHEEL to rotate your ghost turret.”
                 if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0f)
-                    //Cant press Mouse 1
+                {
+                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
+                    
+                }
                 break;
 
             case 4: // “Press R to snap-rotate your turret…”
-                    //Cant press mouse 1
-            case 5: // “Or just Press R to rotate 90 degrees.”
-                    //Cant press mouse 1
                 if (Input.GetKeyDown(KeyCode.R))
+                {
+                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
+                }
                 break;
-
-            case 6: // “Left Mouse Button to confirm turret placement.”
-                if (Input.GetMouseButtonDown(0))
+            case 5: // “Or just Press R to rotate 90 degrees.”
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
+                }
+                break;
+            case 6: // “Left Mouse Button to confirm turret placement.”
+                placeTurret.tutorialCannotPlaced = false;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    NextStep();
+                }
                 break;
 
             case 7: // “Click on an existing turret to open its upgrade UI.”
                 if (Input.GetMouseButtonDown(0))
-                    NextStep();
+                {
+                    // 1) convert screen→world
+                    Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    // 2) shoot a zero‑length Raycast to see what’s under the cursor
+                    RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        
+                    // 3) if we hit something tagged “Turret”, advance
+                    if (hit.collider != null && hit.collider.CompareTag("Turret"))
+                    {
+                        NextStep();
+                    }
+                }
                 break;
-
             case 8: // “Press TAB to start the round.”
                 if (Input.GetKeyDown(KeyCode.Tab))
                     NextStep();
                 break;
 
             case 9: // “Hold Left Ctrl + Left Mouse Click during the round to apply an upgrade.”
+                //10 second timer???
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
                     NextStep();
                 break;
@@ -108,9 +148,9 @@ public class TutorialReworked : MonoBehaviour
 
     private void NextStep()
     {
-        currentStep++;
-        if (currentStep < messages.Length)
-            tutorialText.text = messages[currentStep];
+        _currentStep++;
+        if (_currentStep < _messages.Length)
+            tutorialText.text = _messages[_currentStep];
         else
             EndTutorial();
     }

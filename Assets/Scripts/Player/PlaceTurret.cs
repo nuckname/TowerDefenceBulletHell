@@ -26,6 +26,7 @@ public class PlaceTurret : NetworkBehaviour
 
     [SerializeField] private TextMeshProUGUI displayTurretText;
 
+    public bool tutorialCannotPlaced = false;
     private void Awake()
     {
         displayTurretText = GameObject.FindGameObjectWithTag("TurretDisplayText").GetComponent<TextMeshProUGUI>();
@@ -57,6 +58,12 @@ public class PlaceTurret : NetworkBehaviour
                 GhostBlockPathCollision ghostBlockPathCollision = GameObject.FindGameObjectWithTag("GhostTurret").GetComponent<GhostBlockPathCollision>();
                 if (!ghostBlockPathCollision.canPlaceGhost)
                 {
+                    return;
+                }
+
+                if (tutorialCannotPlaced)
+                {
+                    Debug.Log("Cant place turret becuase of tutorial.");
                     return;
                 }
                 
