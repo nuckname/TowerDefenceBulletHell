@@ -32,35 +32,27 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private bool isSnake = false; 
     private void Start()
     {
-        
         currentHealth = maxHealth;
         spawnTime = Time.time;
 
-        Canvas canvas = FindObjectOfType<Canvas>();
-        if (canvas == null)
-        {
-            Debug.LogError("Canvas not found in the scene!");
-            return;
-        }
-
         if (!isSnake)
         {
-            spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
-            
-            healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
-            RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector2(0, 0); 
-            
-            UpdateHealthUI();
+            SpawnHealthBar(85);
         }
-        
     }
 
     public void SpawnHealthBar(int healthAmount)
     {
         Canvas canvas = FindObjectOfType<Canvas>();
         spawnedHealthBar = Instantiate(healthBarPrefab, canvas.transform);
+            
+        healthBarTexted = spawnedHealthBar.GetComponent<TextMeshProUGUI>();
+        RectTransform rectTransform = spawnedHealthBar.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(0, 0); 
         currentHealth = healthAmount;
+        maxHealth = healthAmount;
+        
+        UpdateHealthUI();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

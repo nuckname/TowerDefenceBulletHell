@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: PlayerOneHealth
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 10
+  currentHealth: 5
   floatingTextPrefab: {fileID: 0}
   playerHealth: {fileID: 0}

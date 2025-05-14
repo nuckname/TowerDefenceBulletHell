@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: -925454356189811349}
   m_Layer: 31
   m_Name: SnakeHead
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -125,11 +125,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.17817724}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +139,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 3.66723}
+  m_Size: {x: 2.83, y: 2.15}
   m_EdgeRadius: 0
 --- !u!50 &2527672533325824611
 Rigidbody2D:
@@ -183,15 +183,10 @@ MonoBehaviour:
   currentState: 0
   normalMoveSpeed: 3
   enragedMoveSpeedMultiplier: 3
+  followMoveSpeedMultiplier: 0.75
+  currentMoveSpeed: 0
   lapCount: 0
   lastWaypointThreshold: 3
-  waypoints:
-  - {fileID: 712216043106278794, guid: 72e96939fe7870c4cb3f746d407edeae, type: 3}
-  - {fileID: 8634807209124738726, guid: 880fca1c2e0bb614e9f305dddaaf9c42, type: 3}
-  - {fileID: 1720139466563595322, guid: e0e9747c996563446bf696ec77803b68, type: 3}
-  - {fileID: 7397809755169166948, guid: 8e038697b73bae54f89b4f0c930a5a19, type: 3}
-  - {fileID: 7397809755169166948, guid: 8e038697b73bae54f89b4f0c930a5a19, type: 3}
-  - {fileID: 0}
   currentWaypointIndex: 0
   numberOfBodySegments: 5
   bodySegmentPrefab: {fileID: 5733080803690325748, guid: 5c04af8bfe924974485041b07f4eaacd, type: 3}
@@ -205,6 +200,7 @@ MonoBehaviour:
   bossDie: {fileID: 6631793544804829961}
   VictoryScreen: {fileID: 3632688943598190218, guid: b741c3bbc6c26974189c6a3a99c62507, type: 3}
   tutorialStateSO: {fileID: 11400000, guid: dc20add47829eeb48a996928135b853b, type: 2}
+  spawnPoint: {fileID: 1742055477075043378, guid: 4d87a5790e9a2a942bf7fa039de4ff39, type: 3}
 --- !u!114 &6631793544804829961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,7 +251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1454750409857608013}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38dcb86aca2a4d746b92a481ea946e99, type: 3}
   m_Name: 

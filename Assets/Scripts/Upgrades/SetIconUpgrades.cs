@@ -9,6 +9,8 @@ public class SetIconUpgrades : MonoBehaviour
     [SerializeField] private Image imageBoxMiddle;
     [SerializeField] private Image imageBoxBottom;
 
+    [SerializeField] private List<String> descriptionsToNotRotate = new List<string>();
+    
     [SerializeField] private GameObject turret;
     private UpgradeDataOnTurret upgradeDataOnTurret;
     
@@ -22,25 +24,48 @@ public class SetIconUpgrades : MonoBehaviour
         FixAnchors(imageBoxBottom.rectTransform);
     }
 
+    private void SetRectSize(RectTransform rt, float width, float height)
+    {
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,   height);
+    }
+
+    private void RotateImage(float turretRotation)
+    {
+        // 1) Rotate each icon to match the turret’s orientation:
+        Quaternion rot = Quaternion.Euler(0f, 0f, turretRotation);
+        imageBoxTop.rectTransform.localRotation    = rot;
+        imageBoxMiddle.rectTransform.localRotation = rot;
+        imageBoxBottom.rectTransform.localRotation = rot;
+
+        // 2) Normalize angle into [0,360)
+        float angle = turretRotation % 360f;
+        if (angle < 0f) angle += 360f;
+
+        // 3) If exactly on its side, force the wide rectangle. 
+        //    Otherwise (0° or 180°) leave the size alone.
+        if (Mathf.Approximately(angle, 90f) ||
+            Mathf.Approximately(angle, 270f))
+        {
+            // wide & flat for sideways
+            float wideW = 1079f, wideH = 14f;
+            SetRectSize(imageBoxTop.rectTransform,    wideW, wideH);
+            SetRectSize(imageBoxMiddle.rectTransform, wideW, wideH);
+            SetRectSize(imageBoxBottom.rectTransform, wideW, wideH);
+        }
+    }
+    
     /// <summary>
     /// Assigns upgrade icons, aligns them to the turret's rotation, and enforces square dimensions.
     /// </summary>
     public void SetIcons(string[] upgradeDescriptions, string raritySelected, float turretRotation)
     {
-        // Desired icon size
-        /*
-        const float iconSize = 100f;
-        SetSquareSize(imageBoxTop.rectTransform, iconSize);
-        SetSquareSize(imageBoxMiddle.rectTransform, iconSize);
-        SetSquareSize(imageBoxBottom.rectTransform, iconSize);
-
-        // Rotate each icon to match turret
-        Vector3 zRot = new Vector3(0f, 0f, turretRotation);
-        imageBoxTop.rectTransform.localEulerAngles = zRot;
-        imageBoxMiddle.rectTransform.localEulerAngles = zRot;
-        imageBoxBottom.rectTransform.localEulerAngles = zRot;
-
-        */
+        if (raritySelected != "Normal Rarity")
+        {
+            RotateImage(turretRotation);
+        }
+       
+        
         
         // Helper to assign sprite based on description list
         void Assign(Image img, List<Upgrade> list, string desc)

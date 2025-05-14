@@ -9,9 +9,15 @@ public class SnakeBossController : MonoBehaviour
 {
     [Header("State Machine Settings")]
     public SnakeBossState currentState = SnakeBossState.Normal;
+
+    [Header("Follow Movement Speed")]
     public float normalMoveSpeed = 2f;
-    public float enragedMoveSpeedMultiplier = 2f;
+    public float enragedMoveSpeedMultiplier = 1.5f;
+    public float followMoveSpeedMultiplier = 0.75f;
+    
+    [SerializeField]
     private float currentMoveSpeed;
+    
     public int lapCount = 0;
     public float lastWaypointThreshold = 3f;
     private bool countedLastWaypointThisLap = false;
@@ -47,7 +53,10 @@ public class SnakeBossController : MonoBehaviour
     
     private EnemyFollowPath enemyFollowPath;
     private BossHealth bossHealth;
-
+    
+    [Header("SpawnPoint")]
+    [SerializeField] private GameObject spawnPoint;
+    
     private void Awake()
     {
         enemyFollowPath = GetComponent<EnemyFollowPath>();
@@ -88,8 +97,8 @@ public class SnakeBossController : MonoBehaviour
         Canvas canvas = GameObject.FindGameObjectWithTag("canvas").GetComponent<Canvas>();
         spawnedSnakeTimer = Instantiate(snakeTimer, canvas.transform);
 
-        //temp
         enemyFollowPath.enabled = false;
+        bossHealth.enabled = false;
     }
 
     private void Update()
@@ -97,9 +106,7 @@ public class SnakeBossController : MonoBehaviour
         switch (currentState)
         {
             case SnakeBossState.Normal:
-                FollowPath();
-
-//                NormalUpdate();
+                NormalUpdate();
                 break;
             case SnakeBossState.Enraged:
                 EnragedUpdate();
@@ -110,7 +117,6 @@ public class SnakeBossController : MonoBehaviour
             case SnakeBossState.Dead:
                 // (Do nothing or add death behavior)
                 break;
-            
         }
 
         // Move the following segments regardless of state.
@@ -130,13 +136,24 @@ public class SnakeBossController : MonoBehaviour
         }
     }
 
-    private void FollowPath()
+    private void StartFollowPath()
     {
-        MoveHead(currentMoveSpeed * 2f);
+        //Spawn HP bar and stuf
         
-        bossHealth.SpawnHealthBar(1000);
+        MoveHead(currentMoveSpeed * followMoveSpeedMultiplier);
+
+        bossHealth.enabled = false;
         
         enemyFollowPath.enabled = enabled;
+
+        bossHealth.SpawnHealthBar(1000);
+        
+        currentState = SnakeBossState.FollowPath;
+    }
+    
+    private void FollowPath()
+    {
+        
     }
     
     // ENRAGED STATE: Move and attack faster, and count laps.
@@ -157,7 +174,10 @@ public class SnakeBossController : MonoBehaviour
                 // After two laps, destroy the boss head.
                 if (lapCount >= 2)
                 {
-                    currentState = SnakeBossState.FollowPath;
+                    
+                    StartFollowPath();
+                    
+
                 }
             }
         }
@@ -280,6 +300,7 @@ public class SnakeBossController : MonoBehaviour
         bodySegments.Clear();
         Vector3 spawnDirection = -transform.right;
         Vector3 lastPosition = transform.position;
+        print(lastPosition);
 
         for (int i = 0; i < numberOfBodySegments; i++)
         {
@@ -293,7 +314,7 @@ public class SnakeBossController : MonoBehaviour
     // On collision: in Enraged state, if the snake head hits a snake body, destroy that body segment.
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (currentState == SnakeBossState.Enraged && collision.CompareTag("SnakeBody"))
+        if (collision.CompareTag("SnakeBody"))
         {
             Destroy(collision.gameObject);
             if (staticBodySegments.Contains(collision.transform))
