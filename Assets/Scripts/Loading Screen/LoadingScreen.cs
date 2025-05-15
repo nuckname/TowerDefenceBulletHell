@@ -72,7 +72,7 @@ public class LoadingScreen : MonoBehaviour
         float progress = 0f;
         while (progress < 1f)
         {
-            progress += Time.deltaTime * 0.4f;
+            progress += Time.deltaTime * 0.6f;
             SetProgress(progress);
             yield return null;
         }

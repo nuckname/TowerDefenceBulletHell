@@ -8,12 +8,15 @@ public class RoundStateManager : MonoBehaviour
 {
     public SelectTurret selectTurret;
     
+    public bool tutorialCantStartRound = false;
+    
     public RoundBaseState currentState;
     
     public RoundOverState roundOverState = new RoundOverState();
     public RoundInProgressState roundInProgressState = new RoundInProgressState();
     
     private GameObject[] allTurrets;
+    
 
     private SpawnEnemies spawnEnemies;
     private EnemyOnMapCounter enemyOnMapCounter;
@@ -81,7 +84,7 @@ public class RoundStateManager : MonoBehaviour
 
     public void ButtonClickStartNextRound()
     {
-        if (currentState == roundOverState)
+        if (currentState == roundOverState && !tutorialCantStartRound)
         {
             SwitchState(this.roundInProgressState);
         }

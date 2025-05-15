@@ -8794,6 +8794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1900603665}
+  roundStateManager: {fileID: 1870071531}
   _tutorialStateSO: {fileID: 11400000, guid: dc20add47829eeb48a996928135b853b, type: 2}
   placeTurret: {fileID: 1237834973}
 --- !u!224 &913535747 stripped
@@ -9563,8 +9564,8 @@ Transform:
   m_GameObject: {fileID: 977363710}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 8.72, y: 0.09, z: 0}
-  m_LocalScale: {x: 0.60237676, y: 8.878623, z: 2.8208}
+  m_LocalPosition: {x: 8.81, y: 0.09, z: 0}
+  m_LocalScale: {x: 0.60237676, y: 9.322554, z: 2.8208}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 957512873}

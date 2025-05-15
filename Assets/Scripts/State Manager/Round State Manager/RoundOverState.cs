@@ -19,7 +19,7 @@ public class RoundOverState : RoundBaseState
 
     public override void UpdateState(RoundStateManager roundStateManager)
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Tab) && !roundStateManager.tutorialCantStartRound)
         {
             roundStateManager.SwitchState(roundStateManager.roundInProgressState);
         }

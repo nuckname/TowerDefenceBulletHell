@@ -9,7 +9,15 @@ public class SetIconUpgrades : MonoBehaviour
     [SerializeField] private Image imageBoxMiddle;
     [SerializeField] private Image imageBoxBottom;
 
-    [SerializeField] private List<String> descriptionsToNotRotate = new List<string>();
+    [SerializeField] private List<string> descriptionsToNotRotate = new List<string>
+    {
+        "Gives 5 dollar per bullet hit.",
+        "Greatly increase fire rate speed",
+        "Greatly increase projectile speed",
+        "Greating increase bullet speed",
+        "Bullets home to a target",
+        "Projectiles pierce through enemies"
+    };
     
     [SerializeField] private GameObject turret;
     private UpgradeDataOnTurret upgradeDataOnTurret;
@@ -27,7 +35,7 @@ public class SetIconUpgrades : MonoBehaviour
     private void SetRectSize(RectTransform rt, float width, float height)
     {
         rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, width);
-        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,   height);
+        rt.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, height);
     }
 
     private void RotateImage(float turretRotation)
@@ -44,8 +52,7 @@ public class SetIconUpgrades : MonoBehaviour
 
         // 3) If exactly on its side, force the wide rectangle. 
         //    Otherwise (0° or 180°) leave the size alone.
-        if (Mathf.Approximately(angle, 90f) ||
-            Mathf.Approximately(angle, 270f))
+        if (Mathf.Approximately(angle, 90f) || Mathf.Approximately(angle, 270f))
         {
             // wide & flat for sideways
             float wideW = 1079f, wideH = 14f;
@@ -60,12 +67,13 @@ public class SetIconUpgrades : MonoBehaviour
     /// </summary>
     public void SetIcons(string[] upgradeDescriptions, string raritySelected, float turretRotation)
     {
-        if (raritySelected != "Normal Rarity")
+        if (raritySelected != "Normal Rarity"
+            && !descriptionsToNotRotate.Contains(upgradeDescriptions[0])
+            && !descriptionsToNotRotate.Contains(upgradeDescriptions[1])
+            && !descriptionsToNotRotate.Contains(upgradeDescriptions[2]))
         {
             RotateImage(turretRotation);
         }
-       
-        
         
         // Helper to assign sprite based on description list
         void Assign(Image img, List<Upgrade> list, string desc)

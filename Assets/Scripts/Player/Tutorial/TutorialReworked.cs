@@ -7,6 +7,8 @@ public class TutorialReworked : MonoBehaviour
     [Header("UI")]
     public TMP_Text tutorialText;
 
+    [SerializeField] private RoundStateManager roundStateManager;
+    
     [Header("Tutorial State")]
     [SerializeField]
     private TutorialStateSO _tutorialStateSO;
@@ -47,6 +49,8 @@ public class TutorialReworked : MonoBehaviour
         {
             tutorialText.text = _messages[_currentStep];
             placeTurret.tutorialCannotPlaced = true;
+            roundStateManager.tutorialCantStartRound = true;
+            print("Tutorial cant start round");
             print("cannot place turret");
         }
         else
@@ -66,20 +70,30 @@ public class TutorialReworked : MonoBehaviour
 
         switch (_currentStep)
         {
-            case 0: // “Use WASD to move.”
+            case 0:
+                // “Use WASD to move.”
                 if (Input.GetKeyDown(KeyCode.W) ||
                     Input.GetKeyDown(KeyCode.A) ||
                     Input.GetKeyDown(KeyCode.S) ||
                     Input.GetKeyDown(KeyCode.D))
-                    NextStep();
-                break;
+                {
+                    placeTurret.tutorialCannotPlaced = true;
 
-            case 1: // “HOLD Left Mouse Button to shoot.”
-                if (Input.GetMouseButtonDown(0))
                     NextStep();
+                }
+                
+                break;
+            case 1: // “HOLD Left Mouse Button to shoot.”
+                placeTurret.tutorialCannotPlaced = true;
+                if (Input.GetMouseButtonDown(0))
+                {
+                    NextStep();
+                }
                 break;
 
             case 2: // “Press SPACE to spawn a ghost turret.”
+                placeTurret.tutorialCannotPlaced = false;
+
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
                     placeTurret.tutorialCannotPlaced = true;
@@ -120,28 +134,35 @@ public class TutorialReworked : MonoBehaviour
             case 7: // “Click on an existing turret to open its upgrade UI.”
                 if (Input.GetMouseButtonDown(0))
                 {
-                    // 1) convert screen→world
-                    Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    // 2) shoot a zero‑length Raycast to see what’s under the cursor
-                    RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
-        
-                    // 3) if we hit something tagged “Turret”, advance
-                    if (hit.collider != null && hit.collider.CompareTag("Turret"))
-                    {
-                        NextStep();
-                    }
+                    MustClickOnTurret();
                 }
                 break;
             case 8: // “Press TAB to start the round.”
+                roundStateManager.tutorialCantStartRound = false;
                 if (Input.GetKeyDown(KeyCode.Tab))
+                {
                     NextStep();
+                }
                 break;
-
             case 9: // “Hold Left Ctrl + Left Mouse Click during the round to apply an upgrade.”
                 //10 second timer???
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
-                    NextStep();
+                    MustClickOnTurret();
                 break;
+        }
+    }
+
+    private void MustClickOnTurret()
+    {
+        // 1) convert screen→world
+        Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // 2) shoot a zero‑length Raycast to see what’s under the cursor
+        RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
+        
+        // 3) if we hit something tagged “Turret”, advance
+        if (hit.collider != null && hit.collider.CompareTag("Turret"))
+        {
+            NextStep();
         }
     }
 
