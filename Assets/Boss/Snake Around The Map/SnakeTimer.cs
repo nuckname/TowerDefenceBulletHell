@@ -9,7 +9,7 @@ public class SnakeTimer : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, remainingTime + 1);
+        Destroy(gameObject, remainingTime);
     }
 
     void Update()

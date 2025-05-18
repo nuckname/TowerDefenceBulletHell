@@ -19,6 +19,10 @@ public class BulletFactory : MonoBehaviour
 
     public void ConfigureBullet(GameObject bullet, TurretStats turretStats, bool homingEnabled)
     {
+        //:)
+        BulletCollision _bulletCollision = bullet.GetComponent<BulletCollision>();
+        _bulletCollision.pierceIndex = 0;
+        
         // Configure BasicBullet
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
 
