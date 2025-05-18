@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerHealthScriptabeObject : ScriptableObject
 {
     public int maxHealth;
+    public int startingHealth;
     public int currentHealth;
     
     public GameObject floatingTextPrefab;
@@ -14,7 +15,7 @@ public class PlayerHealthScriptabeObject : ScriptableObject
     private void OnEnable()
     {
         maxHealth = 10;
-        currentHealth = 10;
+        currentHealth = startingHealth;
     }
 
     public void ResetHealth()

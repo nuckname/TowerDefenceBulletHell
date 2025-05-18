@@ -28,7 +28,7 @@ public class RoundsScriptableObject : ScriptableObject
     [Header("Gold Modifier")] 
     public int amountOfGoldGainedForEachCoin = 5;
     //for freeplay?
-    public float increaseGoldAmoutForEachCoinMutipler = 0;
+    //public float increaseGoldAmoutForEachCoinMutipler = 0;
     public int amountOfGoldToDrop = 4;
     public int amountOfHeartToDrop = 0;
     

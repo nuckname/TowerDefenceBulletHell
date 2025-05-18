@@ -9,6 +9,8 @@ public class SetIconUpgrades : MonoBehaviour
     [SerializeField] private Image imageBoxMiddle;
     [SerializeField] private Image imageBoxBottom;
 
+    private RotateTurretIcon rotateTurretIcon;
+    
     [SerializeField] private List<string> descriptionsToNotRotate = new List<string>
     {
         "Gives 5 dollar per bullet hit.",
@@ -25,7 +27,8 @@ public class SetIconUpgrades : MonoBehaviour
     private void Awake()
     {
         upgradeDataOnTurret = turret.GetComponent<UpgradeDataOnTurret>();
-
+        rotateTurretIcon = GetComponent<RotateTurretIcon>();
+        
         // Ensure anchors are fixed to a single point to avoid layout stretching
         FixAnchors(imageBoxTop.rectTransform);
         FixAnchors(imageBoxMiddle.rectTransform);
@@ -67,6 +70,8 @@ public class SetIconUpgrades : MonoBehaviour
     /// </summary>
     public void SetIcons(string[] upgradeDescriptions, string raritySelected, float turretRotation)
     {
+        //Turret Rotation. Using mouse wheel also breaks it. 
+        
         if (raritySelected != "Normal Rarity"
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[0])
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[1])
@@ -74,6 +79,7 @@ public class SetIconUpgrades : MonoBehaviour
         {
             RotateImage(turretRotation);
         }
+        
         
         // Helper to assign sprite based on description list
         void Assign(Image img, List<Upgrade> list, string desc)

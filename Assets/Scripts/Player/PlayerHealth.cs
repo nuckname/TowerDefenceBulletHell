@@ -39,7 +39,8 @@ public class PlayerHealth : MonoBehaviour
         }
         else
         {
-            playerHealthScriptabeObject.currentHealth = 10;
+            //Also setting thing in PlayerHealthScriptabeObject
+            playerHealthScriptabeObject.currentHealth = playerHealthScriptabeObject.startingHealth;
         }
     }
 

@@ -259,13 +259,12 @@ MonoBehaviour:
   _enemyDie: {fileID: -925454356189811349}
   maxHealth: 100
   currentHealth: 0
-  spriteRenderer:
-  - {fileID: 1038041757660097850}
-  - {fileID: 0}
+  spriteRenderer: {fileID: 1038041757660097850}
   damageColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.2
   healthBarPrefab: {fileID: 4970968215309618309, guid: b74c6af25f9f44645a190631b09c12ed, type: 3}
   isSnake: 1
+  snakeBossController: {fileID: 0}
 --- !u!114 &-925454356189811349
 MonoBehaviour:
   m_ObjectHideFlags: 0

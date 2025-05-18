@@ -142,7 +142,7 @@ public class SnakeBossController : MonoBehaviour
         
         MoveHead(currentMoveSpeed * followMoveSpeedMultiplier);
 
-        bossHealth.enabled = false;
+        bossHealth.enabled = true;
         
         enemyFollowPath.enabled = enabled;
 
@@ -280,10 +280,8 @@ public class SnakeBossController : MonoBehaviour
         if (currentState != SnakeBossState.Normal)
             return;
 
-        // Use the last following segment (or head if none) as the tail reference.
-        Vector3 tailPosition = (bodySegments.Count > 0) ? bodySegments[bodySegments.Count - 1].position : transform.position;
-        Vector3 spawnPosition = tailPosition - transform.right * distanceBetweenSegments;
-        GameObject newSegment = Instantiate(bodySegmentPrefab, spawnPosition, Quaternion.identity);
+        GameObject newSegment = Instantiate(bodySegmentPrefab, bodySegments[bodySegments.Count - 1].position, Quaternion.identity);
+        
         newSegment.tag = "SnakeBody";
         staticBodySegments.Add(newSegment.transform);
     }
@@ -300,7 +298,6 @@ public class SnakeBossController : MonoBehaviour
         bodySegments.Clear();
         Vector3 spawnDirection = -transform.right;
         Vector3 lastPosition = transform.position;
-        print(lastPosition);
 
         for (int i = 0; i < numberOfBodySegments; i++)
         {
@@ -321,6 +318,16 @@ public class SnakeBossController : MonoBehaviour
                 staticBodySegments.Remove(collision.transform);
             if (bodySegments.Contains(collision.transform))
                 bodySegments.Remove(collision.transform);
+        }
+        
+        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("PlayerBullet"))
+        {
+            if (currentState == SnakeBossState.FollowPath)
+            {
+                bossHealth.TakeDamage(1);
+                Destroy(collision.gameObject); 
+            }
+            
         }
     }
 }

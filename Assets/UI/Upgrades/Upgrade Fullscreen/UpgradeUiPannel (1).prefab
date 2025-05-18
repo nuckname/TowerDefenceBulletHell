@@ -99,6 +99,7 @@ GameObject:
   - component: {fileID: 3179307347643891295}
   - component: {fileID: 4543209496120795255}
   - component: {fileID: 7295215306350287040}
+  - component: {fileID: 152969065760238950}
   m_Layer: 5
   m_Name: UpgradeUiPannel (1)
   m_TagString: Untagged
@@ -318,7 +319,26 @@ MonoBehaviour:
   imageBoxTop: {fileID: 3216895420934736441}
   imageBoxMiddle: {fileID: 3551870359344855167}
   imageBoxBottom: {fileID: 6093621667327952387}
+  descriptionsToNotRotate:
+  - Gives 5 dollar per bullet hit.
+  - Greatly increase fire rate speed
+  - Greatly increase projectile speed
+  - Greating increase bullet speed
+  - Bullets home to a target
+  - Projectiles pierce through enemies
   turret: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
+--- !u!114 &152969065760238950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508126564264186303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765656d690c19044f826dfab4d4723aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &557648227519004268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2198,6 +2218,13 @@ MonoBehaviour:
   imageBoxTop: {fileID: 3216895420934736441}
   imageBoxMiddle: {fileID: 3551870359344855167}
   imageBoxBottom: {fileID: 6093621667327952387}
+  descriptionsToNotRotate:
+  - Gives 5 dollar per bullet hit.
+  - Greatly increase fire rate speed
+  - Greatly increase projectile speed
+  - Greating increase bullet speed
+  - Bullets home to a target
+  - Projectiles pierce through enemies
   turret: {fileID: 1086541401240882015, guid: 2370315e2fe911e4298cc1e4e2ddd009, type: 3}
 --- !u!1 &5070434623897210482
 GameObject:

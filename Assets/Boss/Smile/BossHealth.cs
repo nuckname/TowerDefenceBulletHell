@@ -16,7 +16,7 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private int currentHealth;
 
     [Header("Flash Effect")]
-    public List<SpriteRenderer> spriteRenderer;
+    public SpriteRenderer spriteRenderer;
     public Color damageColor = Color.red;
     public float flashDuration = 0.2f;
 
@@ -29,7 +29,9 @@ public class BossHealth : MonoBehaviour
     private float redBoxTriggerDelay = 5f;
     private float spawnTime;
 
-    [SerializeField] private bool isSnake = false; 
+    [SerializeField] private bool isSnake = false;
+    [SerializeField] private SnakeBossController snakeBossController;
+
     private void Start()
     {
         currentHealth = maxHealth;
@@ -57,7 +59,10 @@ public class BossHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Bullet"))
+        //Basically this collision shouldnt work on the snake boss and only the same.
+        //Demo rush
+        
+        if (collision.CompareTag("Bullet") && !isSnake)
         {
             TakeDamage(1); 
             Destroy(collision.gameObject);
@@ -77,8 +82,9 @@ public class BossHealth : MonoBehaviour
                 Debug.Log("RedBox trigger ignored (within first 5 seconds).");
             }
         }
-
-        if (collision.CompareTag("PlayerBullet"))
+        
+        //We handle snake collisions in SnakeBossController.cs
+        if (collision.CompareTag("PlayerBullet") && !isSnake)
         {
             TakeDamage(1);
             Destroy(collision.gameObject); 
@@ -87,6 +93,7 @@ public class BossHealth : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+ 
         currentHealth -= damage;
         UpdateHealthUI();
 
@@ -113,12 +120,9 @@ public class BossHealth : MonoBehaviour
 
     private IEnumerator FlashEffect()
     {
-        foreach (SpriteRenderer _spriteRenderer in spriteRenderer)
-        {
-            _spriteRenderer.color = damageColor;
-            yield return new WaitForSeconds(flashDuration);
-            _spriteRenderer.color = Color.white; 
-        }
+        spriteRenderer.color = damageColor;
+        yield return new WaitForSeconds(flashDuration);
+        spriteRenderer.color = Color.white; 
     }
 
     private void Die()

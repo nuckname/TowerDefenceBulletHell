@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,9 +10,15 @@ public class SnakeBossSegment : MonoBehaviour
     public int projectileCount = 8;        // How many projectiles per volley
     public float projectileSpeed = 5f;
 
+    [SerializeField] private BossHealth bossHealth;
+    [SerializeField] private SnakeBossController snakeBossController;
+    
     private void Start()
     {
         StartCoroutine(ShootRoutine());
+        //;w;
+        snakeBossController = GameObject.Find("SnakeHead").GetComponent<SnakeBossController>();
+        bossHealth = GameObject.Find("SnakeHead").GetComponent<BossHealth>();
     }
 
     private IEnumerator ShootRoutine()
@@ -46,5 +53,24 @@ public class SnakeBossSegment : MonoBehaviour
 
             angle += angleStep;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("PlayerBullet"))
+        {
+            if (snakeBossController.currentState == SnakeBossState.FollowPath)
+            {
+                print("Boss body damaged");
+                bossHealth.TakeDamage(1);
+                Destroy(other.gameObject); 
+            }
+            else
+            {
+                print("Boss Not in follow path state");
+            }
+            
+        }
+
     }
 }

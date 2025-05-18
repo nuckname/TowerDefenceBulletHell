@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TurretCostUI_0: 7633088570372007249
+      TurretCostUI_1: 3515779064142679217
+      TurretCostUI_2: 7369752042169491779
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

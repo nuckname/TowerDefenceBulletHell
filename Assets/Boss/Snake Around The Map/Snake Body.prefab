@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.86, y: 1.94}
   m_EdgeRadius: 0
 --- !u!50 &3250395751769299674
 Rigidbody2D:
@@ -179,3 +179,5 @@ MonoBehaviour:
   shootInterval: 3
   projectileCount: 8
   projectileSpeed: 4
+  bossHealth: {fileID: 3092008261287848587, guid: 639eb6b0fb06a984ab4376f58fa4203d, type: 3}
+  snakeBossController: {fileID: 7397882109333557167, guid: 639eb6b0fb06a984ab4376f58fa4203d, type: 3}
