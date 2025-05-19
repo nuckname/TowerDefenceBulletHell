@@ -27,6 +27,16 @@ public class PlaceTurret : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI displayTurretText;
 
     public bool tutorialCannotPlaced = false;
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip placeGhostTurretClip;
+    [SerializeField] private AudioClip placeTurretClip;
+    [SerializeField] private AudioClip errorClip;
+    
+    [SerializeField] private AudioClip cancelGhostTurret;
+
+    
     private void Awake()
     {
         displayTurretText = GameObject.FindGameObjectWithTag("TurretDisplayText").GetComponent<TextMeshProUGUI>();
@@ -63,12 +73,16 @@ public class PlaceTurret : NetworkBehaviour
 
                 if (tutorialCannotPlaced)
                 {
+                    audioSource.PlayOneShot(errorClip);
+
                     Debug.Log("Cant place turret becuase of tutorial.");
                     return;
                 }
                 
                 if (playerGold.SpendGold(TurretBasicCost))
                 {
+                    audioSource.PlayOneShot(placeTurretClip);
+
                     SpawnBasicTurret();
                     UpdateTurretDisplayText(TurretBasicCost);
                 }
@@ -79,16 +93,13 @@ public class PlaceTurret : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
+                audioSource.PlayOneShot(cancelGhostTurret);
+                
                 GameObject userGhostTurret = GameObject.FindGameObjectWithTag("GhostTurret");
                 BindingOfIsaacShooting.disableShooting = false;
                 Destroy(userGhostTurret);
                 GhostTurretHasBeenPlaced = !GhostTurretHasBeenPlaced;
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            PlaceGoldMiner();
         }
     }
 
@@ -99,6 +110,9 @@ public class PlaceTurret : NetworkBehaviour
 
     private void SpawnFloatingText()
     {
+        audioSource.PlayOneShot(errorClip);
+
+        
         GameObject canvas = GameObject.Find("Canvas");
         GameObject floatingText = Instantiate(FloatingTextNotEnoughGold, canvas.transform);
 
@@ -110,7 +124,8 @@ public class PlaceTurret : NetworkBehaviour
     {
         if (!GhostTurretHasBeenPlaced)
         {
-
+            audioSource.PlayOneShot(placeGhostTurretClip);
+            
             SpawnGhostTurret();
             
         }
@@ -186,15 +201,5 @@ public class PlaceTurret : NetworkBehaviour
         {
             Debug.Log("Ghost on path - cannot place turret.");
         }
-    }
-
-    private void GetTurretSpireRotation(GameObject curentGhost)
-    {
-
-    }
-
-    private void PlaceGoldMiner()
-    {
-        // Gold miner placement logic (commented out in original)
     }
 }

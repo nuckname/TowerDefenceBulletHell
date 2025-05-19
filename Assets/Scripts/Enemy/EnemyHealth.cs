@@ -5,6 +5,12 @@ public class EnemyHealth : MonoBehaviour
 {
     public HealthColourConfigScriptableObject HealthColourConfigScriptableObject;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource hitAudioSource;
+    [SerializeField] private AudioClip hitClip;
+    private float lastHitSoundTime = -Mathf.Infinity;
+    [SerializeField] private float hitSoundCooldown = 0.01f;
+    
     [SerializeField] private EnemyDie _enemyDie;
     [SerializeField] private EnemyCollision _enemyCollision;
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -12,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     public int EnemyStartingHealth;
 
     public Dictionary<int, Sprite> spriteDictionary;
+    
 
     private bool isDead = false;
 
@@ -50,6 +57,13 @@ public class EnemyHealth : MonoBehaviour
     {
         if (isDead) return;
 
+        //Different sound of dying and getting hit?????????
+        
+        if (Time.time - lastHitSoundTime >= hitSoundCooldown && hitClip != null)
+        {
+            hitAudioSource.PlayOneShot(hitClip);
+        }
+        
         EnemyStartingHealth--;
 
         if (EnemyStartingHealth <= 0)

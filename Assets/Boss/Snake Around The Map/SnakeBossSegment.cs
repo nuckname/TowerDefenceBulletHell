@@ -17,8 +17,8 @@ public class SnakeBossSegment : MonoBehaviour
     {
         StartCoroutine(ShootRoutine());
         //;w;
-        snakeBossController = GameObject.Find("SnakeHead").GetComponent<SnakeBossController>();
-        bossHealth = GameObject.Find("SnakeHead").GetComponent<BossHealth>();
+        snakeBossController = GameObject.Find("SnakeHead(Clone)").GetComponent<SnakeBossController>();
+        bossHealth = GameObject.Find("SnakeHead(Clone)").GetComponent<BossHealth>();
     }
 
     private IEnumerator ShootRoutine()

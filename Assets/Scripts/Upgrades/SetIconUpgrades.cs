@@ -43,27 +43,33 @@ public class SetIconUpgrades : MonoBehaviour
 
     private void RotateImage(float turretRotation)
     {
-        // 1) Rotate each icon to match the turret’s orientation:
-        Quaternion rot = Quaternion.Euler(0f, 0f, turretRotation);
-        imageBoxTop.rectTransform.localRotation    = rot;
-        imageBoxMiddle.rectTransform.localRotation = rot;
-        imageBoxBottom.rectTransform.localRotation = rot;
+        Debug.LogWarning("RotateImage Code Here");
+        float rawZ = transform.eulerAngles.z;
+        float signedZ = rawZ > 180f ? rawZ - 360f : rawZ;
+        Quaternion rot;
 
-        // 2) Normalize angle into [0,360)
-        float angle = turretRotation % 360f;
-        if (angle < 0f) angle += 360f;
-
-        // 3) If exactly on its side, force the wide rectangle. 
-        //    Otherwise (0° or 180°) leave the size alone.
-        if (Mathf.Approximately(angle, 90f) || Mathf.Approximately(angle, 270f))
+        print("t: " + turretRotation);
+        if (turretRotation == 90 || turretRotation == 180 || turretRotation == -90 || turretRotation == 0)
         {
-            // wide & flat for sideways
+            print("yo");
+        }
+        
+        if (signedZ == 0 || signedZ == 180 || signedZ == -90 || signedZ == 90)
+        {
+            Debug.LogWarning("Set rotation image");
+            rot = Quaternion.Euler(0f, 0f, turretRotation);
+            
+            imageBoxTop.rectTransform.localRotation    = rot;
+            imageBoxMiddle.rectTransform.localRotation = rot;
+            imageBoxBottom.rectTransform.localRotation = rot;
+        
             float wideW = 1079f, wideH = 14f;
             SetRectSize(imageBoxTop.rectTransform,    wideW, wideH);
             SetRectSize(imageBoxMiddle.rectTransform, wideW, wideH);
             SetRectSize(imageBoxBottom.rectTransform, wideW, wideH);
         }
     }
+
     
     /// <summary>
     /// Assigns upgrade icons, aligns them to the turret's rotation, and enforces square dimensions.
@@ -77,7 +83,7 @@ public class SetIconUpgrades : MonoBehaviour
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[1])
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[2]))
         {
-            RotateImage(turretRotation);
+            //RotateImage(turretRotation);
         }
         
         

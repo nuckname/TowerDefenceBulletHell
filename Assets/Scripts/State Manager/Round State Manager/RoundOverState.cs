@@ -44,19 +44,19 @@ public class RoundOverState : RoundBaseState
            
         }
   
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.75f);
         
-        roundStateManager.StartCoroutine(DestoryGameObject( 1.8f, "Coin", roundStateManager)); 
+        roundStateManager.StartCoroutine(DestoryGameObject( 1f,"Coin", roundStateManager)); 
         //roundStateManager.StartCoroutine(DestoryGameObject( 1.5f, "Heart")); // 1 second fade-out duration
     }
     
-    private IEnumerator DestoryGameObject(float duration, string tag, RoundStateManager roundStateManager)
+    private IEnumerator DestoryGameObject(float durationDuration, string tag, RoundStateManager roundStateManager)
     {
         GameObject[] gameObjectsToDestroy = GameObject.FindGameObjectsWithTag(tag);
         foreach (GameObject obj in gameObjectsToDestroy)
         {
             // Kick off a fade‑and‑destroy coroutine for each object
-            roundStateManager.StartCoroutine(FadeAndDestroy(obj, duration));
+            roundStateManager.StartCoroutine(FadeAndDestroy(obj, durationDuration));
             // Optionally stagger them so they don’t all fade at once:
             // yield return new WaitForSeconds(0.1f);
         }

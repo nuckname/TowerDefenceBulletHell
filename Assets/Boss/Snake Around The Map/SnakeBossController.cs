@@ -233,7 +233,7 @@ public class SnakeBossController : MonoBehaviour
     }
 
     // Destroys the snake boss head.
-    private void DestroyBoss()
+    public void DestroyBoss()
     {
         currentState = SnakeBossState.Dead;
         

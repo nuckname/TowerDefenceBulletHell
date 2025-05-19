@@ -55,6 +55,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -76,6 +78,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -176,8 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 5601852057121462646, guid: 1620f28ae8a035a49b1aeea757b562d1, type: 3}
-  shootInterval: 3
+  shootInterval: 4
   projectileCount: 8
-  projectileSpeed: 4
+  projectileSpeed: 3
   bossHealth: {fileID: 3092008261287848587, guid: 639eb6b0fb06a984ab4376f58fa4203d, type: 3}
   snakeBossController: {fileID: 7397882109333557167, guid: 639eb6b0fb06a984ab4376f58fa4203d, type: 3}

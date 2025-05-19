@@ -70,8 +70,8 @@ public class BossHealth : MonoBehaviour
 
         if (collision.CompareTag("RedBox"))
         {
-            print("hacking snake not working on end eaching end");
-            if (Time.time - spawnTime >= redBoxTriggerDelay && !isSnake)
+            //if (Time.time - spawnTime >= redBoxTriggerDelay && !isSnake)
+            if (Time.time - spawnTime >= redBoxTriggerDelay)
             {
                 Destroy(spawnedHealthBar);
                 Destroy(gameObject);

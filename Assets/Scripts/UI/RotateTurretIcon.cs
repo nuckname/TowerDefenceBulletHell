@@ -2,15 +2,6 @@ using UnityEngine;
 
 public class RotateTurretIcon : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    //it's in SetIconUpgrades
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

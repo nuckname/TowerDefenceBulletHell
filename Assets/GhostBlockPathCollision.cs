@@ -8,14 +8,30 @@ public class GhostBlockPathCollision : MonoBehaviour
     public bool canPlaceGhost;
 
     private int collisionCount = 0;
+    
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip errorClip;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         //if (other.CompareTag("PathCollision") || other.CompareTag("TurretPlacementCollider"))
         if (other.CompareTag("PathCollision") || other.CompareTag("Turret"))
         {
+ 
+
             collisionCount++;
             UpdatePlacementState();
+        }
+    }
+
+    private void Update()
+    {
+        if (!canPlaceGhost)
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                audioSource.PlayOneShot(errorClip);
+            }
         }
     }
 
