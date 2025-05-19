@@ -8,6 +8,8 @@ public class EnemyOnMapCounter : MonoBehaviour
 
     public void DecreaseEnemyCount()
     {
+        //Music gets quiter
+        
         MaxEnemiesOnMap--;
         if (MaxEnemiesOnMap <= 0)
         {

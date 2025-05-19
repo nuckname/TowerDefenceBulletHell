@@ -17,6 +17,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
 
     [SerializeField] private GameObject player;
+    
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip playerDieSound;
     //public GameObject floatingTextPrefab;
     private void Awake()
     {
@@ -57,6 +60,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void PlayerHasDied()
     {
+        audioSource.PlayOneShot(playerDieSound);
+        
         SetGameModeOneHp();
         playerGoldScriptableObject.ResetGold();
 

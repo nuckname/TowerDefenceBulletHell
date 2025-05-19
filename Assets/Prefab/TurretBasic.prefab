@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: -6581010435211960150}
   - component: {fileID: -8924072509627553918}
   - component: {fileID: 3397120369201975200}
+  - component: {fileID: 8090276448418750083}
   m_Layer: 0
   m_Name: TurretBasic
   m_TagString: Turret
@@ -168,6 +169,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -189,6 +192,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -243,6 +247,28 @@ MonoBehaviour:
   - {fileID: -3507833246552792370, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
   - {fileID: -5417137058416166357, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
   - {fileID: -3543048863620948104, guid: fc67e99a0fb258a42ba38400cab68e52, type: 3}
+  audioSource: {fileID: 8090276448418750083}
+  shootClips:
+  - {fileID: 8300000, guid: 7c44351635f00b34daacd2b1c485e512, type: 3}
+  - {fileID: 8300000, guid: 36f2834d1be6e624b84707fe6769ae2e, type: 3}
+  - {fileID: 8300000, guid: 487eb0ca92ea72a4fb8cc0ae2f776e30, type: 3}
+  - {fileID: 8300000, guid: ca8aec4403eb37b40b720b645ba35d21, type: 3}
+  - {fileID: 8300000, guid: 30da586a02a781042a3b116869181ab6, type: 3}
+  - {fileID: 8300000, guid: 527cd284d4875024bb44bfb600613076, type: 3}
+  - {fileID: 8300000, guid: 2301505bddf460a4093f431278409e23, type: 3}
+  - {fileID: 8300000, guid: b06be22c5f57c294088e08fdba828b62, type: 3}
+  - {fileID: 8300000, guid: f0c457491ca645a439ba954112a1532c, type: 3}
+  - {fileID: 8300000, guid: fd6ec1ee528be17448368f73f8c9c715, type: 3}
+  - {fileID: 8300000, guid: 908259917c84b0d4d888f7d621f5ae68, type: 3}
+  - {fileID: 8300000, guid: 656981b9f6730a641a30a9e705c9a72e, type: 3}
+  - {fileID: 8300000, guid: ee4de4c6716362a47ac20fa1683ccc3f, type: 3}
+  - {fileID: 8300000, guid: e60a49c6b4660dc4f87da8122907b07c, type: 3}
+  - {fileID: 8300000, guid: c623ba3578e52a44c8c902287eea4766, type: 3}
+  - {fileID: 8300000, guid: 5dc3476202d963442864e008ac90336d, type: 3}
+  - {fileID: 8300000, guid: 6e49595430887fe48b558b58033f7649, type: 3}
+  - {fileID: 8300000, guid: 13b30cc95db3697438e5f6f47ff5e51d, type: 3}
+  - {fileID: 8300000, guid: f83f3d645aa5ccc4ba6aa8c2b7d585f5, type: 3}
+  selectSound: 2
 --- !u!114 &4571525935793682645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,6 +701,103 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!82 &8090276448418750083
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086541401240882015}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.122
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 162
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1086541401797522629
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,6 +1167,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1065,6 +1190,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -1131,6 +1257,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1152,6 +1280,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0

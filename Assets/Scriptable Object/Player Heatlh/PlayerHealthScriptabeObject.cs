@@ -32,9 +32,9 @@ public class PlayerHealthScriptabeObject : ScriptableObject
             currentHealth = 0;
             //:(
             playerHealth = GameObject.FindGameObjectWithTag("PlayerCollision").GetComponent<PlayerHealth>();
+            
             playerHealth.PlayerHasDied();
-            currentHealth = 10;
-
+            
             Debug.Log(name + " has died!");
         }
     }

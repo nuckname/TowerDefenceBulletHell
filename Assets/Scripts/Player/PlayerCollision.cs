@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerCollision : MonoBehaviour
 {
@@ -28,6 +29,11 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameObject floatingTextPrefab;
 
     private ScreenFlashOnDamage screenFlashOnDamage;
+    
+    [Header("Sound")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] moneyClips = new AudioClip[2];
+    [SerializeField] private AudioClip[] playerHitClips = new AudioClip[6];
     private void Awake()
     {
         screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
@@ -69,6 +75,10 @@ public class PlayerCollision : MonoBehaviour
         if (other.gameObject.CompareTag("Coin"))
         {
             int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
+            
+            int range = Random.Range(0, moneyClips.Length - 1);
+            audioSource.PlayOneShot(moneyClips[range]);
+            
             print("amount given: " + amount);
             
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
@@ -91,8 +101,11 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int amount)
+    public void TakeDamage(int amount)
     {
+        int range = Random.Range(0, playerHitClips.Length - 1);
+        audioSource.PlayOneShot(playerHitClips[range]);
+        
         screenFlashOnDamage.TakeDamage();
         
         playerHealthScriptabeObject.TakeDamage(amount);

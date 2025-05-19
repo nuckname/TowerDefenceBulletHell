@@ -33,6 +33,11 @@ public class TurretShoot : MonoBehaviour
     [Header("Bullet Sprites")]
     [SerializeField] private Sprite[] bulletSprites;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] shootClips = new AudioClip[18];
+
+    public int selectSound = 0;
     public void EnableHomingBullets(bool enable)
     {
         homingEnabled = enable;
@@ -166,6 +171,10 @@ public class TurretShoot : MonoBehaviour
                 FireProjectilesInDirection(activeShootPoints[0], directions[0]);
             }
         }
+        
+        //audioSource.PlayOneShot(shootClips[Random.Range(0, shootClips.Length - 1)]);
+        audioSource.PlayOneShot(shootClips[selectSound]);
+
     }
 
 

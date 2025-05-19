@@ -27,6 +27,13 @@ public class RoundStateManager : MonoBehaviour
 
     public GameObject[] mapArrows;
 
+    [Header("Music")]
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioClip[] gameMusic = new AudioClip[10];
+    [SerializeField] private float maxMusicVolume = 1f;
+    [SerializeField] private float musicFadeDuration = 1f;
+    
+    [HideInInspector] public int initialEnemyCount;
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();
@@ -99,6 +106,8 @@ public class RoundStateManager : MonoBehaviour
         DisplayRoundUi(currentRound);
         
         enemyOnMapCounter.MaxEnemiesOnMap = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
+        
+        //Music gets louder. 
     }
 
     public void DestroyAllPlayerBullets()
@@ -109,5 +118,7 @@ public class RoundStateManager : MonoBehaviour
             Destroy(bullet);
         }
     }
+    
+    
 
 }
