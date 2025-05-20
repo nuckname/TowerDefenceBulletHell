@@ -96,7 +96,7 @@ public class PlaceTurret : NetworkBehaviour
                 audioSource.PlayOneShot(cancelGhostTurret);
                 
                 GameObject userGhostTurret = GameObject.FindGameObjectWithTag("GhostTurret");
-                BindingOfIsaacShooting.disableShooting = false;
+                PlayerShooting.disableShooting = false;
                 Destroy(userGhostTurret);
                 GhostTurretHasBeenPlaced = !GhostTurretHasBeenPlaced;
             }
@@ -156,7 +156,7 @@ public class PlaceTurret : NetworkBehaviour
     {
         if (currentGhost.GetComponent<GhostBlockPathCollision>().canPlaceGhost)
         {
-            BindingOfIsaacShooting.disableShooting = false;
+            PlayerShooting.disableShooting = false;
 
             Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             

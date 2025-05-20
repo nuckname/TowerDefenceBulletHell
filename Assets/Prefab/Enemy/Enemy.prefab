@@ -42,7 +42,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 326ce40715e84a143a6e201d715d6b65, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 326ce40715e84a143a6e201d715d6b65, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -257,10 +257,10 @@ MonoBehaviour:
   enemyOnMapCounter: {fileID: 0}
   playerHealthSpriteSheet: {fileID: 0}
   playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  audioSource: {fileID: 4512001525169098871}
+  audioSource: {fileID: 0}
   playerHitClips:
-  - {fileID: 8300000, guid: 326ce40715e84a143a6e201d715d6b65, type: 3}
-  - {fileID: 8300000, guid: b8f4090118757054abc5141c12ad9d1b, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -334,13 +334,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HealthColourConfigScriptableObject: {fileID: 11400000, guid: 5b08a459c366eb347ade455fbee74bb3, type: 2}
-  hitAudioSource: {fileID: -3989981273416433215}
-  hitClip: {fileID: 8300000, guid: f86e20eeddb7f0b4dab108eb5578a59b, type: 3}
-  hitSoundCooldown: 0.01
   _enemyDie: {fileID: 8801792569001409356}
   _enemyCollision: {fileID: -6422447422121149574}
   spriteRenderer: {fileID: 3739711818550496154}
   EnemyStartingHealth: 1
+  hitAudioSource: {fileID: -3989981273416433215}
+  hitClip: {fileID: 8300000, guid: f86e20eeddb7f0b4dab108eb5578a59b, type: 3}
+  hitSoundCooldown: 0
 --- !u!114 &5035588526783821658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,7 +393,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 113
+  Priority: 76
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

@@ -8,8 +8,9 @@ public class EnemyOnMapCounter : MonoBehaviour
 
     public void DecreaseEnemyCount()
     {
-        //Music gets quiter
-        
+        //Update music volume
+        roundStateManager.OnEnemyCountChanged(MaxEnemiesOnMap);
+
         MaxEnemiesOnMap--;
         if (MaxEnemiesOnMap <= 0)
         {

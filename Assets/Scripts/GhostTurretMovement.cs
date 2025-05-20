@@ -9,7 +9,7 @@ public class GhostTurretMovement : NetworkBehaviour
 
     private void Awake()
     {
-        BindingOfIsaacShooting.disableShooting = true;
+        PlayerShooting.disableShooting = true;
     }
 
     void Update()

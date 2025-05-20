@@ -113,7 +113,7 @@ public class UpgradeRadius : MonoBehaviour
         //This might not be scalable.
         allowTurretSwapping = false;
         UpgradeRadiusOn = false;
-        BindingOfIsaacShooting.disableShooting = true;
+        PlayerShooting.disableShooting = true;
 
     }
 

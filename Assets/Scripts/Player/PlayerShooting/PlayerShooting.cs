@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class BindingOfIsaacShooting : MonoBehaviour
+public class PlayerShooting : MonoBehaviour
 {
     [Header("Projectile Settings")]
     public GameObject projectilePrefab;
@@ -27,6 +27,11 @@ public class BindingOfIsaacShooting : MonoBehaviour
     public Vector2 barOffset     = new Vector2(10, 10);
     public Color  barBackground  = new Color(0, 0, 0, 0.6f);
     public Color  barFill        = new Color(1, 1, 1, 0.9f);
+    
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip[] shootSound = new AudioClip[4];
+    [SerializeField] private AudioClip reloadSound;
 
     private void Start()
     {
@@ -55,6 +60,8 @@ public class BindingOfIsaacShooting : MonoBehaviour
 
         if (bulletsRemaining <= 0)
         {
+            audioSource.PlayOneShot(reloadSound);
+
             StartCoroutine(Reload());
             return;
         }
@@ -89,6 +96,8 @@ public class BindingOfIsaacShooting : MonoBehaviour
 
     private void Shoot()
     {
+        audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length - 1)]);
+        
         lastShotTime     = Time.time;
         bulletsRemaining--;
 

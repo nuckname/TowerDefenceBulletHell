@@ -30,7 +30,7 @@ public class RoundStateManager : MonoBehaviour
     [Header("Music")]
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioClip[] gameMusic = new AudioClip[10];
-    [SerializeField] private float maxMusicVolume = 1f;
+    [SerializeField] private float maxMusicVolume = 0.4f;
     [SerializeField] private float musicFadeDuration = 1f;
     
     [HideInInspector] public int initialEnemyCount;
@@ -100,14 +100,49 @@ public class RoundStateManager : MonoBehaviour
 
     public void SpawnBasicEnemies(int currentRoundIndex)
     {
-        //Sets global variable. 
         currentRound = currentRoundIndex;
-        
         DisplayRoundUi(currentRound);
-        
-        enemyOnMapCounter.MaxEnemiesOnMap = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
-        
-        //Music gets louder. 
+
+        // spawn enemies as before
+        int spawned = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
+        enemyOnMapCounter.MaxEnemiesOnMap = spawned;
+        initialEnemyCount = spawned;
+
+        // PICK MUSIC CLIP
+        AudioClip clipToPlay;
+        if (currentRound == 5)
+            clipToPlay = gameMusic[4];   // assuming 0‐based
+        else if (currentRound == 10)
+            clipToPlay = gameMusic[9];
+        else
+        {
+            int idx = Mathf.Clamp(currentRound - 1, 0, gameMusic.Length - 1);
+            clipToPlay = gameMusic[idx];
+        }
+
+        // PLAY & FADE IN
+        musicSource.clip = clipToPlay;
+        musicSource.volume = 0f;
+        musicSource.loop = true;
+        musicSource.Play();
+        StartCoroutine(FadeMusicTo(maxMusicVolume));
+    }
+    
+    private IEnumerator FadeMusicTo(float targetVol)
+    {
+        float startVol = musicSource.volume;
+        float elapsed = 0f;
+
+        while (elapsed < musicFadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVol, targetVol, elapsed / musicFadeDuration);
+            yield return null;
+        }
+
+        musicSource.volume = targetVol;
+        if (Mathf.Approximately(targetVol, 0f))
+            musicSource.Stop();
     }
 
     public void DestroyAllPlayerBullets()
@@ -119,6 +154,18 @@ public class RoundStateManager : MonoBehaviour
         }
     }
     
-    
+    public void OnEnemyCountChanged(int newCount)
+    {
+        if (newCount > 0)
+        {
+            float fraction = (float)newCount / Mathf.Max(1, initialEnemyCount);
+            StartCoroutine(FadeMusicTo(maxMusicVolume * fraction));
+        }
+        else
+        {
+            // no more enemies → fade out fully
+            StartCoroutine(FadeMusicTo(0f));
+        }
+    }
 
 }
