@@ -109,6 +109,7 @@ public class RoundStateManager : MonoBehaviour
         initialEnemyCount = spawned;
 
         // PICK MUSIC CLIP
+        /*
         AudioClip clipToPlay;
         if (currentRound == 5)
             clipToPlay = gameMusic[4];   // assuming 0‐based
@@ -125,26 +126,9 @@ public class RoundStateManager : MonoBehaviour
         musicSource.volume = 0f;
         musicSource.loop = true;
         musicSource.Play();
-        StartCoroutine(FadeMusicTo(maxMusicVolume));
+        */
     }
     
-    private IEnumerator FadeMusicTo(float targetVol)
-    {
-        float startVol = musicSource.volume;
-        float elapsed = 0f;
-
-        while (elapsed < musicFadeDuration)
-        {
-            elapsed += Time.deltaTime;
-            musicSource.volume = Mathf.Lerp(startVol, targetVol, elapsed / musicFadeDuration);
-            yield return null;
-        }
-
-        musicSource.volume = targetVol;
-        if (Mathf.Approximately(targetVol, 0f))
-            musicSource.Stop();
-    }
-
     public void DestroyAllPlayerBullets()
     {
         GameObject[] allBullets = GameObject.FindGameObjectsWithTag("PlayerBullet");
@@ -156,16 +140,16 @@ public class RoundStateManager : MonoBehaviour
     
     public void OnEnemyCountChanged(int newCount)
     {
-        if (newCount > 0)
+        if (newCount == 0)
         {
-            float fraction = (float)newCount / Mathf.Max(1, initialEnemyCount);
-            StartCoroutine(FadeMusicTo(maxMusicVolume * fraction));
+            musicSource.volume = 0;
+
         }
         else
         {
-            // no more enemies → fade out fully
-            StartCoroutine(FadeMusicTo(0f));
+            musicSource.volume -= 0.01f;
         }
+
     }
 
 }

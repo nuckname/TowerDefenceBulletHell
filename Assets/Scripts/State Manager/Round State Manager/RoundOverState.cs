@@ -44,9 +44,9 @@ public class RoundOverState : RoundBaseState
            
         }
   
-        yield return new WaitForSeconds(1.75f);
+        yield return new WaitForSeconds(1f);
         
-        roundStateManager.StartCoroutine(DestoryGameObject( 1f,"Coin", roundStateManager)); 
+        roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
         //roundStateManager.StartCoroutine(DestoryGameObject( 1.5f, "Heart")); // 1 second fade-out duration
     }
     

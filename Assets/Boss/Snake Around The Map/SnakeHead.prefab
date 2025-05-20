@@ -34,8 +34,8 @@ Transform:
   m_GameObject: {fileID: 1454750409857608013}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.97, y: 3.91, z: 0}
-  m_LocalScale: {x: 0.60225, y: 0.60225, z: 1}
+  m_LocalPosition: {x: 3.97, y: 3.91, z: -1}
+  m_LocalScale: {x: -1.42272, y: 1.6, z: 1.6806}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,6 +60,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -81,10 +83,11 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7122236828205661043, guid: 82101f7989f8ad242b7007da81a324c4, type: 3}
+  m_Sprite: {fileID: 777675739, guid: 63cb8cbe3d076d44a924ce57b45d00a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,17 +132,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.23013586, y: 0.18783736}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.83, y: 2.15}
+    oldSize: {x: 1.84, y: 1.32}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.83, y: 2.15}
+  m_Size: {x: 1.5779873, y: 1.0990705}
   m_EdgeRadius: 0
 --- !u!50 &2527672533325824611
 Rigidbody2D:
@@ -190,7 +193,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   numberOfBodySegments: 5
   bodySegmentPrefab: {fileID: 5733080803690325748, guid: 5c04af8bfe924974485041b07f4eaacd, type: 3}
-  distanceBetweenSegments: 3
+  distanceBetweenSegments: 5
   bodySegments: []
   staticSegmentSpawnInterval: 3
   staticBodySegments: []
