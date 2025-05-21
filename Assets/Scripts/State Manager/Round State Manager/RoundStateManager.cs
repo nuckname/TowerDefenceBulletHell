@@ -27,12 +27,6 @@ public class RoundStateManager : MonoBehaviour
 
     public GameObject[] mapArrows;
 
-    [Header("Music")]
-    [SerializeField] private AudioSource musicSource;
-    [SerializeField] private AudioClip[] gameMusic = new AudioClip[10];
-    [SerializeField] private float maxMusicVolume = 0.4f;
-    [SerializeField] private float musicFadeDuration = 1f;
-    
     [HideInInspector] public int initialEnemyCount;
     private void Awake()
     {
@@ -45,7 +39,7 @@ public class RoundStateManager : MonoBehaviour
         currentState = roundOverState;
         currentState.EnterState(this);
         
-        musicSource.PlayOneShot(gameMusic[UnityEngine.Random.Range(0, gameMusic.Length)]);
+       AudioManager.instance.PlayMusic();
     }
 
     void Update()
@@ -142,15 +136,6 @@ public class RoundStateManager : MonoBehaviour
     
     public void OnEnemyCountChanged(int newCount)
     {
-        if (newCount == 0)
-        {
-            musicSource.volume = 0;
-
-        }
-        else
-        {
-            musicSource.volume -= 0.01f;
-        }
 
     }
 

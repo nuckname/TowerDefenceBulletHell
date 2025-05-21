@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using Random = UnityEngine.Random;
 
 public class AudioManager : MonoBehaviour
@@ -34,6 +35,18 @@ public class AudioManager : MonoBehaviour
     [Header("Enemy Hit")]
     [SerializeField] AudioSource enemyHitSource;
     [SerializeField] AudioClip enemyHitClips;
+    
+    [Header("Music")]
+    [SerializeField] AudioSource musicSource;
+    [SerializeField] List<AudioClip> musicClips = new List<AudioClip>();
+
+    
+
+    public const string MUSIC_KEY = "musicVolume";
+    public const string SFX_KEY = "sfxVolume";
+    public const string MASTER_KEY = "masterVolume";
+    
+    [SerializeField] private AudioMixer audioMixer;
     private void Awake()
     {
         if (instance == null)
@@ -46,12 +59,34 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        
+        LoadVolume();
+    }
+
+    void LoadVolume()
+    {
+        float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
+        float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
+        float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
+        
+        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(musicVolume) * 20);
+        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(sfxVolume) * 20);
+        
+        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(masterVolume) * 20);
     }
     
     public void errorSFX()
     {
         playerShootSource.PlayOneShot(errorClip);
     }
+    
+    //Music
+    public void PlayMusic()
+    {
+        AudioClip clip = musicClips[Random.Range(0, musicClips.Count)];
+        musicSource.PlayOneShot(clip);
+    }
+
     
     //Enemy
     public void enemyHitSFX()

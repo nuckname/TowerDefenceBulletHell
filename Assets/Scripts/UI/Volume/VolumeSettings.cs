@@ -10,9 +10,9 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider masterSlider;
 
-    const string MIXER_MASTER = "Master Volume";
-    const string MIXER_MUSIC = "Music Volume";
-    const string MIXER_SFX = "SFX Volume";
+    public const string MIXER_MASTER = "Master Volume";
+    public const string MIXER_MUSIC = "Music Volume";
+    public const string MIXER_SFX = "SFX Volume";
     private void Awake()
     {
         //PlayerShooting.disableShooting = true;
@@ -24,6 +24,19 @@ public class VolumeSettings : MonoBehaviour
         sfxSlider.onValueChanged.AddListener(SetSFXVolume);
     }
 
+    private void Start()
+    {
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 1f);
+        sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1f);
+        masterSlider.value = PlayerPrefs.GetFloat(AudioManager.MASTER_KEY, 1f);
+    }
+
+    void OnDisable()
+    {
+        PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, masterSlider.value);
+        PlayerPrefs.SetFloat(AudioManager.SFX_KEY, sfxSlider.value);
+    }
     public void SetMasterVolume(float volume)
     {
         audioMixer.SetFloat(MIXER_MASTER, Mathf.Log10(volume) * 20);
