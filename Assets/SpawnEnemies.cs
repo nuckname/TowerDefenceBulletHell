@@ -138,12 +138,10 @@ public class SpawnEnemies : MonoBehaviour
                 {
                     if (isDoubleHP)
                     {
-                        print("double HP set");
                         enemyHealth.InitializeEnemy(group.enemyHp * 2); 
                     }
                     else
                     {
-                        print("NO double HP set");
                         enemyHealth.InitializeEnemy(group.enemyHp); 
                     }
                 }

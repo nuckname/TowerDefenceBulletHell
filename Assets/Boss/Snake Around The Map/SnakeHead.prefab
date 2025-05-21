@@ -193,7 +193,7 @@ MonoBehaviour:
   currentWaypointIndex: 0
   numberOfBodySegments: 5
   bodySegmentPrefab: {fileID: 5733080803690325748, guid: 5c04af8bfe924974485041b07f4eaacd, type: 3}
-  distanceBetweenSegments: 5
+  distanceBetweenSegments: 8
   bodySegments: []
   staticSegmentSpawnInterval: 3
   staticBodySegments: []

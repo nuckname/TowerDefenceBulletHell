@@ -43,23 +43,13 @@ public class BulletCollision : MonoBehaviour
             {
                 playerGoldScriptableObject.AddGold(5);
             }
-         /*   
-            if (slowOnHitEnabledBullet)
-            {
-                Debug.LogWarning("Slow is not set up correctly");
-                float slow = other.GetComponent<EnemyMovement>().speed;
-
-                ApplySlow(turretStats.slowAmount, turretStats.slowDuration);
-            }
-            */
-         
+            
              if (pierceIndex <= 0)
              {
                  bulletPool.ReturnBullet(gameObject);
                  return;
              }
 
-             print("- index");
              pierceIndex--;
         }
 

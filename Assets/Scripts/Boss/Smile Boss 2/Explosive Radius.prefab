@@ -54,6 +54,8 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -75,6 +77,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
@@ -126,6 +129,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5601852057121462646, guid: 1620f28ae8a035a49b1aeea757b562d1, type: 3}
   spawnRadius: 10
   bulletSpeed: 6.5
+  minAngleGap: 2.5
   flashDuration: 0.5
   flashColor: {r: 1, g: 0, b: 0, a: 1}
   spriteRenderer: {fileID: 0}

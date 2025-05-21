@@ -34,7 +34,6 @@ public class EnemyDie : MonoBehaviour
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
         
-        print("DecreaseEnemyCount - 1");
         enemyOnMapCounter.DecreaseEnemyCount();
 
         _enemyDropItems.DropItems(false);

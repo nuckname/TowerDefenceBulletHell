@@ -15,12 +15,12 @@ MonoBehaviour:
   waveName: Wave 2
   currentWave: 7
   enemyGroups:
-  - enemyHp: 6
+  - enemyHp: 8
     count: 5
     delayBeforeGroup: 0
     spawnInterval: 0.73
     bossSpawn: 0
-  - enemyHp: 7
+  - enemyHp: 11
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.25

@@ -15,39 +15,39 @@ MonoBehaviour:
   waveName: Wave 2
   currentWave: 8
   enemyGroups:
-  - enemyHp: 8
+  - enemyHp: 9
     count: 5
     delayBeforeGroup: 0
     spawnInterval: 0.73
     bossSpawn: 0
-  - enemyHp: 8
+  - enemyHp: 9
     count: 4
-    delayBeforeGroup: 0
+    delayBeforeGroup: 0.178
     spawnInterval: 0.212
     bossSpawn: 0
-  - enemyHp: 10
+  - enemyHp: 11
     count: 1
-    delayBeforeGroup: 0
+    delayBeforeGroup: 0.23
     spawnInterval: 0.933
     bossSpawn: 0
-  - enemyHp: 10
+  - enemyHp: 11
     count: 4
-    delayBeforeGroup: 1
+    delayBeforeGroup: 1.1
     spawnInterval: 0.62
     bossSpawn: 0
-  - enemyHp: 8
+  - enemyHp: 10
     count: 4
     delayBeforeGroup: 1
     spawnInterval: 0.256
     bossSpawn: 0
-  - enemyHp: 12
+  - enemyHp: 11
     count: 1
-    delayBeforeGroup: 0.3
+    delayBeforeGroup: 0.299
     spawnInterval: 0.544
     bossSpawn: 0
-  - enemyHp: 7
+  - enemyHp: 9
     count: 8
-    delayBeforeGroup: 0.3
+    delayBeforeGroup: 0.36
     spawnInterval: 0.544
     bossSpawn: 0
   delayAfterWave: 3

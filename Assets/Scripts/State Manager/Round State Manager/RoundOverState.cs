@@ -33,21 +33,16 @@ public class RoundOverState : RoundBaseState
     private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
         //So boss coins dont fade out
-        if (roundStateManager.currentRound == 5)
+        if (roundStateManager.currentRound == 5 || roundStateManager.currentRound == 10)
         {
             yield return new WaitForSeconds(0f);
         }
+        else
+        {
+            yield return new WaitForSeconds(1f);
 
-        if (roundStateManager.currentRound == 10)
-        {
-            yield return new WaitForSeconds(0f);
-           
+            roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
         }
-  
-        yield return new WaitForSeconds(1f);
-        
-        roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
-        //roundStateManager.StartCoroutine(DestoryGameObject( 1.5f, "Heart")); // 1 second fade-out duration
     }
     
     private IEnumerator DestoryGameObject(float durationDuration, string tag, RoundStateManager roundStateManager)

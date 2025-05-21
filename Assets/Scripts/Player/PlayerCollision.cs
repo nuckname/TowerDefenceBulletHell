@@ -79,8 +79,6 @@ public class PlayerCollision : MonoBehaviour
             int range = Random.Range(0, moneyClips.Length - 1);
             audioSource.PlayOneShot(moneyClips[range]);
             
-            print("amount given: " + amount);
-            
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
             {
                 playerGoldScriptableObject.AddGold(Mathf.RoundToInt(amount / 2));

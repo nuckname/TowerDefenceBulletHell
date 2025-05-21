@@ -55,7 +55,7 @@ public class PlayerHealth : MonoBehaviour
 
     private void UpdateHealthUI()
     {
-        healthText.text = "Player Health: " + playerHealthScriptabeObject.currentHealth.ToString();
+        healthText.text = playerHealthScriptabeObject.currentHealth.ToString();
     }
 
     public void PlayerHasDied()

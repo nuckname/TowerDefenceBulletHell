@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3bacc53f9abacb4387396da7005f1a9, type: 3}
   m_Name: BulletSpeedModifier
   m_EditorClassIdentifier: 
-  speedIncreaseAmount: 1
+  speedIncreaseAmount: 1.1

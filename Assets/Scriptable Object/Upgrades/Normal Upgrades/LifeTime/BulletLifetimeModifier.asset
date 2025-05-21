@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea49b9c44dec1ba46b0637733001ee0c, type: 3}
   m_Name: BulletLifetimeModifier
   m_EditorClassIdentifier: 
-  lifetimeMultiplier: 1
+  lifetimeMultiplier: 1.1

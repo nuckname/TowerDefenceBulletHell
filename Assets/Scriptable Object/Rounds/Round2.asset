@@ -20,7 +20,7 @@ MonoBehaviour:
     delayBeforeGroup: 0
     spawnInterval: 0.8
     bossSpawn: 0
-  - enemyHp: 6
+  - enemyHp: 5
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.5
@@ -40,7 +40,6 @@ MonoBehaviour:
   spawnInterval: 1
   totalEnemies: 8
   amountOfGoldGainedForEachCoin: 15
-  increaseGoldAmoutForEachCoinMutipler: 0
   amountOfGoldToDrop: 3
   amountOfHeartToDrop: 0
   DEBUGtotalAmountOfGoldPerRound: 360

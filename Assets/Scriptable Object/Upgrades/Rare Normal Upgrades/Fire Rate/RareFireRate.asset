@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b21df99bf157c4ea628f374c3b0417, type: 3}
   m_Name: RareFireRate
   m_EditorClassIdentifier: 
-  attackIncreaseAmount: 2
+  attackIncreaseAmount: 0.6

@@ -61,15 +61,9 @@ public class SnakeBossSegment : MonoBehaviour
         {
             if (snakeBossController.currentState == SnakeBossState.FollowPath)
             {
-                print("Boss body damaged");
                 bossHealth.TakeDamage(1);
                 Destroy(other.gameObject); 
             }
-            else
-            {
-                print("Boss Not in follow path state");
-            }
-            
         }
 
     }

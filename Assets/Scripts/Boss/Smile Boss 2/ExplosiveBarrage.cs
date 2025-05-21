@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ExplosiveBarrage : MonoBehaviour
 {
@@ -11,91 +12,112 @@ public class ExplosiveBarrage : MonoBehaviour
     public float spawnRadius = 5f;             // Distance from the red circle where bullets spawn
     public float bulletSpeed = 10f;            // Speed at which bullets travel toward the red circle
 
+    [Tooltip("Minimum angular separation (in degrees) between any two bullets")]
+    public float minAngleGap = 2.5f;             
+
     [Header("Explosion Visuals")]
-    public float flashDuration = 0.5f;         // Duration of the flash before the barrage
-    public Color flashColor = Color.red;       // Color for the flashing effect
-    public SpriteRenderer spriteRenderer;      // SpriteRenderer to apply flash effects
+    public float flashDuration = 0.5f;         
+    public Color flashColor = Color.red;       
+    public SpriteRenderer spriteRenderer;      
     public GameObject explosionEffectPrefab;
 
     [Header("Delay")] 
     public float bulletSpawnDelay = 0.25f;
-    public float bulletFiringDelay = 1;// Optional explosion particle effect
+    public float bulletFiringDelay = 1;
+    
+    int attempts, maxAttempts = 1000;
+
 
     void Start()
     {
         if (targetPlayer)
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                transform.position = player.transform.position;
-            }
+            var player = GameObject.FindGameObjectWithTag("Player");
+            if (player != null) transform.position = player.transform.position;
         }
-        // Ensure we have a SpriteRenderer reference.
-        if (spriteRenderer == null)
-        {
-            spriteRenderer = GetComponent<SpriteRenderer>();
-        }
+        if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(FlashAndExplode(bulletSpawnDelay));
     }
 
     IEnumerator FlashAndExplode(float delay)
     {
-        // Save the original color.
-        Color originalColor = spriteRenderer.color;
-        float elapsed = 0f;
-
-        // Flash effect: interpolate between the original and flash color.
-        while (elapsed < flashDuration)
+        // Flash effect
+        Color original = spriteRenderer.color;
+        float t = 0f;
+        while (t < flashDuration)
         {
-            spriteRenderer.color = Color.Lerp(originalColor, flashColor, Mathf.PingPong(elapsed * 5f, 1f));
-            elapsed += Time.deltaTime;
+            spriteRenderer.color =
+                Color.Lerp(original, flashColor, Mathf.PingPong(t * 5f, 1f));
+            t += Time.deltaTime;
             yield return null;
         }
-        spriteRenderer.color = originalColor;
+        spriteRenderer.color = original;
 
-        // Optionally, spawn a visual explosion effect.
+        // Explosion VFX
         if (explosionEffectPrefab != null)
-        {
             Instantiate(explosionEffectPrefab, transform.position, Quaternion.identity);
-        }
 
-        yield return new WaitForSeconds(delay); 
-        // Spawn the barrage of bullets.
-        for (int i = 0; i < bulletCount; i++)
+        yield return new WaitForSeconds(delay);
+
+        // Generate angles with at least minAngleGap between them
+        List<float> angles = GenerateAngles(bulletCount, minAngleGap);
+
+        // Spawn all bullets (you can still stagger with additional yields if desired)
+        foreach (float angle in angles)
         {
-            StartCoroutine(SpawnBullet(bulletFiringDelay));
+            SpawnBulletAtAngle(angle);
+            // If you want a tiny spacing in time, uncomment the next line:
+            // yield return new WaitForSeconds(0.02f);
         }
 
-        // Destroy the explosive object after the barrage.
         Destroy(gameObject);
     }
 
-    IEnumerator SpawnBullet(float bulletFiringDelay)
+    List<float> GenerateAngles(int count, float minGap)
     {
-        // Choose a random angle (in degrees) around the circle.
-        float angle = Random.Range(0f, 360f);
-        // Determine the spawn position on the circle's circumference.
-        Vector3 spawnOffset = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0f) * spawnRadius;
-        Vector3 spawnPosition = transform.position + spawnOffset;
+        var angles = new List<float>(count);
 
-        // Instantiate the bullet at the computed position.
-        GameObject bullet = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
-
-        // Calculate direction vector from the spawn point to the center (the red circle).
-        Vector2 direction = ((Vector2)transform.position - (Vector2)spawnPosition).normalized;
-
-        // Set the bullet's velocity if it has a Rigidbody2D component.
-        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        if (rb != null)
+        while (angles.Count < count && attempts < maxAttempts)
         {
-            rb.linearVelocity = direction * bulletSpeed;
+            attempts++;
+            float candidate = Random.Range(0f, 360f);
+            bool ok = true;
+            foreach (var a in angles)
+            {
+                float d = Mathf.Abs(Mathf.DeltaAngle(candidate, a));
+                if (d < minGap) { ok = false; break; }
+            }
+            if (ok)
+            {
+                angles.Add(candidate);
+                attempts = 0; // reset to give full tries for next slot
+            }
         }
 
-        yield return new WaitForSeconds(bulletFiringDelay); 
+        // If we fail to find enough with strict minGap, you can either:
+        // - lower the minGap and try again, or
+        // - just fill the rest randomly.
+        while (angles.Count < count)
+            angles.Add(Random.Range(0f, 360f));
+
+        return angles;
     }
 
-    // Optional: visualize the spawn circle in the Scene view.
+    void SpawnBulletAtAngle(float angle)
+    {
+        Vector3 offset = new Vector3(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad),
+            0f
+        ) * spawnRadius;
+
+        var bullet = Instantiate(bulletPrefab, transform.position + offset, Quaternion.identity);
+
+        Vector2 dir = ((Vector2)transform.position - (Vector2)bullet.transform.position).normalized;
+        var rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null) rb.linearVelocity = dir * bulletSpeed;
+    }
+
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

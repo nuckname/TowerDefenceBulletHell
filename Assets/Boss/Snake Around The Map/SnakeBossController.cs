@@ -49,6 +49,9 @@ public class SnakeBossController : MonoBehaviour
     [SerializeField] private GameObject VictoryScreen;
     [SerializeField] private TutorialStateSO tutorialStateSO;
 
+    [Header("Health")]
+    [SerializeField] private int snakeBosshealth = 300;
+
     private int waypointIndex = 0;
     
     private EnemyFollowPath enemyFollowPath;
@@ -136,6 +139,7 @@ public class SnakeBossController : MonoBehaviour
         }
     }
 
+
     private void StartFollowPath()
     {
         //Spawn HP bar and stuf
@@ -146,7 +150,7 @@ public class SnakeBossController : MonoBehaviour
         
         enemyFollowPath.enabled = enabled;
 
-        bossHealth.SpawnHealthBar(1000);
+        bossHealth.SpawnHealthBar(snakeBosshealth);
         
         currentState = SnakeBossState.FollowPath;
     }
@@ -280,7 +284,11 @@ public class SnakeBossController : MonoBehaviour
         if (currentState != SnakeBossState.Normal)
             return;
 
-        GameObject newSegment = Instantiate(bodySegmentPrefab, bodySegments[bodySegments.Count - 1].position, Quaternion.identity);
+        GameObject newSegment = Instantiate(bodySegmentPrefab, 
+            new Vector3(bodySegments[bodySegments.Count - 1].position.x,
+                bodySegments[bodySegments.Count - 1].position.y, 
+                bodySegments[bodySegments.Count - 1].position.z + 1
+                ), Quaternion.identity);
         
         newSegment.tag = "SnakeBody";
         staticBodySegments.Add(newSegment.transform);
