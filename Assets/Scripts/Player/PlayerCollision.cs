@@ -29,11 +29,6 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameObject floatingTextPrefab;
 
     private ScreenFlashOnDamage screenFlashOnDamage;
-    
-    [Header("Sound")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] moneyClips = new AudioClip[2];
-    [SerializeField] private AudioClip[] playerHitClips = new AudioClip[6];
     private void Awake()
     {
         screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
@@ -76,8 +71,7 @@ public class PlayerCollision : MonoBehaviour
         {
             int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
             
-            int range = Random.Range(0, moneyClips.Length - 1);
-            audioSource.PlayOneShot(moneyClips[range]);
+            AudioManager.instance.PlayerCollectCoinSFX();
             
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
             {
@@ -101,8 +95,7 @@ public class PlayerCollision : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        int range = Random.Range(0, playerHitClips.Length - 1);
-        audioSource.PlayOneShot(playerHitClips[range]);
+        AudioManager.instance.PlayerHurtSFX();
         
         screenFlashOnDamage.TakeDamage();
         

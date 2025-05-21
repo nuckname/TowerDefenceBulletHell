@@ -28,15 +28,6 @@ public class PlaceTurret : NetworkBehaviour
 
     public bool tutorialCannotPlaced = false;
     
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip placeGhostTurretClip;
-    [SerializeField] private AudioClip placeTurretClip;
-    [SerializeField] private AudioClip errorClip;
-    
-    [SerializeField] private AudioClip cancelGhostTurret;
-
-    
     private void Awake()
     {
         displayTurretText = GameObject.FindGameObjectWithTag("TurretDisplayText").GetComponent<TextMeshProUGUI>();
@@ -73,7 +64,8 @@ public class PlaceTurret : NetworkBehaviour
 
                 if (tutorialCannotPlaced)
                 {
-                    audioSource.PlayOneShot(errorClip);
+                    AudioManager.instance.errorSFX();
+
 
                     Debug.Log("Cant place turret becuase of tutorial.");
                     return;
@@ -81,7 +73,9 @@ public class PlaceTurret : NetworkBehaviour
                 
                 if (playerGold.SpendGold(TurretBasicCost))
                 {
-                    audioSource.PlayOneShot(placeTurretClip);
+                    AudioManager.instance.PlaceTurretClip();
+                    
+                    //audioSource.PlayOneShot(placeTurretClip);
 
                     SpawnBasicTurret();
                     UpdateTurretDisplayText(TurretBasicCost);
@@ -93,7 +87,9 @@ public class PlaceTurret : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
-                audioSource.PlayOneShot(cancelGhostTurret);
+                AudioManager.instance.CancelGhostTurretSFX();
+
+                //audioSource.PlayOneShot(cancelGhostTurret);
                 
                 GameObject userGhostTurret = GameObject.FindGameObjectWithTag("GhostTurret");
                 PlayerShooting.disableShooting = false;
@@ -110,8 +106,7 @@ public class PlaceTurret : NetworkBehaviour
 
     private void SpawnFloatingText()
     {
-        audioSource.PlayOneShot(errorClip);
-
+        AudioManager.instance.errorSFX();
         
         GameObject canvas = GameObject.Find("Canvas");
         GameObject floatingText = Instantiate(FloatingTextNotEnoughGold, canvas.transform);
@@ -124,7 +119,7 @@ public class PlaceTurret : NetworkBehaviour
     {
         if (!GhostTurretHasBeenPlaced)
         {
-            audioSource.PlayOneShot(placeGhostTurretClip);
+            AudioManager.instance.PlaceGhostTurretSFX();
             
             SpawnGhostTurret();
             

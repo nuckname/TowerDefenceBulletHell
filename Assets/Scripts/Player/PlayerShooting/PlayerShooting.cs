@@ -27,11 +27,6 @@ public class PlayerShooting : MonoBehaviour
     public Vector2 barOffset     = new Vector2(10, 10);
     public Color  barBackground  = new Color(0, 0, 0, 0.6f);
     public Color  barFill        = new Color(1, 1, 1, 0.9f);
-    
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] shootSound = new AudioClip[4];
-    [SerializeField] private AudioClip reloadSound;
 
     private void Start()
     {
@@ -60,7 +55,6 @@ public class PlayerShooting : MonoBehaviour
 
         if (bulletsRemaining <= 0)
         {
-            audioSource.PlayOneShot(reloadSound);
 
             StartCoroutine(Reload());
             return;
@@ -96,7 +90,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Length - 1)]);
+        AudioManager.instance.PlayerShootSFX();
         
         lastShotTime     = Time.time;
         bulletsRemaining--;

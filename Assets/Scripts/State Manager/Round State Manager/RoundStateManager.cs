@@ -44,6 +44,8 @@ public class RoundStateManager : MonoBehaviour
     {
         currentState = roundOverState;
         currentState.EnterState(this);
+        
+        musicSource.PlayOneShot(gameMusic[UnityEngine.Random.Range(0, gameMusic.Length)]);
     }
 
     void Update()
