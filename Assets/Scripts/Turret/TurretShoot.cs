@@ -26,8 +26,6 @@ public class TurretShoot : MonoBehaviour
 
     private BulletFactory bulletFactory;
 
-    private BulletCollision bulletCollision;
-
     [SerializeField] private BulletPool bulletPool;
     
     [Header("Bullet Sprites")]
@@ -49,7 +47,6 @@ public class TurretShoot : MonoBehaviour
         bulletPool = GameObject.FindGameObjectWithTag("BulletPooling").GetComponent<BulletPool>();
 
         turretStats = GetComponent<TurretStats>();
-        bulletCollision = GetComponent<BulletCollision>();
 
         bulletFactory = GetComponent<BulletFactory>();
         bulletFactory.bulletPrefab = turretConfig.bulletPrefab;
@@ -241,6 +238,8 @@ public class TurretShoot : MonoBehaviour
         BasicBullet basicBullet = bullet.GetComponent<BasicBullet>();
         if (basicBullet != null)
             basicBullet.SetDirection(direction);
+        
+        
 
         float bulletLifeTime = turretConfig.bulletLifeTime * turretStats.modifierBulletLifeTime;
         if (bulletPool != null)

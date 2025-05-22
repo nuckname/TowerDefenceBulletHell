@@ -39,7 +39,7 @@ public class BossHealth : MonoBehaviour
 
         if (!isSnake)
         {
-            SpawnHealthBar(85);
+            SpawnHealthBar(80);
         }
     }
 

@@ -53,6 +53,7 @@ public class BulletCollision : MonoBehaviour
              pierceIndex--;
         }
         
+        /*
         if (other.gameObject.CompareTag("Bullet"))
         {
             print("Bullet on Bullet Collision");
@@ -60,6 +61,7 @@ public class BulletCollision : MonoBehaviour
             
             Destroy(gameObject);
         }
+        */
 
         if (other.gameObject.CompareTag("PlayerBullet"))
         {

@@ -39,7 +39,14 @@ public class RoundStateManager : MonoBehaviour
         currentState = roundOverState;
         currentState.EnterState(this);
         
-       AudioManager.instance.PlayMusic();
+        StartCoroutine(PlayMusicDelayed());
+    }
+    
+    private IEnumerator PlayMusicDelayed()
+    {
+        //fixes weird bug when its too loud when you start game.
+        yield return new WaitForSeconds(1.2f); 
+        AudioManager.instance.PlayMusic();
     }
 
     void Update()

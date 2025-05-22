@@ -16,16 +16,16 @@ MonoBehaviour:
   currentWave: 3
   enemyGroups:
   - enemyHp: 3
-    count: 10
+    count: 8
     delayBeforeGroup: 0
     spawnInterval: 0.7
     bossSpawn: 0
   delayAfterWave: 2
   speedModifer: 3
   spawnInterval: 0.65
-  totalEnemies: 10
+  totalEnemies: 8
   amountOfGoldGainedForEachCoin: 5
   amountOfGoldToDrop: 10
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 500
+  DEBUGtotalAmountOfGoldPerRound: 400
   boss: {fileID: 0}
