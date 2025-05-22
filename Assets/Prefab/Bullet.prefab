@@ -178,7 +178,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.012667328, y: 0.032264277}
+  m_Offset: {x: 0.011722073, y: 0.010519564}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -188,7 +188,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.48825896, y: 0.59236586}
+  m_Size: {x: 0.554438, y: 0.6358553}
   m_EdgeRadius: 0
 --- !u!114 &-6286402321136572564
 MonoBehaviour:
@@ -283,10 +283,10 @@ MonoBehaviour:
   debug_message_active: 
   debug_message_target: 
   homingDelay: 0.5
-  homingStrength: 100
-  homingRadius: 100
-  speed: 5
+  homingSpeed: 8
   useHoming: 1
+  targetTag: Enemy
+  allowRetargeting: 1
 --- !u!114 &2218803637122075860
 MonoBehaviour:
   m_ObjectHideFlags: 0
