@@ -1,3 +1,4 @@
+using Unity.Services.Authentication;
 using UnityEngine;
 
 public class CircleAttackController : MonoBehaviour
@@ -41,16 +42,18 @@ public class CircleAttackController : MonoBehaviour
     
     void FireBullet()
     {
-        if (bulletPrefab != null)
+        if (bulletPrefab == null) return;
+
+        Vector3 spawnPos = transform.position + new Vector3(0f, 0f, -2f);
+
+        Quaternion spawnRot = Quaternion.Euler(0f, 0f, transform.eulerAngles.z);
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnPos, spawnRot);
+        Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+        if (rb != null)
         {
-            // Instantiate the bullet at the current position and rotation.
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            if (rb != null)
-            {
-                // The bullet is fired in the direction of the current rotation (using transform.right).
-                rb.linearVelocity = transform.right * bulletSpeed;
-            }
+            rb.linearVelocity = transform.right * bulletSpeed;
         }
     }
+
 }

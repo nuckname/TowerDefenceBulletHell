@@ -1,9 +1,11 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class UpgradeUiManager : MonoBehaviour
 {
@@ -40,6 +42,11 @@ public class UpgradeUiManager : MonoBehaviour
 
     private string selectedRarity = "Error";
     private int rarityIndex = 0;
+    
+    [Header("Cant buy upgrade")]
+    [SerializeField] private Color insufficientColor = Color.red;
+    [SerializeField] private float shakeDuration = 0.3f;
+    [SerializeField] private float shakeMagnitude = 5f;
     
     //Gold
     public PlayerGoldScriptableObject playerGold;
@@ -225,7 +232,6 @@ public class UpgradeUiManager : MonoBehaviour
             
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                print("hgey");
                 ClickedToppedButton();
             }
             
@@ -274,7 +280,7 @@ public class UpgradeUiManager : MonoBehaviour
             {
                 if (newUpgradePrice == 0)
                 {
-                    Debug.LogError("Spent 0");
+                    Debug.LogWarning("Spent 0");
                 }
 
                 print("Player spent: " + newUpgradePrice);
@@ -287,9 +293,57 @@ public class UpgradeUiManager : MonoBehaviour
                 
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
             }
+            else
+            {
+                //not enough gold
+                StopAllCoroutines();
+                TMP_Text textToShake = GetTextButtonClicked(buttonClicked);
+                StartCoroutine(ShowCannotBuyFeedback(textToShake));
+            }
         }
     }
 
+    private TMP_Text GetTextButtonClicked(int clickNumber)
+    {
+        switch (clickNumber)
+        {
+            case 0:
+                return allTextUis[0];
+            case 1:
+                return allTextUis[1];
+            case 2:
+                return allTextUis[2];
+            default:
+                Debug.LogWarning($"GetTextButtonClicked: unknown clickNumber {clickNumber}");
+                return null;
+        }
+
+    }
+
+    private IEnumerator ShowCannotBuyFeedback(TMP_Text priceText)
+    {
+        // 1) turn text red
+        var originalColor = priceText.color;
+        priceText.color = insufficientColor;
+
+        // 2) shake
+        var rt = priceText.rectTransform;
+        Vector3 originalPos = rt.localPosition;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetX = (Random.value * 2f - 1f) * shakeMagnitude;
+            rt.localPosition = originalPos + new Vector3(offsetX, 0f, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 3) restore
+        rt.localPosition = originalPos;
+        priceText.color = originalColor;
+    }
+    
     private void DisableActionsWhileOpen(bool isOpen)
     {
         if (isOpen)

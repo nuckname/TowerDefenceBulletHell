@@ -70,6 +70,10 @@ public class PlayerHealth : MonoBehaviour
         tutorialStateSO.playerTutorial = false;
         
         Destroy(player);
+        
+        GameObject bossHealthBar = GameObject.FindGameObjectWithTag("BossHealthBar");
+        Destroy(bossHealthBar);
+        
     }
     
     

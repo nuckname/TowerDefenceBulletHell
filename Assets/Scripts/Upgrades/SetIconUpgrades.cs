@@ -43,6 +43,7 @@ public class SetIconUpgrades : MonoBehaviour
 
     private void RotateImage(float turretRotation)
     {
+        print("turretRotation: " + turretRotation);
         Debug.LogWarning("RotateImage Code Here");
         float rawZ = transform.eulerAngles.z;
         float signedZ = rawZ > 180f ? rawZ - 360f : rawZ;
@@ -83,7 +84,7 @@ public class SetIconUpgrades : MonoBehaviour
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[1])
             && !descriptionsToNotRotate.Contains(upgradeDescriptions[2]))
         {
-            //RotateImage(turretRotation);
+            RotateImage(turretRotation);
         }
         
         

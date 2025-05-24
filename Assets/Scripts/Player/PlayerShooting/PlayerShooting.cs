@@ -107,13 +107,11 @@ public class PlayerShooting : MonoBehaviour
     {
         isReloading     = true;
         reloadStartTime = Time.time;
-        Debug.Log("Reloading...");
 
         yield return new WaitForSeconds(reloadTime);
 
         bulletsRemaining = magazineSize;
         isReloading      = false;
-        Debug.Log("Reload complete");
     }
 
     public int  GetBulletsRemaining() => bulletsRemaining;

@@ -111,8 +111,12 @@ public class ExplosiveBarrage : MonoBehaviour
             0f
         ) * spawnRadius;
 
-        var bullet = Instantiate(bulletPrefab, transform.position + offset, Quaternion.identity);
+        Vector3 spawnPos = transform.position + new Vector3(0f, 0f, -2f);
 
+        Quaternion spawnRot = Quaternion.Euler(0f, 0f, 0f);
+
+        GameObject bullet = Instantiate(bulletPrefab, spawnPos+ offset, spawnRot);
+        
         Vector2 dir = ((Vector2)transform.position - (Vector2)bullet.transform.position).normalized;
         var rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) rb.linearVelocity = dir * bulletSpeed;

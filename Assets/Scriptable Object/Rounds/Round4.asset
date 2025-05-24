@@ -16,12 +16,12 @@ MonoBehaviour:
   currentWave: 4
   enemyGroups:
   - enemyHp: 7
-    count: 4
+    count: 3
     delayBeforeGroup: 0.51
     spawnInterval: 1.12
     bossSpawn: 0
   - enemyHp: 4
-    count: 4
+    count: 5
     delayBeforeGroup: 1
     spawnInterval: 0.76
     bossSpawn: 0

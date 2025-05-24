@@ -168,10 +168,6 @@ public class TurretShoot : MonoBehaviour
                 FireProjectilesInDirection(activeShootPoints[0], directions[0]);
             }
         }
-        
-        //audioSource.PlayOneShot(shootClips[Random.Range(0, shootClips.Length - 1)]);
-        audioSource.PlayOneShot(shootClips[selectSound]);
-
     }
 
 

@@ -17,7 +17,6 @@ public class OnClickEffect : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Turret"))
         {
             GameObject selectedTurret = hit.collider.gameObject;
-            Debug.Log("Turret clicked: " + selectedTurret.name);
 
             if (newUI == null && !UiOpenCantUpgradeTurret)
             {

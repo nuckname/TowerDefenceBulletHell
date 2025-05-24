@@ -50,7 +50,7 @@ public class HomingBullet : MonoBehaviour
     private void OnDisable()
     {
         StopAllCoroutines();
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 
     private void Update()
@@ -76,7 +76,7 @@ public class HomingBullet : MonoBehaviour
 
         // Steer directly towards the target by setting velocity
         Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
-        rb.velocity = direction * homingSpeed;
+        rb.linearVelocity = direction * homingSpeed;
     }
 
     private IEnumerator ActivateHoming()
@@ -114,6 +114,6 @@ public class HomingBullet : MonoBehaviour
         StopAllCoroutines();
         isHomingActive = false;
         target = null;
-        rb.velocity = Vector2.zero;
+        rb.linearVelocity = Vector2.zero;
     }
 }
