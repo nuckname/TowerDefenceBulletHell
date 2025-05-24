@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -21,8 +22,12 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip placeGhostTurretClip;
     [SerializeField] private AudioClip placeRealTurretClip;
+    [SerializeField] private AudioClip selectTurretClip;
+    [SerializeField] private AudioClip cancelGhostTurretClip;
+    [SerializeField] private AudioClip showTurretStatsClip;
+    [SerializeField] List<AudioClip> reRollTurretClip = new List<AudioClip>();
     
-    [SerializeField] private AudioClip cancelGhostTurret;
+    [SerializeField] private AudioClip goBack;
 
     [Header("Collect Coin")]
     [SerializeField] AudioSource collectCoinSource;
@@ -40,7 +45,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] List<AudioClip> musicClips = new List<AudioClip>();
 
+    [Header("Music")]
+    [SerializeField] AudioSource buyUpgradeSource;
+    [SerializeField] List<AudioClip> buyUpgradeClips = new List<AudioClip>();
     
+    [Header("Gibberish")]
+    [SerializeField] AudioSource gibberishSource;
+    [SerializeField] List<AudioClip> gibberishClips = new List<AudioClip>();
 
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
@@ -62,6 +73,9 @@ public class AudioManager : MonoBehaviour
         
         LoadVolume();
     }
+    
+    //or whatever the user has saved it too.
+    private float currentMusicVolume;
 
     void LoadVolume()
     {
@@ -73,6 +87,8 @@ public class AudioManager : MonoBehaviour
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(sfxVolume) * 20);
         
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(masterVolume) * 20);
+        
+        currentMusicVolume = musicVolume;
     }
     
     public void errorSFX()
@@ -80,11 +96,55 @@ public class AudioManager : MonoBehaviour
         playerShootSource.PlayOneShot(errorClip);
     }
     
+    public void backSFX()
+    {
+        placeTurretSource.PlayOneShot(goBack);
+    }
+    
+    public void GibberishSFX()
+    {
+        AudioClip clip = gibberishClips[Random.Range(0, gibberishClips.Count)];
+        gibberishSource.PlayOneShot(clip);
+    }
+    
+    public void BuyTurretUpgradeSFX()
+    {
+        AudioClip clip = buyUpgradeClips[Random.Range(0, buyUpgradeClips.Count)];
+        buyUpgradeSource.PlayOneShot(clip);
+    }
+    
     //Music
     public void PlayMusic()
     {
         AudioClip clip = musicClips[Random.Range(0, musicClips.Count)];
         musicSource.PlayOneShot(clip);
+    }
+    
+    public void FadeOutAndStopMusic(float fadeDuration = 1.5f)
+    {
+        StartCoroutine(FadeOutCoroutine(fadeDuration));
+    }
+
+    private IEnumerator FadeOutCoroutine(float duration)
+    {
+        float startVolume = musicSource.volume;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / duration);
+            yield return null;
+        }
+
+        musicSource.Stop();
+        musicSource.volume = startVolume; // Reset for future use
+    }
+
+    
+    public void StopMusic()
+    {
+        musicSource.Stop();
     }
 
     
@@ -116,11 +176,28 @@ public class AudioManager : MonoBehaviour
         collectCoinSource.PlayOneShot(clip);
     }
     
+    public void TurretStatsButtonSFX()
+    {
+        placeTurretSource.PlayOneShot(showTurretStatsClip);
+    }
+    
     //Place turret
+    
     
     public void PlaceGhostTurretSFX()
     {
         playerShootSource.PlayOneShot(placeGhostTurretClip);
+    }
+    
+    public void SelectTurretSFX()
+    {
+        placeTurretSource.PlayOneShot(selectTurretClip);
+    }
+    
+    public void RerollTurretSFX()
+    {
+        AudioClip clip = reRollTurretClip[Random.Range(0,reRollTurretClip.Count)];
+        placeTurretSource.PlayOneShot(clip);
     }
     
     public void PlaceTurretClip()
@@ -130,6 +207,6 @@ public class AudioManager : MonoBehaviour
     
     public void CancelGhostTurretSFX()
     {
-        playerShootSource.PlayOneShot(cancelGhostTurret);
+        playerShootSource.PlayOneShot(cancelGhostTurretClip);
     }
 }

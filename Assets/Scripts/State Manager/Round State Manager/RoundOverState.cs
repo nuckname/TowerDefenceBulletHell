@@ -8,15 +8,18 @@ public class RoundOverState : RoundBaseState
     {
         Debug.Log("Round Over State");
         
-
         
         roundStateManager.AllowTurretsToShoot(false);
+
+
+        roundStateManager.StartCoroutine(roundStateManager.PlayMusicDelayed());
+        
 
         roundStateManager.selectTurret.AllowSelectingTurret = true;
 
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
     }
-
+    
     public override void UpdateState(RoundStateManager roundStateManager)
     {
         if (Input.GetKeyDown(KeyCode.Tab) && !roundStateManager.tutorialCantStartRound)

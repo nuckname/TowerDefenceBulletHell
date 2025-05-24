@@ -32,7 +32,13 @@ public class ShowTurretStatsButton : MonoBehaviour
         {
             turretStats = upgradeUiManager.targetTurret.GetComponent<TurretStats>();
             //turretStats = upgradeUiManager.GetComponent<UpgradeUiManager>().targetTurret.GetComponent<TurretStats>();
+
+            AudioManager.instance.TurretStatsButtonSFX();
             UpdateStatsUI();
+        }
+        else
+        {
+            AudioManager.instance.backSFX();
         }
     }
 
@@ -51,7 +57,7 @@ public class ShowTurretStatsButton : MonoBehaviour
         if (turretStats.modifierBulletSpeed != 0) stats.AppendLine($"<b>Bullet Speed:</b> {turretStats.modifierBulletSpeed}");
         if (turretStats.modifierSlowerBulletSpeed != 0) stats.AppendLine($"<b>Slower Bullet Speed:</b> {turretStats.modifierSlowerBulletSpeed}");
         if (turretStats.isTurretHoming) stats.AppendLine($"<b>Homing:</b> {turretStats.isTurretHoming}");
-        if (turretStats.pierceCount > 1) stats.AppendLine($"<b>Pierce Count:</b> {turretStats.pierceCount - 1}");
+        if (turretStats.pierceCount >= 1) stats.AppendLine($"<b>Pierce Count:</b> {turretStats.pierceCount}");
         if (turretStats.angleSpread != 30f) stats.AppendLine($"<b>Angle Spread:</b> {turretStats.angleSpread}");
         if (turretStats.extraProjectiles > 1) stats.AppendLine($"<b>Extra Projectiles:</b> {turretStats.extraProjectiles}");
         if (turretStats.Shoot4Projectiles) stats.AppendLine($"<b>Shoot 4 Projectiles:</b> {turretStats.Shoot4Projectiles}");

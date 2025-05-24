@@ -35,12 +35,12 @@ MonoBehaviour:
     delayBeforeGroup: 1.1
     spawnInterval: 0.62
     bossSpawn: 0
-  - enemyHp: 10
+  - enemyHp: 13
     count: 4
     delayBeforeGroup: 1
     spawnInterval: 0.256
     bossSpawn: 0
-  - enemyHp: 11
+  - enemyHp: 15
     count: 1
     delayBeforeGroup: 0.299
     spawnInterval: 0.544

@@ -18,6 +18,8 @@ public class OnClickEffect : MonoBehaviour
         {
             GameObject selectedTurret = hit.collider.gameObject;
 
+            AudioManager.instance.SelectTurretSFX();
+            
             if (newUI == null && !UiOpenCantUpgradeTurret)
             {
 

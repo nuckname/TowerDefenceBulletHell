@@ -162,6 +162,8 @@ public class UpgradeUiManager : MonoBehaviour
 
     public void ExitSelection()
     {
+        AudioManager.instance.backSFX();
+        
         PlayerShooting.disableShooting = false;
         Destroy(gameObject);
         
@@ -212,6 +214,7 @@ public class UpgradeUiManager : MonoBehaviour
             
             UpdateBackgroundColourUi(storeTurretDescriptionAndRarity);
             
+            AudioManager.instance.RerollTurretSFX();
 
         }
     }
@@ -292,6 +295,8 @@ public class UpgradeUiManager : MonoBehaviour
                 
                 
                 _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
+                
+                AudioManager.instance.BuyTurretUpgradeSFX();
             }
             else
             {
@@ -299,6 +304,9 @@ public class UpgradeUiManager : MonoBehaviour
                 StopAllCoroutines();
                 TMP_Text textToShake = GetTextButtonClicked(buttonClicked);
                 StartCoroutine(ShowCannotBuyFeedback(textToShake));
+                
+                AudioManager.instance.GibberishSFX();
+
             }
         }
     }

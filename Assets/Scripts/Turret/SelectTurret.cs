@@ -14,6 +14,7 @@ public class SelectTurret : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0))
             {
+                
                 onClickEffect.TurretSelected();
             }
         }

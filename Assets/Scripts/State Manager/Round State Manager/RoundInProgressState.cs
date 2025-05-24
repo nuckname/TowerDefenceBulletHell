@@ -17,7 +17,7 @@ public class RoundInProgressState : RoundBaseState
         Debug.Log("Unity Analyistics: " + ar);
 
         roundStateManager.DestroyAllPlayerBullets();
-        
+
         roundStateManager.selectTurret.AllowSelectingTurret = false;
         
         SpawnRoundEnemies(roundCounter, roundStateManager);
@@ -28,6 +28,8 @@ public class RoundInProgressState : RoundBaseState
             roundStateManager.mapArrows[1].gameObject.SetActive(false);
         }
     }
+    
+
 
     public override void UpdateState(RoundStateManager roundStateManager)
     {
