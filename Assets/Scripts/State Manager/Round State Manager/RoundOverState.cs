@@ -11,10 +11,8 @@ public class RoundOverState : RoundBaseState
         
         roundStateManager.AllowTurretsToShoot(false);
 
-
-        roundStateManager.StartCoroutine(roundStateManager.PlayMusicDelayed());
+        Music(roundStateManager);
         
-
         roundStateManager.selectTurret.AllowSelectingTurret = true;
 
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
@@ -31,6 +29,11 @@ public class RoundOverState : RoundBaseState
     public override void OnCollisionEnter2D(RoundStateManager roundStateManager, Collision2D other)
     {
         
+    }
+
+    private void Music(RoundStateManager roundStateManager)
+    {
+        roundStateManager.StartCoroutine(roundStateManager.PlayMusicDelayed());
     }
 
     private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)

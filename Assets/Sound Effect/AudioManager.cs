@@ -44,11 +44,13 @@ public class AudioManager : MonoBehaviour
     
     [Header("Pop sound/Enemy Hit")]
     [SerializeField] AudioSource popHitSource;
-    [SerializeField] AudioClip popHitClips;
+    [SerializeField] AudioClip popHitClip;
     
     [Header("Music")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] List<AudioClip> musicClips = new List<AudioClip>();
+    [SerializeField] AudioClip roundZeroMusicClip;
+
 
     [Header("Music")]
     [SerializeField] AudioSource buyUpgradeSource;
@@ -61,8 +63,10 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
     public const string MASTER_KEY = "masterVolume";
-    public const string POP_KEY = "popSound";
+    public const string POP_KEY = "popVolume";
     
+    public AudioMixerGroup popGroup;
+
     [SerializeField] private AudioMixer audioMixer;
     private void Awake()
     {
@@ -78,6 +82,8 @@ public class AudioManager : MonoBehaviour
         }
         
         LoadVolume();
+        //popHitSource.outputAudioMixerGroup = popGroup;
+
     }
     
     //or whatever the user has saved it too.
@@ -91,11 +97,12 @@ public class AudioManager : MonoBehaviour
         float popSound = PlayerPrefs.GetFloat(POP_KEY, 1f);
         
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(musicVolume) * 20);
-        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(sfxVolume) * 20);
         
-        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(masterVolume) * 20);
+        audioMixer.SetFloat(VolumeSettings.MIXER_SFX,Mathf.Log10(sfxVolume) * 20);
         
-        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(popSound) * 20);
+        audioMixer.SetFloat(VolumeSettings.MIXER_MASTER,Mathf.Log10(masterVolume) * 20);
+        
+        audioMixer.SetFloat(VolumeSettings.MIXER_POP,Mathf.Log10(popSound) * 20);
         
         currentMusicVolume = musicVolume;
     }
@@ -128,9 +135,16 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = musicClips[Random.Range(0, musicClips.Count)];
         musicSource.PlayOneShot(clip);
     }
-    
-    public void FadeOutAndStopMusic(float fadeDuration = 1.5f)
+
+    public void RoundZeroMusic()
     {
+        musicSource.PlayOneShot(roundZeroMusicClip);
+
+    }
+    
+    public void FadeOutAndStopMusic()
+    {
+        float fadeDuration = 1.5f;
         StartCoroutine(FadeOutCoroutine(fadeDuration));
     }
 
@@ -156,11 +170,24 @@ public class AudioManager : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void PauseMusic()
+    {
+        musicSource.Pause();
+    }
+    public void ResumeMusic()
+    {
+        musicSource.UnPause();
+    }
     
+    private float lastPopTime = 0f;
+    private float popCooldown = 0.05f;
     //Enemy
     public void enemyHitSFX()
     {
-        popHitSource.PlayOneShot(popHitClips);
+        if (Time.time - lastPopTime < popCooldown) return;
+        
+        popHitSource.pitch = Random.Range(0.9f, 1.1f);
+        popHitSource.PlayOneShot(popHitClip);
     }
     
     //Player

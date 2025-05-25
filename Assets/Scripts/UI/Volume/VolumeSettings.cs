@@ -41,6 +41,7 @@ public class VolumeSettings : MonoBehaviour
         PlayerPrefs.SetFloat(AudioManager.MUSIC_KEY, musicSlider.value);
         PlayerPrefs.SetFloat(AudioManager.MASTER_KEY, masterSlider.value);
         PlayerPrefs.SetFloat(AudioManager.SFX_KEY, sfxSlider.value);
+        
         PlayerPrefs.SetFloat(AudioManager.POP_KEY, popSlider.value);
     }
     public void SetMasterVolume(float volume)
@@ -55,6 +56,7 @@ public class VolumeSettings : MonoBehaviour
     
     public void SetPopVolume(float volume)
     {
+        Debug.Log($"[VolumeSettings] PopVolume → {volume}");
         audioMixer.SetFloat(MIXER_POP, Mathf.Log10(volume) * 20);
     }
     

@@ -41,15 +41,9 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
          {
-             Debug.Log("Escape key pressed");
             if (!PauseMenuOpen)
             {
-                Debug.Log("Opening pause menu");
-                PauseMenuOpen = true;
-                settingsMenu.SetActive(true);
-                
-                //pause
-                Time.timeScale = 0;
+                OpenPauseMenu();
             }
             else
             {
@@ -58,9 +52,22 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    public void OpenPauseMenu()
+    {
+        AudioManager.instance.PauseMusic();
+        
+        PauseMenuOpen = true;
+        settingsMenu.SetActive(true);
+                
+        //pause
+        Time.timeScale = 0;
+    }
+
 
     public void ClosePauseMenu()
     {
+        AudioManager.instance.ResumeMusic();
+
         Debug.Log("Closing pause menu");
         TurnOnTutorialText();
 

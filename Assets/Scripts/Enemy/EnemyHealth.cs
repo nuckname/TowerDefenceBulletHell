@@ -15,10 +15,6 @@ public class EnemyHealth : MonoBehaviour
 
     public Dictionary<int, Sprite> spriteDictionary;
     
-    [Header("Audio")]
-    [SerializeField] private AudioSource hitAudioSource;
-    [SerializeField] private AudioClip hitClip;
-    
     private bool isDead = false;
 
     void Awake()
@@ -58,7 +54,7 @@ public class EnemyHealth : MonoBehaviour
 
         //Different sound of dying and getting hit?????????
         
-        hitAudioSource.PlayOneShot(hitClip);
+        AudioManager.instance.enemyHitSFX();
         
         EnemyStartingHealth--;
 
