@@ -5,11 +5,6 @@ public class GhostTurretRotate : MonoBehaviour
     [SerializeField] private float scrollSpeed = 180f; // degrees per scroll “notch”
     public Quaternion savedRotation;
     
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip rotateGhostTurretClip;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         // Start facing “up” (0° around Z)
@@ -18,7 +13,6 @@ public class GhostTurretRotate : MonoBehaviour
     }
 
 
-    // Update is called once per frame
     void Update()
     {
         float scroll = Input.GetAxis("Mouse ScrollWheel");
@@ -26,14 +20,14 @@ public class GhostTurretRotate : MonoBehaviour
         {
             transform.Rotate(0f, 0f, -scroll * scrollSpeed);
 
-            audioSource.PlayOneShot(rotateGhostTurretClip);
+            AudioManager.instance.rotateTurretSFX();
 
             savedRotation = transform.rotation;
         }
  
         if (Input.GetKeyDown(KeyCode.R))
         {
-            audioSource.PlayOneShot(rotateGhostTurretClip);
+            AudioManager.instance.rotateTurretSFX();
             // Convert 0-360 range to -180 to +180 for easier comparisons
             float rawZ = transform.eulerAngles.z;
             float signedZ = rawZ > 180f ? rawZ - 360f : rawZ;

@@ -8,9 +8,6 @@ public class GhostBlockPathCollision : MonoBehaviour
     public bool canPlaceGhost;
 
     private int collisionCount = 0;
-    
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip errorClip;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -30,7 +27,7 @@ public class GhostBlockPathCollision : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                audioSource.PlayOneShot(errorClip);
+                AudioManager.instance.errorSFX();
             }
         }
     }

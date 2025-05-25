@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
 
     [Header("Error")]
+    [SerializeField] AudioSource errorClipSource;
     [SerializeField] private AudioClip errorClip;
 
     [Header("Player Shoot")]
@@ -17,16 +18,20 @@ public class AudioManager : MonoBehaviour
     [SerializeField] List<AudioClip> playerShootClips = new List<AudioClip>();
 
     [Header("Place Turret")]
-
     [SerializeField] AudioSource placeTurretSource;
-
     [SerializeField] private AudioClip placeGhostTurretClip;
     [SerializeField] private AudioClip placeRealTurretClip;
     [SerializeField] private AudioClip selectTurretClip;
-    [SerializeField] private AudioClip cancelGhostTurretClip;
     [SerializeField] private AudioClip showTurretStatsClip;
     [SerializeField] List<AudioClip> reRollTurretClip = new List<AudioClip>();
     
+    [SerializeField] private AudioClip cancelGhostTurretClip;
+    
+    [Header("Rotate Turret")]
+    [SerializeField] AudioSource rotateTurretSource;
+    [SerializeField] private AudioClip rotateGhostTurretClip;
+
+    [Header("go back")]
     [SerializeField] private AudioClip goBack;
 
     [Header("Collect Coin")]
@@ -37,9 +42,9 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource playerHurtSource;
     [SerializeField] List<AudioClip> playerHurtClips = new List<AudioClip>();
     
-    [Header("Enemy Hit")]
-    [SerializeField] AudioSource enemyHitSource;
-    [SerializeField] AudioClip enemyHitClips;
+    [Header("Pop sound/Enemy Hit")]
+    [SerializeField] AudioSource popHitSource;
+    [SerializeField] AudioClip popHitClips;
     
     [Header("Music")]
     [SerializeField] AudioSource musicSource;
@@ -56,6 +61,7 @@ public class AudioManager : MonoBehaviour
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
     public const string MASTER_KEY = "masterVolume";
+    public const string POP_KEY = "popSound";
     
     [SerializeField] private AudioMixer audioMixer;
     private void Awake()
@@ -82,18 +88,21 @@ public class AudioManager : MonoBehaviour
         float musicVolume = PlayerPrefs.GetFloat(MUSIC_KEY, 1f);
         float sfxVolume = PlayerPrefs.GetFloat(SFX_KEY, 1f);
         float masterVolume = PlayerPrefs.GetFloat(MASTER_KEY, 1f);
+        float popSound = PlayerPrefs.GetFloat(POP_KEY, 1f);
         
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(musicVolume) * 20);
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(sfxVolume) * 20);
         
         audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(masterVolume) * 20);
         
+        audioMixer.SetFloat(VolumeSettings.MIXER_MUSIC,Mathf.Log10(popSound) * 20);
+        
         currentMusicVolume = musicVolume;
     }
     
     public void errorSFX()
     {
-        playerShootSource.PlayOneShot(errorClip);
+        errorClipSource.PlayOneShot(errorClip);
     }
     
     public void backSFX()
@@ -151,7 +160,7 @@ public class AudioManager : MonoBehaviour
     //Enemy
     public void enemyHitSFX()
     {
-        enemyHitSource.PlayOneShot(enemyHitClips);
+        popHitSource.PlayOneShot(popHitClips);
     }
     
     //Player
@@ -183,6 +192,11 @@ public class AudioManager : MonoBehaviour
     
     //Place turret
     
+    public void rotateTurretSFX()
+    {
+        rotateTurretSource.PlayOneShot(rotateGhostTurretClip);
+    }
+
     
     public void PlaceGhostTurretSFX()
     {
