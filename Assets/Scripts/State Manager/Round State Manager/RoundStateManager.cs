@@ -46,6 +46,7 @@ public class RoundStateManager : MonoBehaviour
         
         yield return new WaitForSecondsRealtime(1.25f); 
 
+        print("current round: " + currentRound);
         if (currentRound == 1)
         {
             AudioManager.instance.RoundZeroMusic();
@@ -53,7 +54,8 @@ public class RoundStateManager : MonoBehaviour
         }
         else
         {
-            AudioManager.instance.PlayMusic();
+            print("random music");
+            AudioManager.instance.PlayRandomMusic();
         }
         
     }

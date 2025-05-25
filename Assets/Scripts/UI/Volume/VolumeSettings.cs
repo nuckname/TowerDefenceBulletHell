@@ -56,7 +56,6 @@ public class VolumeSettings : MonoBehaviour
     
     public void SetPopVolume(float volume)
     {
-        Debug.Log($"[VolumeSettings] PopVolume → {volume}");
         audioMixer.SetFloat(MIXER_POP, Mathf.Log10(volume) * 20);
     }
     

@@ -50,8 +50,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] List<AudioClip> musicClips = new List<AudioClip>();
     [SerializeField] AudioClip roundZeroMusicClip;
+    
+    [Header("Slime Music")]
+    [SerializeField] AudioClip slimeBossMusicClip;
 
-
+    [Header("Snake Music")]
+    [SerializeField] List<AudioClip> snakeMusicClips = new List<AudioClip>();
+    
     [Header("Music")]
     [SerializeField] AudioSource buyUpgradeSource;
     [SerializeField] List<AudioClip> buyUpgradeClips = new List<AudioClip>();
@@ -130,16 +135,36 @@ public class AudioManager : MonoBehaviour
     }
     
     //Music
-    public void PlayMusic()
+    public void PlayRandomMusic()
     {
         AudioClip clip = musicClips[Random.Range(0, musicClips.Count)];
         musicSource.PlayOneShot(clip);
+    }
+
+    public void SnakeBossMusic(int trackNumber)
+    {
+        if (trackNumber == 0)
+        {
+            AudioClip clip = musicClips[0];
+            musicSource.PlayOneShot(clip);
+        }
+
+        if (trackNumber == 1)
+        {
+            AudioClip clip = musicClips[1];
+            musicSource.PlayOneShot(clip);
+        }
     }
 
     public void RoundZeroMusic()
     {
         musicSource.PlayOneShot(roundZeroMusicClip);
 
+    }
+
+    public void SlimeBossMusic()
+    {
+        musicSource.PlayOneShot(slimeBossMusicClip);
     }
     
     public void FadeOutAndStopMusic()

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96e6bff21b88944ca2815b59f67378a, type: 3}
   m_Name: TutorialState
   m_EditorClassIdentifier: 
-  playerTutorial: 0
+  playerTutorial: 1

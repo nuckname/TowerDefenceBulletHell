@@ -102,6 +102,9 @@ public class SnakeBossController : MonoBehaviour
 
         enemyFollowPath.enabled = false;
         bossHealth.enabled = false;
+        
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.SnakeBossMusic(0);
     }
 
     private void Update()
@@ -143,6 +146,7 @@ public class SnakeBossController : MonoBehaviour
     private void StartFollowPath()
     {
         //Spawn HP bar and stuf
+
         
         MoveHead(currentMoveSpeed * followMoveSpeedMultiplier);
 
@@ -232,6 +236,10 @@ public class SnakeBossController : MonoBehaviour
             StopCoroutine(staticSegmentSpawnCoroutine);
             staticSegmentSpawnCoroutine = null;
         }
+        
+        AudioManager.instance.StopMusic();
+        AudioManager.instance.SnakeBossMusic(1);
+        
         currentState = SnakeBossState.Enraged;
         Debug.Log("Snake Boss is enraged!");
     }
