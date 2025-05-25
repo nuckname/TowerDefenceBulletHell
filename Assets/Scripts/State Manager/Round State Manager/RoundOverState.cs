@@ -47,7 +47,20 @@ public class RoundOverState : RoundBaseState
         {
             yield return new WaitForSeconds(1f);
 
-            roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
+            if (roundStateManager.currentRound < 5)
+            {
+                roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
+            }
+            
+            if (roundStateManager.currentRound > 6 || roundStateManager.currentRound < 8)
+            {
+                roundStateManager.StartCoroutine(DestoryGameObject( 1.75f,"Coin", roundStateManager)); 
+            }
+            
+            if (roundStateManager.currentRound > 9)
+            {
+                roundStateManager.StartCoroutine(DestoryGameObject( 2f,"Coin", roundStateManager)); 
+            }
         }
     }
     

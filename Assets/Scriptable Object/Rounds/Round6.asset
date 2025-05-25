@@ -30,7 +30,7 @@ MonoBehaviour:
     delayBeforeGroup: 0.36
     spawnInterval: 1.25
     bossSpawn: 0
-  - enemyHp: 9
+  - enemyHp: 7
     count: 3
     delayBeforeGroup: 0.19
     spawnInterval: 0.75

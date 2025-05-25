@@ -203,6 +203,7 @@ MonoBehaviour:
   bossDie: {fileID: 6631793544804829961}
   VictoryScreen: {fileID: 3632688943598190218, guid: b741c3bbc6c26974189c6a3a99c62507, type: 3}
   tutorialStateSO: {fileID: 11400000, guid: dc20add47829eeb48a996928135b853b, type: 2}
+  snakeBosshealth: 300
   spawnPoint: {fileID: 1742055477075043378, guid: 4d87a5790e9a2a942bf7fa039de4ff39, type: 3}
 --- !u!114 &6631793544804829961
 MonoBehaviour:

@@ -134,6 +134,21 @@ public class PlaceTurret : NetworkBehaviour
 
         currentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
 
+        Transform priceLabelTransform = currentGhost.transform.Find("Cost");
+        if (priceLabelTransform != null)
+        {
+            TMP_Text costText = priceLabelTransform.GetComponent<TMP_Text>();
+            
+            if (playerGold.currentGold <= TurretBasicCost)
+            {
+                costText.color = Color.red;
+            }
+            else
+            {
+                costText.color = Color.white;
+            }
+        }
+        
         SetNewTurretPrice(currentGhost);
 
     }
