@@ -52,6 +52,14 @@ public class RoundStateManager : MonoBehaviour
             AudioManager.instance.RoundZeroMusic();
 
         }
+        else if (currentRound == 5)
+        {
+            AudioManager.instance.SlimeBossMusic();
+        }
+        else if (currentRound == 10)
+        {
+            AudioManager.instance.SnakeBossMusic(0);
+        }
         else
         {
             print("random music");

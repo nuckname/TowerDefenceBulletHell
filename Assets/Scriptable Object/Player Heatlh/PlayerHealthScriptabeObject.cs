@@ -24,8 +24,12 @@ public class PlayerHealthScriptabeObject : ScriptableObject
     }
 
     //How does this work for multiplayer
+    //There's another Takedamge in PlayerCollision
     public void TakeDamage(int amount)
     {
+        AudioManager.instance.PlayerHurtSFX();
+
+        
         currentHealth -= amount;
         if (currentHealth <= 0)
         {

@@ -102,9 +102,7 @@ public class SnakeBossController : MonoBehaviour
 
         enemyFollowPath.enabled = false;
         bossHealth.enabled = false;
-        
-        AudioManager.instance.StopMusic();
-        AudioManager.instance.SnakeBossMusic(0);
+
     }
 
     private void Update()

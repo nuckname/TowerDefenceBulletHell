@@ -12,9 +12,6 @@ public class EnemyCollision : MonoBehaviour
     [SerializeField] private PlayerHealthSpriteSheet playerHealthSpriteSheet;
 
     [SerializeField] private PlayerHealthScriptabeObject playerHealthScriptabeObject;
-    
-    [SerializeField] private AudioSource audioSource;
-    [SerializeField] private AudioClip[] playerHitClips = new AudioClip[1];
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
@@ -43,10 +40,6 @@ public class EnemyCollision : MonoBehaviour
             if (enemyOnMapCounter != null)
             {
                 enemyOnMapCounter.DecreaseEnemyCount();
-                
-                //Not working idk
-                //int range = Random.Range(0, playerHitClips.Length - 1);
-                //audioSource.PlayOneShot(playerHitClips[1]);
                 
                 //Get current enemy hp.
                 playerHealthScriptabeObject.TakeDamage(1);

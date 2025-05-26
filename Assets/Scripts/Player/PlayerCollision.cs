@@ -71,6 +71,7 @@ public class PlayerCollision : MonoBehaviour
         {
             int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
             
+            
             AudioManager.instance.PlayerCollectCoinSFX();
             
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
@@ -103,15 +104,15 @@ public class PlayerCollision : MonoBehaviour
         
         playerHealthSpriteSheet.ChangePlayerSprite();
         
-        ShowFloatingText();
+        //ShowFloatingText(floatingTextPrefab);
         
         StartCoroutine(ActivateIframes());
     }
     
-    void ShowFloatingText()
+    void ShowFloatingText(GameObject textObject)
     {
         GameObject canvas = GameObject.Find("Canvas");
-        GameObject floatingText = Instantiate(floatingTextPrefab, canvas.transform);
+        GameObject floatingText = Instantiate(textObject, canvas.transform);
 
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
         floatingText.transform.position = screenPosition;
