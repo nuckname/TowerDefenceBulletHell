@@ -17,7 +17,7 @@ public class TutorialReworked : MonoBehaviour
 
     [SerializeField] 
     private PlaceTurret placeTurret;
-
+    
     private GhostBlockPathCollision ghostBlockPathCollision;
     private readonly string[] _messages = new string[]
     {
@@ -38,7 +38,7 @@ public class TutorialReworked : MonoBehaviour
         // Step 7
         "Tutorial Step 8:\n\nClick on a turret to upgrade it.",
         // Step 10
-        "Tutorial Step 11:\n\nPress TAB to start the round.",
+        "Tutorial Step 11:\n\nGet Ready. Then press TAB to start the round.",
         // Step 8
         "Tutorial Step 9:\n\nHold Left Ctrl + Left Mouse Click during the round to apply an upgrade.",
     };
@@ -49,6 +49,11 @@ public class TutorialReworked : MonoBehaviour
         {
             tutorialText.text = _messages[_currentStep];
             placeTurret.tutorialCannotPlaced = true;
+            
+            placeTurret.tutorialCannotBuyGhostTurret = true;
+            
+            placeTurret.tutorialCannotPressQ = true;
+            
             roundStateManager.tutorialCantStartRound = true;
             print("Tutorial cant start round");
             print("cannot place turret");
@@ -57,6 +62,13 @@ public class TutorialReworked : MonoBehaviour
         {
             tutorialText.text = "";
             placeTurret.tutorialCannotPlaced = false;
+            
+            placeTurret.tutorialCannotBuyGhostTurret = false;
+            
+            placeTurret.tutorialCannotPressQ = false;
+            
+            roundStateManager.tutorialCantStartRound = false;
+
             print("can place turret");
         }
         
@@ -65,6 +77,7 @@ public class TutorialReworked : MonoBehaviour
 
     void Update()
     {
+        
         if (!_tutorialStateSO.playerTutorial)
             return;
 
@@ -77,14 +90,12 @@ public class TutorialReworked : MonoBehaviour
                     Input.GetKeyDown(KeyCode.S) ||
                     Input.GetKeyDown(KeyCode.D))
                 {
-                    placeTurret.tutorialCannotPlaced = true;
 
                     NextStep();
                 }
                 
                 break;
             case 1: // “HOLD Left Mouse Button to shoot.”
-                placeTurret.tutorialCannotPlaced = true;
                 if (Input.GetMouseButtonDown(0))
                 {
                     NextStep();
@@ -92,18 +103,20 @@ public class TutorialReworked : MonoBehaviour
                 break;
 
             case 2: // “Press SPACE to spawn a ghost turret.”
+                placeTurret.tutorialCannotBuyGhostTurret = false;
                 placeTurret.tutorialCannotPlaced = false;
 
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
+                    placeTurret.tutorialCannotBuyGhostTurret = true;
                     placeTurret.tutorialCannotPlaced = true;
                     NextStep();
                 }
                 break;
             case 3: // “Use the SCROLL WHEEL to rotate your ghost turret.”
+
                 if (Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > 0f)
                 {
-                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
                     
                 }
@@ -112,21 +125,25 @@ public class TutorialReworked : MonoBehaviour
             case 4: // “Press R to snap-rotate your turret…”
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
                 }
                 break;
             case 5: // “Or just Press R to rotate 90 degrees.”
                 if (Input.GetKeyDown(KeyCode.R))
                 {
-                    placeTurret.tutorialCannotPlaced = true;
                     NextStep();
                 }
                 break;
             case 6: // “Left Mouse Button to confirm turret placement.”
                 placeTurret.tutorialCannotPlaced = false;
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) )
                 {
+                    //Stops the player from placing onto path and going to the next step.
+                    if (placeTurret.GhostTurretHasBeenPlaced)
+                    {
+                        return;
+                    }                    
+                    
                     NextStep();
                 }
                 break;
@@ -139,13 +156,17 @@ public class TutorialReworked : MonoBehaviour
                 break;
             case 8: // “Press TAB to start the round.”
                 roundStateManager.tutorialCantStartRound = false;
+
+                placeTurret.tutorialCannotBuyGhostTurret = false;
+                placeTurret.tutorialCannotPressQ = false;
+                
                 if (Input.GetKeyDown(KeyCode.Tab))
                 {
                     NextStep();
                 }
                 break;
             case 9: // “Hold Left Ctrl + Left Mouse Click during the round to apply an upgrade.”
-                //10 second timer???
+                
                 if (Input.GetKey(KeyCode.LeftControl) && Input.GetMouseButtonDown(0))
                     MustClickOnTurret();
                 break;

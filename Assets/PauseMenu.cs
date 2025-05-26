@@ -19,12 +19,9 @@ public class PauseMenu : MonoBehaviour
         
         if (tutorialStateSO.playerTutorial)
         {
-            settingsMenu.SetActive(true);
-            
-            PauseMenuOpen = true;
+            OpenPauseMenu(false);
             
             tutorialText.SetActive(false);
-            
 
         }
         else
@@ -43,7 +40,7 @@ public class PauseMenu : MonoBehaviour
          {
             if (!PauseMenuOpen)
             {
-                OpenPauseMenu();
+                OpenPauseMenu(true);
             }
             else
             {
@@ -52,15 +49,21 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void OpenPauseMenu()
+    public void OpenPauseMenu(bool allowPause)
     {
         AudioManager.instance.PauseMusic();
+
+        PlayerShooting.disableShooting = true;
+        print("Player " +PlayerShooting.disableShooting);
         
         PauseMenuOpen = true;
         settingsMenu.SetActive(true);
                 
         //pause
-        Time.timeScale = 0;
+        if (allowPause)
+        {
+            Time.timeScale = 0;
+        }
     }
 
 
@@ -68,9 +71,12 @@ public class PauseMenu : MonoBehaviour
     {
         AudioManager.instance.ResumeMusic();
 
-        Debug.Log("Closing pause menu");
         TurnOnTutorialText();
 
+        PlayerShooting.disableShooting = false;
+        print("Player " + PlayerShooting.disableShooting);
+
+        
         PauseMenuOpen = false;
         settingsMenu.SetActive(false);
                 

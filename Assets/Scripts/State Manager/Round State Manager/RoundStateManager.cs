@@ -44,7 +44,7 @@ public class RoundStateManager : MonoBehaviour
     {
         AudioManager.instance.StopMusic();
         
-        yield return new WaitForSecondsRealtime(1.25f); 
+        yield return new WaitForSecondsRealtime(1.95f); 
 
         print("current round: " + currentRound);
         if (currentRound == 1)
@@ -54,10 +54,12 @@ public class RoundStateManager : MonoBehaviour
         }
         else if (currentRound == 5)
         {
+            print("JAZZ");
             AudioManager.instance.SlimeBossMusic();
         }
         else if (currentRound == 10)
         {
+            print("SNAKE");
             AudioManager.instance.SnakeBossMusic(0);
         }
         else

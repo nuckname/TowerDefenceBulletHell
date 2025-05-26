@@ -30,10 +30,10 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 1f);
-        sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 1f);
-        masterSlider.value = PlayerPrefs.GetFloat(AudioManager.MASTER_KEY, 1f);
-        popSlider.value = PlayerPrefs.GetFloat(AudioManager.POP_KEY, 1f);
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 0.3f);
+        sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 0.5f);
+        masterSlider.value = PlayerPrefs.GetFloat(AudioManager.MASTER_KEY, 0.5f);
+        popSlider.value = PlayerPrefs.GetFloat(AudioManager.POP_KEY, 0.5f);
     }
 
     void OnDisable()

@@ -15,7 +15,7 @@ public class PlaceTurret : NetworkBehaviour
     
     public static int TurretBasicCost = 25;
 
-    private bool GhostTurretHasBeenPlaced = false;
+    public bool GhostTurretHasBeenPlaced = false;
     private GameObject currentGhost;
 
     // Gold system
@@ -27,6 +27,8 @@ public class PlaceTurret : NetworkBehaviour
     [SerializeField] private TextMeshProUGUI displayTurretText;
 
     public bool tutorialCannotPlaced = false;
+    public bool tutorialCannotBuyGhostTurret = false;
+    public bool tutorialCannotPressQ = false;
     
     private void Awake()
     {
@@ -68,6 +70,7 @@ public class PlaceTurret : NetworkBehaviour
 
 
                     Debug.Log("Cant place turret becuase of tutorial.");
+                    Debug.Log("or Cant press Q on turret becuase of tutorial.");
                     return;
                 }
                 
@@ -85,6 +88,14 @@ public class PlaceTurret : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (tutorialCannotPressQ)
+            {
+                AudioManager.instance.errorSFX();
+                Debug.Log("Cant press Q on turret becuase of tutorial.");
+
+                return;
+            }
+            
             if (GhostTurretHasBeenPlaced)
             {
                 AudioManager.instance.CancelGhostTurretSFX();
@@ -107,6 +118,7 @@ public class PlaceTurret : NetworkBehaviour
     private void SpawnFloatingText()
     {
         AudioManager.instance.errorSFX();
+        AudioManager.instance.GibberishSFX();
         
         GameObject canvas = GameObject.Find("Canvas");
         GameObject floatingText = Instantiate(FloatingTextNotEnoughGold, canvas.transform);
@@ -128,6 +140,11 @@ public class PlaceTurret : NetworkBehaviour
 
     private void SpawnGhostTurret()
     {
+        if (tutorialCannotBuyGhostTurret)
+        {
+            AudioManager.instance.errorSFX();
+            return;
+        }
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         GhostTurretHasBeenPlaced = true;
