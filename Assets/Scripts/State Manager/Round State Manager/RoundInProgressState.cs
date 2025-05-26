@@ -27,13 +27,15 @@ public class RoundInProgressState : RoundBaseState
             roundStateManager.mapArrows[0].gameObject.SetActive(false);
             roundStateManager.mapArrows[1].gameObject.SetActive(false);
         }
+        
+        BossMusic(roundCounter);
     }
     
 
 
     public override void UpdateState(RoundStateManager roundStateManager)
     {
-        
+
     }
 
     public override void OnCollisionEnter2D(RoundStateManager roundStateManager, Collision2D other)
@@ -106,6 +108,24 @@ public class RoundInProgressState : RoundBaseState
         // Ensure the state is not switched too early
         // Uncomment and debug if necessary
         // roundStateManager.SwitchState(roundStateManager.roundOverState);
+    }
+
+    private void BossMusic(int currentRound)
+    {
+        Debug.Log("Round Start counter" + currentRound);
+        switch (currentRound)
+        {
+            case 5: 
+                AudioManager.instance.StopMusic();
+                AudioManager.instance.SlimeBossMusic();
+                break;
+            case 10:
+                AudioManager.instance.StopMusic();
+                AudioManager.instance.SnakeBossMusic(0);
+                break;
+            default:
+                break;
+        }
     }
     
 }

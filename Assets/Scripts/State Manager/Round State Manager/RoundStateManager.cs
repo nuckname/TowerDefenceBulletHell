@@ -21,7 +21,7 @@ public class RoundStateManager : MonoBehaviour
     private SpawnEnemies spawnEnemies;
     private EnemyOnMapCounter enemyOnMapCounter;
 
-    public int currentRound = 1;
+    public int currentRound = 0;
 
     [SerializeField] private TMP_Text RoundDisplayText;
 
@@ -46,28 +46,30 @@ public class RoundStateManager : MonoBehaviour
         
         yield return new WaitForSecondsRealtime(1.95f); 
 
-        print("current round: " + currentRound);
-        if (currentRound == 1)
-        {
-            AudioManager.instance.RoundZeroMusic();
+        print("Round waiting counter: " + currentRound);
 
-        }
-        else if (currentRound == 5)
+        switch (currentRound)
         {
-            print("JAZZ");
-            AudioManager.instance.SlimeBossMusic();
+            case 0:
+                print("round 0 music");
+                AudioManager.instance.RoundZeroMusic();
+                break;
+            case 4:
+                AudioManager.instance.PreSlimeBossMusic();
+                break;
+            case 5: //IDKKK
+                break;
+            case 9:
+                print("music: Pre Snake Boss");
+                AudioManager.instance.PreSnakeBossMusic();
+                break;
+            case 10: //Played in RoundINProgressState
+                break;
+            default:
+                print("random music");
+                AudioManager.instance.PlayRandomMusic();
+                break;
         }
-        else if (currentRound == 10)
-        {
-            print("SNAKE");
-            AudioManager.instance.SnakeBossMusic(0);
-        }
-        else
-        {
-            print("random music");
-            AudioManager.instance.PlayRandomMusic();
-        }
-        
     }
 
     void Update()

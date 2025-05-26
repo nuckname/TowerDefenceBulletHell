@@ -162,6 +162,9 @@ public class UpgradeUiManager : MonoBehaviour
 
     public void ExitSelection()
     {
+        Time.timeScale = 1;
+
+        
         AudioManager.instance.backSFX();
         
         PlayerShooting.disableShooting = false;

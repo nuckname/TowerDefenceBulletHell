@@ -31,6 +31,8 @@ public class OnClickEffect : MonoBehaviour
                 upgradeManager.SetDescriptionsForUpgrades(selectedTurret);
                 upgradeManager.targetTurret = selectedTurret;
 
+                Time.timeScale = 0;
+
                 PlayerShooting.disableShooting = true;
            
             }
