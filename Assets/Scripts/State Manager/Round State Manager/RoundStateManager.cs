@@ -42,34 +42,8 @@ public class RoundStateManager : MonoBehaviour
     
     public IEnumerator PlayMusicDelayed()
     {
-        AudioManager.instance.StopMusic();
-        
         yield return new WaitForSecondsRealtime(1.95f); 
-
-        print("Round waiting counter: " + currentRound);
-
-        switch (currentRound)
-        {
-            case 0:
-                print("round 0 music");
-                AudioManager.instance.RoundZeroMusic();
-                break;
-            case 4:
-                AudioManager.instance.PreSlimeBossMusic();
-                break;
-            case 5: //IDKKK
-                break;
-            case 9:
-                print("music: Pre Snake Boss");
-                AudioManager.instance.PreSnakeBossMusic();
-                break;
-            case 10: //Played in RoundINProgressState
-                break;
-            default:
-                print("random music");
-                AudioManager.instance.PlayRandomMusic();
-                break;
-        }
+        AudioManager.instance.RoundZeroMusic();
     }
 
     void Update()
@@ -105,14 +79,7 @@ public class RoundStateManager : MonoBehaviour
     public void DisplayRoundUi(int currentRound)
     {
         RoundDisplayText.text = "Round Number: " + currentRound.ToString() + "/10";
-        
-        /*
-        // If Free Play, show “∞” instead of max
-        if (findObjectOfType<GameModeManager>().CurrentMode == GameMode.FreePlay)
-            RoundDisplayText.text = $"Round: {currentRound} / ∞";
-        else
-            RoundDisplayText.text = $"Round: {currentRound} / {NormalModeMaxRounds}";
-        */
+
     }
 
     public void ButtonClickStartNextRound()
@@ -122,7 +89,6 @@ public class RoundStateManager : MonoBehaviour
             SwitchState(this.roundInProgressState);
         }
     }
-    
 
     public void SpawnBasicEnemies(int currentRoundIndex)
     {
@@ -134,25 +100,6 @@ public class RoundStateManager : MonoBehaviour
         enemyOnMapCounter.MaxEnemiesOnMap = spawned;
         initialEnemyCount = spawned;
 
-        // PICK MUSIC CLIP
-        /*
-        AudioClip clipToPlay;
-        if (currentRound == 5)
-            clipToPlay = gameMusic[4];   // assuming 0‐based
-        else if (currentRound == 10)
-            clipToPlay = gameMusic[9];
-        else
-        {
-            int idx = Mathf.Clamp(currentRound - 1, 0, gameMusic.Length - 1);
-            clipToPlay = gameMusic[idx];
-        }
-
-        // PLAY & FADE IN
-        musicSource.clip = clipToPlay;
-        musicSource.volume = 0f;
-        musicSource.loop = true;
-        musicSource.Play();
-        */
     }
     
     public void DestroyAllPlayerBullets()
@@ -169,4 +116,54 @@ public class RoundStateManager : MonoBehaviour
 
     }
 
+    //Music
+    
+    public void MusicRoundEnd()
+    {
+        Debug.Log("MusicRoundEnd(): "  + currentRound);
+
+        switch (currentRound)
+        {
+            case 0:
+                print("round 0 music");
+                StartCoroutine(PlayMusicDelayed());
+                break;
+            case 4:
+                AudioManager.instance.PreSlimeBossMusic();
+                break;
+            case 5: //IDKKK
+                break;
+            case 9:
+                print("music: Pre Snake Boss");
+                AudioManager.instance.PreSnakeBossMusic();
+                break;
+            case 10: //Played in RoundINProgressState
+                break;
+            default:
+                print("random music");
+                AudioManager.instance.PlayRandomMusic();
+                break;
+        }
+  
+    }
+    
+    public void MusicRoundInProgress()
+    {
+        Debug.Log("MusicRoundInProgress(): "  + currentRound);
+
+        switch (currentRound)
+        {
+            case 5: 
+                AudioManager.instance.StopMusic();
+                AudioManager.instance.SlimeBossMusic();
+                break;
+            case 10:
+                AudioManager.instance.StopMusic();
+                AudioManager.instance.SnakeBossMusic(0);
+                break;
+            default:
+                break;
+        }
+  
+    }
 }

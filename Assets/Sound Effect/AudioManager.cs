@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
     public const string POP_KEY = "popVolume";
     
     public AudioMixerGroup popGroup;
-
+    
     [SerializeField] private AudioMixer audioMixer;
     private void Awake()
     {
@@ -90,7 +90,6 @@ public class AudioManager : MonoBehaviour
         }
         
         LoadVolume();
-        //popHitSource.outputAudioMixerGroup = popGroup;
 
     }
     
@@ -290,4 +289,13 @@ public class AudioManager : MonoBehaviour
     {
         playerShootSource.PlayOneShot(cancelGhostTurretClip);
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

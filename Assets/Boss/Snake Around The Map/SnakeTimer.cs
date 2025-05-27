@@ -21,6 +21,6 @@ public class SnakeTimer : MonoBehaviour
         }
 
         int seconds = Mathf.FloorToInt(remainingTime);
-        timerText.text = string.Format("{0:00}", seconds);
+        timerText.text = string.Format("{0:00} seconds", seconds);
     }
 }

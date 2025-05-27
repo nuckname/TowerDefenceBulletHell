@@ -75,6 +75,17 @@ public class TutorialReworked : MonoBehaviour
         
     }
 
+    public void NextStepOnContinueButtonClick()
+    {
+        if (_tutorialStateSO.playerTutorial)
+        {
+            if (_currentStep == 11)
+            {
+                NextStep();
+            }
+        }
+    }
+
     void Update()
     {
         

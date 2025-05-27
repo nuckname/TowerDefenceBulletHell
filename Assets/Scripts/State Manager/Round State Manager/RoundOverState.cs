@@ -1,5 +1,6 @@
 using NUnit.Framework;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoundOverState : RoundBaseState
@@ -11,7 +12,8 @@ public class RoundOverState : RoundBaseState
         
         roundStateManager.AllowTurretsToShoot(false);
 
-        Music(roundStateManager);
+
+        roundStateManager.MusicRoundEnd();
         
         roundStateManager.selectTurret.AllowSelectingTurret = true;
 
@@ -31,10 +33,6 @@ public class RoundOverState : RoundBaseState
         
     }
 
-    private void Music(RoundStateManager roundStateManager)
-    {
-        roundStateManager.StartCoroutine(roundStateManager.PlayMusicDelayed());
-    }
 
     private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
@@ -122,5 +120,7 @@ public class RoundOverState : RoundBaseState
 
         GameObject.Destroy(obj);
     }
+
+
 
 }

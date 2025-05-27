@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   startingHealth: 5
-  currentHealth: 3
+  currentHealth: 28
   floatingTextPrefab: {fileID: 0}
   playerHealth: {fileID: 0}

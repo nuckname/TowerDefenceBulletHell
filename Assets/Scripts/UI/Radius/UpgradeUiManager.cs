@@ -162,8 +162,7 @@ public class UpgradeUiManager : MonoBehaviour
 
     public void ExitSelection()
     {
-        Time.timeScale = 1;
-
+        OnClickEffect.UiOpenCantUpgradeTurret = false;
         
         AudioManager.instance.backSFX();
         
@@ -232,6 +231,11 @@ public class UpgradeUiManager : MonoBehaviour
             }
             
             if (Input.GetKeyDown(KeyCode.Q))
+            {
+                ExitSelection();
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
                 ExitSelection();
             }

@@ -12,7 +12,6 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject tutorialText;
     
-    
     private void Start()
     {
         SettingMenuStartUp();
@@ -21,6 +20,7 @@ public class PauseMenu : MonoBehaviour
         {
             OpenPauseMenu(false);
             
+            //Temp disable so we dont overlap.
             tutorialText.SetActive(false);
 
         }
@@ -36,8 +36,14 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        print(OnClickEffect.UiOpenCantUpgradeTurret);
         if (Input.GetKeyDown(KeyCode.Escape))
          {
+             if (OnClickEffect.UiOpenCantUpgradeTurret)
+             {
+                 return;
+             }
+             
             if (!PauseMenuOpen)
             {
                 OpenPauseMenu(true);
@@ -54,7 +60,6 @@ public class PauseMenu : MonoBehaviour
         AudioManager.instance.PauseMusic();
 
         PlayerShooting.disableShooting = true;
-        print("Player " +PlayerShooting.disableShooting);
         
         PauseMenuOpen = true;
         settingsMenu.SetActive(true);

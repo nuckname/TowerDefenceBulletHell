@@ -15,7 +15,7 @@ public class PlayerShooting : MonoBehaviour
     public int magazineSize = 6;
     public float reloadTime = 2f;
 
-    public static bool disableShooting = false;
+    public static bool disableShooting;
 
     private int bulletsRemaining;
     private bool isReloading = false;
@@ -28,10 +28,21 @@ public class PlayerShooting : MonoBehaviour
     public Color  barBackground  = new Color(0, 0, 0, 0.6f);
     public Color  barFill        = new Color(1, 1, 1, 0.9f);
 
+    public TutorialStateSO tutorialStateSO;
+    
     private void Start()
     {
         bulletsRemaining = magazineSize;
         lastShotTime     = -shootCooldown;
+
+        if (tutorialStateSO.playerTutorial)
+        {
+            disableShooting = true;
+        }
+        else
+        {
+            disableShooting = false;
+        }
     }
 
     private void Update()

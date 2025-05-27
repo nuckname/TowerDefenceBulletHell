@@ -7,7 +7,7 @@ public class OnClickEffect : MonoBehaviour
     [SerializeField] private float selectionRadius = 0.5f;
     private GameObject newUI;
     public Collider2D[] colliders;
-    public bool UiOpenCantUpgradeTurret = false;
+    public static bool UiOpenCantUpgradeTurret = false;
     
     public GameObject TurretSelected()
     {
@@ -22,7 +22,8 @@ public class OnClickEffect : MonoBehaviour
             
             if (newUI == null && !UiOpenCantUpgradeTurret)
             {
-
+                UiOpenCantUpgradeTurret = true;
+                
                 Debug.Log("UI is null. Spawning new UI.");
                 newUI = Instantiate(UpgradeUi, CanvasTransform);
                 newUI.SetActive(true);
@@ -30,8 +31,6 @@ public class OnClickEffect : MonoBehaviour
                 UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
                 upgradeManager.SetDescriptionsForUpgrades(selectedTurret);
                 upgradeManager.targetTurret = selectedTurret;
-
-                Time.timeScale = 0;
 
                 PlayerShooting.disableShooting = true;
            
