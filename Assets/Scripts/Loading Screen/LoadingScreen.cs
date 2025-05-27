@@ -15,7 +15,6 @@ public class LoadingScreen : MonoBehaviour
 
     void Start()
     {
-        PlayerShooting.disableShooting = true;
         // 1) Find and disable all existing Canvases (e.g. your game UI)
         foreach (Canvas c in FindObjectsOfType<Canvas>())
         {
@@ -28,8 +27,6 @@ public class LoadingScreen : MonoBehaviour
 
         // 3) Begin loading (simulation or real async call)
         StartCoroutine(SimulateLoading());
-        
-        PlayerShooting.disableShooting = false;
     }
 
     private void CreateLoadingUI()

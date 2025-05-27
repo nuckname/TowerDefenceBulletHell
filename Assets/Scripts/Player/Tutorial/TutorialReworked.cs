@@ -1,9 +1,20 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using TMPro;
+using Random = UnityEngine.Random;
 
 public class TutorialReworked : MonoBehaviour
 {
+    [Header("Shake text")]
+    [SerializeField] private Color insufficientColor = Color.red;
+    [SerializeField] private float shakeDuration = 0.3f;
+    [SerializeField] private float shakeMagnitude = 0.1f;
+    
+    private float shakeCooldown = 5f;  // 5 seconds cooldown
+    private float lastShakeTime = -Mathf.Infinity;  // track last shake time, initialized to negative infinity so first shake is allowed
+
+    
     [Header("UI")]
     public TMP_Text tutorialText;
 
@@ -86,11 +97,19 @@ public class TutorialReworked : MonoBehaviour
         }
     }
 
+    private bool isWASDPressed = false;
+
+    
     void Update()
     {
         
         if (!_tutorialStateSO.playerTutorial)
             return;
+        
+        isWASDPressed = Input.GetKey(KeyCode.W) ||
+                        Input.GetKey(KeyCode.A) ||
+                        Input.GetKey(KeyCode.S) ||
+                        Input.GetKey(KeyCode.D);
 
         switch (_currentStep)
         {
@@ -123,6 +142,13 @@ public class TutorialReworked : MonoBehaviour
                     placeTurret.tutorialCannotPlaced = true;
                     NextStep();
                 }
+                else if (Input.anyKeyDown)
+                {
+                    if (IsAllowedKeyPressed())
+                        return;
+    
+                    ShakeText();
+                }
                 break;
             case 3: // “Use the SCROLL WHEEL to rotate your ghost turret.”
 
@@ -131,6 +157,13 @@ public class TutorialReworked : MonoBehaviour
                     NextStep();
                     
                 }
+                else if (Input.anyKeyDown)
+                {
+                    if (IsAllowedKeyPressed())
+                        return;
+    
+                    ShakeText();
+                }
                 break;
 
             case 4: // “Press R to snap-rotate your turret…”
@@ -138,11 +171,25 @@ public class TutorialReworked : MonoBehaviour
                 {
                     NextStep();
                 }
+                else if (Input.anyKeyDown)
+                {
+                    if (IsAllowedKeyPressed())
+                        return;
+    
+                    ShakeText();
+                }
                 break;
             case 5: // “Or just Press R to rotate 90 degrees.”
                 if (Input.GetKeyDown(KeyCode.R))
                 {
                     NextStep();
+                }
+                else if (Input.anyKeyDown)
+                {
+                    if (IsAllowedKeyPressed())
+                        return;
+    
+                    ShakeText();
                 }
                 break;
             case 6: // “Left Mouse Button to confirm turret placement.”
@@ -152,6 +199,7 @@ public class TutorialReworked : MonoBehaviour
                     //Stops the player from placing onto path and going to the next step.
                     if (placeTurret.GhostTurretHasBeenPlaced)
                     {
+                        ShakeText();
                         return;
                     }                    
                     
@@ -163,6 +211,13 @@ public class TutorialReworked : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                     MustClickOnTurret();
+                }
+                else if (Input.anyKeyDown)
+                {
+                    if (IsAllowedKeyPressed())
+                        return;
+    
+                    ShakeText();
                 }
                 break;
             case 8: // “Press TAB to start the round.”
@@ -183,6 +238,15 @@ public class TutorialReworked : MonoBehaviour
                 break;
         }
     }
+    
+    private bool IsAllowedKeyPressed()
+    {
+        return Input.GetKeyDown(KeyCode.W) ||
+               Input.GetKeyDown(KeyCode.A) ||
+               Input.GetKeyDown(KeyCode.S) ||
+               Input.GetKeyDown(KeyCode.D) ||
+               Input.GetKeyDown(KeyCode.Space);
+    }
 
     private void MustClickOnTurret()
     {
@@ -202,6 +266,9 @@ public class TutorialReworked : MonoBehaviour
     private void NextStep()
     {
         _currentStep++;
+        
+        lastShakeTime = -Mathf.Infinity;
+        
         if (_currentStep < _messages.Length)
             tutorialText.text = _messages[_currentStep];
         else
@@ -212,5 +279,41 @@ public class TutorialReworked : MonoBehaviour
     {
         tutorialText.text = "";
         enabled = false;
+    }
+
+    private void ShakeText()
+    {
+        if (Time.time - lastShakeTime < shakeCooldown)
+            return;
+        
+        lastShakeTime = Time.time;
+        
+        StartCoroutine(ShowCannotBuyFeedback(tutorialText));
+        AudioManager.instance.GibberishSFX();
+    }
+    
+    
+    private IEnumerator ShowCannotBuyFeedback(TMP_Text priceText)
+    {
+        // 1) turn text red
+        var originalColor = priceText.color;
+        priceText.color = insufficientColor;
+
+        // 2) shake
+        var rt = priceText.rectTransform;
+        Vector3 originalPos = rt.localPosition;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetX = (Random.value * 2f - 1f) * shakeMagnitude;
+            rt.localPosition = originalPos + new Vector3(offsetX, 0f, 0f);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 3) restore
+        rt.localPosition = originalPos;
+        priceText.color = originalColor;
     }
 }

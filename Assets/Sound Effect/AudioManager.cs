@@ -67,7 +67,15 @@ public class AudioManager : MonoBehaviour
     [Header("Gibberish")]
     [SerializeField] AudioSource gibberishSource;
     [SerializeField] List<AudioClip> gibberishClips = new List<AudioClip>();
+    
+    [Header("Slider sounds")]
+    [SerializeField] private AudioSource sliderLoopSource;
+    [SerializeField] private AudioClip masterSliderLoopClip;
+    [SerializeField] private AudioClip musicSliderLoopClip;
+    [SerializeField] private AudioClip sfxSliderLoopClip;
+    [SerializeField] private AudioClip popSliderLoopClip;
 
+    
     public const string MUSIC_KEY = "musicVolume";
     public const string SFX_KEY = "sfxVolume";
     public const string MASTER_KEY = "masterVolume";
@@ -290,12 +298,42 @@ public class AudioManager : MonoBehaviour
         playerShootSource.PlayOneShot(cancelGhostTurretClip);
     }
     
+    //Slider
+    public void SetSliderPitch(float value)
+    {
+        float pitch = Mathf.Lerp(0.8f, 1.2f, Mathf.Clamp01(value));
+        sliderLoopSource.pitch = pitch;
+    }
     
-    
-    
-    
-    
-    
-    
+    public void PlaySliderLoop(string sliderName)
+    {
+        if (sliderLoopSource.isPlaying && sliderLoopSource.clip != GetSliderLoopClip(sliderName)) return;
+
+        sliderLoopSource.clip = GetSliderLoopClip(sliderName);
+        sliderLoopSource.loop = true;
+        sliderLoopSource.Play();
+    }
+
+    public void StopSliderLoop()
+    {
+        sliderLoopSource.Stop();
+    }
+
+    private AudioClip GetSliderLoopClip(string sliderName)
+    {
+        switch (sliderName)
+        {
+            case "music":
+                return musicSliderLoopClip;
+            case "sfx":
+                return sfxSliderLoopClip;
+            case "pop":
+                return popSliderLoopClip;
+            case "master":
+                return masterSliderLoopClip;
+            default:
+                return null;
+        }
+    }
     
 }

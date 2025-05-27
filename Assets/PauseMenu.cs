@@ -1,10 +1,11 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     [SerializeField] private GameObject settingsMenu;
     [SerializeField] private GameObject containerSettingsMenu;
     [SerializeField] private bool PauseMenuOpen;
@@ -22,7 +23,6 @@ public class PauseMenu : MonoBehaviour
             
             //Temp disable so we dont overlap.
             tutorialText.SetActive(false);
-
         }
         else
         {
@@ -36,7 +36,6 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(OnClickEffect.UiOpenCantUpgradeTurret);
         if (Input.GetKeyDown(KeyCode.Escape))
          {
              if (OnClickEffect.UiOpenCantUpgradeTurret)
@@ -71,7 +70,6 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-
     public void ClosePauseMenu()
     {
         AudioManager.instance.ResumeMusic();
@@ -79,8 +77,6 @@ public class PauseMenu : MonoBehaviour
         TurnOnTutorialText();
 
         PlayerShooting.disableShooting = false;
-        print("Player " + PlayerShooting.disableShooting);
-
         
         PauseMenuOpen = false;
         settingsMenu.SetActive(false);
@@ -113,5 +109,10 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+    
+    public void RestartScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
