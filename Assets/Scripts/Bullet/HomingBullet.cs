@@ -1,4 +1,6 @@
 // HomingBullet.cs
+
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -57,6 +59,56 @@ public class HomingBullet : MonoBehaviour
     {
         debug_message_active = isHomingActive.ToString();
         debug_message_target = target != null ? target.name : "null";
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            // Assuming bullet "hits" and should find next closest target
+            Transform secondClosest = FindSecondClosestTargetExcluding(targetTag, other.transform);
+            if (secondClosest != null)
+            {
+                target = secondClosest;
+                isHomingActive = true; // Continue homing on new target immediately
+            }
+            else
+            {
+                // No other targets found, maybe stop homing
+                ResetHomingState();
+            }
+        }
+    }
+    
+    private Transform FindSecondClosestTargetExcluding(string tag, Transform exclude)
+    {
+        GameObject[] candidates = GameObject.FindGameObjectsWithTag(tag);
+        Transform closest = null;
+        Transform secondClosest = null;
+        float closestDist = float.MaxValue;
+        float secondClosestDist = float.MaxValue;
+
+        foreach (var obj in candidates)
+        {
+            if (obj.transform == exclude)
+                continue;
+
+            float dist = Vector2.Distance(transform.position, obj.transform.position);
+            if (dist < closestDist)
+            {
+                secondClosest = closest;
+                secondClosestDist = closestDist;
+
+                closest = obj.transform;
+                closestDist = dist;
+            }
+            else if (dist < secondClosestDist)
+            {
+                secondClosest = obj.transform;
+                secondClosestDist = dist;
+            }
+        }
+        return secondClosest;
     }
 
     private void FixedUpdate()

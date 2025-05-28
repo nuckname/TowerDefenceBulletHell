@@ -59,6 +59,10 @@ public class SnakeBossController : MonoBehaviour
     
     [Header("SpawnPoint")]
     [SerializeField] private GameObject spawnPoint;
+
+    [Header("Win Screen")] [SerializeField]
+    private GameObject winScreen;
+    
     
     private void Awake()
     {
@@ -92,6 +96,8 @@ public class SnakeBossController : MonoBehaviour
 
     private void Start()
     {
+        gameObject.tag = "untagged";
+        
         currentState = SnakeBossState.Normal;
         currentMoveSpeed = normalMoveSpeed;
         SpawnBodySegments();  
@@ -116,7 +122,7 @@ public class SnakeBossController : MonoBehaviour
                 EnragedUpdate();
                 break;
             case SnakeBossState.FollowPath:
-                FollowPath();
+                FollowPathInUpdateMethod();
                 break;
             case SnakeBossState.Dead:
                 // (Do nothing or add death behavior)
@@ -143,8 +149,26 @@ public class SnakeBossController : MonoBehaviour
 
     private void StartFollowPath()
     {
-        //Spawn HP bar and stuf
+        //Take Snake Head
+        gameObject.tag = "Enemy";
 
+        foreach (Transform bodySegment in bodySegments)
+        {
+            //Tag Snake Body
+            bodySegment.tag = "Enemy";
+        }
+        
+        float fadeDuration = 1f;
+        
+        AudioManager.instance.StopMusic();
+
+        AudioClip newMusicClip = AudioManager.instance.GetSnakeBossMusic(1);
+
+        if (newMusicClip != null)
+        {
+            print("chagned music");
+            AudioManager.instance.FadeToMusic(newMusicClip, fadeDuration);
+        }
         
         MoveHead(currentMoveSpeed * followMoveSpeedMultiplier);
 
@@ -157,9 +181,11 @@ public class SnakeBossController : MonoBehaviour
         currentState = SnakeBossState.FollowPath;
     }
     
-    private void FollowPath()
+    private void FollowPathInUpdateMethod()
     {
-        
+       //Movement is in EnemyMovement Path or something I think
+
+
     }
     
     // ENRAGED STATE: Move and attack faster, and count laps.
@@ -235,8 +261,7 @@ public class SnakeBossController : MonoBehaviour
             staticSegmentSpawnCoroutine = null;
         }
         
-        AudioManager.instance.StopMusic();
-        AudioManager.instance.SnakeBossMusic(1);
+
         
         currentState = SnakeBossState.Enraged;
         Debug.Log("Snake Boss is enraged!");
@@ -245,32 +270,20 @@ public class SnakeBossController : MonoBehaviour
     // Destroys the snake boss head.
     public void DestroyBoss()
     {
-        currentState = SnakeBossState.Dead;
-        
-        foreach (Transform snakebody in bodySegments)
-        {
-            Destroy(snakebody.gameObject); 
-        }
+        WinScreenController.Instance.Show();
 
-        GameObject[] buggedLeftOverGameObjects = GameObject.FindGameObjectsWithTag("SnakeBody");
-        
-        //bug, doesnt clear all gameobjects
-        foreach (GameObject snakebody in buggedLeftOverGameObjects)
-        {
-            Destroy(snakebody); 
-        }
 
         bossDie.EnemyHasDied();
-        /*
-        GameObject canvas = GameObject.FindGameObjectWithTag("canvas");
-        if (canvas != null)
-        {
-            GameObject victory = Instantiate(VictoryScreen, transform.position, Quaternion.identity);
-            victory.transform.SetParent(canvas.transform, false);
-            tutorialStateSO.playerTutorial = false;
-        }
-        */
         
+        //Snake 
+        currentState = SnakeBossState.Dead;
+        
+        GameObject[] snakebodies = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject snakebody in snakebodies)
+        {
+            Destroy(snakebody);
+        }
+
         Destroy(gameObject);
     }
 

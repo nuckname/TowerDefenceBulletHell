@@ -6,9 +6,12 @@ using UnityEngine;
 
 public class RoundStateManager : MonoBehaviour
 {
+
+    public bool tutorialCantStartRound = false;
+    
     public SelectTurret selectTurret;
     
-    public bool tutorialCantStartRound = false;
+    [SerializeField] private TutorialStateSO _tutorialStateSO;
     
     public RoundBaseState currentState;
     
@@ -38,6 +41,17 @@ public class RoundStateManager : MonoBehaviour
     {
         currentState = roundOverState;
         currentState.EnterState(this);
+        
+        if (_tutorialStateSO.playerTutorial)
+        {
+            tutorialCantStartRound = true;
+        }
+
+        if (!_tutorialStateSO.playerTutorial)
+        {
+            tutorialCantStartRound = false;
+        }
+        
     }
     
     public IEnumerator PlayMusicDelayed()
@@ -122,26 +136,25 @@ public class RoundStateManager : MonoBehaviour
     {
         Debug.Log("MusicRoundEnd(): "  + currentRound);
 
+        AudioManager.instance.StopMusic();
+        
         switch (currentRound)
         {
             case 0:
-                print("round 0 music");
                 StartCoroutine(PlayMusicDelayed());
                 break;
             case 4:
                 AudioManager.instance.PreSlimeBossMusic();
                 break;
-            case 5: //IDKKK
-                break;
             case 9:
-                print("music: Pre Snake Boss");
+                print("snake: music: Pre Snake Boss");
                 AudioManager.instance.PreSnakeBossMusic();
                 break;
             case 10: //Played in RoundINProgressState
                 break;
             default:
                 print("random music");
-                AudioManager.instance.PlayRandomMusic();
+                AudioManager.instance.PlayRandomMusic(currentRound);
                 break;
         }
   
@@ -153,13 +166,16 @@ public class RoundStateManager : MonoBehaviour
 
         switch (currentRound)
         {
-            case 5: 
+            case 4: //This plays on round 5 idk why
                 AudioManager.instance.StopMusic();
                 AudioManager.instance.SlimeBossMusic();
                 break;
-            case 10:
+            case 9:
+                print("snake: play snake track 0.");
+                
                 AudioManager.instance.StopMusic();
-                AudioManager.instance.SnakeBossMusic(0);
+                AudioClip snakeMusic = AudioManager.instance.GetSnakeBossMusic(0);
+                AudioManager.instance.FadeToMusic(snakeMusic, 0f);
                 break;
             default:
                 break;

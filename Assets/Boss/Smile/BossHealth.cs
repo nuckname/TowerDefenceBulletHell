@@ -128,7 +128,15 @@ public class BossHealth : MonoBehaviour
     private void Die()
     {
         _enemyDie.EnemyHasDied();
+
+        if (isSnake)
+        {
+            print("win screen");
+            snakeBossController.DestroyBoss();
+        }
+        
         Destroy(spawnedHealthBar);
+        
         Debug.Log("Boss Defeated!");
     }
 }

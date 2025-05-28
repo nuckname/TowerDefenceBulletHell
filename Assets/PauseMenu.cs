@@ -108,11 +108,15 @@ public class PauseMenu : MonoBehaviour
 
     public void QuitGame()
     {
+        Time.timeScale = 1;
+
         Application.Quit();
     }
     
     public void RestartScene()
     {
+        Time.timeScale = 1;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

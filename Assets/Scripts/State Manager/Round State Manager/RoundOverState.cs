@@ -50,7 +50,7 @@ public class RoundOverState : RoundBaseState
                 roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
             }
             
-            if (roundStateManager.currentRound > 6 || roundStateManager.currentRound < 8)
+            if (roundStateManager.currentRound >= 6 || roundStateManager.currentRound < 8)
             {
                 roundStateManager.StartCoroutine(DestoryGameObject( 1.75f,"Coin", roundStateManager)); 
             }
@@ -72,6 +72,7 @@ public class RoundOverState : RoundBaseState
             // Optionally stagger them so they don’t all fade at once:
             // yield return new WaitForSeconds(0.1f);
         }
+        
         yield break;
     }
 
@@ -117,6 +118,7 @@ public class RoundOverState : RoundBaseState
         {
             var c = uiImage.color; c.a = 0f; uiImage.color = c;
         }
+
 
         GameObject.Destroy(obj);
     }

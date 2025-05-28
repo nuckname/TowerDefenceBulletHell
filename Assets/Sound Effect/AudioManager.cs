@@ -47,8 +47,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioClip popHitClip;
     
     [Header("Music")]
+    private int lastMusicClipIndex = -1; // -1 means no clip played yet
     [SerializeField] AudioSource musicSource;
     [SerializeField] List<AudioClip> musicClips = new List<AudioClip>();
+    [SerializeField] List<AudioClip> musicAfterRound5Clips = new List<AudioClip>();
     [SerializeField] AudioClip roundZeroMusicClip;
     
     [SerializeField] AudioClip preSlimeBossMusicClip;
@@ -144,11 +146,49 @@ public class AudioManager : MonoBehaviour
         buyUpgradeSource.PlayOneShot(clip);
     }
     
+    
     //Music
-    public void PlayRandomMusic()
+    public void PlayRandomMusic(int currentRound)
     {
-        AudioClip clip = musicClips[Random.Range(0, musicClips.Count)];
-        musicSource.PlayOneShot(clip);
+        if (musicClips.Count == 0) return;
+
+
+
+        if (currentRound <= 4)
+        {
+            int newIndex;
+
+            // Keep picking a random index until it's different from lastMusicClipIndex
+            do
+            {
+                newIndex = Random.Range(0, musicClips.Count);
+            } 
+            while (musicClips.Count > 1 && newIndex == lastMusicClipIndex);
+        
+            lastMusicClipIndex = newIndex;
+            
+            //play pinao 
+            AudioClip clip = musicClips[newIndex];
+            FadeToMusic(clip, 2f);
+            //musicSource.PlayOneShot(clip);
+        }
+        else
+        {
+            int newIndex;
+
+            // Keep picking a random index until it's different from lastMusicClipIndex
+            do
+            {
+                newIndex = Random.Range(0, musicAfterRound5Clips.Count);
+            } 
+            while (musicClips.Count > 1 && newIndex == lastMusicClipIndex);
+        
+            lastMusicClipIndex = newIndex;
+            
+            AudioClip clip = musicAfterRound5Clips[newIndex];
+            FadeToMusic(clip, 2f);
+            //musicSource.PlayOneShot(clip);
+        }
     }
     
     public void PreSlimeBossMusic()
@@ -158,7 +198,7 @@ public class AudioManager : MonoBehaviour
     
     public void PreSnakeBossMusic()
     {
-        musicSource.PlayOneShot(preSlimeBossMusicClip);
+        musicSource.PlayOneShot(preSnakeBossMusicClip);
     }
 
 
@@ -166,13 +206,13 @@ public class AudioManager : MonoBehaviour
     {
         if (trackNumber == 0)
         {
-            AudioClip clip = musicClips[0];
+            AudioClip clip = snakeMusicClips[0];
             musicSource.PlayOneShot(clip);
         }
 
         if (trackNumber == 1)
         {
-            AudioClip clip = musicClips[1];
+            AudioClip clip = snakeMusicClips[1];
             musicSource.PlayOneShot(clip);
         }
     }
@@ -258,6 +298,14 @@ public class AudioManager : MonoBehaviour
         AudioClip clip = collectCoinClips[Random.Range(0,collectCoinClips.Count)];
         collectCoinSource.PlayOneShot(clip);
     }
+
+    public float pitch;
+    public void PlayerLostCoinSFX()
+    {
+        AudioClip clip = collectCoinClips[Random.Range(0, collectCoinClips.Count)];
+        collectCoinSource.pitch = pitch; 
+        collectCoinSource.PlayOneShot(clip);
+    }
     
     public void TurretStatsButtonSFX()
     {
@@ -310,7 +358,7 @@ public class AudioManager : MonoBehaviour
         if (sliderLoopSource.isPlaying && sliderLoopSource.clip != GetSliderLoopClip(sliderName)) return;
 
         sliderLoopSource.clip = GetSliderLoopClip(sliderName);
-        sliderLoopSource.loop = true;
+        //sliderLoopSource.loop = true;
         sliderLoopSource.Play();
     }
 
@@ -335,5 +383,61 @@ public class AudioManager : MonoBehaviour
                 return null;
         }
     }
+    
+    //Fade music
+    public void FadeToMusic(AudioClip newClip, float duration)
+    {
+        StartCoroutine(FadeToMusicCoroutine(newClip, duration));
+    }
+
+    private IEnumerator FadeToMusicCoroutine(AudioClip newClip, float duration)
+    {
+        if (musicSource.clip == newClip)
+            yield break; // Already playing this clip, no fade needed
+
+        float startVolume = musicSource.volume;
+        float halfDuration = duration / 2f;
+
+        // Fade out current music
+        float elapsed = 0f;
+        while (elapsed < halfDuration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(startVolume, 0f, elapsed / halfDuration);
+            yield return null;
+        }
+
+        // Switch clip
+        musicSource.clip = newClip;
+        musicSource.Play();
+
+        // Fade in new music
+        elapsed = 0f;
+        while (elapsed < halfDuration)
+        {
+            elapsed += Time.deltaTime;
+            musicSource.volume = Mathf.Lerp(0f, startVolume, elapsed / halfDuration);
+            yield return null;
+        }
+
+        musicSource.volume = startVolume; // Ensure volume is reset exactly
+    }
+    
+    public AudioClip GetSnakeBossMusic(int trackNumber)
+    {
+        if (trackNumber == 0)
+        {
+            return snakeMusicClips[0];
+        }
+        else if (trackNumber == 1)
+        {
+            return snakeMusicClips[1];
+        }
+        else
+        {
+            return null;
+        }
+    }
+
     
 }

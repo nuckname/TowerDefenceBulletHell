@@ -1,0 +1,8 @@
+{
+    "asset": "6b1d461c51195d74eba4709b1b9a60be",
+    "fileName": "01971589-d8b5-74c8-ad65-e8222ffdf8e8.pose.json",
+    "prompt": "2D. Character is facing towards us. Game is in a top down few. Create a walking animation. ",
+    "negativePrompt": "",
+    "model": "a9c27ca4-3ec9-43e8-96cd-ee891aba64c5",
+    "customSeed": 2039011059
+}

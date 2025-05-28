@@ -11,8 +11,6 @@ public class VolumeSettings : MonoBehaviour
     [SerializeField] private Slider sfxSlider;
     [SerializeField] private Slider popSlider;
     [SerializeField] private Slider masterSlider;
-
-
     
     public const string MIXER_MASTER = "Master Volume";
     public const string MIXER_MUSIC = "Music Volume";
@@ -37,7 +35,7 @@ public class VolumeSettings : MonoBehaviour
 
     private void Start()
     {
-        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 0.3f);
+        musicSlider.value = PlayerPrefs.GetFloat(AudioManager.MUSIC_KEY, 0.2f);
         sfxSlider.value = PlayerPrefs.GetFloat(AudioManager.SFX_KEY, 0.5f);
         masterSlider.value = PlayerPrefs.GetFloat(AudioManager.MASTER_KEY, 0.5f);
         popSlider.value = PlayerPrefs.GetFloat(AudioManager.POP_KEY, 0.5f);

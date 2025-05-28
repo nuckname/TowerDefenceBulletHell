@@ -72,7 +72,7 @@ AudioMixerController:
     name: Master Volume
   - guid: 42ec26d8841a42544a6c88b895b699d3
     name: Music Volume
-  - guid: 419ba4bba1ccf6d4d8360452f3b791f9
+  - guid: c245fa5299a3d2f438b33ca9796dfa83
     name: Pop Volume
   - guid: bdba22600986d6949adc549fb0e2a4a3
     name: SFX Volume

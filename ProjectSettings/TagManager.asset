@@ -39,7 +39,6 @@ TagManager:
   - canvas
   - Text3
   - Text1
-  - Text2
   - tutorialText
   - WinScreen
   - TurretGhostCost
@@ -47,6 +46,7 @@ TagManager:
   - TurretDisplayText
   - SlimeBullet
   - UpgradePannel
+  - untagged
   layers:
   - Default
   - TransparentFX

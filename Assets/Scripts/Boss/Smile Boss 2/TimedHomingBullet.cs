@@ -3,6 +3,7 @@ using System.Collections;
 
 public class TimedHomingBullet : MonoBehaviour
 {
+    //This is on snake btw
     [Header("Homing Settings")]
     public float homingDelay = 1f;       // Delay before homing starts
     public float homingDuration = 1f;    // How long the bullet homes in
