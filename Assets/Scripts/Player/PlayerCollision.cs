@@ -22,13 +22,15 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] private GameModeManager gameModeManager;
     
     private bool isInvincible = false;
-    [SerializeField] private GameObject spriteRendererGameObject;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     
     
     [SerializeField] private GameObject floatingTextPrefab;
 
+    
     private ScreenFlashOnDamage screenFlashOnDamage;
+    
+    [Header("Player Sprites")]
+    [SerializeField] private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
     private void Awake()
     {
         screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
@@ -40,12 +42,7 @@ public class PlayerCollision : MonoBehaviour
         //So we can get the amount of gold for the enemies to drop. 
         rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
         //_currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
-        
-        spriteRenderer = spriteRendererGameObject.GetComponent<SpriteRenderer>();
-        if (spriteRenderer == null)
-        {
-            Debug.LogError("SpriteRenderer not found! Make sure the PlayerCollision is a child of Player.");
-        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -139,11 +136,15 @@ public class PlayerCollision : MonoBehaviour
 
     private void SetTransparency(float alpha)
     {
-        if (spriteRenderer != null)
+        foreach (var spriteRenderer in sprites)
         {
-            Color color = spriteRenderer.color;
-            color.a = alpha; // Change alpha value for transparency
-            spriteRenderer.color = color;
+            if (spriteRenderer != null)
+            {
+                Color color = spriteRenderer.color;
+                color.a = alpha;
+                spriteRenderer.color = color;
+            }
         }
     }
+
 }
