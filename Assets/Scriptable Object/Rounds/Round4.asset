@@ -36,7 +36,7 @@ MonoBehaviour:
     spawnInterval: 0.3
     bossSpawn: 0
   delayAfterWave: 2
-  speedModifer: 1
+  speedModifer: 0.75
   spawnInterval: 0.5
   totalEnemies: 13
   amountOfGoldGainedForEachCoin: 10

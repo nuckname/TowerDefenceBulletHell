@@ -58,6 +58,8 @@ public class PauseMenu : MonoBehaviour
     {
         AudioManager.instance.PauseMusic();
 
+        AudioManager.instance.SelectTurretSFX();
+        
         PlayerShooting.disableShooting = true;
         
         PauseMenuOpen = true;
@@ -74,6 +76,8 @@ public class PauseMenu : MonoBehaviour
     {
         AudioManager.instance.ResumeMusic();
 
+        AudioManager.instance.backSFX();
+        
         TurnOnTutorialText();
 
         PlayerShooting.disableShooting = false;
@@ -102,6 +106,8 @@ public class PauseMenu : MonoBehaviour
 
     public void ResumedClick()
     {
+        //what is this for?
+        AudioManager.instance.backSFX();
         PauseMenuOpen = false;
     }
     

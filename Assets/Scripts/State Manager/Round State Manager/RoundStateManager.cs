@@ -31,6 +31,8 @@ public class RoundStateManager : MonoBehaviour
     public GameObject[] mapArrows;
 
     [HideInInspector] public int initialEnemyCount;
+
+    [SerializeField] private PlayerGoldScriptableObject playerGoldSO;
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();
@@ -39,7 +41,13 @@ public class RoundStateManager : MonoBehaviour
 
     void Start()
     {
-        currentState = roundOverState;
+        if (currentRound == 0)
+        {
+            playerGoldSO.ResetGold();
+            print("Setting gold in to places.");
+        }
+
+    currentState = roundOverState;
         currentState.EnterState(this);
         
         if (_tutorialStateSO.playerTutorial)
