@@ -33,6 +33,11 @@ public class RoundStateManager : MonoBehaviour
     [HideInInspector] public int initialEnemyCount;
 
     [SerializeField] private PlayerGoldScriptableObject playerGoldSO;
+    
+    [Header("Gold Loss Per Round")]
+    public int amountOfCoinsDestroyed = 0;
+    public int totalGoldLostAcrossRounds = 0;
+    [SerializeField] private TMP_Text goldCoinLostText;
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();
@@ -44,10 +49,11 @@ public class RoundStateManager : MonoBehaviour
         if (currentRound == 0)
         {
             playerGoldSO.ResetGold();
+            totalGoldLostAcrossRounds = 0; 
             print("Setting gold in to places.");
         }
 
-    currentState = roundOverState;
+        currentState = roundOverState;
         currentState.EnterState(this);
         
         if (_tutorialStateSO.playerTutorial)
@@ -59,7 +65,29 @@ public class RoundStateManager : MonoBehaviour
         {
             tutorialCantStartRound = false;
         }
-        
+
+    }
+
+    public int GetAmountOfGoldPerEnemy()
+    {
+        return spawnEnemies.roundsScriptableObject[currentRound].amountOfGoldGainedForEachCoin;
+    }
+
+    public void UpdateGoldLostText()
+    {
+        print("GetAmountOfGoldPerEnemy: " + GetAmountOfGoldPerEnemy());
+        print("amountOfCoinsDestroyed: " + amountOfCoinsDestroyed);
+        // 1) Calculate how much gold was lost this round:
+        int goldLostThisRound = GetAmountOfGoldPerEnemy() * amountOfCoinsDestroyed;
+
+        // 2) Add to the running total:
+        totalGoldLostAcrossRounds += goldLostThisRound;
+
+        // 3) Debug‐log for sanity:
+        Debug.Log($"Round {currentRound}: Lost {goldLostThisRound}  |  Total so far: {totalGoldLostAcrossRounds}");
+
+        // 4) Display the *total* (or if you prefer, display both “this round” and “total”):
+        goldCoinLostText.text = totalGoldLostAcrossRounds.ToString();
     }
     
     public IEnumerator PlayMusicDelayed()

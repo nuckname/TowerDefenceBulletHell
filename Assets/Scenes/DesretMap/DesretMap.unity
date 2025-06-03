@@ -23583,6 +23583,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5349715425160769796, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
+      propertyPath: playerGoldSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
+    - target: {fileID: 5349715425160769796, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
       propertyPath: selectTurret
       value: 
       objectReference: {fileID: 1237834970}

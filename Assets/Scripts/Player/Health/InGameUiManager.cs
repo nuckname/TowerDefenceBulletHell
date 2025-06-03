@@ -7,7 +7,7 @@ public class InGameUiManager : MonoBehaviour
     void Start()
     {
         playerHitFlash.SetActive(true);
-        settingsMenu.SetActive(true);
+        //settingsMenu.SetActive(true);
     }
 
 }

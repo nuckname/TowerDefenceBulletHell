@@ -3,11 +3,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject settingsMenu;
-    [SerializeField] private GameObject containerSettingsMenu;
     [SerializeField] private bool PauseMenuOpen;
     [SerializeField] private TutorialStateSO tutorialStateSO;
 
@@ -15,17 +15,18 @@ public class PauseMenu : MonoBehaviour
     
     private void Start()
     {
-        SettingMenuStartUp();
-        
         if (tutorialStateSO.playerTutorial)
         {
-            OpenPauseMenu(false);
+            print("Tutorial open menu");
+            OpenPauseMenu(false, false);
             
             //Temp disable so we dont overlap.
             tutorialText.SetActive(false);
         }
         else
         {
+            print("Tutorial dont menu");
+
             PauseMenuOpen = false;
 
             settingsMenu.SetActive(false);
@@ -45,7 +46,8 @@ public class PauseMenu : MonoBehaviour
              
             if (!PauseMenuOpen)
             {
-                OpenPauseMenu(true);
+                Debug.unityLogger.Log("Opening pause menu");
+                OpenPauseMenu(true, true);
             }
             else
             {
@@ -54,9 +56,12 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void OpenPauseMenu(bool allowPause)
+    public void OpenPauseMenu(bool allowPause, bool playSound)
     {
-        AudioManager.instance.PauseMusic();
+        if (playSound)
+        {
+            AudioManager.instance.PauseMusic();
+        }
 
         AudioManager.instance.SelectTurretSFX();
         
@@ -87,12 +92,6 @@ public class PauseMenu : MonoBehaviour
                 
         //un pause
         Time.timeScale = 1;
-    }
-
-    private void SettingMenuStartUp()
-    {
-        settingsMenu.SetActive(false);
-        containerSettingsMenu.SetActive(true);
     }
     
     //Only for the back button in settings menu

@@ -34,15 +34,6 @@ public class PlayerShooting : MonoBehaviour
     {
         bulletsRemaining = magazineSize;
         lastShotTime     = -shootCooldown;
-
-        if (tutorialStateSO.playerTutorial)
-        {
-            disableShooting = true;
-        }
-        else
-        {
-            disableShooting = false;
-        }
     }
 
     private void Update()

@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class RoundOverState : RoundBaseState
 {
+    private int _countDestoied = 0;
     public override void EnterState(RoundStateManager roundStateManager)
     {
         Debug.Log("Round Over State");
-        
+
+        roundStateManager.amountOfCoinsDestroyed = 0;
+        _countDestoied = 0;
         
         roundStateManager.AllowTurretsToShoot(false);
 
-
+        
         roundStateManager.MusicRoundEnd();
         
         roundStateManager.selectTurret.AllowSelectingTurret = true;
@@ -36,6 +39,8 @@ public class RoundOverState : RoundBaseState
 
     private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
+
+        float fadeDuration = 1.25f;
         //So boss coins dont fade out
         if (roundStateManager.currentRound == 5 || roundStateManager.currentRound == 10)
         {
@@ -45,21 +50,32 @@ public class RoundOverState : RoundBaseState
         {
             yield return new WaitForSeconds(1f);
 
+            //1
             if (roundStateManager.currentRound < 5)
             {
-                roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager)); 
+                roundStateManager.StartCoroutine(DestoryGameObject( 1.25f,"Coin", roundStateManager));
+                fadeDuration = 1.25f;
             }
             
-            if (roundStateManager.currentRound >= 6 || roundStateManager.currentRound < 8)
+            if (roundStateManager.currentRound >= 6 && roundStateManager.currentRound < 8)
             {
                 roundStateManager.StartCoroutine(DestoryGameObject( 1.75f,"Coin", roundStateManager)); 
+                fadeDuration = 1.75f;
+
             }
             
             if (roundStateManager.currentRound > 9)
             {
                 roundStateManager.StartCoroutine(DestoryGameObject( 2f,"Coin", roundStateManager)); 
+                fadeDuration = 2f;
+
             }
         }
+        
+        yield return new WaitForSeconds(fadeDuration + 0.05f);
+        
+        roundStateManager.amountOfCoinsDestroyed = _countDestoied;
+        roundStateManager.UpdateGoldLostText();
     }
     
     private IEnumerator DestoryGameObject(float durationDuration, string tag, RoundStateManager roundStateManager)
@@ -68,15 +84,17 @@ public class RoundOverState : RoundBaseState
         foreach (GameObject obj in gameObjectsToDestroy)
         {
             // Kick off a fade‑and‑destroy coroutine for each object
-            roundStateManager.StartCoroutine(FadeAndDestroy(obj, durationDuration));
+            roundStateManager.StartCoroutine(FadeAndDestroy(obj, durationDuration, roundStateManager));
             // Optionally stagger them so they don’t all fade at once:
             // yield return new WaitForSeconds(0.1f);
+
         }
-        
+        Debug.Log("yo1");
+
         yield break;
     }
 
-    private IEnumerator FadeAndDestroy(GameObject obj, float duration)
+    private IEnumerator FadeAndDestroy(GameObject obj, float duration, RoundStateManager roundStateManager)
     {
         // Try SpriteRenderer (2D) first…
         SpriteRenderer sr = obj.GetComponent<SpriteRenderer>();
@@ -112,13 +130,14 @@ public class RoundOverState : RoundBaseState
         // ensure fully transparent
         if (sr != null)
         {
+            //works best here idk.
+            _countDestoied++;
             var c = sr.color; c.a = 0f; sr.color = c;
         }
         else if (uiImage != null)
         {
             var c = uiImage.color; c.a = 0f; uiImage.color = c;
         }
-
 
         GameObject.Destroy(obj);
     }

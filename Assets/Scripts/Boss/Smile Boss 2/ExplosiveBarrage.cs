@@ -33,10 +33,19 @@ public class ExplosiveBarrage : MonoBehaviour
         if (targetPlayer)
         {
             var player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null) transform.position = player.transform.position;
+            if (player != null)
+            {
+                transform.position = player.transform.position;
+            }
+            else
+            {
+                return;
+            }
         }
         if (spriteRenderer == null) spriteRenderer = GetComponent<SpriteRenderer>();
         StartCoroutine(FlashAndExplode(bulletSpawnDelay));
+        
+        
     }
 
     IEnumerator FlashAndExplode(float delay)
@@ -59,6 +68,8 @@ public class ExplosiveBarrage : MonoBehaviour
 
         yield return new WaitForSeconds(delay);
 
+
+        
         // Generate angles with at least minAngleGap between them
         List<float> angles = GenerateAngles(bulletCount, minAngleGap);
 
