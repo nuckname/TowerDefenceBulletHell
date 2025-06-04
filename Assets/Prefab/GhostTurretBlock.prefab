@@ -100,16 +100,16 @@ GameObject:
   m_Component:
   - component: {fileID: 1578742647832035527}
   - component: {fileID: 5203730451614778962}
-  - component: {fileID: 8273102335265151765}
+  - component: {fileID: 7125642820199158299}
   - component: {fileID: 2326938714788381016}
-  - component: {fileID: -7768687513190529410}
   - component: {fileID: -8227722247936303423}
   - component: {fileID: 7649337352389668288}
   - component: {fileID: 4545119328524603260}
   - component: {fileID: 1765127705045396365}
   - component: {fileID: 6658706963774281283}
+  - component: {fileID: 4234826460370416340}
   m_Layer: 0
-  m_Name: GhostBlock
+  m_Name: GhostTurretBlock
   m_TagString: GhostTurret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,7 +194,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8273102335265151765
+--- !u!114 &7125642820199158299
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -205,8 +205,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2173219658
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 2048460006
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -234,42 +234,6 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   moveSpeed: 5
   followSpeed: 10
---- !u!114 &-7768687513190529410
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049687118381746045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowTopMostFoldoutHeaderGroup: 1
-  NetworkTransformExpanded: 0
-  AuthorityMode: 1
-  TickSyncChildren: 0
-  UseUnreliableDeltas: 0
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 0
-  SyncRotAngleX: 0
-  SyncRotAngleY: 0
-  SyncRotAngleZ: 0
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  UseQuaternionSynchronization: 0
-  UseQuaternionCompression: 0
-  UseHalfFloatPrecision: 0
-  InLocalSpace: 0
-  SwitchTransformSpaceWhenParented: 0
-  Interpolate: 1
-  SlerpPosition: 0
 --- !u!114 &-8227722247936303423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -284,8 +248,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crossPrefab: {fileID: 996078564963754122}
   canPlaceGhost: 1
-  audioSource: {fileID: 6658706963774281283}
-  errorClip: {fileID: 8300000, guid: 8c6e68e7c38c94c438ef30540e0b8d04, type: 3}
 --- !u!114 &7649337352389668288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +294,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.118938446, y: 0.07671006}
+  m_Offset: {x: -0.013902545, y: 0.06449649}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -342,7 +304,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.83061314, y: 1.1310102}
+  m_Size: {x: 0.86481094, y: 1.2336037}
   m_EdgeRadius: 0
 --- !u!50 &1765127705045396365
 Rigidbody2D:
@@ -468,6 +430,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4234826460370416340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049687118381746045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Multiplayer.Samples.Utilities.ClientAuthority::Unity.Multiplayer.Samples.Utilities.ClientAuthority.ClientNetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 0
+  SyncRotAngleX: 0
+  SyncRotAngleY: 0
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &2067897247081761100
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1104,7 @@ GameObject:
   - component: {fileID: 5347992453854521355}
   - component: {fileID: 1330336993449250258}
   m_Layer: 0
-  m_Name: TurretUI5_NoMiddle
+  m_Name: GhostTurrer_UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1308,8 +1306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 180
   savedRotation: {x: 0, y: 0, z: 0, w: 0}
-  audioSource: {fileID: 6557458079117349122}
-  rotateGhostTurretClip: {fileID: 8300000, guid: 74029249d1cc0774e8e09aeca837fe7a, type: 3}
 --- !u!82 &6557458079117349122
 AudioSource:
   m_ObjectHideFlags: 0

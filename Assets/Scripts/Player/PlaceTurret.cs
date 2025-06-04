@@ -9,7 +9,8 @@ public class PlaceTurret : NetworkBehaviour
 {
     [SerializeField] private GameObject TurretBasic;
     [SerializeField] private GameObject GhostPlacementTurret;
-    [SerializeField] private GameObject goldMiner;
+    
+    private GameObject ghostTurretUi;
     
     [SerializeField] private int amountOfTurretsBrought = 0;
     
@@ -32,6 +33,8 @@ public class PlaceTurret : NetworkBehaviour
     
     private void Awake()
     {
+        //TurretBasic.GetComponentInChildren<>()
+        
         displayTurretText = GameObject.FindGameObjectWithTag("TurretDisplayText").GetComponent<TextMeshProUGUI>();
     }
 
@@ -121,6 +124,8 @@ public class PlaceTurret : NetworkBehaviour
         AudioManager.instance.GibberishSFX();
         
         GameObject canvas = GameObject.Find("Canvas");
+        
+        
         GameObject floatingText = Instantiate(FloatingTextNotEnoughGold, canvas.transform);
 
         Vector3 screenPosition = Camera.main.WorldToScreenPoint(this.transform.position);
@@ -145,12 +150,14 @@ public class PlaceTurret : NetworkBehaviour
             AudioManager.instance.errorSFX();
             return;
         }
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         GhostTurretHasBeenPlaced = true;
-
-        currentGhost = Instantiate(GhostPlacementTurret, mousePos, transform.rotation);
-
+        
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Quaternion rot = Quaternion.identity;
+        
+        SpawnGhostTurretServerRpc(mousePos, rot);
+        
         Transform priceLabelTransform = currentGhost.transform.Find("Cost");
         if (priceLabelTransform != null)
         {
@@ -178,6 +185,37 @@ public class PlaceTurret : NetworkBehaviour
     }
 
 
+    [ServerRpc(RequireOwnership = false)]
+    private void SpawnGhostTurretServerRpc(Vector2 mousePos, Quaternion rotation)
+    {
+        if (GhostPlacementTurret == null)
+        {
+            Debug.LogError("GhostPlacementTurret is null on the server.");
+            return;
+        }
+
+        if (IsOwner)
+        {
+            currentGhost = Instantiate(GhostPlacementTurret, mousePos, rotation);
+            NetworkObject ghostTurretNetwork = currentGhost.GetComponent<NetworkObject>();
+            
+            if (ghostTurretNetwork == null)
+            {
+                Debug.LogError("No NetworkObject on GhostPlacementTurret prefab.");
+                return;
+            }
+            
+            ghostTurretNetwork.Spawn(true);
+        }
+
+        if (!IsOwner)
+        {
+            currentGhost = Instantiate(GhostPlacementTurret, mousePos, rotation);
+            NetworkObject ghostTurretNetwork = currentGhost.GetComponent<NetworkObject>();
+        }
+
+
+    }
 
     private void SpawnBasicTurret()
     {

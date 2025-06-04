@@ -6,18 +6,14 @@ public class SelectTurret : MonoBehaviour
 
     [SerializeField] private OnClickEffect onClickEffect;
 
-    public bool AllowSelectingTurret = true;
-
     void Update()
     {
-        if (AllowSelectingTurret)
+
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                
-                onClickEffect.TurretSelected();
-            }
+            onClickEffect.TurretSelected();
         }
+
         
         if (Input.GetMouseButtonDown(0) && (Input.GetKey(KeyCode.LeftControl)))
         {

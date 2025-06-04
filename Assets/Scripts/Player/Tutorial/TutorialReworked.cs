@@ -56,6 +56,7 @@ public class TutorialReworked : MonoBehaviour
 
     void Start()
     {
+        /*
         if (_tutorialStateSO.playerTutorial)
         {
             tutorialText.text = _messages[_currentStep];
@@ -82,8 +83,7 @@ public class TutorialReworked : MonoBehaviour
 
             print("can place turret");
         }
-        
-        
+        */
     }
 
     public void NextStepOnContinueButtonClick()

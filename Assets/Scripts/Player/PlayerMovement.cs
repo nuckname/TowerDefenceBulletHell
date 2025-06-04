@@ -19,6 +19,9 @@ public class PlayerMovement : NetworkBehaviour
 
     void Update()
     {
+        if (!IsOwner)
+            return;
+
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         movement.Normalize();

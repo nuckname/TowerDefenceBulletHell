@@ -2,9 +2,10 @@ using System;
 using Unity.VisualScripting;
 using System.Collections;
 using TMPro;
+using Unity.Netcode;
 using UnityEngine;
 
-public class RoundStateManager : MonoBehaviour
+public class RoundStateManager : NetworkBehaviour
 {
 
     public bool tutorialCantStartRound = false;
@@ -98,11 +99,15 @@ public class RoundStateManager : MonoBehaviour
 
     void Update()
     {
+        if (!IsServer) return; 
+        
         currentState.UpdateState(this);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+        if (!IsServer) return; 
+        
         currentState.OnCollisionEnter2D(this, other);
     }
 

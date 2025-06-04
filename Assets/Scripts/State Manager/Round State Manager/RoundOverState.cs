@@ -18,8 +18,6 @@ public class RoundOverState : RoundBaseState
         
         roundStateManager.MusicRoundEnd();
         
-        roundStateManager.selectTurret.AllowSelectingTurret = true;
-
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
     }
     

@@ -1,11 +1,12 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class SpawnEnemies : MonoBehaviour
+public class SpawnEnemies : NetworkBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     
@@ -125,11 +126,16 @@ public class SpawnEnemies : MonoBehaviour
             {
                 GameObject enemy = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
 
+                NetworkObject netObj = enemy.GetComponent<NetworkObject>();
+                if (netObj != null && IsServer)
+                {
+                    netObj.Spawn(true);
+                }
+                
                 EnemyDropItems enemyDropItems = enemy.GetComponent<EnemyDropItems>();
 
                 enemy.GetComponent<EnemyDropItems>().amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
-                
-                
+
                 //enemyDropItems.amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
                 //enemyDropItems.amountOfHeartsToDrop = round.amountOfHeartToDrop;
                 

@@ -21,7 +21,6 @@ public class RoundInProgressState : RoundBaseState
 
         roundStateManager.MusicRoundInProgress();
         
-        roundStateManager.selectTurret.AllowSelectingTurret = false;
         
         SpawnRoundEnemies(roundCounter, roundStateManager);
 
