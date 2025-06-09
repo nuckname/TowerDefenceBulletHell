@@ -24,7 +24,6 @@ public class OnClickEffect : MonoBehaviour
             {
                 UiOpenCantUpgradeTurret = true;
                 
-                Debug.Log("UI is null. Spawning new UI.");
                 newUI = Instantiate(UpgradeUi, CanvasTransform);
                 newUI.SetActive(true);
                 

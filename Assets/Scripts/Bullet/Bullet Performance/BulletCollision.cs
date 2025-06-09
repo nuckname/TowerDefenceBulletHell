@@ -9,7 +9,6 @@ using Random = UnityEngine.Random;
 public class BulletCollision : MonoBehaviour
 {
     
-    [SerializeField] private PlayerGoldScriptableObject playerGoldScriptableObject;
     //Upgrades
     public bool destroyBulletOnCollision = true;
     public TurretStats turretStats;
@@ -41,7 +40,7 @@ public class BulletCollision : MonoBehaviour
             //Not sure how this works with mutiplayer. 
             if (GoldOnHit)
             {
-                playerGoldScriptableObject.AddGold(5);
+                PlayerGold.Instance.AddGold(5);
             }
             
              if (pierceIndex <= 0)

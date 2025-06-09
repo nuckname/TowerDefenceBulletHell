@@ -6,7 +6,7 @@ public class InGameUiManager : MonoBehaviour
     [SerializeField] private GameObject settingsMenu;
     void Start()
     {
-        playerHitFlash.SetActive(true);
+        //playerHitFlash.SetActive(true);
         //settingsMenu.SetActive(true);
     }
 

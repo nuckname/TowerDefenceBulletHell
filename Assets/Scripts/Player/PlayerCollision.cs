@@ -7,14 +7,11 @@ using Random = UnityEngine.Random;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private RoundsScriptableObject roundsScriptableObject;
-    [SerializeField] private PlayerHealthScriptabeObject playerHealthScriptabeObject;
-    [SerializeField] private PlayerGoldScriptableObject playerGoldScriptableObject;
 
     [SerializeField] private int CoinGiveGoldAmount = 5;
     [SerializeField] private float iframeDuration = 1f; // Duration of invincibility frames
     [SerializeField] private float transparencyLevel = 0.5f;
 
-    private PlayerHealthSpriteSheet playerHealthSpriteSheet;
     private int _currentRoundIndex;
     private List<RoundsScriptableObject> rounds;
     [SerializeField] private SpawnEnemies spawnEnemies;
@@ -23,9 +20,7 @@ public class PlayerCollision : MonoBehaviour
     
     private bool isInvincible = false;
     
-    
     [SerializeField] private GameObject floatingTextPrefab;
-
     
     private ScreenFlashOnDamage screenFlashOnDamage;
     
@@ -34,8 +29,6 @@ public class PlayerCollision : MonoBehaviour
     private void Awake()
     {
         screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
-        
-        playerHealthSpriteSheet = GetComponent<PlayerHealthSpriteSheet>();
         
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
         
@@ -68,38 +61,32 @@ public class PlayerCollision : MonoBehaviour
         {
             int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
             
-            
             AudioManager.instance.PlayerCollectCoinSFX();
             
             if (gameModeManager.CurrentMode == GameMode.HalfCash)
             {
-                playerGoldScriptableObject.AddGold(Mathf.RoundToInt(amount / 2));
+                PlayerGold.Instance.AddGold(Mathf.RoundToInt(amount / 2));
             }
             else
             {
-                playerGoldScriptableObject.AddGold(amount);
+                PlayerGold.Instance.AddGold(amount);
             }
         }
         
         if (other.gameObject.CompareTag("Heart"))
         {
-            if (playerHealthScriptabeObject.currentHealth < 10)
+            if (PlayerHealth.Instance.GetMaxHealth() < 10)
             {
-                playerHealthScriptabeObject.currentHealth += 1;
-                playerHealthSpriteSheet.ChangePlayerSprite();
+                PlayerHealth.Instance.Heal(1);
             }
         }
     }
 
     public void TakeDamage(int amount)
     {
-        AudioManager.instance.PlayerHurtSFX();
-        
         screenFlashOnDamage.TakeDamage();
-        
-        playerHealthScriptabeObject.TakeDamage(amount);
-        
-        playerHealthSpriteSheet.ChangePlayerSprite();
+
+        PlayerHealth.Instance.TakeDamage(1);
         
         //ShowFloatingText(floatingTextPrefab);
         

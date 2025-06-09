@@ -14,8 +14,6 @@ public class GhostBlockPathCollision : MonoBehaviour
         //if (other.CompareTag("PathCollision") || other.CompareTag("TurretPlacementCollider"))
         if (other.CompareTag("PathCollision") || other.CompareTag("Turret"))
         {
- 
-
             collisionCount++;
             UpdatePlacementState();
         }

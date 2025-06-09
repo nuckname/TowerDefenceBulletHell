@@ -48,9 +48,6 @@ public class UpgradeUiManager : MonoBehaviour
     [SerializeField] private float shakeDuration = 0.3f;
     [SerializeField] private float shakeMagnitude = 5f;
     
-    //Gold
-    public PlayerGoldScriptableObject playerGold;
-
     [Header("Reroll")]
     public int currentRerollAmount = 30;
     public int defaultRerollAmount = 30;
@@ -179,7 +176,7 @@ public class UpgradeUiManager : MonoBehaviour
 
         string oldRarity = storeTurretDescriptionAndRarity.storedTurretSelectedRarity;
         
-        if (playerGold.SpendGold(storeTurretDescriptionAndRarity.storeTurretRerollPrice))
+        if (PlayerGold.Instance.SpendGold(storeTurretDescriptionAndRarity.storeTurretRerollPrice))
         {
             /*
             switch (amountOfRerolls)
@@ -280,42 +277,40 @@ public class UpgradeUiManager : MonoBehaviour
 
     public void BuyUpgrade()
     {
-        if (playerGold != null)
+        StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
+        
+        int newUpgradePrice = storeTurretDescriptionAndRarity.storeTurretPrice;
+        
+        if (PlayerGold.Instance.SpendGold(newUpgradePrice))
         {
-            StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
-            
-            int newUpgradePrice = storeTurretDescriptionAndRarity.storeTurretPrice;
-            
-            if (playerGold.SpendGold(newUpgradePrice))
+            if (newUpgradePrice == 0)
             {
-                if (newUpgradePrice == 0)
-                {
-                    Debug.LogWarning("Spent 0");
-                }
-
-                print("Player spent: " + newUpgradePrice);
-                DisableActionsWhileOpen(false);
-
-                amountOfRerolls = 1;
-                currentRerollAmount = defaultRerollAmount;
-                rerollText.text = "Reroll: $" + storeTurretDescriptionAndRarity.storeTurretRerollPrice;
-                
-                
-                _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
-                
-                AudioManager.instance.BuyTurretUpgradeSFX();
+                Debug.LogWarning("Spent 0");
             }
-            else
-            {
-                //not enough gold
-                StopAllCoroutines();
-                TMP_Text textToShake = GetTextButtonClicked(buttonClicked);
-                StartCoroutine(ShowCannotBuyFeedback(textToShake));
-                
-                AudioManager.instance.GibberishSFX();
 
-            }
+            print("Player spent: " + newUpgradePrice);
+            DisableActionsWhileOpen(false);
+
+            amountOfRerolls = 1;
+            currentRerollAmount = defaultRerollAmount;
+            rerollText.text = "Reroll: $" + storeTurretDescriptionAndRarity.storeTurretRerollPrice;
+            
+            
+            _applyUpgrade.ChosenUpgrade(displayedThreeUpgrades[buttonClicked], targetTurret);
+            
+            AudioManager.instance.BuyTurretUpgradeSFX();
         }
+        else
+        {
+            //not enough gold
+            StopAllCoroutines();
+            TMP_Text textToShake = GetTextButtonClicked(buttonClicked);
+            StartCoroutine(ShowCannotBuyFeedback(textToShake));
+            
+            AudioManager.instance.GibberishSFX();
+
+        }
+      
     }
 
     private TMP_Text GetTextButtonClicked(int clickNumber)

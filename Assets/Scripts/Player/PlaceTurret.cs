@@ -18,8 +18,6 @@ public class PlaceTurret : NetworkBehaviour
     public bool GhostTurretHasBeenPlaced = false;
     private GameObject currentGhost;
 
-    // Gold system
-    public PlayerGoldScriptableObject playerGold;
     public bool allowTurretPlacement;
 
     [SerializeField] private GameObject FloatingTextNotEnoughGold;
@@ -52,7 +50,7 @@ public class PlaceTurret : NetworkBehaviour
         {
             if (GhostTurretHasBeenPlaced)
             {
-                if (playerGold.currentGold <= TurretBasicCost)
+                if (PlayerGold.Instance.currentGoldAmount() <= TurretBasicCost)
                 {
                     SpawnFloatingText();
                     return;
@@ -74,7 +72,7 @@ public class PlaceTurret : NetworkBehaviour
                     return;
                 }
                 
-                if (playerGold.SpendGold(TurretBasicCost))
+                if (PlayerGold.Instance.SpendGold(TurretBasicCost))
                 {
                     AudioManager.instance.PlaceTurretClip();
                     
@@ -156,7 +154,7 @@ public class PlaceTurret : NetworkBehaviour
         {
             TMP_Text costText = priceLabelTransform.GetComponent<TMP_Text>();
             
-            if (playerGold.currentGold <= TurretBasicCost)
+            if (PlayerGold.Instance.currentGoldAmount() <= TurretBasicCost)
             {
                 costText.color = Color.red;
             }

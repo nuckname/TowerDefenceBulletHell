@@ -32,8 +32,6 @@ public class RoundStateManager : MonoBehaviour
 
     [HideInInspector] public int initialEnemyCount;
 
-    [SerializeField] private PlayerGoldScriptableObject playerGoldSO;
-    
     [Header("Gold Loss Per Round")]
     public int amountOfCoinsDestroyed = 0;
     public int totalGoldLostAcrossRounds = 0;
@@ -48,7 +46,8 @@ public class RoundStateManager : MonoBehaviour
     {
         if (currentRound == 0)
         {
-            playerGoldSO.ResetGold();
+            PlayerGold.Instance.ResetGold();
+
             totalGoldLostAcrossRounds = 0; 
             print("Setting gold in to places.");
         }
