@@ -520,8 +520,8 @@ MonoBehaviour:
     defaultIsAnUpgradePaths: 0
     isAnUpgradePaths: 0
   - upgradeName: Orbiting
-    description: 'Bullets orbit around the turret. Turret collects bullets that enter
-      the orbit. '
+    description: 'Bullets orbit around (starting left and going around) the turret.
+      Turret can collect bullets that enter the orbit. '
     effect: {fileID: 11400000, guid: f01e89d4ecfe8034ca0364837aec8e65, type: 2}
     upgradeIcon: {fileID: -78835271, guid: 743ece0459519814bbacfab4d7d249ef, type: 3}
     defaultOnlyAllowedOnce: 1

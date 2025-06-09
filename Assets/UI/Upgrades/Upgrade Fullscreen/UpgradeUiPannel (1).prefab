@@ -1,5 +1,141 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &30425618002003833
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7931686134118058411}
+  - component: {fileID: 4417141124540195244}
+  - component: {fileID: 6056770212154212753}
+  m_Layer: 5
+  m_Name: DisplayPlayerGold
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7931686134118058411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30425618002003833}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3315147018840693437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 32, y: 330.9}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &4417141124540195244
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30425618002003833}
+  m_CullTransparentMesh: 1
+--- !u!114 &6056770212154212753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30425618002003833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Your gold amount
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 5520c74ad5886a144b8343805e4a434e, type: 2}
+  m_sharedMaterial: {fileID: 2264243155619083341, guid: 5520c74ad5886a144b8343805e4a434e, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278517757
+  m_fontColor: {r: 0.9915728, g: 1, b: 0.0141509175, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 40
+  m_fontSizeBase: 40
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_TextWrappingMode: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 0
+  m_ActiveFontFeatures: 6e72656b
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_EmojiFallbackSupport: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -327.22757, y: 0, z: -264.41168, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &88767966880771089
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +227,6 @@ GameObject:
   - component: {fileID: 4541784668707170489}
   - component: {fileID: 8166561556846695883}
   - component: {fileID: 6290202742975801465}
-  - component: {fileID: 5842091514359436999}
   - component: {fileID: 8306725778073191065}
   - component: {fileID: 2943511926569603087}
   - component: {fileID: 8574202694013746985}
@@ -100,6 +235,7 @@ GameObject:
   - component: {fileID: 4543209496120795255}
   - component: {fileID: 7295215306350287040}
   - component: {fileID: 152969065760238950}
+  - component: {fileID: 3495071905223287087}
   m_Layer: 5
   m_Name: UpgradeUiPannel (1)
   m_TagString: Untagged
@@ -119,12 +255,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 751837208777143084}
   - {fileID: 3732605663985353604}
   - {fileID: 3558914992481065688}
   - {fileID: 6103922954117810372}
   - {fileID: 5459135457221499416}
   - {fileID: 8403959911983632858}
   - {fileID: 5398083137066656703}
+  - {fileID: 7931686134118058411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -153,29 +291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTurret: {fileID: 0}
-  allUpgradeUis:
-  - {fileID: 8933729390883234015}
-  - {fileID: 4390252631412009574}
-  - {fileID: 88767966880771089}
-  allTextUis:
-  - {fileID: 1218428714607771837}
-  - {fileID: 8481155945735150643}
-  - {fileID: 4576044763289789688}
-  displayedThreeUpgrades:
-  - 
-  - 
-  - 
-  generateRarity: {fileID: 8166561556846695883}
-  selectDescription: {fileID: 6290202742975801465}
-  ifDescriptionAlreadyGenerated: 0
-  insufficientColor: {r: 1, g: 0, b: 0, a: 1}
-  shakeDuration: 0.3
-  shakeMagnitude: 3
-  playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
-  currentRerollAmount: 30
-  defaultRerollAmount: 30
-  rerollText: {fileID: 3275370131705695315}
-  _applyUpgrade: {fileID: 5842091514359436999}
+  displayController: {fileID: 938938965136727869}
+  inputHandler: {fileID: 4097367950570804595}
+  purchaseHandler: {fileID: 3507710359768235100}
+  rerollHandler: {fileID: 6504608467609493108}
+  actionController: {fileID: 385174438670231530}
 --- !u!114 &8166561556846695883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,21 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
---- !u!114 &5842091514359436999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508126564264186303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0ef11e58f7f0d94daa7aa1bc60d81d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
-  raritySelected: 
-  showTurretStatsButton: {fileID: 4543209496120795255}
 --- !u!114 &8306725778073191065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +447,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765656d690c19044f826dfab4d4723aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3495071905223287087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508126564264186303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef11e58f7f0d94daa7aa1bc60d81d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  upgradeData: {fileID: 11400000, guid: dae1e3f98c015074e9da3443a1581ccf, type: 2}
+  raritySelected: 
+  showTurretStatsButton: {fileID: 4543209496120795255}
 --- !u!1 &557648227519004268
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +964,7 @@ GameObject:
   m_Layer: 5
   m_Name: Buy Upgrade
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -950,10 +1070,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: ClickedToppedButton
-        m_Mode: 1
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: SelectUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -962,9 +1082,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: BuyUpgrade
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: AttemptPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1256,21 +1376,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: ClickedMiddleButton
-        m_Mode: 1
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: SelectUpgrade
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: BuyUpgrade
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: AttemptPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1401,8 +1521,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
+      - m_Target: {fileID: 6504608467609493108}
+        m_TargetAssemblyTypeName: UpgradeRerollHandler, Assembly-CSharp
         m_MethodName: Reroll
         m_Mode: 1
         m_Arguments:
@@ -2545,7 +2665,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 32, y: 281}
+  m_AnchoredPosition: {x: 32, y: 272.8}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8773981056798499219
@@ -2603,8 +2723,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 40
+  m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2871,14 +2991,14 @@ RectTransform:
   m_GameObject: {fileID: 6109606716056424581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.3448509, z: 1}
+  m_LocalScale: {x: 1.0265, y: 1.3804895, z: 1.0265}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5459135457221499416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 356}
+  m_AnchoredPosition: {x: -3.4, y: 393}
   m_SizeDelta: {x: 281.7207, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6734297866831531369
@@ -3641,9 +3761,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: ClickedBottomButton
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: SelectUpgrade
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3507710359768235100}
+        m_TargetAssemblyTypeName: UpgradePurchaseHandler, Assembly-CSharp
+        m_MethodName: AttemptPurchase
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3653,18 +3785,121 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 4541784668707170489}
-        m_TargetAssemblyTypeName: UpgradeUiManager, Assembly-CSharp
-        m_MethodName: BuyUpgrade
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+--- !u!1 &7318491145472513804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751837208777143084}
+  - component: {fileID: 385174438670231530}
+  - component: {fileID: 938938965136727869}
+  - component: {fileID: 4097367950570804595}
+  - component: {fileID: 3507710359768235100}
+  - component: {fileID: 6504608467609493108}
+  m_Layer: 5
+  m_Name: Upgrades UI Manager stuff
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &751837208777143084
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3315147018840693437}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &385174438670231530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e105f83d01a552f46b75d924b90007f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerActionController
+--- !u!114 &938938965136727869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ed89bb7439c9774b90157d5f5d809bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeDisplayController
+  allUpgradeUis:
+  - {fileID: 8933729390883234015}
+  - {fileID: 4390252631412009574}
+  - {fileID: 88767966880771089}
+  allTextUis:
+  - {fileID: 1218428714607771837}
+  - {fileID: 8481155945735150643}
+  - {fileID: 4576044763289789688}
+  generateRarity: {fileID: 8166561556846695883}
+  selectDescription: {fileID: 6290202742975801465}
+--- !u!114 &4097367950570804595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92d13c80b025c054896c2347241662e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeInputHandler
+--- !u!114 &3507710359768235100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57e1005322f69f8429e0b44a77a5c7b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradePurchaseHandler
+  insufficientFundsColor: {r: 1, g: 0, b: 0, a: 1}
+  shakeDuration: 0.3
+  shakeMagnitude: 5
+--- !u!114 &6504608467609493108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318491145472513804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26224b1fc449216419834d4c810d6be9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeRerollHandler
+  defaultRerollCost: 30
+  rerollText: {fileID: 3275370131705695315}
 --- !u!1 &7458457556779821181
 GameObject:
   m_ObjectHideFlags: 0

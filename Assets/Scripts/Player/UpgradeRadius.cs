@@ -105,7 +105,10 @@ public class UpgradeRadius : MonoBehaviour
         
         //UpgradeUiManager upgradeManager = UiManager.GetComponent<UpgradeUiManager>();
         UpgradeUiManager upgradeManager = instantiatedUi.GetComponent<UpgradeUiManager>();
-        upgradeManager.SetDescriptionsForUpgrades(turret);
+        
+        upgradeManager.SetupUpgradesForTurret(turret);
+
+        //upgradeManager.SetDescriptionsForUpgrades(turret);
         //Sets a global Varible for the turret.
         //Fixes a bug where targetTurret was null
         upgradeManager.targetTurret = turret;

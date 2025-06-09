@@ -89,8 +89,6 @@ public class RoundOverState : RoundBaseState
             // yield return new WaitForSeconds(0.1f);
 
         }
-        Debug.Log("yo1");
-
         yield break;
     }
 

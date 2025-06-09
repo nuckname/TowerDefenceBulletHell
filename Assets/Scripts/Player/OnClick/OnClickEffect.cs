@@ -28,7 +28,7 @@ public class OnClickEffect : MonoBehaviour
                 newUI.SetActive(true);
                 
                 UpgradeUiManager upgradeManager = newUI.GetComponent<UpgradeUiManager>();
-                upgradeManager.SetDescriptionsForUpgrades(selectedTurret);
+                upgradeManager.SetupUpgradesForTurret(selectedTurret);
                 upgradeManager.targetTurret = selectedTurret;
 
                 PlayerShooting.disableShooting = true;

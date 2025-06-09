@@ -100,7 +100,9 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
                 OnlyAllowedOnce(upgrade, targetTurret, upgradeDataOnTurret);
             }
             
-            upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
+            upgradeUiManager.SetupUpgradesForTurret(targetTurret);
+
+            //upgradeUiManager.SetDescriptionsForUpgrades(targetTurret);
 
             //if it has an upgrade path with select more - not working
 
