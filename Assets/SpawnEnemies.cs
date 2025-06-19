@@ -117,7 +117,7 @@ public class SpawnEnemies : MonoBehaviour
     private IEnumerator SpawnEnemiesWithDelay(RoundsScriptableObject round)
     {
         // Iterate through each enemy group in the round
-        foreach (var group in round.enemyGroups)
+        foreach (EnemyGroup group in round.enemyGroups)
         {
             yield return new WaitForSeconds(group.delayBeforeGroup);
 
@@ -153,11 +153,33 @@ public class SpawnEnemies : MonoBehaviour
                     enemyMovement.moveSpeed += round.speedModifer;
                 }
                 // Wait for the group's spawn interval before spawning the next enemy
+
+                if (group.isSpecial)
+                {
+                    AddSpecialAbilities(group, enemy);
+                }
+                
                 yield return new WaitForSeconds(group.spawnInterval);
             }
         }
 
         // Wait for the wave's delay after completion
         yield return new WaitForSeconds(round.delayAfterWave);
+    }
+    
+    private void AddSpecialAbilities(EnemyGroup group, GameObject enemy)
+    {
+        if (group.hasFogOfWar)
+        {
+            EnemyFogOfWar enemyFogOfWar = enemy.GetComponent<EnemyFogOfWar>();   
+            enemyFogOfWar.enabled = true; 
+        }
+        
+        if (group.hasPaintSpeedEffect)
+        {
+            EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();   
+            enemyPaintTrail.enabled = true; 
+        }
+        
     }
 }

@@ -77,7 +77,13 @@ public class EnemyGroup
 
     [Tooltip("Does boss spawn")]
     public bool bossSpawn = false;
+
+    [Header("Special - must tick to use below")]
+    public bool isSpecial = false;
     
+    public bool hasFogOfWar = false;
+    public bool hasPaintSpeedEffect = false;
+
 
 }
 

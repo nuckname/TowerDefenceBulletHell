@@ -67,6 +67,11 @@ public class BulletCollision : MonoBehaviour
             Destroy(gameObject);
         }
         
+        if (other.gameObject.CompareTag("FogEffect"))
+        {
+            Destroy(gameObject);
+        }
+        
         if (other.gameObject.CompareTag("PlayerCollision"))
         {
             Destroy(gameObject);

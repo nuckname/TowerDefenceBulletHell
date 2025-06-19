@@ -49,6 +49,8 @@ TagManager:
   - untagged
   - Toggle
   - GoldLostText
+  - PaintEffect
+  - FogEffect
   layers:
   - Default
   - TransparentFX

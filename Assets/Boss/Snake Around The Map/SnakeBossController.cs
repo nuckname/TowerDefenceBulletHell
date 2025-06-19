@@ -206,10 +206,7 @@ public class SnakeBossController : MonoBehaviour
                 // After two laps, destroy the boss head.
                 if (lapCount >= 2)
                 {
-                    
                     StartFollowPath();
-                    
-
                 }
             }
         }
@@ -260,8 +257,6 @@ public class SnakeBossController : MonoBehaviour
             StopCoroutine(staticSegmentSpawnCoroutine);
             staticSegmentSpawnCoroutine = null;
         }
-        
-
         
         currentState = SnakeBossState.Enraged;
         Debug.Log("Snake Boss is enraged!");

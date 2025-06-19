@@ -127,7 +127,7 @@ public class RoundStateManager : MonoBehaviour
 
     public void DisplayRoundUi(int currentRound)
     {
-        RoundDisplayText.text = "Round Number: " + currentRound.ToString() + "/10";
+        RoundDisplayText.text = "Round: " + currentRound.ToString() + "/10";
 
     }
 

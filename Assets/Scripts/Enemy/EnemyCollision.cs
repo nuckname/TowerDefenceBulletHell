@@ -7,11 +7,18 @@ using Random = UnityEngine.Random;
 public class EnemyCollision : MonoBehaviour
 {
     private EnemyHealth _enemyHealth;
+    private EnemyFollowPath _enemyFollowPath;
+    
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
+
+    [SerializeField] private float PaintMoveSpeedModifer; 
+        
+        
     // Start is called before the first frame update
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
+        _enemyFollowPath = GetComponent<EnemyFollowPath>();
 
         enemyOnMapCounter = GameObject.FindGameObjectWithTag("StateManager").GetComponent<EnemyOnMapCounter>();
     }
@@ -48,6 +55,23 @@ public class EnemyCollision : MonoBehaviour
             Destroy(gameObject);
             print("-1 hp");
         }
+        
+        if (other.gameObject.CompareTag("PaintEffect"))
+        {
+            ChangeMovementSpeed(PaintMoveSpeedModifer);
+        }
     }
-   
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("PaintEffect"))
+        {
+            ChangeMovementSpeed(-PaintMoveSpeedModifer);
+        }
+    }
+
+    private void ChangeMovementSpeed(float modifier)
+    {
+        _enemyFollowPath.moveSpeed += modifier;
+    }
 }

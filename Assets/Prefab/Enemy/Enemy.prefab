@@ -147,6 +147,8 @@ GameObject:
   - component: {fileID: 5035588526783821658}
   - component: {fileID: 2601143581719723985}
   - component: {fileID: -3989981273416433215}
+  - component: {fileID: 3223230562563123178}
+  - component: {fileID: 5646913156355875930}
   m_Layer: 31
   m_Name: Enemy
   m_TagString: Enemy
@@ -255,8 +257,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyOnMapCounter: {fileID: 0}
-  playerHealthSpriteSheet: {fileID: 0}
-  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
+  PaintMoveSpeedModifer: 2
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -464,6 +465,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3223230562563123178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088919820819901208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fbcc855dedc824388c910dca439d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyFogOfWar
+  effectPrefab: {fileID: 4614220531212673821, guid: a3cde02a0654da84c93b336c3856ab9c, type: 3}
+  spawnInterval: 0.5
+  spawnDelay: 0.75
+--- !u!114 &5646913156355875930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088919820819901208}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58a9e73714d42924f876bc92b06d4625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyPaintTrail
+  effectPrefab: {fileID: 4614220531212673821, guid: 45d128d4fc4b7ba4a965b3d606975ad9, type: 3}
+  spawnInterval: 0.5
+  spawnDelay: 0.75
 --- !u!1 &7425468875843330940
 GameObject:
   m_ObjectHideFlags: 0
