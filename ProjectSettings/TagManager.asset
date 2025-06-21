@@ -51,6 +51,7 @@ TagManager:
   - GoldLostText
   - PaintEffect
   - FogEffect
+  - Shield
   layers:
   - Default
   - TransparentFX

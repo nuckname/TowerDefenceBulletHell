@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [CreateAssetMenu(fileName = "NewRound", menuName = "Round/NewRound", order = 1)]
 public class RoundsScriptableObject : ScriptableObject
 {
@@ -80,9 +81,37 @@ public class EnemyGroup
 
     [Header("Special - must tick to use below")]
     public bool isSpecial = false;
+
+    [Header("Ground Effects")]
+    public bool hasOnDeathEffect = false;
+    public bool iceOnDeathEffect = false;
     
+    [Header("Ground Effects")]
     public bool hasFogOfWar = false;
     public bool hasPaintSpeedEffect = false;
+
+    [Header("Shield Effects")]
+    public bool hasSheild = false;
+    
+    [Header("Shield HP")]
+    public int shieldHp;
+    
+    [Header("Rotation")]
+    public bool isRotating = false;
+    public bool clockWise = false;
+    public bool counterClockWise = false;
+
+    [Header("Direction")]
+    public bool north = false;
+    public bool east = false;
+    public bool south = false;
+    public bool west = false;
+    
+    [Header("Diagonal")]
+    public bool northEast = false;
+    public bool northWest = false;
+    public bool southEast = false;
+    public bool southWest = false;
 
 
 }

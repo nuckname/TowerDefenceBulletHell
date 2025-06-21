@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class SpawnEffectOnEnemyGroundPosition : MonoBehaviour
@@ -12,7 +13,9 @@ public abstract class SpawnEffectOnEnemyGroundPosition : MonoBehaviour
 
     [Tooltip("Delay after interval before effect actually appears")]
     [SerializeField] protected float spawnDelay = 0.25f;
-
+    
+    protected virtual List<GameObject> SpawnedEffects { get; } = new();
+    
     private float _timer;
 
     /// <summary>
@@ -39,8 +42,9 @@ public abstract class SpawnEffectOnEnemyGroundPosition : MonoBehaviour
         spawnPos.z += ZOffset;
 
         yield return new WaitForSeconds(spawnDelay);
-
-        Instantiate(effectPrefab, spawnPos, Quaternion.identity);
+        
+        GameObject spawnedEffect = Instantiate(effectPrefab, spawnPos, Quaternion.identity);
+        SpawnedEffects.Add(spawnedEffect);
     }
 
     private void Update()

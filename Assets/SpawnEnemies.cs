@@ -181,5 +181,21 @@ public class SpawnEnemies : MonoBehaviour
             enemyPaintTrail.enabled = true; 
         }
         
+        if (group.hasSheild)
+        {
+            setEnemyShield setEnemyShield = enemy.GetComponent<setEnemyShield>();   
+            if (setEnemyShield != null)
+            {
+                setEnemyShield.enabled = true;
+                setEnemyShield.ConfigureShields(group); // Pass in the data here
+            }
+        }
+
+        if (group.iceOnDeathEffect)
+        {
+            IceExplosionEffect iceExplosionEffect = enemy.GetComponent<IceExplosionEffect>();
+            iceExplosionEffect.enabled = true;
+        }
+
     }
 }

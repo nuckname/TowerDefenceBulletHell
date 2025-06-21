@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyDie : MonoBehaviour
@@ -33,11 +34,21 @@ public class EnemyDie : MonoBehaviour
             float forceMagnitude = 5f; // Adjust the magnitude as needed
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
+
+        TriggerOnDeathEffect();
         
         enemyOnMapCounter.DecreaseEnemyCount();
 
         _enemyDropItems.DropItems(false);
 
         Destroy(gameObject);
+    }
+
+    private void TriggerOnDeathEffect()
+    {
+        foreach (BaseOnDeathEffect effect in GetComponents<BaseOnDeathEffect>())
+        {
+            effect.TriggerEffect();
+        }
     }
 }

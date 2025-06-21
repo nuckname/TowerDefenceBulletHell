@@ -2,20 +2,8 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerShooringCollision : MonoBehaviour
+public class PlayerShootingCollision : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -25,6 +13,12 @@ public class PlayerShooringCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("Turret"))
         {
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("FogEffect"))
+        {
+            //Sound?
             Destroy(gameObject);
         }
     }

@@ -15,52 +15,81 @@ MonoBehaviour:
   waveName: Wave 1
   currentWave: 1
   enemyGroups:
-  - enemyHp: 10000
-    count: 1
-    delayBeforeGroup: 1
-    spawnInterval: 1
-    bossSpawn: 0
-    isSpecial: 1
-    hasFogOfWar: 0
-    hasPaintSpeedEffect: 1
-  - enemyHp: 10000
-    count: 1
-    delayBeforeGroup: 1
-    spawnInterval: 1
-    bossSpawn: 0
-    isSpecial: 0
-    hasFogOfWar: 0
-    hasPaintSpeedEffect: 0
   - enemyHp: 4
     count: 2
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
-    isSpecial: 0
+    isSpecial: 1
+    hasOnDeathEffect: 1
+    iceOnDeathEffect: 1
     hasFogOfWar: 0
     hasPaintSpeedEffect: 0
+    hasSheild: 0
+    shieldHp: 2
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    north: 0
+    east: 0
+    south: 0
+    west: 0
+    northEast: 0
+    northWest: 0
+    southEast: 0
+    southWest: 0
   - enemyHp: 2
     count: 2
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
     isSpecial: 0
+    hasOnDeathEffect: 0
+    iceOnDeathEffect: 0
     hasFogOfWar: 0
     hasPaintSpeedEffect: 0
+    hasSheild: 0
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    north: 0
+    east: 0
+    south: 0
+    west: 0
+    northEast: 0
+    northWest: 0
+    southEast: 0
+    southWest: 0
   - enemyHp: 6
     count: 1
     delayBeforeGroup: 1
     spawnInterval: 1
     bossSpawn: 0
     isSpecial: 0
+    hasOnDeathEffect: 0
+    iceOnDeathEffect: 0
     hasFogOfWar: 0
     hasPaintSpeedEffect: 0
+    hasSheild: 0
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    north: 0
+    east: 0
+    south: 0
+    west: 0
+    northEast: 0
+    northWest: 0
+    southEast: 0
+    southWest: 0
   delayAfterWave: 3
   speedModifer: 0
   spawnInterval: 0.5
-  totalEnemies: 7
+  totalEnemies: 5
   amountOfGoldGainedForEachCoin: 30
   amountOfGoldToDrop: 2
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 420
+  DEBUGtotalAmountOfGoldPerRound: 300
   boss: {fileID: 0}

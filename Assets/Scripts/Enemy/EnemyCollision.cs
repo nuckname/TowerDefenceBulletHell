@@ -55,7 +55,7 @@ public class EnemyCollision : MonoBehaviour
             Destroy(gameObject);
             print("-1 hp");
         }
-        
+
         if (other.gameObject.CompareTag("PaintEffect"))
         {
             ChangeMovementSpeed(PaintMoveSpeedModifer);

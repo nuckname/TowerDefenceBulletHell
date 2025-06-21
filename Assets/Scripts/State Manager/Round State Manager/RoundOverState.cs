@@ -21,6 +21,10 @@ public class RoundOverState : RoundBaseState
         roundStateManager.selectTurret.AllowSelectingTurret = true;
 
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
+        roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
+        
+        EnemyPaintTrail.DestroyAllPaint();
+        EnemyFogOfWar.DestroyAllFog();
     }
     
     public override void UpdateState(RoundStateManager roundStateManager)
@@ -35,7 +39,6 @@ public class RoundOverState : RoundBaseState
     {
         
     }
-
 
     private IEnumerator RemoveAllCoinsAndHearts(RoundStateManager roundStateManager)
     {
@@ -89,7 +92,6 @@ public class RoundOverState : RoundBaseState
             // yield return new WaitForSeconds(0.1f);
 
         }
-        Debug.Log("yo1");
 
         yield break;
     }

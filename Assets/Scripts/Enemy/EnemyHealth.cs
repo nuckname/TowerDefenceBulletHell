@@ -4,8 +4,6 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public HealthColourConfigScriptableObject HealthColourConfigScriptableObject;
-
-
     
     [SerializeField] private EnemyDie _enemyDie;
     [SerializeField] private EnemyCollision _enemyCollision;
@@ -60,6 +58,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (EnemyStartingHealth <= 0)
         {
+            
+            
             isDead = true;
             _enemyDie.EnemyHasDied();
         }
