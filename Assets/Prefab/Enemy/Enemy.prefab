@@ -312,13 +312,15 @@ GameObject:
   m_Component:
   - component: {fileID: 8446663152547879661}
   - component: {fileID: 5289485193247853051}
+  - component: {fileID: 1445657225304836522}
+  - component: {fileID: 8002379095992789373}
   m_Layer: 0
   m_Name: OnDeathEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8446663152547879661
 Transform:
   m_ObjectHideFlags: 0
@@ -392,6 +394,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1445657225304836522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291139976797241789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5018c86237f5605468c3c3b145ece38e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RotateSprite
+  rotationSpeed: 90
+--- !u!114 &8002379095992789373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291139976797241789}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 219904c356017274e90172d15ca4aebe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::IceExplosionEffect
+  iceExplosionPrefab: {fileID: 3553380492785741449, guid: 406e4331b6d022643b6c1895f36fd5c4, type: 3}
 --- !u!1 &3342692206655987602
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +872,6 @@ GameObject:
   - component: {fileID: 3223230562563123178}
   - component: {fileID: 5646913156355875930}
   - component: {fileID: 4446055623179023605}
-  - component: {fileID: 4836819838693911882}
   m_Layer: 31
   m_Name: Enemy
   m_TagString: Enemy
@@ -1014,7 +1041,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c19941caea5cd5458404c940f11945b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHasOnDeathEffect: 0
   _enemyDropItems: {fileID: 5035588526783821658}
+  onDeathEffect: {fileID: 2291139976797241789}
   enemyOnMapCounter: {fileID: 0}
 --- !u!114 &-8911375633613691611
 MonoBehaviour:
@@ -1213,19 +1242,6 @@ MonoBehaviour:
   shieldNorthWest: {fileID: 2109682062149517398}
   shieldSouthEast: {fileID: 5803864938918658334}
   shieldSouthWest: {fileID: 1903351397152471882}
---- !u!114 &4836819838693911882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6088919820819901208}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219904c356017274e90172d15ca4aebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceExplosionEffect
-  iceExplosionPrefab: {fileID: 3553380492785741449, guid: 406e4331b6d022643b6c1895f36fd5c4, type: 3}
 --- !u!1 &6968731962718064551
 GameObject:
   m_ObjectHideFlags: 0

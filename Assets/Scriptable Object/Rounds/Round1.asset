@@ -20,70 +20,37 @@ MonoBehaviour:
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
-    isSpecial: 1
-    hasOnDeathEffect: 1
-    iceOnDeathEffect: 1
-    hasFogOfWar: 0
-    hasPaintSpeedEffect: 0
-    hasSheild: 0
+    groundEffects: 
+    shieldDirections: 01000000
     shieldHp: 2
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
-    north: 0
-    east: 0
-    south: 0
-    west: 0
-    northEast: 0
-    northWest: 0
-    southEast: 0
-    southWest: 0
+    onDeathEffects: 00000000
   - enemyHp: 2
     count: 2
     delayBeforeGroup: 0
     spawnInterval: 1
     bossSpawn: 0
-    isSpecial: 0
-    hasOnDeathEffect: 0
-    iceOnDeathEffect: 0
-    hasFogOfWar: 0
-    hasPaintSpeedEffect: 0
-    hasSheild: 0
+    groundEffects: 
+    shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
-    north: 0
-    east: 0
-    south: 0
-    west: 0
-    northEast: 0
-    northWest: 0
-    southEast: 0
-    southWest: 0
+    onDeathEffects: 
   - enemyHp: 6
     count: 1
     delayBeforeGroup: 1
     spawnInterval: 1
     bossSpawn: 0
-    isSpecial: 0
-    hasOnDeathEffect: 0
-    iceOnDeathEffect: 0
-    hasFogOfWar: 0
-    hasPaintSpeedEffect: 0
-    hasSheild: 0
+    groundEffects: 
+    shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
-    north: 0
-    east: 0
-    south: 0
-    west: 0
-    northEast: 0
-    northWest: 0
-    southEast: 0
-    southWest: 0
+    onDeathEffects: 
   delayAfterWave: 3
   speedModifer: 0
   spawnInterval: 0.5

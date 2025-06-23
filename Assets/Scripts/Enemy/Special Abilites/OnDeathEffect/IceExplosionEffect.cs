@@ -8,4 +8,6 @@ public class IceExplosionEffect : BaseOnDeathEffect
     {
         Instantiate(iceExplosionPrefab, transform.position, Quaternion.identity);
     }
+    
+    //Have sprite stuff here?
 }

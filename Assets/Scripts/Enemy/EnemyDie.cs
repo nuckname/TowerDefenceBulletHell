@@ -7,8 +7,12 @@ using UnityEngine;
 
 public class EnemyDie : MonoBehaviour
 {
+    public bool enemyHasOnDeathEffect;
+    
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
+    [SerializeField] private GameObject onDeathEffect; 
+    
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
     private Rigidbody _rigidbody;
 

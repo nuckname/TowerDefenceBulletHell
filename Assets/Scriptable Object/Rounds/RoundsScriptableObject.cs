@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -79,19 +80,12 @@ public class EnemyGroup
     [Tooltip("Does boss spawn")]
     public bool bossSpawn = false;
 
-    [Header("Special - must tick to use below")]
-    public bool isSpecial = false;
-
     [Header("Ground Effects")]
-    public bool hasOnDeathEffect = false;
-    public bool iceOnDeathEffect = false;
+    public List<GroundEffectType> groundEffects = new List<GroundEffectType>();
     
-    [Header("Ground Effects")]
-    public bool hasFogOfWar = false;
-    public bool hasPaintSpeedEffect = false;
-
-    [Header("Shield Effects")]
-    public bool hasSheild = false;
+    [Header("Shield Directions")]
+    [Tooltip("List of directions for shields")]
+    public List<ShieldDirectionType> shieldDirections = new List<ShieldDirectionType>();
     
     [Header("Shield HP")]
     public int shieldHp;
@@ -100,19 +94,9 @@ public class EnemyGroup
     public bool isRotating = false;
     public bool clockWise = false;
     public bool counterClockWise = false;
-
-    [Header("Direction")]
-    public bool north = false;
-    public bool east = false;
-    public bool south = false;
-    public bool west = false;
-    
-    [Header("Diagonal")]
-    public bool northEast = false;
-    public bool northWest = false;
-    public bool southEast = false;
-    public bool southWest = false;
-
-
+     
+    [Header("On-Death Effects")]
+    [Tooltip("Which effects to apply when this enemy dies")]
+    public List<OnDeathEffectType> onDeathEffects = new List<OnDeathEffectType>();
 }
 

@@ -52,6 +52,7 @@ TagManager:
   - PaintEffect
   - FogEffect
   - Shield
+  - IceOnDeathEffect
   layers:
   - Default
   - TransparentFX

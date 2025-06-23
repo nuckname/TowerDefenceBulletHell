@@ -56,6 +56,15 @@ public class PlayerCollision : MonoBehaviour
         {
             TakeDamage(1);
         }
+        
+        if (other.gameObject.CompareTag("IceOnDeathEffect") && !isInvincible)
+        {
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
+            }
+        }
 
         if (other.gameObject.CompareTag("Coin"))
         {
@@ -81,6 +90,19 @@ public class PlayerCollision : MonoBehaviour
             }
         }
     }
+
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                iceZone.IceOnDeathEffect(this.gameObject, 2f);
+            }
+        }
+    }
+
 
     public void TakeDamage(int amount)
     {

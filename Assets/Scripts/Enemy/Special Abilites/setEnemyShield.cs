@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class setEnemyShield : MonoBehaviour
@@ -15,32 +16,47 @@ public class setEnemyShield : MonoBehaviour
     [SerializeField] private GameObject shieldSouthEast;
     [SerializeField] private GameObject shieldSouthWest;
 
-    private EnemyShieldCollision _enemyShieldCollision;
+    // Optional: If you want a lookup dictionary for easy mapping
+    private Dictionary<ShieldDirectionType, GameObject> shieldMap;
 
     private void Awake()
     {
-        _enemyShieldCollision = GetComponentInChildren<EnemyShieldCollision>();
-    }
-
-    public void ConfigureShields(EnemyGroup group)
-    {
-        ConfigureShield(group.north, shieldNorth, group.shieldHp);
-        ConfigureShield(group.south, shieldSouth, group.shieldHp);
-        ConfigureShield(group.east, shieldEast, group.shieldHp);
-        ConfigureShield(group.west, shieldWest, group.shieldHp);
-        ConfigureShield(group.northEast, shieldNorthEast, group.shieldHp);
-        ConfigureShield(group.northWest, shieldNorthWest, group.shieldHp);
-        ConfigureShield(group.southEast, shieldSouthEast, group.shieldHp);
-        ConfigureShield(group.southWest, shieldSouthWest, group.shieldHp);
-    }
-
-    private void ConfigureShield(bool isActive, GameObject shield, int shieldHp)
-    {
-        shield.SetActive(isActive);
-    
-        if (isActive && shield.TryGetComponent(out EnemyShieldCollision shieldCollision))
+        shieldMap = new Dictionary<ShieldDirectionType, GameObject>()
         {
-            shieldCollision.shieldHealth = shieldHp;
+            { ShieldDirectionType.North, shieldNorth },
+            { ShieldDirectionType.South, shieldSouth },
+            { ShieldDirectionType.East, shieldEast },
+            { ShieldDirectionType.West, shieldWest },
+            { ShieldDirectionType.NorthEast, shieldNorthEast },
+            { ShieldDirectionType.NorthWest, shieldNorthWest },
+            { ShieldDirectionType.SouthEast, shieldSouthEast },
+            { ShieldDirectionType.SouthWest, shieldSouthWest }
+        };
+    }
+
+    public void ConfigureShields(List<ShieldDirectionType> activeDirections, int shieldHp)
+    {
+        // First, deactivate all shields
+        foreach (var shieldPair in shieldMap)
+        {
+            shieldPair.Value.SetActive(false);
+        }
+
+        // Activate and configure only the shields in the list
+        foreach (var direction in activeDirections)
+        {
+            if (shieldMap.TryGetValue(direction, out GameObject shield))
+            {
+                shield.SetActive(true);
+                if (shield.TryGetComponent(out EnemyShieldCollision shieldCollision))
+                {
+                    shieldCollision.shieldHealth = shieldHp;
+                }
+            }
+            else
+            {
+                Debug.LogWarning($"No shield GameObject found for direction {direction}");
+            }
         }
     }
 }

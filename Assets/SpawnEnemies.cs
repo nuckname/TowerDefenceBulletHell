@@ -1,9 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 public class SpawnEnemies : MonoBehaviour
 {
@@ -14,10 +12,13 @@ public class SpawnEnemies : MonoBehaviour
 
     private bool isDoubleHP = false;
 
+    [SerializeField] private GameObject _onDeathEffectVisual;
+    
     private GameModeManager gameModeManager;
     
     public int currentRound;
 
+    public List<OnDeathEffectType> onDeathEffects;
     private void Start()
     {
         //Call this only once somehow. 
@@ -152,11 +153,22 @@ public class SpawnEnemies : MonoBehaviour
                 {
                     enemyMovement.moveSpeed += round.speedModifer;
                 }
-                // Wait for the group's spawn interval before spawning the next enemy
 
-                if (group.isSpecial)
+                //ENEMIES 2.0                
+                if (group.shieldDirections.Count >= 1)
                 {
-                    AddSpecialAbilities(group, enemy);
+                    AddShieldDirection(group, enemy);
+                }
+
+                if (group.groundEffects.Count >= 1)
+                {
+                    AddGroundEffects(group, enemy);
+                }
+                
+                
+                if (group.onDeathEffects.Count >= 1)
+                {
+                    AddOnDeathEffect(group, enemy);
                 }
                 
                 yield return new WaitForSeconds(group.spawnInterval);
@@ -167,35 +179,78 @@ public class SpawnEnemies : MonoBehaviour
         yield return new WaitForSeconds(round.delayAfterWave);
     }
     
-    private void AddSpecialAbilities(EnemyGroup group, GameObject enemy)
+    private void AddShieldDirection(EnemyGroup group, GameObject enemy)
     {
-        if (group.hasFogOfWar)
+        setEnemyShield setEnemyShield = enemy.GetComponent<setEnemyShield>();   
+        if (setEnemyShield != null)
         {
-            EnemyFogOfWar enemyFogOfWar = enemy.GetComponent<EnemyFogOfWar>();   
-            enemyFogOfWar.enabled = true; 
+            setEnemyShield.enabled = true;
+            setEnemyShield.ConfigureShields(group.shieldDirections, group.shieldHp);
         }
-        
-        if (group.hasPaintSpeedEffect)
+    }
+
+    private void AddGroundEffects(EnemyGroup group, GameObject enemy)
+    {
+        foreach (var effectType in group.groundEffects)
         {
-            EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();   
-            enemyPaintTrail.enabled = true; 
-        }
-        
-        if (group.hasSheild)
-        {
-            setEnemyShield setEnemyShield = enemy.GetComponent<setEnemyShield>();   
-            if (setEnemyShield != null)
+            switch (effectType)
             {
-                setEnemyShield.enabled = true;
-                setEnemyShield.ConfigureShields(group); // Pass in the data here
+                case GroundEffectType.FogOfWar:
+                    EnemyFogOfWar enemyFogOfWar = enemy.GetComponent<EnemyFogOfWar>();   
+                    enemyFogOfWar.enabled = true; 
+                    break;
+                case GroundEffectType.PaintSpeedEffect:
+                    EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();   
+                    enemyPaintTrail.enabled = true; 
+                    break;
             }
         }
-
-        if (group.iceOnDeathEffect)
-        {
-            IceExplosionEffect iceExplosionEffect = enemy.GetComponent<IceExplosionEffect>();
-            iceExplosionEffect.enabled = true;
-        }
-
     }
+
+    private void AddOnDeathEffect(EnemyGroup group, GameObject enemy)
+    {
+        //_onDeathEffectVisual.SetActive(true);
+
+        foreach (var effectType in group.onDeathEffects)
+        {
+            switch (effectType)
+            {
+                case OnDeathEffectType.HealNearby:
+                    //enemy.AddComponent<HealNearbyOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.Duplicate:
+                    //var dup = enemy.AddComponent<DuplicateOnDeathEffect>();
+                    //dup.enemyPrefab = enemyPrefab;
+                    break;
+                case OnDeathEffectType.StunTurrets:
+                    //enemy.AddComponent<StunTurretsOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.CreateFog:
+                    //enemy.AddComponent<FogOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.SpeedBoost:
+                    //enemy.AddComponent<SpeedBoostOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.ShadowPortal:
+                    //enemy.AddComponent<ShadowPortalOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.DeathPortalChain:
+                    //enemy.AddComponent<DeathPortalChainOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.ZombieHoming:
+                    //enemy.AddComponent<ZombieHomingOnDeathEffect>();
+                    break;
+                case OnDeathEffectType.IceExplosion:
+                    
+                    IceExplosionEffect iceExplosionEffect = enemy.GetComponentInChildren<IceExplosionEffect>();
+                    iceExplosionEffect.enabled = true;
+                    
+                    //Make blue or change sprite or something?
+                    //Need a sprite reference
+                    break;
+                // etc…
+            }
+        }
+    }
+    
 }
