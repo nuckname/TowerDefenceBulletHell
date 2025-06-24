@@ -51,13 +51,12 @@ public class PlayerShooting : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("Turret"))
             return;
 
-        // … rest of your existing reload/cooldown/shoot logic …
+        // Handle reloading
         if (isReloading)
             return;
 
         if (bulletsRemaining <= 0)
         {
-
             StartCoroutine(Reload());
             return;
         }
@@ -68,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    //so we dont shoot the continue button
+    // Prevent shooting UI buttons
     private bool IsPointerOverUIButton()
     {
         // First, is the pointer over *any* UI?
@@ -93,16 +92,22 @@ public class PlayerShooting : MonoBehaviour
     private void Shoot()
     {
         AudioManager.instance.PlayerShootSFX();
-        
-        lastShotTime     = Time.time;
+
+        lastShotTime = Time.time;
         bulletsRemaining--;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0f;
         Vector2 dir = (mousePos - firePoint.position).normalized;
 
-        var proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-        proj.GetComponent<Rigidbody2D>().linearVelocity = dir * projectileSpeed;
+        GameObject proj = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
+        PlayerBullet bullet = proj.GetComponent<PlayerBullet>();
+
+        if (bullet != null)
+        {
+            bullet.SetDirection(dir);
+            bullet.SetSpeed(projectileSpeed);
+        }
     }
 
     private IEnumerator Reload()

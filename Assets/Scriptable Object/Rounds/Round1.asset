@@ -21,12 +21,12 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
     groundEffects: 
-    shieldDirections: 01000000
+    shieldDirections: 0100000000000000
     shieldHp: 2
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
-    onDeathEffects: 00000000
+    onDeathEffects: 0a000000
   - enemyHp: 2
     count: 2
     delayBeforeGroup: 0

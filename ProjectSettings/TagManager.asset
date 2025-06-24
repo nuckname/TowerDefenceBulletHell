@@ -37,8 +37,6 @@ TagManager:
   - EnemyBullet
   - BossHealthBar
   - canvas
-  - Text3
-  - Text1
   - tutorialText
   - WinScreen
   - TurretGhostCost

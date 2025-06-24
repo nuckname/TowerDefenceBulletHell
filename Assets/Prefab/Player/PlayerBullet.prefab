@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -2913908493084814147}
   - component: {fileID: -8424130499755230517}
   - component: {fileID: 4795657588606662400}
+  - component: {fileID: 2247644990139003648}
   m_Layer: 0
   m_Name: PlayerBullet
   m_TagString: PlayerBullet
@@ -168,3 +169,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92fbed0cdda1314c9c3e9d7f529230b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2247644990139003648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5601852057121462646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5571e75de9206946a71b55de184c912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBullet

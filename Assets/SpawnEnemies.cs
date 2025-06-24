@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
@@ -165,9 +166,9 @@ public class SpawnEnemies : MonoBehaviour
                     AddGroundEffects(group, enemy);
                 }
                 
-                
                 if (group.onDeathEffects.Count >= 1)
                 {
+                    enemy.GetComponent<EnemyDie>().enemyHasOnDeathEffect = true;
                     AddOnDeathEffect(group, enemy);
                 }
                 
@@ -241,14 +242,19 @@ public class SpawnEnemies : MonoBehaviour
                     //enemy.AddComponent<ZombieHomingOnDeathEffect>();
                     break;
                 case OnDeathEffectType.IceExplosion:
+                    enemy.GetComponentInChildren<IceExplosionEffect>().enabled = true;
+                    RotateSprite rotateSprite = enemy.GetComponentInChildren<RotateSprite>(true);
+                    rotateSprite.enabled = true;
+                    rotateSprite.onDeathSpriteRenderer.enabled = true;
+
                     
-                    IceExplosionEffect iceExplosionEffect = enemy.GetComponentInChildren<IceExplosionEffect>();
-                    iceExplosionEffect.enabled = true;
+                    //spriteRenderer.color = Color.blue;
+                    //IceExplosionEffect iceExplosionEffect = enemy.GetComponentInChildren<IceExplosionEffect>();
+                    //iceExplosionEffect.enabled = true;
                     
                     //Make blue or change sprite or something?
                     //Need a sprite reference
                     break;
-                // etc…
             }
         }
     }

@@ -169,6 +169,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IceExplosionZone
   duration: 1
-  radius: 3
   defaultStartingAlpha: 139
   fadeDuration: 3

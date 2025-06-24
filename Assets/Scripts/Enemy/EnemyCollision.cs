@@ -11,7 +11,9 @@ public class EnemyCollision : MonoBehaviour
     
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
 
-    [SerializeField] private float PaintMoveSpeedModifer; 
+    [SerializeField] private float PaintMoveSpeedModifer;
+    
+    private bool enemySlowed = false;
         
         
     // Start is called before the first frame update
@@ -29,6 +31,19 @@ public class EnemyCollision : MonoBehaviour
         {
             _enemyHealth.EnemyHit();  
             //Destroy(other.gameObject);
+            
+        }
+        
+        if (other.gameObject.CompareTag("IceOnDeathEffect") && !enemySlowed)
+        {
+            print("Enter Collision");
+            
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                enemySlowed = true;
+                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
+            }
             
         }
 
@@ -68,7 +83,20 @@ public class EnemyCollision : MonoBehaviour
         {
             ChangeMovementSpeed(-PaintMoveSpeedModifer);
         }
+        
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            print("Exit Collision");
+
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                iceZone.IceOnDeathEffect(this.gameObject, 2f);
+            }
+        }
     }
+
+
 
     private void ChangeMovementSpeed(float modifier)
     {

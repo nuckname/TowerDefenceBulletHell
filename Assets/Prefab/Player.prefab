@@ -1373,7 +1373,6 @@ GameObject:
   - component: {fileID: 6278807831771051293}
   - component: {fileID: 6797560733173272164}
   - component: {fileID: 5577090323429833016}
-  - component: {fileID: 213150679812619033}
   - component: {fileID: 3179689832339086271}
   m_Layer: 0
   m_Name: PlayerCollision
@@ -1456,8 +1455,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roundsScriptableObject: {fileID: 0}
-  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   CoinGiveGoldAmount: 5
   iframeDuration: 1
   transparencyLevel: 0.5
@@ -1484,9 +1481,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9068e58bac4e74e4a8d5f8c390ba765f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 10
+  startingHealth: 5
   tutorialStateSO: {fileID: 11400000, guid: dc20add47829eeb48a996928135b853b, type: 2}
-  playerHealthScriptabeObject: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  playerGoldScriptableObject: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   deathScreen: {fileID: 0}
   player: {fileID: 7309831068945400738}
   audioSource: {fileID: 3179689832339086271}
@@ -1505,21 +1502,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashDuration: 1.25
   flashImage: {fileID: 0}
---- !u!114 &213150679812619033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6856858152171935069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60044c8f8c844a4e97e2f32327cb633, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHealthSpriteSheet: {fileID: 11400000, guid: 0d2508bf341fca3469a83d20664d89b3, type: 2}
-  playerHealth: {fileID: 11400000, guid: ea03545b6b2261c4cbcebda04193a332, type: 2}
-  playerSpriteRenderer: {fileID: 0}
 --- !u!82 &3179689832339086271
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1689,6 +1671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7177676866748033511}
+  - component: {fileID: 5864668088485780379}
   - component: {fileID: 2859103754874963892}
   - component: {fileID: 3335815252357642464}
   - component: {fileID: 1900634903416962752}
@@ -1725,6 +1708,31 @@ Transform:
   - {fileID: 223426485852245511}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5864668088485780379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7309831068945400738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
+  GlobalObjectIdHash: 0
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!114 &2859103754874963892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1785,7 +1793,6 @@ MonoBehaviour:
   goldMiner: {fileID: 4790498764909266146, guid: f0a139b6050a18a45bce535d99de4a6c, type: 3}
   amountOfTurretsBrought: 0
   GhostTurretHasBeenPlaced: 0
-  playerGold: {fileID: 11400000, guid: 29d5dd744612a9242a623ec0af8986b7, type: 2}
   allowTurretPlacement: 0
   FloatingTextNotEnoughGold: {fileID: 6460967786181823832, guid: 039cb021f33000a45b0488fdc616f39f, type: 3}
   displayTurretText: {fileID: 0}

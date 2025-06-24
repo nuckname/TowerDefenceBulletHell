@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
     private Vector2 direction;
-    private float speed;
+    public float speed;
     private int currentBounces = 0;
 
     [Header("Bounce Settings")]
@@ -45,6 +46,15 @@ public class BasicBullet : MonoBehaviour
 
             Bounce(other);
         }
+        
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
+            }
+        }
     }
 
     private void Bounce(Collider2D other)
@@ -57,4 +67,15 @@ public class BasicBullet : MonoBehaviour
         
     }
 
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+            if (iceZone != null)
+            {
+                iceZone.IceOnDeathEffect(this.gameObject, 2f);
+            }
+        }
+    }
 }

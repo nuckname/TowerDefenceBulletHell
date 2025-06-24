@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class EnemyDie : MonoBehaviour
 {
-    public bool enemyHasOnDeathEffect;
+    public bool enemyHasOnDeathEffect = false;
     
     [SerializeField] private EnemyDropItems _enemyDropItems;
 
@@ -39,7 +39,10 @@ public class EnemyDie : MonoBehaviour
             _rigidbody.AddForce(randomDirection * forceMagnitude, ForceMode.Impulse);
         }
 
-        TriggerOnDeathEffect();
+        if (enemyHasOnDeathEffect)
+        {
+            TriggerOnDeathEffect();
+        }
         
         enemyOnMapCounter.DecreaseEnemyCount();
 
@@ -50,7 +53,7 @@ public class EnemyDie : MonoBehaviour
 
     private void TriggerOnDeathEffect()
     {
-        foreach (BaseOnDeathEffect effect in GetComponents<BaseOnDeathEffect>())
+        foreach (BaseOnDeathEffect effect in onDeathEffect.GetComponents<BaseOnDeathEffect>())
         {
             effect.TriggerEffect();
         }

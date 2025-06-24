@@ -6,14 +6,10 @@ using UnityEngine;
 public class IceExplosionZone : MonoBehaviour
 {
     [SerializeField] private float duration = 0.5f;
-    [SerializeField] private float radius = 3f;
     [SerializeField] private float defaultStartingAlpha;
 
-    
     [SerializeField] private float fadeDuration;
     private SpriteRenderer spriteRenderer;
-    //Remove this?
-    private List<TurretStats> affectedTurrets = new List<TurretStats>();
     
     private void Awake()
     {
@@ -33,28 +29,61 @@ public class IceExplosionZone : MonoBehaviour
     }
     public void IceOnDeathEffect(GameObject gameObjectToApplyEffectToo, float effect)
     {
-        if (gameObjectToApplyEffectToo.gameObject.CompareTag("Turret"))
+        ApplySpeedToTag(gameObjectToApplyEffectToo, effect);
+    }
+
+    private void ApplySpeedToTag(GameObject target, float multiplier)
+    {
+        string tag = target.tag;
+
+        switch (tag)
         {
-            print("enter Ondeath Trigger Enter");
-            TurretStats turret = gameObjectToApplyEffectToo.GetComponent<TurretStats>();
-            if (turret != null && !affectedTurrets.Contains(turret))
-            {
-                turret.modifierFireRate *= 0.5f;
-                affectedTurrets.Add(turret);
-            }
-        }
-        
-        if (gameObjectToApplyEffectToo.CompareTag("PlayerCollision"))
-        {
-            print(" enter OnDeath Player");
+            case "Turret":
+                TurretStats turret = target.GetComponent<TurretStats>();
+                if (turret != null)
+                {
+                    turret.modifierFireRate *= multiplier;
+                }
+                break;
+
+            case "Enemy":
+                EnemyFollowPath enemyMovement = target.GetComponent<EnemyFollowPath>();
+                if (enemyMovement != null)
+                {
+                    enemyMovement.moveSpeed *= multiplier;
+                }
+                break;
+
+            case "PlayerCollision":
+                PlayerMovement player = target.GetComponentInParent<PlayerMovement>();
+                if (player != null)
+                {
+                    player.moveSpeed *= multiplier;
+                }
+                break;
             
-            PlayerMovement player = gameObjectToApplyEffectToo.GetComponentInParent<PlayerMovement>();
-            if (player != null)
-            {
-                player.moveSpeed *= effect;
-            }
+            case "Bullet":
+                BasicBullet basicBullet = target.GetComponent<BasicBullet>();
+                if (basicBullet != null)
+                {
+                    basicBullet.speed *= multiplier;
+                }
+                break;
+            
+            case "PlayerBullet":
+                PlayerBullet playerBullet = target.GetComponent<PlayerBullet>();
+                if (playerBullet != null)
+                {
+                    playerBullet.speed *= multiplier;
+                }
+                break;
+
+            default:
+                Debug.Log("Ice effect applied to unknown tag: " + tag);
+                break;
         }
     }
+
     
     private IEnumerator FadeAndDestroyAfterDuration()
     {
