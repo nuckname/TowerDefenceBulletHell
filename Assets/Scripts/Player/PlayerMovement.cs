@@ -1,11 +1,13 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : NetworkBehaviour
+public class PlayerMovement : NetworkBehaviour, ISpeedModifiable
 {
     [SerializeField] private Animator animator;
     public float moveSpeed = 5f;
 
+    public float modifierFireRate = 1f;
+    
     private Rigidbody2D rb;
     private Vector2 movement;
 
@@ -42,5 +44,10 @@ public class PlayerMovement : NetworkBehaviour
     {
         // Actually move the rigidbody
         rb.linearVelocity = movement * moveSpeed;
+    }
+    
+    public void ModifySpeed(float multiplier)
+    {
+        modifierFireRate *= multiplier;
     }
 }

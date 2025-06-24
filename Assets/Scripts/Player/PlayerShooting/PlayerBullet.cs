@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerBullet : MonoBehaviour
+public class PlayerBullet : MonoBehaviour, ISpeedModifiable
 {
     [Header("Movement Settings")]
     public float speed = 10f;
@@ -26,6 +26,17 @@ public class PlayerBullet : MonoBehaviour
     private void Update()
     {
         // Continuously update velocity to maintain speed
+        if (rb != null && direction != Vector2.zero)
+        {
+            rb.linearVelocity = direction * speed;
+        }
+    }
+    
+    public void ModifySpeed(float multiplier)
+    {
+        speed *= multiplier;
+        
+        // Update velocity immediately if moving
         if (rb != null && direction != Vector2.zero)
         {
             rb.linearVelocity = direction * speed;

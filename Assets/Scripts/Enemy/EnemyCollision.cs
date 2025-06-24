@@ -11,10 +11,9 @@ public class EnemyCollision : MonoBehaviour
     
     [SerializeField] private EnemyOnMapCounter enemyOnMapCounter;
 
-    [SerializeField] private float PaintMoveSpeedModifer;
+    public float PaintMoveSpeedModifer;
     
     private bool enemySlowed = false;
-        
         
     // Start is called before the first frame update
     private void Awake()
@@ -34,7 +33,8 @@ public class EnemyCollision : MonoBehaviour
             
         }
         
-        if (other.gameObject.CompareTag("IceOnDeathEffect") && !enemySlowed)
+        //if (other.gameObject.CompareTag("IceOnDeathEffect") && !enemySlowed)
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
             print("Enter Collision");
             
@@ -44,7 +44,6 @@ public class EnemyCollision : MonoBehaviour
                 enemySlowed = true;
                 iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
             }
-            
         }
 
         if (other.gameObject.CompareTag("PlayerBullet"))
@@ -77,11 +76,30 @@ public class EnemyCollision : MonoBehaviour
         }
     }
 
+    //If Ice effect spawns on top of enemy. 
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            if (!enemySlowed)
+            {
+                print("Enter Stay");
+
+                IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
+                if (iceZone != null)
+                {
+                    iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
+                }
+            }
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("PaintEffect"))
         {
             ChangeMovementSpeed(-PaintMoveSpeedModifer);
+
         }
         
         if (other.gameObject.CompareTag("IceOnDeathEffect"))

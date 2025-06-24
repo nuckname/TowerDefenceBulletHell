@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     
     [SerializeField] private Transform spawnPoint; // Where enemies will spawn
-    public List<RoundsScriptableObject> roundsScriptableObject; // List of scriptable objects for each round
+    public List<EnemyStatsSO> roundsScriptableObject; // List of scriptable objects for each round
 
     private bool isDoubleHP = false;
 
@@ -58,7 +58,7 @@ public class SpawnEnemies : MonoBehaviour
         if (currentRoundIndex < roundsScriptableObject.Count)
         {
             // Get the current round's scriptable object
-            RoundsScriptableObject currentRound = roundsScriptableObject[currentRoundIndex];
+            EnemyStatsSO currentRound = roundsScriptableObject[currentRoundIndex];
             int totalEnemies = currentRound.GetTotalEnemies();
             
             // Start spawning enemies for the current round
@@ -116,7 +116,7 @@ public class SpawnEnemies : MonoBehaviour
     }
 
 
-    private IEnumerator SpawnEnemiesWithDelay(RoundsScriptableObject round)
+    private IEnumerator SpawnEnemiesWithDelay(EnemyStatsSO round)
     {
         // Iterate through each enemy group in the round
         foreach (EnemyGroup group in round.enemyGroups)
@@ -130,7 +130,6 @@ public class SpawnEnemies : MonoBehaviour
                 EnemyDropItems enemyDropItems = enemy.GetComponent<EnemyDropItems>();
 
                 enemy.GetComponent<EnemyDropItems>().amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
-                
                 
                 //enemyDropItems.amountOfGoldCoinsToDrop = round.amountOfGoldToDrop;
                 //enemyDropItems.amountOfHeartsToDrop = round.amountOfHeartToDrop;
@@ -201,8 +200,11 @@ public class SpawnEnemies : MonoBehaviour
                     enemyFogOfWar.enabled = true; 
                     break;
                 case GroundEffectType.PaintSpeedEffect:
-                    EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();   
+                    EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();
                     enemyPaintTrail.enabled = true; 
+                    
+                    enemy.GetComponent<EnemyCollision>().PaintMoveSpeedModifer = group.paintMoveSpeedModifer;
+                    
                     break;
             }
         }

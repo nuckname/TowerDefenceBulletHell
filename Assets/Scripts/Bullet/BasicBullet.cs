@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class BasicBullet : MonoBehaviour
+public class BasicBullet : MonoBehaviour, ISpeedModifiable
 {
     private Vector2 direction;
     public float speed;
@@ -12,6 +12,11 @@ public class BasicBullet : MonoBehaviour
     public bool canBounce = false;
     public int maxBounces = 3;
     public LayerMask colliderLayer;
+    
+    public void ModifySpeed(float multiplier)
+    {
+        speed *= multiplier;
+    }
     
     public void SetDirection(Vector2 dir)
     {

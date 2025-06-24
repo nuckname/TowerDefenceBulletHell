@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewRound", menuName = "Round/NewRound", order = 1)]
-public class RoundsScriptableObject : ScriptableObject
+public class EnemyStatsSO : ScriptableObject
 {
     [Header("Wave Configuration")]
     [Tooltip("Name of the wave (for organization purposes)")]
@@ -82,6 +82,7 @@ public class EnemyGroup
 
     [Header("Ground Effects")]
     public List<GroundEffectType> groundEffects = new List<GroundEffectType>();
+    public float paintMoveSpeedModifer = 0;
     
     [Header("Shield Directions")]
     [Tooltip("List of directions for shields")]

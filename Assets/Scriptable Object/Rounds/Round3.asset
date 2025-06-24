@@ -16,16 +16,37 @@ MonoBehaviour:
   currentWave: 3
   enemyGroups:
   - enemyHp: 3
+    count: 1
+    delayBeforeGroup: 0
+    spawnInterval: 0.7
+    bossSpawn: 0
+    groundEffects: 01000000
+    paintMoveSpeedModifer: 0.2
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+  - enemyHp: 3
     count: 8
     delayBeforeGroup: 0
     spawnInterval: 0.7
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
   delayAfterWave: 2
-  speedModifer: 2.5
+  speedModifer: 1.5
   spawnInterval: 0.65
-  totalEnemies: 8
+  totalEnemies: 9
   amountOfGoldGainedForEachCoin: 5
   amountOfGoldToDrop: 10
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 400
+  DEBUGtotalAmountOfGoldPerRound: 450
   boss: {fileID: 0}

@@ -16,25 +16,65 @@ MonoBehaviour:
   currentWave: 2
   enemyGroups:
   - enemyHp: 4
-    count: 4
+    count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.8
     bossSpawn: 0
+    groundEffects: 
+    shieldDirections: 0100000000000000020000000500000007000000
+    shieldHp: 2
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+  - enemyHp: 4
+    count: 3
+    delayBeforeGroup: 0
+    spawnInterval: 0.8
+    bossSpawn: 0
+    groundEffects: 
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
   - enemyHp: 5
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.5
     bossSpawn: 0
+    groundEffects: 
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
   - enemyHp: 3
     count: 2
     delayBeforeGroup: 1
     spawnInterval: 1.69
     bossSpawn: 0
+    groundEffects: 
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
   - enemyHp: 3
     count: 1
     delayBeforeGroup: 0.5
     spawnInterval: 1.57
     bossSpawn: 0
+    groundEffects: 
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
   delayAfterWave: 2
   speedModifer: 0
   spawnInterval: 1

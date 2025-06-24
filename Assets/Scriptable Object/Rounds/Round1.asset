@@ -21,6 +21,7 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 0100000000000000
     shieldHp: 2
     isRotating: 0
@@ -33,6 +34,7 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0
@@ -45,6 +47,7 @@ MonoBehaviour:
     spawnInterval: 1
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0

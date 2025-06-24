@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFollowPath : MonoBehaviour
+public class EnemyFollowPath : MonoBehaviour, ISpeedModifiable
 {
     public float moveSpeed = 2f;
     private Transform[] waypoints; 
@@ -14,7 +14,10 @@ public class EnemyFollowPath : MonoBehaviour
         GetWaypointTransformFromGameObject();
     }
     
-
+    public void ModifySpeed(float multiplier)
+    {
+        moveSpeed *= multiplier;
+    }
 
     private void GetWaypointTransformFromGameObject()
     {
