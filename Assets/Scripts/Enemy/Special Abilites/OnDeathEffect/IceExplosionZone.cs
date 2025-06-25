@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//To find usage go to ISpeedModifiable
 public class IceExplosionZone : BaseExplosionZone
 {
     public void IceOnDeathEffect(GameObject gameObjectToApplyEffectToo, float effect)

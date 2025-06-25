@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class EnemyCollision : MonoBehaviour
+public class EnemyCollision : MonoBehaviour, ISpeedModifiable
 {
     private EnemyHealth _enemyHealth;
     private EnemyFollowPath _enemyFollowPath;
@@ -24,6 +24,11 @@ public class EnemyCollision : MonoBehaviour
         enemyOnMapCounter = GameObject.FindGameObjectWithTag("StateManager").GetComponent<EnemyOnMapCounter>();
     }
 
+    public void ModifySpeed(float multiplier)
+    {
+        _enemyFollowPath.moveSpeed *= multiplier;
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -36,14 +41,9 @@ public class EnemyCollision : MonoBehaviour
         //if (other.gameObject.CompareTag("IceOnDeathEffect") && !enemySlowed)
         if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
-            print("Enter Collision");
+            enemySlowed = true;
+            ModifySpeed(0.5f);
             
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
-            {
-                enemySlowed = true;
-                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
-            }
         }
 
         if (other.gameObject.CompareTag("PlayerBullet"))
@@ -83,13 +83,7 @@ public class EnemyCollision : MonoBehaviour
         {
             if (!enemySlowed)
             {
-                print("Enter Stay");
-
-                IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-                if (iceZone != null)
-                {
-                    iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
-                }
+                ModifySpeed(0.5f);
             }
         }
     }
@@ -104,13 +98,7 @@ public class EnemyCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
-            print("Exit Collision");
-
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
-            {
-                iceZone.IceOnDeathEffect(this.gameObject, 2f);
-            }
+            ModifySpeed(2);
         }
     }
 

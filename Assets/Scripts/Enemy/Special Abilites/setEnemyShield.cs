@@ -36,13 +36,7 @@ public class setEnemyShield : MonoBehaviour
 
     public void ConfigureShields(List<ShieldDirectionType> activeDirections, int shieldHp)
     {
-        // First, deactivate all shields
-        foreach (var shieldPair in shieldMap)
-        {
-            shieldPair.Value.SetActive(false);
-        }
-
-        // Activate and configure only the shields in the list
+        //activate only the shields in the list
         foreach (var direction in activeDirections)
         {
             if (shieldMap.TryGetValue(direction, out GameObject shield))

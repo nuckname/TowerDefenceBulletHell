@@ -6,7 +6,7 @@ public class EnemyFollowPath : MonoBehaviour, ISpeedModifiable
 {
     public float moveSpeed = 2f;
     private Transform[] waypoints; 
-    private int waypointIndex = 0;
+    public int waypointIndex = 0;
 
 
     private void Start()

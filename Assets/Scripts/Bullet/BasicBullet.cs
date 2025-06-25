@@ -54,11 +54,7 @@ public class BasicBullet : MonoBehaviour, ISpeedModifiable
         
         if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
-            {
-                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
-            }
+            ModifySpeed(0.5f);
         }
     }
 
@@ -76,11 +72,7 @@ public class BasicBullet : MonoBehaviour, ISpeedModifiable
     {
         if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
-            {
-                iceZone.IceOnDeathEffect(this.gameObject, 2f);
-            }
+            ModifySpeed(2);
         }
     }
 }

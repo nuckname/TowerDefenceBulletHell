@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class IceExplosionEffect : BaseOnDeathEffect
+public class IceExplosionEffectOnDeathEffect : BaseOnDeathEffect
 {
     [SerializeField] private GameObject iceExplosionPrefab;
 

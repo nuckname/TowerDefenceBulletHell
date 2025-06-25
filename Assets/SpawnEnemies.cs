@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class SpawnEnemies : MonoBehaviour
@@ -20,6 +21,9 @@ public class SpawnEnemies : MonoBehaviour
     public int currentRound;
 
     public List<OnDeathEffectType> onDeathEffects;
+
+    //So we can get the index
+    public GameObject enemyHasPortal;
     private void Start()
     {
         //Call this only once somehow. 
@@ -154,6 +158,8 @@ public class SpawnEnemies : MonoBehaviour
                     enemyMovement.moveSpeed += round.speedModifer;
                 }
 
+                print("Count: " + group.shieldDirections.Count);
+                
                 //ENEMIES 2.0                
                 if (group.shieldDirections.Count >= 1)
                 {
@@ -238,13 +244,19 @@ public class SpawnEnemies : MonoBehaviour
                     //enemy.AddComponent<ShadowPortalOnDeathEffect>();
                     break;
                 case OnDeathEffectType.DeathPortalChain:
-                    //enemy.AddComponent<DeathPortalChainOnDeathEffect>();
+                    DeathPortalChainOnDeathEffect deathPortalChainOnDeathEffect = enemy.GetComponentInChildren<DeathPortalChainOnDeathEffect>();
+                    deathPortalChainOnDeathEffect.enabled = true;
+                    deathPortalChainOnDeathEffect.enemyPrefab = enemy;
+
+                    enemyHasPortal = enemy;
+                    
+                    deathPortalChainOnDeathEffect.enemyRespawnHp = enemy.GetComponent<EnemyHealth>().EnemyStartingHealth;
+                    
                     break;
                 case OnDeathEffectType.ZombieHoming:
-                    //enemy.AddComponent<ZombieHomingOnDeathEffect>();
                     break;
                 case OnDeathEffectType.IceExplosion:
-                    enemy.GetComponentInChildren<IceExplosionEffect>().enabled = true;
+                    enemy.GetComponentInChildren<IceExplosionEffectOnDeathEffect>().enabled = true;
                     RotateSprite rotateSprite = enemy.GetComponentInChildren<RotateSprite>(true);
                     rotateSprite.enabled = true;
                     rotateSprite.onDeathSpriteRenderer.enabled = true;

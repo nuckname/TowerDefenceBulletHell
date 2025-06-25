@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerCollision : MonoBehaviour, ISpeedModifiable
 {
     [SerializeField] private EnemyStatsSO enemyStatsSo;
 
@@ -26,8 +26,14 @@ public class PlayerCollision : MonoBehaviour
     
     [Header("Player Sprites")]
     [SerializeField] private List<SpriteRenderer> sprites = new List<SpriteRenderer>();
+
+    private bool playerIsSlowed = false;
+    
+    private PlayerMovement playerMovement;
     private void Awake()
     {
+        playerMovement = GetComponentInParent<PlayerMovement>();
+        
         screenFlashOnDamage = GetComponent<ScreenFlashOnDamage>(); 
         
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
@@ -35,7 +41,11 @@ public class PlayerCollision : MonoBehaviour
         //So we can get the amount of gold for the enemies to drop. 
         rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
         //_currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
+    }
 
+    public void ModifySpeed(float multiplier)
+    {
+        playerMovement.moveSpeed *= multiplier;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -59,11 +69,9 @@ public class PlayerCollision : MonoBehaviour
         
         if (other.gameObject.CompareTag("IceOnDeathEffect") && !isInvincible)
         {
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
-            {
-                iceZone.IceOnDeathEffect(this.gameObject, 0.5f);
-            }
+            playerIsSlowed = true;
+            ModifySpeed(0.5f);
+           
         }
 
         if (other.gameObject.CompareTag("Coin"))
@@ -95,10 +103,19 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("IceOnDeathEffect"))
         {
-            IceExplosionZone iceZone = other.gameObject.GetComponent<IceExplosionZone>();
-            if (iceZone != null)
+            playerIsSlowed = false;
+            ModifySpeed(2);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("IceOnDeathEffect"))
+        {
+            if (!playerIsSlowed)
             {
-                iceZone.IceOnDeathEffect(this.gameObject, 2f);
+                playerIsSlowed = false;
+                ModifySpeed(0.5f);
             }
         }
     }
@@ -155,5 +172,4 @@ public class PlayerCollision : MonoBehaviour
             }
         }
     }
-
 }

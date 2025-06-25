@@ -29,7 +29,12 @@ public class EnemyHealth : MonoBehaviour
             }
         }
 
-        // Set initial sprite
+        SetEnemyHealthToSprite();
+    }
+
+
+    public void SetEnemyHealthToSprite()
+    {
         if (spriteDictionary.TryGetValue(EnemyStartingHealth, out Sprite initialSprite))
         {
             spriteRenderer.sprite = initialSprite;
