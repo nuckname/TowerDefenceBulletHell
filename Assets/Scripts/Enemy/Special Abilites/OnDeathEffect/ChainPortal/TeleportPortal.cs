@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class TeleportPortal : MonoBehaviour
 {
-    [Tooltip("Where things entering this collider should be sent")]
-    public Transform destination;
+    private Transform destination;
+
+    public bool isTeleportSender = false;
+    public bool isTeleportReceiver = false;
 
     private void Reset()
     {
@@ -14,10 +16,27 @@ public class TeleportPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // only teleport enemies (or whatever tag you like)
-        if (destination != null && other.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && isTeleportSender)
         {
-            other.transform.position = destination.position;
+            if (destination == null)
+            {
+                GameObject receiver = GameObject.FindGameObjectWithTag("teleportReceiver");
+
+                if (receiver != null)
+                {
+                    //cache destination
+                    destination = receiver.transform;
+                    other.transform.position = destination.position;
+                }
+                else
+                {
+                    Debug.LogWarning("No object with tag 'teleportReceiver' found!");
+                }
+            }
+            else
+            {
+                other.transform.position = destination.position;
+            }
         }
     }
 }

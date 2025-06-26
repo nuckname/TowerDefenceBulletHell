@@ -51,6 +51,9 @@ TagManager:
   - FogEffect
   - Shield
   - IceOnDeathEffect
+  - DeathSprite
+  - teleportReceiver
+  - teleportSender
   layers:
   - Default
   - TransparentFX

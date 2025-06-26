@@ -1,7 +1,3 @@
-// DeathPortalChainOnDeathEffect.cs
-
-using System;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
@@ -9,69 +5,124 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
     [Header("Prefabs & Settings")]
     [Tooltip("Portal prefab must have a TeleportPortal component on its root")]
     public GameObject portalPrefab;
+
     [Tooltip("Enemy prefab to respawn (usually same as original)")]
     public GameObject enemyPrefab;
-    [Range(0f,1f)]
+
+    [Range(0f, 1f)]
     [Tooltip("Alpha for the respawned 'ghost'")]
     public float respawnAlpha = 0.5f;
 
     public int enemyRespawnHp;
 
-    private Vector3 deathPos;
-    
-    private bool firstTime;
+    [HideInInspector]
+    public bool firstTime = true;
 
-    private int DeadEnemiesWaypoint;
-    
-    private SpawnEnemies _spawnEnemies;
+    private SpawnEnemies spawnEnemies;
 
     private void Awake()
     {
-        _spawnEnemies = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>();
+        GameObject stateManager = GameObject.FindGameObjectWithTag("StateManager");
+        if (stateManager != null)
+        {
+            spawnEnemies = stateManager.GetComponent<SpawnEnemies>();
+            if (spawnEnemies == null)
+            {
+                Debug.LogError("SpawnEnemies component not found on StateManager.");
+            }
+        }
+        else
+        {
+            Debug.LogError("No GameObject with tag 'StateManager' found in the scene.");
+        }
     }
 
-    private void Start()
-    {
-        
-         firstTime = true;
-    }
-
-    //This code runs when enemy dies.
     public override void TriggerEffect()
     {
+        Vector3 deathPosition = transform.position;
+
         if (firstTime)
         {
-            print("Dead enemies waypoint: " + DeadEnemiesWaypoint);
-            deathPos = transform.position;
+            CreatePortal(deathPosition, true);
 
-            Instantiate(portalPrefab, deathPos, Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyPrefab, deathPosition, Quaternion.identity);
+            ConfigureRespawnedEnemy(newEnemy);
 
-            //Respawn another enemy
-            GameObject respawnEnemy = Instantiate(enemyPrefab, deathPos, Quaternion.identity);
-            
-            //Set the dead enemies waypoint index to the new spawned enemy way point index.
-            respawnEnemy.GetComponent<EnemyFollowPath>().waypointIndex = _spawnEnemies.enemyHasPortal.GetComponent<EnemyFollowPath>().waypointIndex; 
-            
-            respawnEnemy.GetComponent<EnemyHealth>().EnemyStartingHealth = enemyRespawnHp;
-            respawnEnemy.GetComponent<EnemyHealth>().SetEnemyHealthToSprite();
-        
-            //Might not need foreach loop
-            // fade out its sprite(s)
-            foreach (var sr in respawnEnemy.GetComponentsInChildren<SpriteRenderer>())
-            {
-                var c = sr.color;
-                c.a = respawnAlpha;
-                sr.color = c;
-            }
-            
             firstTime = false;
         }
         else
         {
-            deathPos = transform.position;
-            Instantiate(portalPrefab, deathPos, Quaternion.identity);
+            CreatePortal(deathPosition, false);
+        }
+    }
+
+    private void CreatePortal(Vector3 position, bool isSender)
+    {
+        GameObject portal = Instantiate(portalPrefab, position, Quaternion.identity);
+        TeleportPortal teleportPortal = portal.GetComponent<TeleportPortal>();
+
+        if (teleportPortal == null)
+        {
+            Debug.LogError("TeleportPortal component missing on portalPrefab.");
+            return;
         }
 
+        if (isSender)
+        {
+            teleportPortal.isTeleportSender = true;
+            portal.tag = "teleportSender";
+        }
+        else
+        {
+            teleportPortal.isTeleportReceiver = true;
+            portal.tag = "teleportReceiver";
+        }
+    }
 
+    private void ConfigureRespawnedEnemy(GameObject enemy)
+    {
+        // Setup portal chain flag on new enemy
+        DeathPortalChainOnDeathEffect portalEffect = enemy.GetComponentInChildren<DeathPortalChainOnDeathEffect>();
+        if (portalEffect != null)
+        {
+            portalEffect.firstTime = false;
+        }
+        else
+        {
+            Debug.LogWarning("Respawned enemy is missing DeathPortalChainOnDeathEffect.");
+        }
+
+        // Setup waypoint index from the previous enemy
+        if (spawnEnemies != null && spawnEnemies.enemyHasPortal != null)
+        {
+            EnemyFollowPath previousPath = spawnEnemies.enemyHasPortal.GetComponent<EnemyFollowPath>();
+            EnemyFollowPath newPath = enemy.GetComponent<EnemyFollowPath>();
+
+            if (previousPath != null && newPath != null)
+            {
+                newPath.waypointIndex = previousPath.waypointIndex + 1;
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Failed to assign waypoint index. enemyHasPortal or SpawnEnemies missing.");
+        }
+
+        // Set new enemy HP
+        EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
+        if (enemyHealth != null)
+        {
+            enemyHealth.EnemyStartingHealth = enemyRespawnHp;
+            enemyHealth.SetEnemyHealthToSprite();
+        }
+
+        // Fade out new enemy sprites
+        SpriteRenderer[] spriteRenderers = enemy.GetComponentsInChildren<SpriteRenderer>();
+        for (int i = 0; i < spriteRenderers.Length; i++)
+        {
+            Color color = spriteRenderers[i].color;
+            color.a = respawnAlpha;
+            spriteRenderers[i].color = color;
+        }
     }
 }

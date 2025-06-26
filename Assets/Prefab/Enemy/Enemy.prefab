@@ -439,6 +439,8 @@ MonoBehaviour:
   portalPrefab: {fileID: 3590200955381645279, guid: 5e4a3aec75d8bec4e94c3f75b9c7346d, type: 3}
   enemyPrefab: {fileID: 0}
   respawnAlpha: 0.75
+  enemyRespawnHp: 0
+  firstTime: 1
 --- !u!1 &3342692206655987602
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,6 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  waypointIndex: 0
 --- !u!114 &-6422447422121149574
 MonoBehaviour:
   m_ObjectHideFlags: 0

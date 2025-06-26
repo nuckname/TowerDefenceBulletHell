@@ -12,8 +12,16 @@ public class EnemyShieldCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        shieldHealth--;
-        
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("PlayerBullet") || other.gameObject.CompareTag("Bullet"))
+        {
+            shieldHealth--;
+
+            if (shieldHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+            
+            Destroy(other.gameObject);
+        }
     }
 }
