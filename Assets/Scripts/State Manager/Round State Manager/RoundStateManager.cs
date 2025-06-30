@@ -36,6 +36,9 @@ public class RoundStateManager : MonoBehaviour
     public int amountOfCoinsDestroyed = 0;
     public int totalGoldLostAcrossRounds = 0;
     [SerializeField] private TMP_Text goldCoinLostText;
+    
+    [Header("Enemy Effects")]
+    public bool roundHasTeleporters = false;
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();

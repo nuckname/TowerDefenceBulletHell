@@ -17,4 +17,9 @@ public class EnemyOnMapCounter : MonoBehaviour
             roundStateManager.SwitchState(roundStateManager.roundOverState);
         }
     }
+
+    public void AddEnemyCount(int amount)
+    {
+        MaxEnemiesOnMap += amount;
+    }
 }

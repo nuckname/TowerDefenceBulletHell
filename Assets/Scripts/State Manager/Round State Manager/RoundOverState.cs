@@ -14,11 +14,17 @@ public class RoundOverState : RoundBaseState
         _countDestoied = 0;
         
         roundStateManager.AllowTurretsToShoot(false);
-
         
         roundStateManager.MusicRoundEnd();
         
         roundStateManager.selectTurret.AllowSelectingTurret = true;
+
+        if (roundStateManager.roundHasTeleporters)
+        {
+            GameObject.Destroy(GameObject.FindGameObjectWithTag("teleportSender"));
+            GameObject.Destroy(GameObject.FindGameObjectWithTag("teleportReceiver"));
+            //GameObject.FindGameObjectWithTag("teleportSender").GetComponent<TeleporterHealthCounter>().UpdateTeleporterRounds();
+        }
 
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
         roundStateManager.StartCoroutine(RemoveAllCoinsAndHearts(roundStateManager));
@@ -143,7 +149,4 @@ public class RoundOverState : RoundBaseState
 
         GameObject.Destroy(obj);
     }
-
-
-
 }

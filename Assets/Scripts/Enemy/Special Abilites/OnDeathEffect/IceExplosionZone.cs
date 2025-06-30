@@ -6,30 +6,32 @@ using UnityEngine;
 //To find usage go to ISpeedModifiable
 public class IceExplosionZone : BaseExplosionZone
 {
-    public void IceOnDeathEffect(GameObject gameObjectToApplyEffectToo, float effect)
+    protected override string ZoneTag
     {
-        ApplySpeedEffect(gameObjectToApplyEffectToo, effect);
+        get
+        {
+            return "IceOnDeathEffect";
+        }
+    }
+    
+    //Overrides the Base values
+    protected override void Awake()
+    {
+        duration = 0.5f;
+        fadeDuration = 1f;
+        defaultStartingAlpha = 139f;
+
+        base.Awake();
+    }
+    
+    protected override void SetInitialAlpha()
+    {
+        if (spriteRenderer != null)
+        {
+            Color iceBlue = new Color(0.5f, 0.8f, 1f); // Light icy blue
+            iceBlue.a = defaultStartingAlpha / 255f;
+            spriteRenderer.color = iceBlue;
+        }
     }
 
-    private void ApplySpeedEffect(GameObject target, float multiplier)
-    {
-        ISpeedModifiable speedModifiable = target.GetComponent<ISpeedModifiable>();
-        if (speedModifiable != null)
-        {
-            speedModifiable.ModifySpeed(multiplier);
-            return;
-        }
-        
-        // Try getting from parent if not found on the object itself
-        /*
-        speedModifiable = target.GetComponentInParent<ISpeedModifiable>();
-        if (speedModifiable != null)
-        {
-            speedModifiable.ModifySpeed(multiplier);
-            return;
-        }
-        */
-        
-        Debug.Log($"Ice effect could not be applied to {target.name} - no ISpeedModifiable component found");
-    }
 }

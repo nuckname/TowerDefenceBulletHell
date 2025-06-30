@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 1445657225304836522}
   - component: {fileID: 8002379095992789373}
   - component: {fileID: 3236851918451891812}
+  - component: {fileID: 8908497365551435694}
   m_Layer: 0
   m_Name: OnDeathEffect
   m_TagString: DeathSprite
@@ -441,6 +442,19 @@ MonoBehaviour:
   respawnAlpha: 0.75
   enemyRespawnHp: 0
   firstTime: 1
+  AmountOfRoundsBeforeDestroy: 0
+--- !u!114 &8908497365551435694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291139976797241789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e956b87119557149bfa0cf9636bdb6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleport
 --- !u!1 &3342692206655987602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1007,6 +1021,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyOnMapCounter: {fileID: 0}
   PaintMoveSpeedModifer: 0.2
+  hasEnemyTped: 0
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0

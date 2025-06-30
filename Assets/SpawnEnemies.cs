@@ -12,6 +12,8 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] private Transform spawnPoint; // Where enemies will spawn
     public List<EnemyStatsSO> roundsScriptableObject; // List of scriptable objects for each round
 
+    private EnemyOnMapCounter _enemyOnMapCounter;
+    
     private bool isDoubleHP = false;
 
     [SerializeField] private GameObject _onDeathEffectVisual;
@@ -22,12 +24,18 @@ public class SpawnEnemies : MonoBehaviour
 
     public List<OnDeathEffectType> onDeathEffects;
 
+    private RoundStateManager _roundStateManager;
+    
     //So we can get the index
     public GameObject enemyHasPortal;
-    private void Start()
+    private void Awake()
     {
         //Call this only once somehow. 
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
+
+        _roundStateManager = GetComponent<RoundStateManager>();
+        
+        _enemyOnMapCounter = GetComponent<EnemyOnMapCounter>();
     }
 
     private int _freePlayTotalEnemies = 0;
@@ -244,14 +252,7 @@ public class SpawnEnemies : MonoBehaviour
                     //enemy.AddComponent<ShadowPortalOnDeathEffect>();
                     break;
                 case OnDeathEffectType.DeathPortalChain:
-                    DeathPortalChainOnDeathEffect deathPortalChainOnDeathEffect = enemy.GetComponentInChildren<DeathPortalChainOnDeathEffect>();
-                    deathPortalChainOnDeathEffect.enabled = true;
-                    deathPortalChainOnDeathEffect.enemyPrefab = enemy;
-
-                    enemyHasPortal = enemy;
-                    
-                    deathPortalChainOnDeathEffect.enemyRespawnHp = enemy.GetComponent<EnemyHealth>().EnemyStartingHealth;
-                    
+                    SetUpDeathPortalEffect(group, enemy);
                     break;
                 case OnDeathEffectType.ZombieHoming:
                     break;
@@ -271,6 +272,25 @@ public class SpawnEnemies : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void SetUpDeathPortalEffect(EnemyGroup group, GameObject enemy)
+    {
+        //Enemy Spawns another enemy (a ghost) so we must increase counter by 1.
+        _enemyOnMapCounter.AddEnemyCount(1);
+                    
+        //Set up portal
+        DeathPortalChainOnDeathEffect deathPortalChainOnDeathEffect = enemy.GetComponentInChildren<DeathPortalChainOnDeathEffect>();
+        deathPortalChainOnDeathEffect.enabled = true;
+        deathPortalChainOnDeathEffect.enemyPrefab = enemy;
+
+        deathPortalChainOnDeathEffect.AmountOfRoundsBeforeDestroy = group.roundsBeforePortalIsDestroied;
+
+        enemyHasPortal = enemy;
+                    
+        deathPortalChainOnDeathEffect.enemyRespawnHp = enemy.GetComponent<EnemyHealth>().EnemyStartingHealth;
+
+        _roundStateManager.roundHasTeleporters = true;
     }
     
 }

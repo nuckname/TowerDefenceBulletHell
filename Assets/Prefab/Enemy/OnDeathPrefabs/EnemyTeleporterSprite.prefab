@@ -106,8 +106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b17bb16e3941e499315202035beddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPortal
-  teleportSender: 0
-  teleportReceiver: 0
+  receiverLocation: {fileID: 0}
+  isTeleportSender: 0
+  isTeleportReceiver: 0
+  tpRoundsLeft: 0
+  maxTpLength: 0
+  _roundStateManager: {fileID: 0}
 --- !u!58 &6286116692857118392
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -138,7 +142,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

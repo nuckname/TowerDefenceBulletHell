@@ -15,7 +15,7 @@ MonoBehaviour:
   waveName: Wave 1
   currentWave: 1
   enemyGroups:
-  - enemyHp: 4
+  - enemyHp: 2
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 1
@@ -27,7 +27,8 @@ MonoBehaviour:
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
-    onDeathEffects: 08000000
+    onDeathEffects: 09000000
+    roundsBeforePortalIsDestroied: 2
   delayAfterWave: 3
   speedModifer: 0
   spawnInterval: 0.5

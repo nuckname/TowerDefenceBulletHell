@@ -14,14 +14,23 @@ public class EnemyCollision : MonoBehaviour, ISpeedModifiable
     public float PaintMoveSpeedModifer;
     
     private bool enemySlowed = false;
-        
+
+    public bool enemyHasUsedTeleporter = false;
+
+    private EnemyTeleport _enemyTeleport;
+    
+    private RoundStateManager _roundStateManager;
     // Start is called before the first frame update
     private void Awake()
     {
         _enemyHealth = GetComponent<EnemyHealth>();
         _enemyFollowPath = GetComponent<EnemyFollowPath>();
 
+        _enemyTeleport = GetComponentInChildren<EnemyTeleport>();
+
         enemyOnMapCounter = GameObject.FindGameObjectWithTag("StateManager").GetComponent<EnemyOnMapCounter>();
+        
+        _roundStateManager = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>();
     }
 
     public void ModifySpeed(float multiplier)
@@ -52,6 +61,22 @@ public class EnemyCollision : MonoBehaviour, ISpeedModifiable
             Destroy(other.gameObject);
             
         }
+
+        if (other.gameObject.CompareTag("teleportReceiver"))
+        {
+            
+        }
+
+        if (other.gameObject.CompareTag("teleportSender") && _roundStateManager.roundHasTeleporters)
+        {
+            if (enemyHasUsedTeleporter)
+            {
+                return;
+            }
+            
+            _enemyTeleport.TeleportEnemyOnCollision();
+        }
+
         
         if (other.gameObject.CompareTag("RedBox"))
         {

@@ -9,6 +9,8 @@ public abstract class BaseExplosionZone : MonoBehaviour
     [SerializeField] protected float fadeDuration = 1f;
     
     protected SpriteRenderer spriteRenderer;
+
+    protected abstract string ZoneTag { get; }
     
     protected virtual void Awake()
     {

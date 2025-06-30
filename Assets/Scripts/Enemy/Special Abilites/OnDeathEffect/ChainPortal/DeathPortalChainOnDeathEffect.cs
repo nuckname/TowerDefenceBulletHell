@@ -19,6 +19,8 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
     public bool firstTime = true;
 
     private SpawnEnemies spawnEnemies;
+    
+    public int AmountOfRoundsBeforeDestroy; 
 
     private void Awake()
     {
@@ -41,12 +43,13 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
     {
         Vector3 deathPosition = transform.position;
 
+        print("death pos: " + deathPosition);
         if (firstTime)
         {
             CreatePortal(deathPosition, true);
 
             GameObject newEnemy = Instantiate(enemyPrefab, deathPosition, Quaternion.identity);
-            ConfigureRespawnedEnemy(newEnemy);
+            ConfigureRespawnedEnemy(newEnemy, deathPosition);
 
             firstTime = false;
         }
@@ -59,9 +62,11 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
     private void CreatePortal(Vector3 position, bool isSender)
     {
         GameObject portal = Instantiate(portalPrefab, position, Quaternion.identity);
-        TeleportPortal teleportPortal = portal.GetComponent<TeleportPortal>();
-
-        if (teleportPortal == null)
+        TeleporterHealthCounter teleporterHealthCounter = portal.GetComponent<TeleporterHealthCounter>();
+        
+        teleporterHealthCounter.maxTpLength = AmountOfRoundsBeforeDestroy;
+        
+        if (teleporterHealthCounter == null)
         {
             Debug.LogError("TeleportPortal component missing on portalPrefab.");
             return;
@@ -69,20 +74,20 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
 
         if (isSender)
         {
-            teleportPortal.isTeleportSender = true;
             portal.tag = "teleportSender";
         }
         else
         {
-            teleportPortal.isTeleportReceiver = true;
             portal.tag = "teleportReceiver";
         }
     }
 
-    private void ConfigureRespawnedEnemy(GameObject enemy)
+    private void ConfigureRespawnedEnemy(GameObject enemy, Vector3 deathPosition)
     {
         // Setup portal chain flag on new enemy
         DeathPortalChainOnDeathEffect portalEffect = enemy.GetComponentInChildren<DeathPortalChainOnDeathEffect>();
+
+        print("Setting firstTime portal is this correct?");
         if (portalEffect != null)
         {
             portalEffect.firstTime = false;
@@ -92,31 +97,45 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
             Debug.LogWarning("Respawned enemy is missing DeathPortalChainOnDeathEffect.");
         }
 
-        // Setup waypoint index from the previous enemy
-        if (spawnEnemies != null && spawnEnemies.enemyHasPortal != null)
-        {
-            EnemyFollowPath previousPath = spawnEnemies.enemyHasPortal.GetComponent<EnemyFollowPath>();
-            EnemyFollowPath newPath = enemy.GetComponent<EnemyFollowPath>();
+        SetUpEnemyPath(enemy, deathPosition);
 
-            if (previousPath != null && newPath != null)
-            {
-                newPath.waypointIndex = previousPath.waypointIndex + 1;
-            }
+        SetUpEnemyHp(enemy);
+
+        FadeOutSprite(enemy);
+    }
+
+    private void SetUpEnemyPath(GameObject enemy, Vector3 deathPosition)
+    {
+        EnemyFollowPath enemyPath = enemy.GetComponent<EnemyFollowPath>();
+        if (enemyPath != null)
+        {
+            // Skip initial positioning in Start() method
+            enemyPath.skipInitialPositioning = true;
+            
+            // Set the waypoint index based on the death position
+            enemyPath.SetWaypointIndexFromPosition(deathPosition);
+            
+            // Override the position to ensure it spawns exactly at death position
+            enemy.transform.position = deathPosition;
         }
         else
         {
-            Debug.LogWarning("Failed to assign waypoint index. enemyHasPortal or SpawnEnemies missing.");
+            Debug.LogWarning("Respawned enemy is missing EnemyFollowPath component.");
         }
+    }
 
-        // Set new enemy HP
+    private void SetUpEnemyHp(GameObject enemy)
+    {
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
             enemyHealth.EnemyStartingHealth = enemyRespawnHp;
             enemyHealth.SetEnemyHealthToSprite();
         }
+    }
 
-        // Fade out new enemy sprites
+    private void FadeOutSprite(GameObject enemy)
+    {
         SpriteRenderer[] spriteRenderers = enemy.GetComponentsInChildren<SpriteRenderer>();
         for (int i = 0; i < spriteRenderers.Length; i++)
         {

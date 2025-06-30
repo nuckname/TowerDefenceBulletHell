@@ -86,6 +86,7 @@ public class EnemyGroup
     
     [Header("Shield Directions")]
     [Tooltip("List of directions for shields")]
+    
     public List<ShieldDirectionType> shieldDirections = new List<ShieldDirectionType>();
     
     [Header("Shield HP")]
@@ -99,5 +100,7 @@ public class EnemyGroup
     [Header("On-Death Effects")]
     [Tooltip("Which effects to apply when this enemy dies")]
     public List<OnDeathEffectType> onDeathEffects = new List<OnDeathEffectType>();
+    public int roundsBeforePortalIsDestroied = 0;
+
 }
 
