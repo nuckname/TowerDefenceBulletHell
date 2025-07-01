@@ -315,9 +315,9 @@ GameObject:
   - component: {fileID: 8446663152547879661}
   - component: {fileID: 5289485193247853051}
   - component: {fileID: 1445657225304836522}
-  - component: {fileID: 8002379095992789373}
   - component: {fileID: 3236851918451891812}
   - component: {fileID: 8908497365551435694}
+  - component: {fileID: 957850347585074612}
   m_Layer: 0
   m_Name: OnDeathEffect
   m_TagString: DeathSprite
@@ -412,19 +412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RotateSprite
   rotationSpeed: 90
   onDeathSpriteRenderer: {fileID: 5289485193247853051}
---- !u!114 &8002379095992789373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2291139976797241789}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 219904c356017274e90172d15ca4aebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceExplosionEffect
-  iceExplosionPrefab: {fileID: 3553380492785741449, guid: 406e4331b6d022643b6c1895f36fd5c4, type: 3}
 --- !u!114 &3236851918451891812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +442,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e956b87119557149bfa0cf9636bdb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyTeleport
+  _target: {fileID: 0}
+--- !u!114 &957850347585074612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291139976797241789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051d4ff527d08064c833c78091fba9ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OnDeathExplosionManager
+  hasIceExplosion: 0
+  hasZombieExplosion: 0
+  iceSO: {fileID: 11400000, guid: a08f5354836a85f46a9b8d06aa32b0cf, type: 2}
+  zombieSO: {fileID: 11400000, guid: 9bf8380e41d4311488295977babb5f46, type: 2}
+  onDeathEffectPrefab: {fileID: 3553380492785741449, guid: 406e4331b6d022643b6c1895f36fd5c4, type: 3}
 --- !u!1 &3342692206655987602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1006,7 +1011,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
-  waypointIndex: 0
+  currentWaypoint: 0
+  skipInitialPositioning: 0
 --- !u!114 &-6422447422121149574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1021,7 +1027,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyOnMapCounter: {fileID: 0}
   PaintMoveSpeedModifer: 0.2
-  hasEnemyTped: 0
+  enemyHasUsedTeleporter: 0
 --- !u!61 &3894418484581801063
 BoxCollider2D:
   m_ObjectHideFlags: 0

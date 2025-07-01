@@ -54,6 +54,7 @@ TagManager:
   - DeathSprite
   - teleportReceiver
   - teleportSender
+  - ZombieOnDeathEffect
   layers:
   - Default
   - TransparentFX

@@ -255,20 +255,15 @@ public class SpawnEnemies : MonoBehaviour
                     SetUpDeathPortalEffect(group, enemy);
                     break;
                 case OnDeathEffectType.ZombieHoming:
+                    enemy.GetComponentInChildren<OnDeathExplosionManager>().hasZombieExplosion = true;
+                    
                     break;
                 case OnDeathEffectType.IceExplosion:
-                    enemy.GetComponentInChildren<IceExplosionEffectOnDeathEffect>().enabled = true;
+                    enemy.GetComponentInChildren<OnDeathExplosionManager>().hasIceExplosion = true;
+                    
                     RotateSprite rotateSprite = enemy.GetComponentInChildren<RotateSprite>(true);
                     rotateSprite.enabled = true;
                     rotateSprite.onDeathSpriteRenderer.enabled = true;
-
-                    
-                    //spriteRenderer.color = Color.blue;
-                    //IceExplosionEffect iceExplosionEffect = enemy.GetComponentInChildren<IceExplosionEffect>();
-                    //iceExplosionEffect.enabled = true;
-                    
-                    //Make blue or change sprite or something?
-                    //Need a sprite reference
                     break;
             }
         }

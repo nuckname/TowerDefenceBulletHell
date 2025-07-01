@@ -55,7 +55,10 @@ public class EnemyDie : MonoBehaviour
     {
         foreach (BaseOnDeathEffect effect in onDeathEffect.GetComponents<BaseOnDeathEffect>())
         {
-            effect.TriggerEffect();
+            if (effect.enabled)
+            {
+                effect.TriggerEffect();
+            }
         }
     }
 }

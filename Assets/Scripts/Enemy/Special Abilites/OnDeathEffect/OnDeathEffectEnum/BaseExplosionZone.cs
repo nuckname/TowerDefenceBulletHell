@@ -1,64 +1,69 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
-public abstract class BaseExplosionZone : MonoBehaviour
+public class BaseExplosionZone : MonoBehaviour
 {
-    [Header("Zone Fade Settings")]
-    [SerializeField] protected float duration = 0.5f;
-    [SerializeField] protected float defaultStartingAlpha = 139f;
-    [SerializeField] protected float fadeDuration = 1f;
-    
-    protected SpriteRenderer spriteRenderer;
+    private OnDeathEffectSO _onDeathEffectSo;
 
-    protected abstract string ZoneTag { get; }
-    
-    protected virtual void Awake()
+    private SpriteRenderer spriteRenderer;
+
+    public void Initialise(OnDeathEffectSO onDeathEffectSO)
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        if (spriteRenderer != null)
+        if (onDeathEffectSO == null)
         {
-            SetInitialAlpha();
+            Debug.LogWarning($"[{name}] no OnDeathEffectSO assigned; skipping initialization.");
+            return;
         }
+        
+        _onDeathEffectSo = onDeathEffectSO;
+        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null && onDeathEffectSO != null)
+        {
+            SetInitialColorAndAlpha();
+        }
+        
+        gameObject.tag = onDeathEffectSO.zoneTag;
+        
+        StartCoroutine(FadeAndDestroyAfterDuration());
+
     }
 
-    protected virtual void Start()
+    private void SetInitialColorAndAlpha()
     {
-        StartCoroutine(FadeAndDestroyAfterDuration());
+        Color baseColor = _onDeathEffectSo.color;
+        baseColor.a = _onDeathEffectSo.startingAlpha / 255f;
+        spriteRenderer.color = baseColor;
     }
-    
-    protected virtual void SetInitialAlpha()
+
+    private IEnumerator FadeAndDestroyAfterDuration()
     {
-        Color color = spriteRenderer.color;
-        color.a = defaultStartingAlpha / 255f;
-        spriteRenderer.color = color;
-    }
-    
-    protected virtual IEnumerator FadeAndDestroyAfterDuration()
-    {
-        yield return new WaitForSeconds(duration);
-        
+        yield return new WaitForSeconds(_onDeathEffectSo.duration);
+
         if (spriteRenderer != null)
         {
             yield return StartCoroutine(FadeOut());
         }
-        
+
         Destroy(gameObject);
     }
-    
-    protected virtual IEnumerator FadeOut()
+
+    private IEnumerator FadeOut()
     {
-        float startAlpha = defaultStartingAlpha / 255f;
+        float startAlpha = _onDeathEffectSo.startingAlpha / 255f;
         float elapsed = 0f;
         Color color = spriteRenderer.color;
-        
-        while (elapsed < fadeDuration)
+
+        while (elapsed < _onDeathEffectSo.fadeDuration)
         {
-            float alpha = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
+            float alpha = Mathf.Lerp(startAlpha, 0f, elapsed / _onDeathEffectSo.fadeDuration);
             spriteRenderer.color = new Color(color.r, color.g, color.b, alpha);
             elapsed += Time.deltaTime;
             yield return null;
         }
-        
+
         spriteRenderer.color = new Color(color.r, color.g, color.b, 0f);
     }
 }

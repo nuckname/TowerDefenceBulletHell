@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7761008504417824836}
   - component: {fileID: 1499641236210655097}
   - component: {fileID: 9069266938955036056}
-  - component: {fileID: 5630143818613914230}
+  - component: {fileID: 3167974038906808741}
   m_Layer: 0
   m_Name: OnDeathEffect
   m_TagString: IceOnDeathEffect
@@ -156,7 +156,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &5630143818613914230
+--- !u!114 &3167974038906808741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,9 +165,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3553380492785741449}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b78b137ef6215b4cb23cf7a9b96646a, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d9713918b6c4c819eb87c45ea59349c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::IceExplosionZone
-  duration: 1
-  defaultStartingAlpha: 139
-  fadeDuration: 3
+  m_EditorClassIdentifier: Assembly-CSharp::BaseExplosionZone
+  onDeathEffectSO: {fileID: 0}
