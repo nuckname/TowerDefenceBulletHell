@@ -11933,6 +11933,14 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6885105890151990231, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
+      propertyPath: 'roundsScriptableObject.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a9ac3893db24e1a4d940cc1899a7f895, type: 2}
+    - target: {fileID: 6885105890151990231, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
+      propertyPath: 'roundsScriptableObject.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a9ac3893db24e1a4d940cc1899a7f895, type: 2}
+    - target: {fileID: 6885105890151990231, guid: 3c50a847d7d057b48ba9a36241f39324, type: 3}
       propertyPath: 'roundsScriptableObject.Array.data[11]'
       value: 
       objectReference: {fileID: 11400000, guid: 79d232f1ed6f3fb418e4bb66bd70ec33, type: 2}

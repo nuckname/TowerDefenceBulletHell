@@ -245,7 +245,8 @@ public class SpawnEnemies : MonoBehaviour
                     break;
                     */
                 case OnDeathEffectType.EnemyReversePortal:
-                    enemy.GetComponent<SpawnEnemyReversePortal>().enabled = true;
+                    enemy.GetComponentInChildren<SpawnEnemyReversePortal>().enabled = true;
+
                     break;
                 case OnDeathEffectType.DeathPortalChain:
                     SetUpDeathPortalEffect(group, enemy);

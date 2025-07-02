@@ -20,36 +20,99 @@ MonoBehaviour:
     delayBeforeGroup: 0.34
     spawnInterval: 0.3
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 8
     count: 4
     delayBeforeGroup: 0.213
     spawnInterval: 0.25
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 04000000
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 7
     count: 4
     delayBeforeGroup: 0.36
     spawnInterval: 1.25
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 7
     count: 3
     delayBeforeGroup: 0.19
     spawnInterval: 0.75
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 8
     count: 3
     delayBeforeGroup: 0.35544
     spawnInterval: 0.34
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 04000000
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 8
     count: 2
     delayBeforeGroup: 0.31
     spawnInterval: 0.34
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 7
     count: 4
     delayBeforeGroup: 0.4
     spawnInterval: 0.45
     bossSpawn: 0
+    groundEffects: 
+    paintMoveSpeedModifer: 0
+    shieldDirections: 
+    shieldHp: 0
+    isRotating: 0
+    clockWise: 0
+    counterClockWise: 0
+    onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   delayAfterWave: 3
   speedModifer: 1.25
   spawnInterval: 1

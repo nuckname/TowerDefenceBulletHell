@@ -119,7 +119,7 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
         {
             newPath.skipInitialPositioning = true;
             // 3) pick the next forward waypoint based on lastIndex
-            newPath.currentWaypoint = newPath.GetClosestForwardWaypointIndexFrom(lastIndex, deathPosition);
+            //newPath.currentWaypoint = newPath.GetClosestForwardWaypointIndexFrom(lastIndex, deathPosition);
             newEnemy.transform.position = deathPosition;
         }
         else
@@ -133,6 +133,7 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
         EnemyHealth enemyHealth = enemy.GetComponent<EnemyHealth>();
         if (enemyHealth != null)
         {
+            
             enemyHealth.EnemyStartingHealth = enemyRespawnHp;
             enemyHealth.SetEnemyHealthToSprite();
         }

@@ -15,66 +15,76 @@ MonoBehaviour:
   waveName: Wave 2
   currentWave: 2
   enemyGroups:
-  - enemyHp: 4
+  - enemyHp: 1
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.8
     bossSpawn: 0
     groundEffects: 
-    shieldDirections: 0100000000000000020000000500000007000000
+    paintMoveSpeedModifer: 0
+    shieldDirections: 01000000020000000000000003000000
     shieldHp: 2
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 4
     count: 3
     delayBeforeGroup: 0
     spawnInterval: 0.8
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 5
     count: 1
     delayBeforeGroup: 0
     spawnInterval: 0.5
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 3
     count: 2
     delayBeforeGroup: 1
     spawnInterval: 1.69
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 3
     count: 1
     delayBeforeGroup: 0.5
     spawnInterval: 1.57
     bossSpawn: 0
     groundEffects: 
+    paintMoveSpeedModifer: 0
     shieldDirections: 
     shieldHp: 0
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   delayAfterWave: 2
   speedModifer: 0
   spawnInterval: 1

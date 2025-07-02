@@ -22,12 +22,13 @@ MonoBehaviour:
     bossSpawn: 0
     groundEffects: 01000000
     paintMoveSpeedModifer: 0.2
-    shieldDirections: 
-    shieldHp: 0
+    shieldDirections: 000000000400000005000000020000000600000007000000
+    shieldHp: 1
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   - enemyHp: 3
     count: 8
     delayBeforeGroup: 0
@@ -41,8 +42,9 @@ MonoBehaviour:
     clockWise: 0
     counterClockWise: 0
     onDeathEffects: 
+    roundsBeforePortalIsDestroied: 0
   delayAfterWave: 2
-  speedModifer: 1.5
+  speedModifer: 1.25
   spawnInterval: 0.65
   totalEnemies: 9
   amountOfGoldGainedForEachCoin: 5

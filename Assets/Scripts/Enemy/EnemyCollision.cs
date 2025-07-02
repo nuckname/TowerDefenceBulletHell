@@ -20,6 +20,9 @@ public class EnemyCollision : MonoBehaviour, ISpeedModifiable
     private EnemyTeleport _enemyTeleport;
     
     private RoundStateManager _roundStateManager;
+
+    [SerializeField] private bool hasBeenThroughPortal = false;
+
     // Start is called before the first frame update
     private void Awake()
     {
@@ -76,6 +79,23 @@ public class EnemyCollision : MonoBehaviour, ISpeedModifiable
             
             _enemyTeleport.TeleportEnemyOnCollision();
         }
+
+        if (other.gameObject.CompareTag("ReversePortal"))
+        {
+            if (hasBeenThroughPortal)
+            {
+                return;
+            }
+            
+            _enemyFollowPath.reverse = true;
+                    
+            _enemyFollowPath.currentWaypoint = _enemyFollowPath.waypoints.Length - 2;
+
+            gameObject.transform.position = _enemyFollowPath.waypoints[_enemyFollowPath.waypoints.Length - 2].position;
+            
+            hasBeenThroughPortal = true;
+        }
+        
 
         if (other.gameObject.CompareTag("ZombieOnDeathEffect"))
         {

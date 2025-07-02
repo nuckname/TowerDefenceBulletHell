@@ -23,7 +23,7 @@ public class EnemyTeleport : MonoBehaviour
         if (_target != null)
         {
             transform.root.position = _target.position;
-            UpdateEnemyWayPoint(gameObject, _target);
+            //UpdateEnemyWayPoint(gameObject, _target);
             gameObject.GetComponentInParent<EnemyCollision>().enemyHasUsedTeleporter = true;
         }
         else
@@ -32,7 +32,7 @@ public class EnemyTeleport : MonoBehaviour
         }
     }
 
-    
+    /*
     private void UpdateEnemyWayPoint(GameObject enemy, Transform location)
     {
         EnemyFollowPath path = enemy.GetComponentInParent<EnemyFollowPath>();
@@ -47,4 +47,5 @@ public class EnemyTeleport : MonoBehaviour
         }
 
     }
+    */
 }
