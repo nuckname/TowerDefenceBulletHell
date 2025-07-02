@@ -77,6 +77,11 @@ public class EnemyCollision : MonoBehaviour, ISpeedModifiable
             _enemyTeleport.TeleportEnemyOnCollision();
         }
 
+        if (other.gameObject.CompareTag("ZombieOnDeathEffect"))
+        {
+            GetComponent<ZombieLogic>().SetPathToPlayer();
+        }
+
         
         if (other.gameObject.CompareTag("RedBox"))
         {

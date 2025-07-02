@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6286116692857118392}
   - component: {fileID: 4819684515843385211}
   m_Layer: 0
-  m_Name: EnemyTeleporterSprite
-  m_TagString: Untagged
+  m_Name: EnemyPortalPrefab
+  m_TagString: ReversePortal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,9 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26b17bb16e3941e499315202035beddc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportPortal
-  receiverLocation: {fileID: 0}
-  isTeleportSender: 0
-  isTeleportReceiver: 0
   tpRoundsLeft: 0
   maxTpLength: 0
   _roundStateManager: {fileID: 0}

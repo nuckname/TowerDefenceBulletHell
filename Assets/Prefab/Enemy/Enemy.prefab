@@ -914,6 +914,8 @@ GameObject:
   - component: {fileID: 3223230562563123178}
   - component: {fileID: 5646913156355875930}
   - component: {fileID: 4446055623179023605}
+  - component: {fileID: 2029582263945248348}
+  - component: {fileID: 2318411708648622750}
   m_Layer: 31
   m_Name: Enemy
   m_TagString: Enemy
@@ -1287,6 +1289,32 @@ MonoBehaviour:
   shieldNorthWest: {fileID: 2109682062149517398}
   shieldSouthEast: {fileID: 5803864938918658334}
   shieldSouthWest: {fileID: 1903351397152471882}
+--- !u!114 &2029582263945248348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088919820819901208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55800953bb2f0db48be3e9ff1dc892ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ZombieLogic
+  speed: 3
+--- !u!114 &2318411708648622750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6088919820819901208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f3550af73203448b7c4bfaf25835bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnEnemyReversePortal
+  portal: {fileID: 3590200955381645279, guid: 5e4a3aec75d8bec4e94c3f75b9c7346d, type: 3}
 --- !u!1 &6968731962718064551
 GameObject:
   m_ObjectHideFlags: 0

@@ -132,4 +132,53 @@ public class EnemyFollowPath : MonoBehaviour, ISpeedModifiable
         Debug.Log($"Death position: {position}, Closest waypoint: {bestIndex} at {waypoints[bestIndex].position}, Distance: {closestDistance}");
         return bestIndex;
     }
+    
+    
+    /// <summary>
+    /// Finds the closest waypoint *at or after* minIndex.
+    /// If nothing is closer, returns minIndex+1 (to guarantee forward progress).
+    /// </summary>
+    public int GetClosestForwardWaypointIndexFrom(int minIndex, Vector3 position)
+    {
+        if (waypoints == null || waypoints.Length == 0)
+        {
+            Debug.LogError("Waypoints array is empty!");
+            return 0;
+        }
+
+        Debug.Log($"GetClosestForwardWaypointIndexFrom → minIndex={minIndex}, deathPos={position}");
+        for (int i = 0; i < waypoints.Length; i++)
+        {
+            Debug.Log($"  waypoint[{i}] @ {waypoints[i].position}");
+        }
+
+        // clamp
+        minIndex = Mathf.Clamp(minIndex, 0, waypoints.Length - 1);
+        Debug.Log($"  clamped minIndex → {minIndex}");
+
+        int best = -1;
+        float bestDist = float.MaxValue;
+
+        // **only search from minIndex onward** (or minIndex+1, see next section)
+        for (int i = minIndex; i < waypoints.Length; i++)
+        {
+            float d = Vector3.Distance(waypoints[i].position, position);
+            Debug.Log($"    dist to waypoint[{i}] = {d}");
+            if (d < bestDist)
+            {
+                bestDist = d;
+                best = i;
+            }
+        }
+
+        Debug.Log($"  raw best → index={best}, dist={bestDist}");
+        if (best == minIndex && best < waypoints.Length - 1)
+        {
+            best++;
+            Debug.Log($"  bumped forward to {best}");
+        }
+
+        return best >= 0 ? best : 0;
+    }
+
 }

@@ -104,23 +104,27 @@ public class DeathPortalChainOnDeathEffect : BaseOnDeathEffect
         FadeOutSprite(enemy);
     }
 
-    private void SetUpEnemyPath(GameObject enemy, Vector3 deathPosition)
+    private void SetUpEnemyPath(GameObject newEnemy, Vector3 deathPosition)
     {
-        EnemyFollowPath enemyPath = enemy.GetComponent<EnemyFollowPath>();
-        if (enemyPath != null)
+        // 1) grab the dying enemy’s index:
+        //    assume this script was on the dying object’s child, so parent has the data
+        EnemyFollowPath oldPath = transform.GetComponentInParent<EnemyFollowPath>();
+        int lastIndex = oldPath != null
+            ? oldPath.currentWaypoint
+            : 0;
+
+        // 2) get the new enemy’s path component
+        EnemyFollowPath newPath = newEnemy.GetComponent<EnemyFollowPath>();
+        if (newPath != null)
         {
-            // Skip initial positioning in Start() method
-            enemyPath.skipInitialPositioning = true;
-            
-            // Set the waypoint index based on the death position
-            enemyPath.SetWaypointIndexFromPosition(deathPosition);
-            
-            // Override the position to ensure it spawns exactly at death position
-            enemy.transform.position = deathPosition;
+            newPath.skipInitialPositioning = true;
+            // 3) pick the next forward waypoint based on lastIndex
+            newPath.currentWaypoint = newPath.GetClosestForwardWaypointIndexFrom(lastIndex, deathPosition);
+            newEnemy.transform.position = deathPosition;
         }
         else
         {
-            Debug.LogWarning("Respawned enemy is missing EnemyFollowPath component.");
+            Debug.LogWarning("Respawned enemy missing EnemyFollowPath");
         }
     }
 

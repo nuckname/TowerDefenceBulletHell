@@ -232,6 +232,7 @@ public class SpawnEnemies : MonoBehaviour
         {
             switch (effectType)
             {
+                /*
                 case OnDeathEffectType.HealNearby:
                     //enemy.AddComponent<HealNearbyOnDeathEffect>();
                     break;
@@ -242,14 +243,9 @@ public class SpawnEnemies : MonoBehaviour
                 case OnDeathEffectType.StunTurrets:
                     //enemy.AddComponent<StunTurretsOnDeathEffect>();
                     break;
-                case OnDeathEffectType.CreateFog:
-                    //enemy.AddComponent<FogOnDeathEffect>();
-                    break;
-                case OnDeathEffectType.SpeedBoost:
-                    //enemy.AddComponent<SpeedBoostOnDeathEffect>();
-                    break;
-                case OnDeathEffectType.ShadowPortal:
-                    //enemy.AddComponent<ShadowPortalOnDeathEffect>();
+                    */
+                case OnDeathEffectType.EnemyReversePortal:
+                    enemy.GetComponent<SpawnEnemyReversePortal>().enabled = true;
                     break;
                 case OnDeathEffectType.DeathPortalChain:
                     SetUpDeathPortalEffect(group, enemy);

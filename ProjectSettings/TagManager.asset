@@ -55,6 +55,7 @@ TagManager:
   - teleportReceiver
   - teleportSender
   - ZombieOnDeathEffect
+  - ReversePortal
   layers:
   - Default
   - TransparentFX
