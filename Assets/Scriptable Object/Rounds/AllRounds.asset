@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea186024135b49a0b0272a5d17caf6ea, type: 3}
+  m_Name: AllRounds
+  m_EditorClassIdentifier: Assembly-CSharp::AllRoundsSO
+  rounds:
+  - {fileID: 11400000, guid: a9ac3893db24e1a4d940cc1899a7f895, type: 2}
+  - {fileID: 11400000, guid: e2cbf5ba713538140b9915358da35d7f, type: 2}
+  - {fileID: 11400000, guid: 0bec7a0e7ab223d479b749a5cf9cd46e, type: 2}
+  - {fileID: 11400000, guid: 63246f0c46ed6ff4b9e8251f55f1da7d, type: 2}
+  - {fileID: 11400000, guid: c154522bfeccb7548baa8b7d76cfa4d2, type: 2}
+  - {fileID: 11400000, guid: a5d6d4bc2ca5ffe408a09434ee943465, type: 2}
+  - {fileID: 11400000, guid: d68ebe06f5e96c7428871fd9eb10a005, type: 2}
+  - {fileID: 0}

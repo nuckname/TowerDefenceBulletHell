@@ -7,6 +7,8 @@ using UnityEngine;
 public class RoundStateManager : MonoBehaviour
 {
 
+    public AllRoundsSO allRoundData;
+    
     public bool tutorialCantStartRound = false;
     
     public SelectTurret selectTurret;
@@ -70,17 +72,14 @@ public class RoundStateManager : MonoBehaviour
 
     }
 
-    public int GetAmountOfGoldPerEnemy()
-    {
-        return spawnEnemies.roundsScriptableObject[currentRound].amountOfGoldGainedForEachCoin;
-    }
 
     public void UpdateGoldLostText()
     {
+        /*
         print("GetAmountOfGoldPerEnemy: " + GetAmountOfGoldPerEnemy());
         print("amountOfCoinsDestroyed: " + amountOfCoinsDestroyed);
         // 1) Calculate how much gold was lost this round:
-        int goldLostThisRound = GetAmountOfGoldPerEnemy() * amountOfCoinsDestroyed;
+        //int goldLostThisRound = GetAmountOfGoldPerEnemy() * amountOfCoinsDestroyed;
 
         // 2) Add to the running total:
         totalGoldLostAcrossRounds += goldLostThisRound;
@@ -90,6 +89,7 @@ public class RoundStateManager : MonoBehaviour
 
         // 4) Display the *total* (or if you prefer, display both “this round” and “total”):
         goldCoinLostText.text = totalGoldLostAcrossRounds.ToString();
+        */
     }
     
     public IEnumerator PlayMusicDelayed()
@@ -144,14 +144,14 @@ public class RoundStateManager : MonoBehaviour
 
     public void SpawnBasicEnemies(int currentRoundIndex)
     {
-        currentRound = currentRoundIndex;
-        DisplayRoundUi(currentRound);
+        DisplayRoundUi(currentRoundIndex);
 
+        RoundDataSO allEnemiesInSO = allRoundData.rounds[currentRoundIndex];
+        
         // spawn enemies as before
-        int spawned = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex);
+        int spawned = spawnEnemies.SpawnEnemiesPerRound(currentRoundIndex, allEnemiesInSO);
         enemyOnMapCounter.MaxEnemiesOnMap = spawned;
         initialEnemyCount = spawned;
-
     }
     
     public void DestroyAllPlayerBullets()

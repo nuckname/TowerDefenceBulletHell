@@ -6,14 +6,14 @@ using Random = UnityEngine.Random;
 
 public class PlayerCollision : MonoBehaviour, ISpeedModifiable
 {
-    [SerializeField] private EnemyStatsSO enemyStatsSo;
+    [SerializeField] private RoundDataSO roundDataSo;
 
     [SerializeField] private int CoinGiveGoldAmount = 5;
     [SerializeField] private float iframeDuration = 1f; // Duration of invincibility frames
     [SerializeField] private float transparencyLevel = 0.5f;
 
     private int _currentRoundIndex;
-    private List<EnemyStatsSO> rounds;
+    private List<RoundDataSO> rounds;
     [SerializeField] private SpawnEnemies spawnEnemies;
     
     [SerializeField] private GameModeManager gameModeManager;

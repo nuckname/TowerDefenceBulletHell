@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 [CreateAssetMenu(fileName = "NewRound", menuName = "Round/NewRound", order = 1)]
-public class EnemyStatsSO : ScriptableObject
+public class RoundDataSO : ScriptableObject
 {
     [Header("Wave Configuration")]
     [Tooltip("Name of the wave (for organization purposes)")]
@@ -13,7 +13,7 @@ public class EnemyStatsSO : ScriptableObject
     public int currentWave;
     
     [Tooltip("List of enemy groups in this wave")]
-    public List<EnemyGroup> enemyGroups;
+    public List<EnemyGroupStats> enemyGroups;
 
     [Tooltip("Delay after this wave is completed (before next wave starts)")]
     public float delayAfterWave = 2f;
@@ -35,7 +35,10 @@ public class EnemyStatsSO : ScriptableObject
     public int amountOfHeartToDrop = 0;
     
     public int DEBUGtotalAmountOfGoldPerRound;
+    public int DEBUGtotalEnemyHpThisRound;
 
+    [TextArea]
+    public string DEBUGsummaryInfo;
 
     [Header("Boss")]
     public GameObject boss;
@@ -43,9 +46,12 @@ public class EnemyStatsSO : ScriptableObject
     private void OnValidate()
     {
         totalEnemies = 0;
+        DEBUGtotalEnemyHpThisRound = 0;
+        
         foreach (var group in enemyGroups)
         {
             totalEnemies += group.count;
+            DEBUGtotalEnemyHpThisRound += group.count * group.enemyHp;
         }
 
         if (boss != null)
@@ -54,6 +60,13 @@ public class EnemyStatsSO : ScriptableObject
         }
 
         DEBUGtotalAmountOfGoldPerRound = totalEnemies * amountOfGoldGainedForEachCoin * amountOfGoldToDrop;
+        
+        DEBUGsummaryInfo = 
+                           $"- Total Enemies: {totalEnemies}\n" +
+                           $"- Total Enemy HP: {DEBUGtotalEnemyHpThisRound}\n" +
+                           $"- Gold Drop: {amountOfGoldToDrop} per enemy * {amountOfGoldGainedForEachCoin} value\n" +
+                           $"- Total Gold This Round: {DEBUGtotalAmountOfGoldPerRound}\n" +
+                           $"- Boss Included: {(boss != null ? "Yes" : "No")}";
     }
 
     public int GetTotalEnemies()
@@ -62,45 +75,6 @@ public class EnemyStatsSO : ScriptableObject
     }
 }
 
-[System.Serializable]
-public class EnemyGroup
-{
-    [Tooltip("Determines what kind of enemy to spawn based off int to colour")]
-    public int enemyHp;
 
-    [Tooltip("Number of enemies to spawn in this group")]
-    public int count;
 
-    [Tooltip("Delay before this group starts spawning")]
-    public float delayBeforeGroup = 0f;
-
-    [Tooltip("Time between spawning each enemy in this group")]
-    public float spawnInterval = 0.5f;
-
-    [Tooltip("Does boss spawn")]
-    public bool bossSpawn = false;
-
-    [Header("Ground Effects")]
-    public List<GroundEffectType> groundEffects = new List<GroundEffectType>();
-    public float paintMoveSpeedModifer = 0;
-    
-    [Header("Shield Directions")]
-    [Tooltip("List of directions for shields")]
-    
-    public List<ShieldDirectionType> shieldDirections = new List<ShieldDirectionType>();
-    
-    [Header("Shield HP")]
-    public int shieldHp;
-    
-    [Header("Rotation")]
-    public bool isRotating = false;
-    public bool clockWise = false;
-    public bool counterClockWise = false;
-     
-    [Header("On-Death Effects")]
-    [Tooltip("Which effects to apply when this enemy dies")]
-    public List<OnDeathEffectType> onDeathEffects = new List<OnDeathEffectType>();
-    public int roundsBeforePortalIsDestroied = 0;
-
-}
 

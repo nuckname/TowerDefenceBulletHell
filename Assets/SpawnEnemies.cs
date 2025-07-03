@@ -10,7 +10,6 @@ public class SpawnEnemies : MonoBehaviour
     [SerializeField] private GameObject enemyPrefab;
     
     [SerializeField] private Transform spawnPoint; // Where enemies will spawn
-    public List<EnemyStatsSO> roundsScriptableObject; // List of scriptable objects for each round
 
     private EnemyOnMapCounter _enemyOnMapCounter;
     
@@ -39,7 +38,7 @@ public class SpawnEnemies : MonoBehaviour
     }
 
     private int _freePlayTotalEnemies = 0;
-    public int SpawnEnemiesPerRound(int currentRoundIndex)
+    public int SpawnEnemiesPerRound(int currentRoundIndex, RoundDataSO roundData)
     {
         if (gameModeManager.CurrentMode == GameMode.Tutorial)
         {
@@ -50,7 +49,7 @@ public class SpawnEnemies : MonoBehaviour
             return _freePlayTotalEnemies;
         }
         //used in enemy prefab
-        currentRound = currentRoundIndex;
+        //currentRound = currentRoundIndex;
         
         if (gameModeManager.CurrentMode == GameMode.DoubleHP)
         {
@@ -61,28 +60,21 @@ public class SpawnEnemies : MonoBehaviour
             isDoubleHP = false;
         }
         
-        if (roundsScriptableObject[currentRoundIndex].boss != null)
+        if (roundData.boss != null)
         {
-            Instantiate(roundsScriptableObject[currentRoundIndex].boss, spawnPoint.position, Quaternion.identity);
+            Instantiate(roundData.boss, spawnPoint.position, Quaternion.identity);
         }
 
-        // Check if there are rounds remaining
-        if (currentRoundIndex < roundsScriptableObject.Count)
-        {
-            // Get the current round's scriptable object
-            EnemyStatsSO currentRound = roundsScriptableObject[currentRoundIndex];
-            int totalEnemies = currentRound.GetTotalEnemies();
-            
-            // Start spawning enemies for the current round
-            StartCoroutine(SpawnEnemiesWithDelay(currentRound));
+        int totalEnemies = roundData.GetTotalEnemies();
+        
+        // Start spawning enemies for the current round
+        StartCoroutine(SpawnEnemiesWithDelay(roundData));
 
-            currentRoundIndex++;
-            print("totalEnemies: " + totalEnemies);
-            
-            return totalEnemies;
-        }
-        Debug.LogError("Returned 0 Enemies ERROR");
-        return 0;
+        currentRoundIndex++;
+        print("totalEnemies: " + totalEnemies);
+        
+        return totalEnemies;
+
     }
 
     private int FreePlay(int currentRoundIndex)
@@ -93,45 +85,10 @@ public class SpawnEnemies : MonoBehaviour
         return totalAmountOfEnemies;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            SkipRound();
-        }
-    }
-
-    private void SkipRound()
-    {
-        if (currentRound < roundsScriptableObject.Count - 1)
-        {
-            //Get State MAchine?
-            currentRound++;
-            DeleteAllEnemies();
-            StopAllCoroutines(); // Stop any ongoing enemy spawns
-            SpawnEnemiesPerRound(currentRound);
-            Debug.Log("Skipped to Round: " + currentRound);
-        }
-        else
-        {
-            Debug.Log("No more rounds to skip!");
-        }
-    }
-    
-    private void DeleteAllEnemies()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        foreach (GameObject enemy in enemies)
-        {
-            Destroy(enemy);
-        }
-    }
-
-
-    private IEnumerator SpawnEnemiesWithDelay(EnemyStatsSO round)
+    private IEnumerator SpawnEnemiesWithDelay(RoundDataSO round)
     {
         // Iterate through each enemy group in the round
-        foreach (EnemyGroup group in round.enemyGroups)
+        foreach (EnemyGroupStats group in round.enemyGroups)
         {
             yield return new WaitForSeconds(group.delayBeforeGroup);
 
@@ -193,19 +150,19 @@ public class SpawnEnemies : MonoBehaviour
         yield return new WaitForSeconds(round.delayAfterWave);
     }
     
-    private void AddShieldDirection(EnemyGroup group, GameObject enemy)
+    private void AddShieldDirection(EnemyGroupStats groupStats, GameObject enemy)
     {
         setEnemyShield setEnemyShield = enemy.GetComponent<setEnemyShield>();   
         if (setEnemyShield != null)
         {
             setEnemyShield.enabled = true;
-            setEnemyShield.ConfigureShields(group.shieldDirections, group.shieldHp);
+            setEnemyShield.ConfigureShields(groupStats.shieldDirections, groupStats.shieldHp);
         }
     }
 
-    private void AddGroundEffects(EnemyGroup group, GameObject enemy)
+    private void AddGroundEffects(EnemyGroupStats groupStats, GameObject enemy)
     {
-        foreach (var effectType in group.groundEffects)
+        foreach (var effectType in groupStats.groundEffects)
         {
             switch (effectType)
             {
@@ -217,18 +174,18 @@ public class SpawnEnemies : MonoBehaviour
                     EnemyPaintTrail enemyPaintTrail = enemy.GetComponent<EnemyPaintTrail>();
                     enemyPaintTrail.enabled = true; 
                     
-                    enemy.GetComponent<EnemyCollision>().PaintMoveSpeedModifer = group.paintMoveSpeedModifer;
+                    enemy.GetComponent<EnemyCollision>().PaintMoveSpeedModifer = groupStats.paintMoveSpeedModifer;
                     
                     break;
             }
         }
     }
 
-    private void AddOnDeathEffect(EnemyGroup group, GameObject enemy)
+    private void AddOnDeathEffect(EnemyGroupStats groupStats, GameObject enemy)
     {
         //_onDeathEffectVisual.SetActive(true);
 
-        foreach (var effectType in group.onDeathEffects)
+        foreach (var effectType in groupStats.onDeathEffects)
         {
             switch (effectType)
             {
@@ -249,7 +206,7 @@ public class SpawnEnemies : MonoBehaviour
 
                     break;
                 case OnDeathEffectType.DeathPortalChain:
-                    SetUpDeathPortalEffect(group, enemy);
+                    SetUpDeathPortalEffect(groupStats, enemy);
                     break;
                 case OnDeathEffectType.ZombieHoming:
                     enemy.GetComponentInChildren<OnDeathExplosionManager>().hasZombieExplosion = true;
@@ -266,7 +223,7 @@ public class SpawnEnemies : MonoBehaviour
         }
     }
 
-    private void SetUpDeathPortalEffect(EnemyGroup group, GameObject enemy)
+    private void SetUpDeathPortalEffect(EnemyGroupStats groupStats, GameObject enemy)
     {
         //Enemy Spawns another enemy (a ghost) so we must increase counter by 1.
         _enemyOnMapCounter.AddEnemyCount(1);
@@ -276,7 +233,7 @@ public class SpawnEnemies : MonoBehaviour
         deathPortalChainOnDeathEffect.enabled = true;
         deathPortalChainOnDeathEffect.enemyPrefab = enemy;
 
-        deathPortalChainOnDeathEffect.AmountOfRoundsBeforeDestroy = group.roundsBeforePortalIsDestroied;
+        deathPortalChainOnDeathEffect.AmountOfRoundsBeforeDestroy = groupStats.roundsBeforePortalIsDestroied;
 
         enemyHasPortal = enemy;
                     
