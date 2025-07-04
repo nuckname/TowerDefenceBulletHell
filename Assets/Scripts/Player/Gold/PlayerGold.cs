@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using TMPro;
 
@@ -30,6 +31,14 @@ public class PlayerGold : MonoBehaviour
     {
         CurrentGold = startingAmountOfGold;
         UpdateGoldUI();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            AddGold(100);
+        }
     }
 
     public void AddGold(int amount)

@@ -27,7 +27,7 @@ public class UpgradeUiManager : MonoBehaviour
     [SerializeField] private SelectDescription selectDescription;
 
     private ChangeUiColourBackGround changeUiColourBackGround;
-    private UpgradeGold _upgradeGold;
+    private UpgradeGoldAmountTurret _upgradeGoldAmountTurret;
 
     private SetIconUpgrades setIconUpgrades;
     
@@ -64,7 +64,7 @@ public class UpgradeUiManager : MonoBehaviour
     private void Awake()
     {
         setIconUpgrades = GetComponent<SetIconUpgrades>();
-        _upgradeGold = GetComponent<UpgradeGold>();
+        _upgradeGoldAmountTurret = GetComponent<UpgradeGoldAmountTurret>();
         changeUiColourBackGround = GetComponent<ChangeUiColourBackGround>();
     }
 
@@ -122,7 +122,7 @@ public class UpgradeUiManager : MonoBehaviour
         if (!isDescriptionAlreadyGenerated)
         {
             GenerateDecription(storeTurretDescriptionAndRarity, _targetTurret.GetComponent<TurretStats>(), _targetTurret.GetComponent<UpgradeDataOnTurret>(), null);
-            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            upgradePrice = _upgradeGoldAmountTurret.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, _targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades, false);
             
             print("New Description: " + upgradePrice);
 
@@ -136,7 +136,7 @@ public class UpgradeUiManager : MonoBehaviour
             //Fixes another bug: when user presses Q and then E and selects upgrade displayedThreeUpgrades was empty. 
             displayedThreeUpgrades = storeTurretDescriptionAndRarity.storedTurretDescription;
             
-            _upgradeGold.HardCodedUpdateGoldAmount(storeTurretDescriptionAndRarity.storeTurretPrice);
+            _upgradeGoldAmountTurret.HardCodedUpdateGoldAmount(storeTurretDescriptionAndRarity.storeTurretPrice);
             
             //Selects icons two calls.
             setIconUpgrades.SetIcons(storeTurretDescriptionAndRarity.storedTurretDescription, storeTurretDescriptionAndRarity.storedTurretSelectedRarity, storeTurretDescriptionAndRarity.storeTurretRotation);
@@ -207,7 +207,7 @@ public class UpgradeUiManager : MonoBehaviour
             
             GenerateDecription(storeTurretDescriptionAndRarity, targetTurret.GetComponent<TurretStats>(), targetTurret.GetComponent<UpgradeDataOnTurret>(), oldRarity);
         
-            upgradePrice = _upgradeGold.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades);
+            upgradePrice = _upgradeGoldAmountTurret.DisplayGold(storeTurretDescriptionAndRarity.storedTurretSelectedRarity, targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades, true);
             
             storeTurretDescriptionAndRarity.storeTurretPrice = upgradePrice;
             
