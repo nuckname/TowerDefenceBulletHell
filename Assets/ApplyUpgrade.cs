@@ -12,7 +12,7 @@ public enum Rarity
 public class ApplyUpgrade : MonoBehaviour
 {
     public UpgradeData upgradeData;
-    public string raritySelected;
+    public TurretRarity raritySelected;
 
     [SerializeField] private ShowTurretStatsButton showTurretStatsButton;
     
@@ -31,7 +31,7 @@ public class ApplyUpgrade : MonoBehaviour
     {
         targetTurret.GetComponent<TurretStats>().totalAmountOfUpgrades++;
         
-        if (string.IsNullOrEmpty(raritySelected))
+        if (raritySelected == null)
         {
             SetRarity(targetTurret);
         }
@@ -51,10 +51,10 @@ public class ApplyUpgrade : MonoBehaviour
 
     private void ApplySelectedUpgrade(string upgradeSelected, GameObject targetTurret)
     {
-        if (string.IsNullOrEmpty(raritySelected))
+        if (raritySelected == null)
         {
             Debug.LogError("raritySelected is null, defaulting to Normal Rarity");
-            raritySelected = "Normal Rarity";
+            raritySelected = TurretRarity.Normal;
         }
         List<Upgrade> upgrades = GetUpgradesByRarity(targetTurret);
         
@@ -69,11 +69,11 @@ public class ApplyUpgrade : MonoBehaviour
 
         switch (raritySelected)
         {
-            case "Normal Rarity":
+            case TurretRarity.Normal:
                 return upgradeDataOnTurret.normalUpgrades;
-            case "Rare Rarity":
+            case TurretRarity.Rare:
                 return upgradeDataOnTurret.rareUpgrades;
-            case "Legendary Rarity":
+            case TurretRarity.Legendary:
                 return upgradeDataOnTurret.legendaryUpgrades;
             default:
                 throw new System.ArgumentException($"ERROR: Invalid rarity: {raritySelected}");
@@ -130,20 +130,20 @@ private void ApplyUpgradeEffect(string upgradeSelected, List<Upgrade> allUpgrade
 
     private void OnlyAllowedOnce(Upgrade upgrade, GameObject targetTurret, UpgradeDataOnTurret upgradeDataOnTurret)
     {
-        string currentRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().GetCurrentRarity();
+        TurretRarity currentRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>().GetCurrentRarity();
 
         List<Upgrade> poolToHide;
         switch (currentRarity)
         {
-            case "Normal Rarity":
+            case TurretRarity.Normal:
                 poolToHide = upgradeDataOnTurret.normalUpgrades;
                 break;
 
-            case "Rare Rarity":
+            case TurretRarity.Rare:
                 poolToHide = upgradeDataOnTurret.rareUpgrades;
                 break;
 
-            case "Legendary Rarity":
+            case TurretRarity.Legendary:
                 poolToHide = upgradeDataOnTurret.legendaryUpgrades;
                 break;
 

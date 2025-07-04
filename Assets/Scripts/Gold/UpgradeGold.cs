@@ -8,11 +8,11 @@ public class UpgradeGold : MonoBehaviour
     public TMP_Text DisplayUpgradeGoldAmount;
     [SerializeField] private float scalingFactor; 
 
-    [SerializeField] private Dictionary<string, int> basePrices = new Dictionary<string, int>
+    [SerializeField] private Dictionary<TurretRarity, int> basePrices = new Dictionary<TurretRarity, int>
     {
-        { "Normal Rarity", 50 },
-        { "Rare Rarity", 100 },
-        { "Legendary Rarity", 200 }
+        { TurretRarity.Normal, 50 },
+        { TurretRarity.Rare, 100 },
+        { TurretRarity.Legendary, 200 }
     };
 
     public void HardCodedUpdateGoldAmount(int amount)
@@ -21,7 +21,7 @@ public class UpgradeGold : MonoBehaviour
     }
 
 
-    public int DisplayGold(string rarity, int totalUpgradeAmount)
+    public int DisplayGold(TurretRarity rarity, int totalUpgradeAmount)
     {
         if (!basePrices.ContainsKey(rarity))
         {

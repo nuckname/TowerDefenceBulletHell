@@ -40,7 +40,7 @@ public class UpgradeUiManager : MonoBehaviour
     //Not used?
     //[SerializeField] bool noUpgradeSelected = true;
 
-    private string selectedRarity = "Error";
+    private TurretRarity selectedRarity;
     private int rarityIndex = 0;
     
     [Header("Cant buy upgrade")]
@@ -85,7 +85,7 @@ public class UpgradeUiManager : MonoBehaviour
 
     }
     
-    private void GenerateDecription(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, string oldRarity)
+    private void GenerateDecription(StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity, TurretStats turretStats, UpgradeDataOnTurret upgradeDataOnTurret, TurretRarity? oldRarity)
     {
         selectedRarity = generateRarity.SelectRarity(selectedRarity, turretStats);
 
@@ -174,7 +174,7 @@ public class UpgradeUiManager : MonoBehaviour
     {
         StoreTurretDescriptionAndRarity storeTurretDescriptionAndRarity = targetTurret.GetComponent<StoreTurretDescriptionAndRarity>();
 
-        string oldRarity = storeTurretDescriptionAndRarity.storedTurretSelectedRarity;
+        TurretRarity oldRarity = storeTurretDescriptionAndRarity.storedTurretSelectedRarity;
         
         if (PlayerGold.Instance.SpendGold(storeTurretDescriptionAndRarity.storeTurretRerollPrice))
         {

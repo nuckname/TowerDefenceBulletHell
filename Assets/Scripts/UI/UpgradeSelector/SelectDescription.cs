@@ -25,19 +25,19 @@ public class SelectDescription : MonoBehaviour
     ///
     ///
 
-    public string[] Get3Descriptions(string selectedRarity, UpgradeDataOnTurret upgradeDataOnTurret)
+    public string[] Get3Descriptions(TurretRarity selectedRarity, UpgradeDataOnTurret upgradeDataOnTurret)
     {
         switch (selectedRarity)
         {
-            case "Normal Rarity":
+            case TurretRarity.Normal:
                 //Hard Coded order upgrades
                 NormalUpgradesHardCodedOrder[0] = "Increases projectile speed";
                 NormalUpgradesHardCodedOrder[1] = "Increases projectile lifetime";
                 NormalUpgradesHardCodedOrder[2] = "Increases firing rate";
                 return NormalUpgradesHardCodedOrder;
-            case "Rare Rarity":
+            case TurretRarity.Rare:
                 return SelectThreeUpgrades(upgradeDataOnTurret.rareUpgrades);
-            case "Legendary Rarity":
+            case TurretRarity.Legendary:
                 return SelectThreeUpgrades(upgradeDataOnTurret.legendaryUpgrades);
             default:
                 Debug.LogWarning("No Rarity Error");

@@ -4,29 +4,27 @@ using Random = UnityEngine.Random;
 
 public class GenerateRarity : MonoBehaviour
 {
-    public string SelectRarity(string excludeRarity, TurretStats turretStats)
+    public TurretRarity SelectRarity(TurretRarity excludeRarity, TurretStats turretStats)
     {
-        excludeRarity = null; // Currently not used in selection logic
-
         // Base chances
         float LegendaryChance = 0.20f;
         float RareChance = 0.30f;
         //float NormalChance = 0.50f;
 
         float roll = Random.Range(0f, 1f);
-        string selectedRarity;
+        TurretRarity selectedRarity;
 
         if (roll <= LegendaryChance)
         {
-            selectedRarity = "Legendary Rarity";
+            selectedRarity = TurretRarity.Legendary;
         }
         else if (roll <= LegendaryChance + RareChance)
         {
-            selectedRarity = "Rare Rarity";
+            selectedRarity = TurretRarity.Rare;
         }
         else
         {
-            selectedRarity = "Normal Rarity";
+            selectedRarity = TurretRarity.Normal;
         }
 
         return selectedRarity;

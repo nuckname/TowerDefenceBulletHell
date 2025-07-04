@@ -53,11 +53,11 @@ public class SetIconUpgrades : MonoBehaviour
     /// <summary>
     /// Assigns upgrade icons, aligns them to the turret's rotation, and enforces square dimensions.
     /// </summary>
-    public void SetIcons(string[] upgradeDescriptions, string raritySelected, float turretRotation)
+    public void SetIcons(string[] upgradeDescriptions, TurretRarity raritySelected, float turretRotation)
     {
         //Turret Rotation. Using mouse wheel also breaks it. 
         
-        if (raritySelected != "Normal Rarity")
+        if (raritySelected != TurretRarity.Normal)
         {
             RotateImage(turretRotation);
         }
@@ -76,17 +76,17 @@ public class SetIconUpgrades : MonoBehaviour
 
         switch (raritySelected)
         {
-            case "Legendary Rarity":
+            case TurretRarity.Legendary:
                 Assign(imageBoxTop, upgradeDataOnTurret.legendaryUpgrades, upgradeDescriptions[0]);
                 Assign(imageBoxMiddle, upgradeDataOnTurret.legendaryUpgrades, upgradeDescriptions[1]);
                 Assign(imageBoxBottom, upgradeDataOnTurret.legendaryUpgrades, upgradeDescriptions[2]);
                 break;
-            case "Rare Rarity":
+            case TurretRarity.Rare:
                 Assign(imageBoxTop, upgradeDataOnTurret.rareUpgrades, upgradeDescriptions[0]);
                 Assign(imageBoxMiddle, upgradeDataOnTurret.rareUpgrades, upgradeDescriptions[1]);
                 Assign(imageBoxBottom, upgradeDataOnTurret.rareUpgrades, upgradeDescriptions[2]);
                 break;
-            case "Normal Rarity":
+            case TurretRarity.Normal:
                 Assign(imageBoxTop, upgradeDataOnTurret.normalUpgrades, upgradeDescriptions[0]);
                 Assign(imageBoxMiddle, upgradeDataOnTurret.normalUpgrades, upgradeDescriptions[1]);
                 Assign(imageBoxBottom, upgradeDataOnTurret.normalUpgrades, upgradeDescriptions[2]);
