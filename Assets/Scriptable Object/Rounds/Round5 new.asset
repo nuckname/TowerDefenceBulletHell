@@ -64,8 +64,8 @@ MonoBehaviour:
     bossSpawn: 0
     groundEffects: 
     paintMoveSpeedModifer: 0
-    shieldDirections: 
-    shieldHp: 0
+    shieldDirections: 02000000
+    shieldHp: 2
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
@@ -78,8 +78,8 @@ MonoBehaviour:
     bossSpawn: 0
     groundEffects: 
     paintMoveSpeedModifer: 0
-    shieldDirections: 
-    shieldHp: 0
+    shieldDirections: 00000000
+    shieldHp: 2
     isRotating: 0
     clockWise: 0
     counterClockWise: 0
@@ -117,8 +117,20 @@ MonoBehaviour:
   speedModifer: 0.75
   spawnInterval: 0.5
   totalEnemies: 16
-  amountOfGoldGainedForEachCoin: 10
-  amountOfGoldToDrop: 5
+  amountOfGoldGainedForEachCoin: 6
+  amountOfGoldToDrop: 6
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 800
+  DEBUGtotalAmountOfGoldPerRound: 576
+  DEBUGtotalEnemyHpThisRound: 67
+  DEBUGsummaryInfo: '- Total Enemies: 16
+
+    - Total Enemy HP: 67
+
+    - Gold Drop:
+    6 per enemy * 6 value
+
+    - Total Gold This Round: 576
+
+    - Boss Included:
+    No'
   boss: {fileID: 0}

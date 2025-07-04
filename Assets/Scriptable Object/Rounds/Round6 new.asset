@@ -89,8 +89,20 @@ MonoBehaviour:
   speedModifer: 1
   spawnInterval: 0.5
   totalEnemies: 15
-  amountOfGoldGainedForEachCoin: 10
-  amountOfGoldToDrop: 5
+  amountOfGoldGainedForEachCoin: 8
+  amountOfGoldToDrop: 4
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 750
+  DEBUGtotalAmountOfGoldPerRound: 480
+  DEBUGtotalEnemyHpThisRound: 58
+  DEBUGsummaryInfo: '- Total Enemies: 15
+
+    - Total Enemy HP: 58
+
+    - Gold Drop:
+    4 per enemy * 8 value
+
+    - Total Gold This Round: 480
+
+    - Boss Included:
+    No'
   boss: {fileID: 0}

@@ -41,6 +41,7 @@ public class RoundStateManager : MonoBehaviour
     
     [Header("Enemy Effects")]
     public bool roundHasTeleporters = false;
+    
     private void Awake()
     {
         spawnEnemies = GetComponent<SpawnEnemies>();
@@ -70,6 +71,16 @@ public class RoundStateManager : MonoBehaviour
             tutorialCantStartRound = false;
         }
 
+    }
+    
+    public RoundDataSO GetCurrentRoundData()
+    {
+        return allRoundData.rounds[currentRound];
+    }
+
+    public int GetCoinValue()
+    {
+        return GetCurrentRoundData().amountOfGoldGainedForEachCoin;
     }
 
 

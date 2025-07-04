@@ -9,7 +9,7 @@ public class SpawnEnemies : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
     
-    [SerializeField] private Transform spawnPoint; // Where enemies will spawn
+    [SerializeField] private Transform spawnPoint;
 
     private EnemyOnMapCounter _enemyOnMapCounter;
     

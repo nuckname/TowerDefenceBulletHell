@@ -21,8 +21,8 @@ MonoBehaviour:
     spawnInterval: 0.7
     bossSpawn: 0
     groundEffects: 01000000
-    paintMoveSpeedModifer: 0.2
-    shieldDirections: 000000000400000005000000020000000600000007000000
+    paintMoveSpeedModifer: 0.3
+    shieldDirections: 000000000500000004000000020000000600000007000000
     shieldHp: 1
     isRotating: 0
     clockWise: 0
@@ -44,11 +44,23 @@ MonoBehaviour:
     onDeathEffects: 
     roundsBeforePortalIsDestroied: 0
   delayAfterWave: 2
-  speedModifer: 1.25
+  speedModifer: 1
   spawnInterval: 0.65
   totalEnemies: 9
   amountOfGoldGainedForEachCoin: 5
-  amountOfGoldToDrop: 10
+  amountOfGoldToDrop: 5
   amountOfHeartToDrop: 0
-  DEBUGtotalAmountOfGoldPerRound: 450
+  DEBUGtotalAmountOfGoldPerRound: 225
+  DEBUGtotalEnemyHpThisRound: 27
+  DEBUGsummaryInfo: '- Total Enemies: 9
+
+    - Total Enemy HP: 27
+
+    - Gold Drop:
+    5 per enemy * 5 value
+
+    - Total Gold This Round: 225
+
+    - Boss Included:
+    No'
   boss: {fileID: 0}

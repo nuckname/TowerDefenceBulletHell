@@ -3496,6 +3496,10 @@ PrefabInstance:
       propertyPath: spawnEnemies
       value: 
       objectReference: {fileID: 1870071535}
+    - target: {fileID: 6278807831771051293, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
+      propertyPath: roundStateManager
+      value: 
+      objectReference: {fileID: 1870071531}
     - target: {fileID: 7177676866748033511, guid: 9f6951698825b1940b4f5cd2192ea0e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.17932749

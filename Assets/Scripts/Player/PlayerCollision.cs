@@ -6,14 +6,13 @@ using Random = UnityEngine.Random;
 
 public class PlayerCollision : MonoBehaviour, ISpeedModifiable
 {
-    [SerializeField] private RoundDataSO roundDataSo;
-
-    [SerializeField] private int CoinGiveGoldAmount = 5;
     [SerializeField] private float iframeDuration = 1f; // Duration of invincibility frames
     [SerializeField] private float transparencyLevel = 0.5f;
 
+    [SerializeField] private RoundStateManager roundStateManager;
+    
     private int _currentRoundIndex;
-    private List<RoundDataSO> rounds;
+    private RoundDataSO rounds;
     [SerializeField] private SpawnEnemies spawnEnemies;
     
     [SerializeField] private GameModeManager gameModeManager;
@@ -39,7 +38,8 @@ public class PlayerCollision : MonoBehaviour, ISpeedModifiable
         gameModeManager = GameObject.FindGameObjectWithTag("GameModeManager").GetComponent<GameModeManager>();
         
         //So we can get the amount of gold for the enemies to drop. 
-        rounds = GameObject.FindGameObjectWithTag("StateManager").GetComponent<SpawnEnemies>().roundsScriptableObject;
+       
+        
         //_currentRoundIndex = GameObject.FindGameObjectWithTag("StateManager").GetComponent<RoundStateManager>().currentRound;
     }
 
@@ -76,7 +76,7 @@ public class PlayerCollision : MonoBehaviour, ISpeedModifiable
 
         if (other.gameObject.CompareTag("Coin"))
         {
-            int amount = spawnEnemies.roundsScriptableObject[spawnEnemies.currentRound].amountOfGoldGainedForEachCoin;
+            int amount = roundStateManager.GetCoinValue();
             
             AudioManager.instance.PlayerCollectCoinSFX();
             
@@ -88,6 +88,7 @@ public class PlayerCollision : MonoBehaviour, ISpeedModifiable
             {
                 PlayerGold.Instance.AddGold(amount);
             }
+            
         }
         
         if (other.gameObject.CompareTag("Heart"))
